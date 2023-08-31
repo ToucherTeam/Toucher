@@ -1,5 +1,5 @@
 <div align="center">
-<img width = "100" src="https://github-production-user-asset-6210df.s3.amazonaws.com/120548537/262368987-f19663aa-7a75-40bc-ab45-82adec8edede.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230822%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230822T133653Z&X-Amz-Expires=300&X-Amz-Signature=296d19b0f62663bb881352a62d8a1b12eb2a64bef0e6f6578bb1104d86cc4bd7&X-Amz-SignedHeaders=host&actor_id=120548537&key_id=0&repo_id=681597818">
+<img width = "100" src="https://github.com/ToucherTeam/Toucher/assets/120548537/c3381c9f-078d-4590-b87f-825814fe76c3">
 
 # Toucher
 </div>
@@ -62,9 +62,9 @@
 
 <table>
   <tr align=center>
-    <td width="160px"><img src="https://github.com/ToucherTeam/Toucher/assets/120548537/bec76a60-9551-44b8-99af-9bc8576a3579"></td>
-    <td width="160px"><img src="https://github.com/ToucherTeam/Toucher/assets/120548537/bec76a60-9551-44b8-99af-9bc8576a3579"></td>
-    <td width="160px"><img src="https://github.com/ToucherTeam/Toucher/assets/120548537/bec76a60-9551-44b8-99af-9bc8576a3579"></td>
+    <td width="160px"><img src="https://github.com/ToucherTeam/Toucher/assets/120548537/bba5fab4-619d-4031-aa43-d6dfc628cf08"></td>
+    <td width="160px"><img src="https://github.com/ToucherTeam/Toucher/assets/120548537/bba5fab4-619d-4031-aa43-d6dfc628cf08"></td>
+    <td width="160px"><img src="https://github.com/ToucherTeam/Toucher/assets/120548537/bba5fab4-619d-4031-aa43-d6dfc628cf08"></td>
   </tr>
   <tr align=center>
     <td width="160px"><a href="https://github.com/bulmang">bulmang</a></td>
@@ -100,14 +100,18 @@
 - [ ] 한국 출시
 - [ ] 일본 출시
 
-## Commit Rule
+<br>
+
+<br>
+
+## 💻 Commit Rule
 
 ```swift
 git add .    //작업 요소를 더해줌
 git commit -m "design: View 디자인 구현 (#14)"    //무엇을 구현했는지 메세지로 작성
 ```
 
-- commit은 최대한 자세히 나누어서 진행해야 하기 때문에, 하나의 이슈 안에서도 매우 많은 commit이 생성될 수 있습니다. **prefix: 이슈 내용 (#이슈번호)**의 양식에 따라 커밋을 작성합니다.
+- commit은 최대한 자세히 나누어서 진행해야 하기 때문에, 하나의 이슈 안에서도 매우 많은 commit이 생성될 수 있습니다. **prefix: 이슈 내용 (#이슈번호)** 의 양식에 따라 커밋을 작성합니다.
 - prefix 종류
     - feat: 새로운 기능 구현
     - setting: 기초 세팅 관련
