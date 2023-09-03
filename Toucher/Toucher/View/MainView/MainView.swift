@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @State private var navigationPath = [MainViewModel]()
-    @State private var showFullStack = false
     
     private let isSE = DeviceManager.shared.iPhoneSE()
     
@@ -26,7 +25,7 @@ struct MainView: View {
                                 startPoint: UnitPoint(x: 0.09, y: 0.5),
                                 endPoint: UnitPoint(x: 1.65, y: 0.5)
                             )
-                            .frame(height: isSE ? 77 : 88)
+                            .frame(height: isSE ? 71 : 88)
                             .frame(maxWidth: .infinity)
                             .cornerRadius(10)
                             .overlay(
@@ -61,7 +60,9 @@ struct MainView: View {
                             viewForgesture(gesture)
                         }
                     }
+                    Spacer()
                 }
+                .padding(.top, isSE ? 13 : 30)
             }
         }
         .accentColor(.red)
