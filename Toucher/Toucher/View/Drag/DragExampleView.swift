@@ -25,7 +25,8 @@ struct DragExampleView: View {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
-                Text(isSuceess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
+                Text(isSuceess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." :
+                        isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
                     .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -61,8 +62,11 @@ struct DragExampleView: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
-                                        offset = CGSize(width: value.startLocation.x + value.translation.width - 100/2,
-                                                        height: value.startLocation.y + value.translation.height - 100/2)
+                                        let start = value.startLocation
+                                        let trans = value.translation
+                                        
+                                        offset = CGSize(width: start.x + trans.width - 100/2,
+                                                        height: start.y + trans.height - 100/2)
                                         withAnimation(.easeInOut) {
                                             scale = 1.2
                                             isPressed = true
@@ -75,7 +79,7 @@ struct DragExampleView: View {
                                         }
                                         
                                         if isArrived {
-                                            withAnimation() {
+                                            withAnimation {
                                                 isSuceess = true
                                             }
                                         }

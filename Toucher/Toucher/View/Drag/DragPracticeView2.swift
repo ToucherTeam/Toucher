@@ -9,7 +9,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DragPracticeView2: View {
-    @State private var data = ["Clock", "App Store", "Maps", "Wallet", "Camera", "FaceTime", "TV" , "Safari"]
+    @State private var data = ["Clock", "App Store", "Maps", "Wallet", "Camera", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
     @State private var isSuceess = false
     @State private var isDroped = false
@@ -19,7 +19,7 @@ struct DragPracticeView2: View {
     var body: some View {
         ZStack {
             VStack {
-                Rectangle().frame(height:0)
+                Rectangle().frame(height: 0)
                 Spacer().frame(height: 40)
                 Text(isSuceess ? "잘하셨어요!\n\n" : "카메라를 3초 누른 뒤\n화살표가 가리키는\n곳에 옮겨볼까요?")
                     .font(Font.customTitle())
@@ -28,7 +28,10 @@ struct DragPracticeView2: View {
                     .bold()
                     .padding(.top, 30)
                 LazyVGrid(columns: columns) {
-                    ReorderableForEach($data, allowReordering: $allowReordering, isReached: $isSuceess,  isDroped: $isDroped) { item, isDragged in
+                    ReorderableForEach($data,
+                                       allowReordering: $allowReordering,
+                                       isReached: $isSuceess,
+                                       isDroped: $isDroped) { item, _ in
                         Image(item)
                             .resizable()
                             .scaledToFit()
@@ -58,7 +61,7 @@ struct DragPracticeView2: View {
     }
 }
 
-public struct ReorderableForEach<Data, Content>: View where Data : Hashable, Content : View {
+public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Content: View {
     @Binding var data: [Data]
     @Binding var allowReordering: Bool
     @Binding var isReached: Bool
@@ -104,7 +107,7 @@ public struct ReorderableForEach<Data, Content>: View where Data : Hashable, Con
     }
     
     struct ReorderDropDelegate<Data>: DropDelegate
-    where Data : Equatable {
+    where Data: Equatable {
         let item: Data
         @Binding var data: [Data]
         @Binding var draggedItem: Data?
@@ -116,22 +119,21 @@ public struct ReorderableForEach<Data, Content>: View where Data : Hashable, Con
             guard item != draggedItem,
                   let current = draggedItem,
                   let from = data.firstIndex(of: current),
-                  let to = data.firstIndex(of: item)
+                  let indexTo = data.firstIndex(of: item)
             else {
                 return
             }
             hasChangedLocation = true
-            if data[to] != current {
-                print(to)
-                if current as! String == "Camera" && to == 7 {
+            if data[indexTo] != current {
+                print(indexTo)
+                if current as! String == "Camera" && indexTo == 7 {
                     isReached = true
-                }
-                else {
+                } else {
                     isReached = false
                 }
                 withAnimation {
                     data.move(fromOffsets: IndexSet(integer: from),
-                              toOffset: (to > from) ? to + 1 : to)
+                              toOffset: (indexTo > from) ? indexTo + 1 : indexTo)
                 }
             }
         }
@@ -147,7 +149,6 @@ public struct ReorderableForEach<Data, Content>: View where Data : Hashable, Con
         }
     }
 }
-
 
 struct DragPracticeView2_Previews: PreviewProvider {
     static var previews: some View {
