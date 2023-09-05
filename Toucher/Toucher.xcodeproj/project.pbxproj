@@ -46,6 +46,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07670B932AA749D600DE5113 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		07670B942AA749E000DE5113 /* DeviceManager */ = {
+			isa = PBXGroup;
+			children = (
+				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
+			);
+			path = DeviceManager;
+			sourceTree = "<group>";
+		};
 		29E852122AA08346003F4AF4 = {
 			isa = PBXGroup;
 			children = (
@@ -66,10 +81,11 @@
 		29E8521D2AA08346003F4AF4 /* Toucher */ = {
 			isa = PBXGroup;
 			children = (
-				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
-				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
-				29EAB4082AA1703A004E5429 /* View */,
+				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
+				07670B942AA749E000DE5113 /* DeviceManager */,
+				07670B932AA749D600DE5113 /* Component */,
+				29EAB4082AA1703A004E5429 /* Gesture */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
 				29E852242AA08347003F4AF4 /* Preview Content */,
@@ -94,22 +110,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		29E852352AA08D25003F4AF4 /* MainView */ = {
+		29E852352AA08D25003F4AF4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				29E852362AA08D34003F4AF4 /* MainView.swift */,
 				076655572AA16D0B00DC6687 /* MainModel.swift */,
 				07670B912AA7334000DE5113 /* MainViewModel.swift */,
 			);
-			path = MainView;
+			path = Main;
 			sourceTree = "<group>";
 		};
-		29EAB4082AA1703A004E5429 /* View */ = {
+		29EAB4082AA1703A004E5429 /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
-				29E852352AA08D25003F4AF4 /* MainView */,
+				29E852352AA08D25003F4AF4 /* Main */,
 			);
-			path = View;
+			path = Gesture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
