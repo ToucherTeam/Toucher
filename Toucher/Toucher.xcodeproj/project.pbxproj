@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		076655582AA16D0B00DC6687 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655572AA16D0B00DC6687 /* MainModel.swift */; };
+		0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655592AA22A1E00DC6687 /* DeviceManager.swift */; };
+		07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B912AA7334000DE5113 /* MainViewModel.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		076655572AA16D0B00DC6687 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		076655592AA22A1E00DC6687 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		07670B912AA7334000DE5113 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +54,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07670B932AA749D600DE5113 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		07670B942AA749E000DE5113 /* DeviceManager */ = {
+			isa = PBXGroup;
+			children = (
+				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
+			);
+			path = DeviceManager;
+			sourceTree = "<group>";
+		};
 		29E852122AA08346003F4AF4 = {
 			isa = PBXGroup;
 			children = (
@@ -68,10 +89,12 @@
 		29E8521D2AA08346003F4AF4 /* Toucher */ = {
 			isa = PBXGroup;
 			children = (
-				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				29EAB41C2AA62C3F004E5429 /* LongTap */,
-				29EAB4082AA1703A004E5429 /* View */,
+				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
+				07670B942AA749E000DE5113 /* DeviceManager */,
+				07670B932AA749D600DE5113 /* Component */,
+				29EAB4082AA1703A004E5429 /* Gesture */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
 				29E852242AA08347003F4AF4 /* Preview Content */,
@@ -96,20 +119,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		29E852352AA08D25003F4AF4 /* MainView */ = {
+		29E852352AA08D25003F4AF4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				29E852362AA08D34003F4AF4 /* MainView.swift */,
+				076655572AA16D0B00DC6687 /* MainModel.swift */,
+				07670B912AA7334000DE5113 /* MainViewModel.swift */,
 			);
-			path = MainView;
+			path = Main;
 			sourceTree = "<group>";
 		};
-		29EAB4082AA1703A004E5429 /* View */ = {
+		29EAB4082AA1703A004E5429 /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
-				29E852352AA08D25003F4AF4 /* MainView */,
+				29E852352AA08D25003F4AF4 /* Main */,
 			);
-			path = View;
+			path = Gesture;
 			sourceTree = "<group>";
 		};
 		29EAB41C2AA62C3F004E5429 /* LongTap */ = {
@@ -218,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29EAB4242AA62FF5004E5429 /* LongTapFinalView.swift in Sources */,
@@ -227,6 +253,8 @@
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29EAB41E2AA62D41004E5429 /* LongTapExampleView.swift in Sources */,
+				076655582AA16D0B00DC6687 /* MainModel.swift in Sources */,
+				07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -389,7 +417,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
