@@ -12,6 +12,8 @@ struct LongTapPracticeView2: View {
     @State private var isSuceess = false
     @State private var isOneTapped = false
     
+    @State private var selectedIndex: Int?
+    
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
         
     var body: some View {
@@ -29,8 +31,9 @@ struct LongTapPracticeView2: View {
                     .padding(.top, 30)
                 ScrollView {
                     LazyVGrid(columns: columns) {
-                        ForEach((1...15), id: \.self) { _ in
-                            Rectangle()
+                        ForEach((1...15), id: \.self) { index in
+                            Image("Album\(index)")
+                                .resizable()
                                 .frame(height: 130)
                                 .foregroundStyle(.gray)
                                 .gesture(
@@ -39,6 +42,7 @@ struct LongTapPracticeView2: View {
                                             withAnimation {
                                                 isSuceess = true
                                                 isTapped = true
+                                                selectedIndex = index
                                             }
                                         }
                                         .simultaneously(with: TapGesture()
@@ -58,14 +62,21 @@ struct LongTapPracticeView2: View {
                         Rectangle()
                             .foregroundStyle(.ultraThinMaterial)
                             .ignoresSafeArea()
+                            .onTapGesture {
+                                isSuceess = false
+                                isOneTapped = false
+                            }
                     }
                 }
                 .overlay(alignment: .top) {
                     if isSuceess {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .frame(width: 360, height: 360)
-                            .offset(y: -50)
-                            .foregroundStyle(.gray)
+                        if let selectedIndex {
+                            Image("Album\(selectedIndex)")
+                                .resizable()
+                                .frame(width: 360, height: 360)
+                                .offset(y: -50)
+                                .foregroundStyle(.gray)
+                        }
                     }
                 }
             }
