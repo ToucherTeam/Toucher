@@ -39,7 +39,7 @@ struct MainView: View {
                                         .font(.customButtonText())
                                         .foregroundColor(.white)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .padding(.leading, 36)
+                                        .padding(.leading, 16)
                                     
                                     Image(systemName: "chevron.forward")
                                         .font(.system(size: 18))
