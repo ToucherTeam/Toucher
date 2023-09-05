@@ -10,7 +10,7 @@ import SwiftUI
 struct Arrows: View {
     
     /// 사이즈 값을 외부에서 넣어 크기를 조절할 수 있습니다. Default는 28 입니다.
-    @State var size: CGFloat = 28
+    var size: CGFloat = 28
     
     @State private var scale: CGFloat = 1.0
     @State private var fade: Double = 0.2
