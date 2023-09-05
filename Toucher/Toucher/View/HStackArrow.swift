@@ -1,5 +1,5 @@
 //
-//  Arrows.swift
+//  HStackArrow.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Arrows: View {
+struct HStackArrow: View {
     
     /// 사이즈 값을 외부에서 넣어 크기를 조절할 수 있습니다. Default는 28 입니다.
     var size: CGFloat = 28
@@ -41,6 +41,6 @@ struct Arrows: View {
 
 struct Arrow_Previews: PreviewProvider {
     static var previews: some View {
-        Arrows()
+        HStackArrow()
     }
 }

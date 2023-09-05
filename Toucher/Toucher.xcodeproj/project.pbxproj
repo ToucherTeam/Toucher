@@ -19,8 +19,9 @@
 		29E852372AA08D34003F4AF4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852362AA08D34003F4AF4 /* MainView.swift */; };
 		29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */; };
 		29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */; };
-		29F1D5142AA764270074C1FE /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5132AA764270074C1FE /* Arrows.swift */; };
+		29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5132AA764270074C1FE /* HStackArrow.swift */; };
 		29F1D5162AA765990074C1FE /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5152AA765990074C1FE /* FinalView.swift */; };
+		29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5192AA775520074C1FE /* VStackArrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +38,9 @@
 		29E852362AA08D34003F4AF4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToucherNavigationLink.swift; path = Toucher/View/ToucherNavigationLink.swift; sourceTree = SOURCE_ROOT; };
-		29F1D5132AA764270074C1FE /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Arrows.swift; path = Toucher/View/Arrows.swift; sourceTree = SOURCE_ROOT; };
+		29F1D5132AA764270074C1FE /* HStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/View/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5152AA765990074C1FE /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FinalView.swift; path = Toucher/View/FinalView.swift; sourceTree = SOURCE_ROOT; };
+		29F1D5192AA775520074C1FE /* VStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/View/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 		07670B932AA749D600DE5113 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				29F1D5132AA764270074C1FE /* Arrows.swift */,
+				29F1D5132AA764270074C1FE /* HStackArrow.swift */,
+				29F1D5192AA775520074C1FE /* VStackArrow.swift */,
 				29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */,
 				29F1D5152AA765990074C1FE /* FinalView.swift */,
 			);
@@ -234,7 +237,7 @@
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
-				29F1D5142AA764270074C1FE /* Arrows.swift in Sources */,
+				29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */,
 				29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */,
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
@@ -242,6 +245,7 @@
 				076655582AA16D0B00DC6687 /* MainModel.swift in Sources */,
 				07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */,
 				29F1D5162AA765990074C1FE /* FinalView.swift in Sources */,
+				29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
