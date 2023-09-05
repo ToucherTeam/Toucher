@@ -70,6 +70,7 @@
 			children = (
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
+				29EAB41C2AA62C3F004E5429 /* LongTap */,
 				29EAB4082AA1703A004E5429 /* View */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
@@ -107,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				29E852352AA08D25003F4AF4 /* MainView */,
-				29EAB41C2AA62C3F004E5429 /* LongTap */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,7 +120,8 @@
 				29EAB4212AA62ECD004E5429 /* LongTapPracticeView2.swift */,
 				29EAB4232AA62FF5004E5429 /* LongTapFinalView.swift */,
 			);
-			path = LongTap;
+			name = LongTap;
+			path = View/LongTap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
