@@ -90,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
-				29EAB41C2AA62C3F004E5429 /* LongTap */,
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				07670B942AA749E000DE5113 /* DeviceManager */,
 				07670B932AA749D600DE5113 /* Component */,
@@ -133,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				29E852352AA08D25003F4AF4 /* Main */,
+				29EAB41C2AA62C3F004E5429 /* LongTap */,
 			);
 			path = Gesture;
 			sourceTree = "<group>";
@@ -145,8 +145,7 @@
 				29EAB4212AA62ECD004E5429 /* LongTapPracticeView2.swift */,
 				29EAB4232AA62FF5004E5429 /* LongTapFinalView.swift */,
 			);
-			name = LongTap;
-			path = View/LongTap;
+			path = LongTap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,7 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = WF2V4JB29M;
+				DEVELOPMENT_TEAM = 77745NX67K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -417,7 +416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = WF2V4JB29M;
+				DEVELOPMENT_TEAM = 77745NX67K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";

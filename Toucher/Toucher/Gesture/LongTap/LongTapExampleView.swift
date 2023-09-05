@@ -13,7 +13,7 @@ struct LongTapExampleView: View {
     @State private var isOneTapped = false
     
     @GestureState private var isPressed = false
-    
+        
     var body: some View {
         ZStack {
             if isOneTapped && !isSuceess {
@@ -81,7 +81,7 @@ struct LongTapExampleView: View {
             }
             if isSuceess {
                 NavigationLink {
-                    
+                    LongTapPracticeView1()
                 } label: {
                     Text("다음")
                         .font(.title3)
@@ -96,12 +96,6 @@ struct LongTapExampleView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
 
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("길게 누르기")
-            }
         }
         .onAppear {
             isTapped = false

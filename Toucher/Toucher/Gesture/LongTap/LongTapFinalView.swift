@@ -29,7 +29,7 @@ struct LongTapFinalView: View {
                 .frame(width: 168)
                 .frame(maxHeight: .infinity)
             
-            NavigationLink {
+            Button {
                 
             } label: {
                 Text("다시하기")
@@ -38,11 +38,11 @@ struct LongTapFinalView: View {
                     .frame(maxWidth: .infinity)
                     .background {
                         RoundedRectangle(cornerRadius: 14, style: .continuous)
-                            .stroke()
+                            .stroke(lineWidth: 2)
                     }
             }
-            NavigationLink {
-                ContentView()
+            Button {
+                
             } label: {
                 Text("처음으로")
                     .font(.title3)

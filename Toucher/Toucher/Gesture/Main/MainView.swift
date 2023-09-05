@@ -56,7 +56,7 @@ struct MainView: View {
                     .navigationDestination(for: MainModel.self) { gesture in
                         VStack(spacing: 0) {
                             customHeader(for: gesture)
-                            
+
                             viewForgesture(gesture)
                         }
                     }
@@ -76,7 +76,7 @@ struct MainView: View {
         case "두 번 누르기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "길게 누르기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(LongTapExampleView().navigationBarBackButtonHidden())
         case "살짝 쓸기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "끌어오기":

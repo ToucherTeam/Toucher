@@ -89,7 +89,7 @@ struct LongTapPracticeView1: View {
             }
             if isSuceess {
                 NavigationLink {
-                    
+                    LongTapPracticeView2()
                 } label: {
                     Text("다음")
                         .font(.title3)
