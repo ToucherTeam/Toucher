@@ -11,12 +11,11 @@ import SwiftUI
 struct BtnStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth:.infinity)
+            .frame(maxWidth: .infinity)
             .frame(height: 58)
             .font(.headline)
-            .padding(.horizontal, 16)
             .foregroundColor(.white)
-            .background(Color("BrandColor"))
+            .background(Color("Primary"))
             .cornerRadius(10)
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
             .animation(.spring(), value: configuration.isPressed)
@@ -30,9 +29,9 @@ struct BtnWhiteStyle: ButtonStyle {
             .frame(height: 58)
             .font(.headline)
             .padding(.horizontal, 16)
-            .foregroundColor(Color("BrandColor"))
+            .foregroundColor(Color("Primary"))
             .background(.white)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("BrandColor"), lineWidth: 0.5))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke((Color("Primary")), lineWidth: 0.5))
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
             .animation(.spring(), value: configuration.isPressed)
     }

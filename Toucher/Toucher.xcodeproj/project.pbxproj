@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0701F9F62AA4E7A2005B5A88 /* SwipeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701F9F52AA4E7A2005B5A88 /* SwipeExampleView.swift */; };
+		0701F9F82AA4E964005B5A88 /* SwipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701F9F72AA4E964005B5A88 /* SwipeViewModel.swift */; };
+		07670B8A2AA7109700DE5113 /* GetHeightModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B892AA7109700DE5113 /* GetHeightModifer.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0701F9F52AA4E7A2005B5A88 /* SwipeExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExampleView.swift; sourceTree = "<group>"; };
+		0701F9F72AA4E964005B5A88 /* SwipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewModel.swift; sourceTree = "<group>"; };
+		07670B892AA7109700DE5113 /* GetHeightModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeightModifer.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0701F9F42AA4E78B005B5A88 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				0701F9F52AA4E7A2005B5A88 /* SwipeExampleView.swift */,
+				0701F9F72AA4E964005B5A88 /* SwipeViewModel.swift */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
 		29E852122AA08346003F4AF4 = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +113,9 @@
 		29EAB4082AA1703A004E5429 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0701F9F42AA4E78B005B5A88 /* SwipeView */,
 				29E852352AA08D25003F4AF4 /* MainView */,
+				07670B892AA7109700DE5113 /* GetHeightModifer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07670B8A2AA7109700DE5113 /* GetHeightModifer.swift in Sources */,
+				0701F9F82AA4E964005B5A88 /* SwipeViewModel.swift in Sources */,
+				0701F9F62AA4E7A2005B5A88 /* SwipeExampleView.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */,
@@ -330,7 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -364,7 +384,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
