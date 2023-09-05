@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var navigationPath = [MainViewModel]()
+    @StateObject private var mainVM = MainViewModel()
     
     private let isSE = DeviceManager.shared.iPhoneSE()
     
     var body: some View {
-        NavigationStack(path: $navigationPath) {
+        NavigationStack(path: $mainVM.navigationPath) {
             ZStack {
                 Color.white
                     .ignoresSafeArea()
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(gestures) { gesture in
+                    ForEach(mainVM.gestures) { gesture in
                         NavigationLink(value: gesture) {
                             LinearGradient(
                                 colors: [Color("Primary"), Color("Secondary")],
@@ -53,7 +53,7 @@ struct MainView: View {
                             .padding(.bottom, 6)
                         }
                     }
-                    .navigationDestination(for: MainViewModel.self) { gesture in
+                    .navigationDestination(for: MainModel.self) { gesture in
                         VStack(spacing: 0) {
                             customHeader(for: gesture)
                             
@@ -71,7 +71,7 @@ struct MainView: View {
         }
     }
     
-    func viewForgesture(_ gesture: MainViewModel) -> AnyView {
+    func viewForgesture(_ gesture: MainModel) -> AnyView {
         switch gesture.name {
         case "두 번 누르기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
@@ -93,9 +93,9 @@ struct MainView: View {
     }
     
     @ViewBuilder
-    func customHeader(for gesture: MainViewModel) -> some View {
+    func customHeader(for gesture: MainModel) -> some View {
         Button {
-            navigationPath = []
+            mainVM.navigationPath = []
         } label: {
             HStack(spacing: 5) {
                 
