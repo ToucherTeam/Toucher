@@ -9,22 +9,27 @@ import SwiftUI
 
 struct FinalView: View {
     
-    let text: String
+    /// gestureTitle 을 넣으면 Toolbar 와 말풍선에 적용됩니다
+    /// navigation 기능을 위한 mainVM 을 받아와야 합니다
+    let gestureTitle: String
+    @ObservedObject var mainVM: MainViewModel
     
     var body: some View {
+        
+        var path = mainVM.navigationPath
+        
         VStack {
-            Text("\(text) 학습을\n완료했습니다!")
+            Text("\(gestureTitle) 학습을\n완료했습니다!")
                 .font(.largeTitle)
                 .bold()
                 .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .padding(20)
-                .background {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .foregroundColor(Color("BG1"))
-                        .shadow(radius: 2)
-                }
+                .lineSpacing(5)
                 .padding(.top, 30)
+                .background(alignment: .top) {
+                    Image("Tip")
+                        .resizable()
+                        .frame(width: 312, height: 158)
+                }
 
             Image("ch_default")
                 .resizable()
@@ -33,7 +38,9 @@ struct FinalView: View {
                 .frame(maxHeight: .infinity)
                         
             Button {
-                
+                if !path.isEmpty {
+                    path.removeLast(path.count - 1)
+                }
             } label: {
                 Text("다시하기")
                     .font(.customButtonText())
@@ -48,7 +55,7 @@ struct FinalView: View {
                     .padding(.horizontal, 16)
             }
             Button {
-                
+                path.removeAll()
             } label: {
                 Text("처음으로")
                     .font(.customButtonText())
@@ -65,7 +72,12 @@ struct FinalView: View {
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(text)
+                Text(gestureTitle)
+                    .font(.customButtonText())
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .frame(height: 64)
+                    .frame(maxWidth: UIScreen.main.bounds.width)
             }
         }
     }
@@ -74,7 +86,7 @@ struct FinalView: View {
 struct FinalView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            FinalView(text: "길게 누르기")
+            FinalView(gestureTitle: "길게 누르기", mainVM: MainViewModel())
         }
     }
 }
