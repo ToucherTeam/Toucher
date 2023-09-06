@@ -56,7 +56,38 @@ struct PinchPracticeView1: View {
                 .bold()
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
+            
+            if isSuceess {
+                ToucherNavigationLink {
+                    FinalView(gestureTitle: "확대 축소하기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                            alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
+                        }
+                    
+                }
+            }
         }
+        .overlay(
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(Color("GR3")),
+                alignment: .top
+        )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomToolbar()
+            }
+        }
+
     }
 }
 
