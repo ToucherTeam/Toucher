@@ -15,6 +15,9 @@
 		29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852332AA08C4E003F4AF4 /* ViewExtension.swift */; };
 		29E852372AA08D34003F4AF4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852362AA08D34003F4AF4 /* MainView.swift */; };
 		29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */; };
+		4A688EC42AA71E79004CE840 /* OnboardingExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A688EC32AA71E79004CE840 /* OnboardingExampleView.swift */; };
+		4A688EC62AA7277F004CE840 /* OnboardingPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A688EC52AA7277F004CE840 /* OnboardingPracticeView1.swift */; };
+		4A688EC82AA7281F004CE840 /* OnboardingPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A688EC72AA7281F004CE840 /* OnboardingPracticeView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		29E852332AA08C4E003F4AF4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		29E852362AA08D34003F4AF4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		4A688EC32AA71E79004CE840 /* OnboardingExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingExampleView.swift; sourceTree = "<group>"; };
+		4A688EC52AA7277F004CE840 /* OnboardingPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPracticeView1.swift; sourceTree = "<group>"; };
+		4A688EC72AA7281F004CE840 /* OnboardingPracticeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPracticeView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +104,20 @@
 		29EAB4082AA1703A004E5429 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4A688EC22AA71E4D004CE840 /* OnboardingView */,
 				29E852352AA08D25003F4AF4 /* MainView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4A688EC22AA71E4D004CE840 /* OnboardingView */ = {
+			isa = PBXGroup;
+			children = (
+				4A688EC32AA71E79004CE840 /* OnboardingExampleView.swift */,
+				4A688EC52AA7277F004CE840 /* OnboardingPracticeView1.swift */,
+				4A688EC72AA7281F004CE840 /* OnboardingPracticeView2.swift */,
+			);
+			path = OnboardingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A688EC62AA7277F004CE840 /* OnboardingPracticeView1.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
+				4A688EC82AA7281F004CE840 /* OnboardingPracticeView2.swift in Sources */,
+				4A688EC42AA71E79004CE840 /* OnboardingExampleView.swift in Sources */,
 				29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */,
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
