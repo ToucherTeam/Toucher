@@ -11,7 +11,9 @@ struct LongTapPracticeView1: View {
     @State private var isTapped = false
     @State private var isSuceess = false
     @State private var isOneTapped = false
-        
+    
+    @GestureState private var isPressed = false
+    
     var body: some View {
         ZStack {
             if isOneTapped && !isSuceess {
@@ -30,8 +32,17 @@ struct LongTapPracticeView1: View {
                     .resizable()
                     .frame(width: 130, height: 130)
                     .foregroundStyle(.gray)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundColor(isPressed ? .black.opacity(0.5) : .clear)
+                    }
+                    .scaleEffect(isPressed ? 1.1 : 1)
+                    .animation(.easeInOut(duration: 1), value: isPressed)
                     .gesture(
                         LongPressGesture(minimumDuration: 1.0)
+                            .updating($isPressed) { value, gestureState, _ in
+                                gestureState = value
+                            }
                             .onEnded {_ in
                                 withAnimation {
                                     isSuceess = true
@@ -39,12 +50,12 @@ struct LongTapPracticeView1: View {
                                 }
                             }
                             .simultaneously(with: TapGesture()
-                                    .onEnded {
-                                        withAnimation {
-                                            isTapped = true
-                                            isOneTapped = true
-                                        }
-                                    })
+                                .onEnded {
+                                    withAnimation {
+                                        isTapped = true
+                                        isOneTapped = true
+                                    }
+                                })
                     )
                     .overlay(alignment: .topLeading) {
                         if isSuceess {
@@ -103,7 +114,7 @@ struct LongTapPracticeView1: View {
                 .padding(.horizontal)
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
-
+            
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
