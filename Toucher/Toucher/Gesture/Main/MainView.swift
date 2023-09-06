@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var mainVM = MainViewModel()
+    @EnvironmentObject var mainVM: MainViewModel
     
     private let isSE = DeviceManager.shared.iPhoneSE()
     
@@ -74,11 +74,11 @@ struct MainView: View {
     func viewForgesture(_ gesture: MainModel) -> AnyView {
         switch gesture.name {
         case "두 번 누르기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(DoubleTapExampleView().navigationBarBackButtonHidden())
         case "길게 누르기":
             return AnyView(LongTapExampleView().navigationBarBackButtonHidden())
         case "살짝 쓸기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(SwipeExampleView().navigationBarBackButtonHidden())
         case "끌어오기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "화면 움직이기":
