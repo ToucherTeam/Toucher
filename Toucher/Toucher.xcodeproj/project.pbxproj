@@ -10,6 +10,7 @@
 		076655582AA16D0B00DC6687 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655572AA16D0B00DC6687 /* MainModel.swift */; };
 		0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655592AA22A1E00DC6687 /* DeviceManager.swift */; };
 		07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B912AA7334000DE5113 /* MainViewModel.swift */; };
+		29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -22,12 +23,15 @@
 		29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5132AA764270074C1FE /* HStackArrow.swift */; };
 		29F1D5162AA765990074C1FE /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5152AA765990074C1FE /* FinalView.swift */; };
 		29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5192AA775520074C1FE /* VStackArrow.swift */; };
+		29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */; };
+		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		076655572AA16D0B00DC6687 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		076655592AA22A1E00DC6687 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		07670B912AA7334000DE5113 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView2.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +45,8 @@
 		29F1D5132AA764270074C1FE /* HStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/View/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5152AA765990074C1FE /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FinalView.swift; path = Toucher/View/FinalView.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5192AA775520074C1FE /* VStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/View/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
+		29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView1.swift; sourceTree = "<group>"; };
+		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +142,19 @@
 			isa = PBXGroup;
 			children = (
 				29E852352AA08D25003F4AF4 /* Main */,
+				29F1D51B2AA83ADA0074C1FE /* Pinch */,
 			);
 			path = Gesture;
+			sourceTree = "<group>";
+		};
+		29F1D51B2AA83ADA0074C1FE /* Pinch */ = {
+			isa = PBXGroup;
+			children = (
+				29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */,
+				29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */,
+				29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */,
+			);
+			path = Pinch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,11 +251,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
+				29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */,
 				29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */,
+				29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */,
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */,
@@ -374,7 +394,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = WF2V4JB29M;
+				DEVELOPMENT_TEAM = 77745NX67K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
