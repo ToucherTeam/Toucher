@@ -46,20 +46,32 @@ struct DragPracticeView2: View {
             .frame(maxHeight: .infinity, alignment: .top)
             
             if isSuceess {
-                NavigationLink {
-                    
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                ToucherNavigationLink {
+                    FinalView(gestureTitle: "끌어 오기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                                alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
                         }
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+            }
+        }
+        .overlay(
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(Color("GR3")),
+                alignment: .top
+        )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomToolbar()
             }
         }
     }

@@ -80,7 +80,7 @@ struct MainView: View {
         case "살짝 쓸기":
             return AnyView(SwipeExampleView().navigationBarBackButtonHidden())
         case "끌어오기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(DragExampleView().navigationBarBackButtonHidden())
         case "화면 움직이기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "확대 축소하기":

@@ -32,7 +32,6 @@
 		29EAB4272AA63368004E5429 /* DragExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4262AA63368004E5429 /* DragExampleView.swift */; };
 		29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */; };
 		29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */; };
-		29EAB42D2AA63635004E5429 /* DragFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB42C2AA63635004E5429 /* DragFinalView.swift */; };
 		29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */; };
 		29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5132AA764270074C1FE /* HStackArrow.swift */; };
 		29F1D5162AA765990074C1FE /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5152AA765990074C1FE /* FinalView.swift */; };
@@ -66,7 +65,6 @@
 		29EAB4262AA63368004E5429 /* DragExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragExampleView.swift; sourceTree = "<group>"; };
 		29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPracticeView1.swift; sourceTree = "<group>"; };
 		29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPracticeView2.swift; sourceTree = "<group>"; };
-		29EAB42C2AA63635004E5429 /* DragFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragFinalView.swift; sourceTree = "<group>"; };
 		29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToucherNavigationLink.swift; path = Toucher/View/ToucherNavigationLink.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5132AA764270074C1FE /* HStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/View/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5152AA765990074C1FE /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FinalView.swift; path = Toucher/View/FinalView.swift; sourceTree = SOURCE_ROOT; };
@@ -204,7 +202,6 @@
 				29EAB4262AA63368004E5429 /* DragExampleView.swift */,
 				29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */,
 				29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */,
-				29EAB42C2AA63635004E5429 /* DragFinalView.swift */,
 			);
 			path = Drag;
 			sourceTree = "<group>";
@@ -304,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */,
-				29EAB42D2AA63635004E5429 /* DragFinalView.swift in Sources */,
 				07D345EF2AA8716500B7329D /* GetHeightModifer.swift in Sources */,
 				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,

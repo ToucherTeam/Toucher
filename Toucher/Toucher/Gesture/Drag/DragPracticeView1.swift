@@ -51,24 +51,23 @@ struct DragPracticeView1: View {
             .frame(maxHeight: .infinity, alignment: .top)
             
             if isSuceess {
-                NavigationLink {
-                    
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        }
+                ToucherNavigationLink {
+                    DragPracticeView2()
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
             
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .overlay(
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(Color("GR3")),
+                alignment: .top
+        )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomToolbar()
+            }
+        }
         .onAppear {
             isSuceess = false
             value = 0

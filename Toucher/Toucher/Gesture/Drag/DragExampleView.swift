@@ -123,28 +123,11 @@ struct DragExampleView: View {
                 .padding(.bottom, 80)
             }
             if isSuceess {
-                NavigationLink {
-                    
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        }
+                ToucherNavigationLink {
+                    DragPracticeView1()
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
             
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("끌어오기")
-            }
         }
         .onAppear {
             isPressed = false
