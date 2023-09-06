@@ -70,6 +70,7 @@
 			children = (
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
+				29EAB40D2AA188C4004E5429 /* DoubleTap */,
 				29EAB4082AA1703A004E5429 /* View */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
@@ -107,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				29E852352AA08D25003F4AF4 /* MainView */,
-				29EAB40D2AA188C4004E5429 /* DoubleTap */,
 			);
 			path = View;
 			sourceTree = "<group>";
