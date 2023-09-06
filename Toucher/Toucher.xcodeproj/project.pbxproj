@@ -27,6 +27,10 @@
 		29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */; };
 		29EF99972AA8A2CA00637F7A /* PanExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EF99962AA8A2CA00637F7A /* PanExampleView.swift */; };
 		29EF99992AA8A2D400637F7A /* PanPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EF99982AA8A2D400637F7A /* PanPracticeView.swift */; };
+		29EAB40F2AA188DB004E5429 /* DoubleTapExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB40E2AA188DB004E5429 /* DoubleTapExampleView.swift */; };
+		29EAB4112AA18B28004E5429 /* DoubleTapPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */; };
+		29EAB4132AA19080004E5429 /* DoubleTapPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4122AA19080004E5429 /* DoubleTapPracticeView2.swift */; };
+		29EAB4152AA19116004E5429 /* DoubleTapFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4142AA19116004E5429 /* DoubleTapFinalView.swift */; };
 		29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */; };
 		29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5132AA764270074C1FE /* HStackArrow.swift */; };
 		29F1D5162AA765990074C1FE /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5152AA765990074C1FE /* FinalView.swift */; };
@@ -55,6 +59,10 @@
 		29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29EF99962AA8A2CA00637F7A /* PanExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanExampleView.swift; sourceTree = "<group>"; };
 		29EF99982AA8A2D400637F7A /* PanPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanPracticeView.swift; sourceTree = "<group>"; };
+		29EAB40E2AA188DB004E5429 /* DoubleTapExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapExampleView.swift; sourceTree = "<group>"; };
+		29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapPracticeView1.swift; sourceTree = "<group>"; };
+		29EAB4122AA19080004E5429 /* DoubleTapPracticeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapPracticeView2.swift; sourceTree = "<group>"; };
+		29EAB4142AA19116004E5429 /* DoubleTapFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapFinalView.swift; sourceTree = "<group>"; };
 		29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToucherNavigationLink.swift; path = Toucher/View/ToucherNavigationLink.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5132AA764270074C1FE /* HStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/View/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5152AA765990074C1FE /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FinalView.swift; path = Toucher/View/FinalView.swift; sourceTree = SOURCE_ROOT; };
@@ -167,6 +175,7 @@
 		29EAB4082AA1703A004E5429 /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
+				29EAB40D2AA188C4004E5429 /* DoubleTap */,
 				07D345E72AA8714F00B7329D /* Swipe */,
 				29E852352AA08D25003F4AF4 /* Main */,
 				29EF99952AA8A2BE00637F7A /* Pan */,
@@ -181,6 +190,17 @@
 				29EF99982AA8A2D400637F7A /* PanPracticeView.swift */,
 			);
 			path = Pan;
+			sourceTree = "<group>";
+		};
+		29EAB40D2AA188C4004E5429 /* DoubleTap */ = {
+			isa = PBXGroup;
+			children = (
+				29EAB40E2AA188DB004E5429 /* DoubleTapExampleView.swift */,
+				29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */,
+				29EAB4122AA19080004E5429 /* DoubleTapPracticeView2.swift */,
+				29EAB4142AA19116004E5429 /* DoubleTapFinalView.swift */,
+			);
+			path = DoubleTap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +310,10 @@
 				29EF99972AA8A2CA00637F7A /* PanExampleView.swift in Sources */,
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
+				29EAB40F2AA188DB004E5429 /* DoubleTapExampleView.swift in Sources */,
+				29EAB4152AA19116004E5429 /* DoubleTapFinalView.swift in Sources */,
+				29EAB4112AA18B28004E5429 /* DoubleTapPracticeView1.swift in Sources */,
+				29EAB4132AA19080004E5429 /* DoubleTapPracticeView2.swift in Sources */,
 				29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwiftPracticeView2.swift in Sources */,
 				07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */,
