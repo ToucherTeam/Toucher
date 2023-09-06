@@ -80,20 +80,9 @@ struct LongTapExampleView: View {
                     .padding(.bottom, 80)
             }
             if isSuceess {
-                NavigationLink {
+                ToucherNavigationLink {
                     LongTapPracticeView1()
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        }
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
 
         }

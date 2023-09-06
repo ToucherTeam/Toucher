@@ -104,7 +104,19 @@ struct LongTapPracticeView2: View {
             .scrollDisabled(true)
             if isSuceess {
                 NavigationLink {
-                    LongTapFinalView()
+                    FinalView(gestureTitle: "길게 누르기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                                alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
+                        }
                 } label: {
                     Text("다음")
                         .font(.title3)

@@ -116,12 +116,6 @@ struct LongTapPracticeView1: View {
             }
             
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("길게 누르기")
-            }
-        }
         .onAppear {
             isTapped = false
             isSuceess = false
