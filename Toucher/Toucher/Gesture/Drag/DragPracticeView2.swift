@@ -21,7 +21,7 @@ struct DragPracticeView2: View {
             VStack {
                 Rectangle().frame(height: 0)
                 Spacer().frame(height: 40)
-                Text(isSuceess ? "잘하셨어요!\n\n" : "카메라를 3초 누른 뒤\n화살표가 가리키는\n곳에 옮겨볼까요?")
+                Text(isSuceess ? "잘하셨어요!\n\n" : "카메라를 3초 누른 뒤\n화살표가 가리키는 곳에\n옮겨볼까요?")
                     .font(Font.customTitle())
                     .multilineTextAlignment(.center)
                     .padding(10)
@@ -38,6 +38,10 @@ struct DragPracticeView2: View {
                     }
                 }
                 .padding()
+                VstackArrow()
+                    .rotationEffect(.degrees(180))
+                    .padding(.trailing, UIScreen.main.bounds.width * 0.1)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .frame(maxHeight: .infinity, alignment: .top)
             

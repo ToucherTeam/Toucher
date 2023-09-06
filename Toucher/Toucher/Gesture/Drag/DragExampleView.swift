@@ -74,7 +74,7 @@ struct DragExampleView: View {
                                     }
                                     .onEnded { value in
                                         
-                                        if 200...250 ~= value.translation.height, -20...20 ~= value.translation.width {
+                                        if value.translation.height < UIScreen.main.bounds.height * 0.38, -30...30 ~= value.translation.width {
                                             isArrived = true
                                         }
                                         
@@ -105,6 +105,11 @@ struct DragExampleView: View {
                 }
                 .frame(maxHeight: .infinity)
                 .padding(.vertical, 50)
+                .background {
+                    if isPressed && !isSuceess {
+                        VstackArrow()
+                    }
+                }
                 
                 Group {
                     Text("아이콘을 움직일 때,\n음량을 바꿀 때 ")
