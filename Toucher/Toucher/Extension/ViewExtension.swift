@@ -11,7 +11,7 @@ import SwiftUI
 struct BtnStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth:.infinity)
+            .frame(maxWidth: .infinity)
             .frame(height: 58)
             .font(.headline)
             .padding(.horizontal, 16)
@@ -26,7 +26,7 @@ struct BtnStyle: ButtonStyle {
 struct BtnWhiteStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth:.infinity)
+            .frame(maxWidth: .infinity)
             .frame(height: 58)
             .font(.headline)
             .padding(.horizontal, 16)
