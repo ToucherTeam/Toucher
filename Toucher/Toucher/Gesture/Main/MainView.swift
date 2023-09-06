@@ -65,7 +65,6 @@ struct MainView: View {
                 .padding(.top, isSE ? 13 : 30)
             }
         }
-        .border(.blue)
         .accentColor(.red)
         .onAppear {
             UserDefaults.standard.set(true, forKey: "goToMain")
@@ -75,7 +74,7 @@ struct MainView: View {
     func viewForgesture(_ gesture: MainModel) -> AnyView {
         switch gesture.name {
         case "두 번 누르기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(DoubleTapExampleView().navigationBarBackButtonHidden())
         case "길게 누르기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "살짝 쓸기":
