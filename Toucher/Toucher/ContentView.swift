@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var mainVM = MainViewModel()
+    @StateObject var appState = AppState()
+    
     var body: some View {
         MainView()
+            .id(appState.rootViewId)
+            .environmentObject(appState)
+            .environmentObject(mainVM)
     }
 }
 

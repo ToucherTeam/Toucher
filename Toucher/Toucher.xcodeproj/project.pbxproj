@@ -10,6 +10,13 @@
 		076655582AA16D0B00DC6687 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655572AA16D0B00DC6687 /* MainModel.swift */; };
 		0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655592AA22A1E00DC6687 /* DeviceManager.swift */; };
 		07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B912AA7334000DE5113 /* MainViewModel.swift */; };
+		07D345EE2AA8716500B7329D /* SwipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345E82AA8716500B7329D /* SwipeViewModel.swift */; };
+		07D345EF2AA8716500B7329D /* GetHeightModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345E92AA8716500B7329D /* GetHeightModifer.swift */; };
+		07D345F02AA8716500B7329D /* SwiftPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345EA2AA8716500B7329D /* SwiftPracticeView2.swift */; };
+		07D345F12AA8716500B7329D /* SwiftPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345EB2AA8716500B7329D /* SwiftPracticeView1.swift */; };
+		07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345EC2AA8716500B7329D /* SwipeExampleView.swift */; };
+		07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345ED2AA8716500B7329D /* SwipeModel.swift */; };
+		07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345F42AA871FA00B7329D /* SwipeFinalView.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -28,6 +35,13 @@
 		076655572AA16D0B00DC6687 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		076655592AA22A1E00DC6687 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		07670B912AA7334000DE5113 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		07D345E82AA8716500B7329D /* SwipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewModel.swift; sourceTree = "<group>"; };
+		07D345E92AA8716500B7329D /* GetHeightModifer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHeightModifer.swift; sourceTree = "<group>"; };
+		07D345EA2AA8716500B7329D /* SwiftPracticeView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPracticeView2.swift; sourceTree = "<group>"; };
+		07D345EB2AA8716500B7329D /* SwiftPracticeView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPracticeView1.swift; sourceTree = "<group>"; };
+		07D345EC2AA8716500B7329D /* SwipeExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeExampleView.swift; sourceTree = "<group>"; };
+		07D345ED2AA8716500B7329D /* SwipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeModel.swift; sourceTree = "<group>"; };
+		07D345F42AA871FA00B7329D /* SwipeFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFinalView.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +71,7 @@
 		07670B932AA749D600DE5113 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				07D345E92AA8716500B7329D /* GetHeightModifer.swift */,
 				29F1D5132AA764270074C1FE /* HStackArrow.swift */,
 				29F1D5192AA775520074C1FE /* VStackArrow.swift */,
 				29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */,
@@ -71,6 +86,19 @@
 				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
 			);
 			path = DeviceManager;
+			sourceTree = "<group>";
+		};
+		07D345E72AA8714F00B7329D /* Swipe */ = {
+			isa = PBXGroup;
+			children = (
+				07D345EB2AA8716500B7329D /* SwiftPracticeView1.swift */,
+				07D345EA2AA8716500B7329D /* SwiftPracticeView2.swift */,
+				07D345EC2AA8716500B7329D /* SwipeExampleView.swift */,
+				07D345ED2AA8716500B7329D /* SwipeModel.swift */,
+				07D345E82AA8716500B7329D /* SwipeViewModel.swift */,
+				07D345F42AA871FA00B7329D /* SwipeFinalView.swift */,
+			);
+			path = Swipe;
 			sourceTree = "<group>";
 		};
 		29E852122AA08346003F4AF4 = {
@@ -135,6 +163,7 @@
 		29EAB4082AA1703A004E5429 /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
+				07D345E72AA8714F00B7329D /* Swipe */,
 				29E852352AA08D25003F4AF4 /* Main */,
 			);
 			path = Gesture;
@@ -234,17 +263,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D345EF2AA8716500B7329D /* GetHeightModifer.swift in Sources */,
+				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */,
+				07D345EE2AA8716500B7329D /* SwipeViewModel.swift in Sources */,
 				29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */,
+				07D345F12AA8716500B7329D /* SwiftPracticeView1.swift in Sources */,
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */,
+				07D345F02AA8716500B7329D /* SwiftPracticeView2.swift in Sources */,
+				07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */,
 				076655582AA16D0B00DC6687 /* MainModel.swift in Sources */,
 				07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */,
 				29F1D5162AA765990074C1FE /* FinalView.swift in Sources */,
+				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
 				29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

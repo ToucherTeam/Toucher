@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var mainVM = MainViewModel()
+    @EnvironmentObject var mainVM: MainViewModel
     
     private let isSE = DeviceManager.shared.iPhoneSE()
     
@@ -65,6 +65,7 @@ struct MainView: View {
                 .padding(.top, isSE ? 13 : 30)
             }
         }
+        .border(.blue)
         .accentColor(.red)
         .onAppear {
             UserDefaults.standard.set(true, forKey: "goToMain")
@@ -78,7 +79,7 @@ struct MainView: View {
         case "길게 누르기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "살짝 쓸기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(SwipeExampleView().navigationBarBackButtonHidden())
         case "끌어오기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "화면 움직이기":
