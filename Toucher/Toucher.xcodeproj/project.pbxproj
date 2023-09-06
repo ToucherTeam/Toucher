@@ -125,7 +125,6 @@
 		29E8521D2AA08346003F4AF4 /* Toucher */ = {
 			isa = PBXGroup;
 			children = (
-				29EF99952AA8A2BE00637F7A /* Pan */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				07670B942AA749E000DE5113 /* DeviceManager */,
@@ -170,6 +169,7 @@
 			children = (
 				07D345E72AA8714F00B7329D /* Swipe */,
 				29E852352AA08D25003F4AF4 /* Main */,
+				29EF99952AA8A2BE00637F7A /* Pan */,
 			);
 			path = Gesture;
 			sourceTree = "<group>";
@@ -180,8 +180,7 @@
 				29EF99962AA8A2CA00637F7A /* PanExampleView.swift */,
 				29EF99982AA8A2D400637F7A /* PanPracticeView.swift */,
 			);
-			name = Pan;
-			path = Gesture/Pan;
+			path = Pan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
