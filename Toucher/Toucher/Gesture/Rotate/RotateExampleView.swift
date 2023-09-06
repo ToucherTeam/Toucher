@@ -74,6 +74,11 @@ struct RotateExampleView: View {
                 .padding(.bottom, 80)
             }
             
+            if isSuceess {
+                ToucherNavigationLink {
+                    RotationPracticeView()
+                }
+            }
         }
         .onAppear {
             isTapped = false

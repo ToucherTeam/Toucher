@@ -49,6 +49,34 @@ struct RotationPracticeView: View {
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
             
+            if isSuceess {
+                ToucherNavigationLink {
+                    FinalView(gestureTitle: "회전하기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                                alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
+                        }
+                }
+            }
+        }
+        .overlay(
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(Color("GR3")),
+                alignment: .top
+        )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomToolbar()
+            }
         }
         .onAppear {
             isTapped = false

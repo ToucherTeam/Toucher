@@ -86,7 +86,7 @@ struct MainView: View {
         case "확대 축소하기":
             return AnyView(Color.gray.navigationBarBackButtonHidden())
         case "회전하기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(RotateExampleView().navigationBarBackButtonHidden())
         default:
             return AnyView(Color.gray)
         }
