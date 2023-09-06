@@ -144,7 +144,7 @@ struct MainView: View {
         case "끌어오기":
             return AnyView(Color.gray)
         case "살짝 쓸기":
-            return AnyView(Color.gray)
+            return AnyView(SwipeExampleView().navigationBarBackButtonHidden())
         case "확대 축소하기":
             return AnyView(Color.gray)
         case "회전하기":

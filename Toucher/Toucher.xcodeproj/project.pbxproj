@@ -10,6 +10,9 @@
 		0701F9F62AA4E7A2005B5A88 /* SwipeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701F9F52AA4E7A2005B5A88 /* SwipeExampleView.swift */; };
 		0701F9F82AA4E964005B5A88 /* SwipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701F9F72AA4E964005B5A88 /* SwipeViewModel.swift */; };
 		07670B8A2AA7109700DE5113 /* GetHeightModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B892AA7109700DE5113 /* GetHeightModifer.swift */; };
+		07670B972AA76E3F00DE5113 /* SwiftPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B962AA76E3F00DE5113 /* SwiftPracticeView1.swift */; };
+		07D345E42AA7FB6300B7329D /* SwipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345E32AA7FB6300B7329D /* SwipeModel.swift */; };
+		07D345E62AA8583800B7329D /* SwiftPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345E52AA8583800B7329D /* SwiftPracticeView2.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -24,6 +27,9 @@
 		0701F9F52AA4E7A2005B5A88 /* SwipeExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExampleView.swift; sourceTree = "<group>"; };
 		0701F9F72AA4E964005B5A88 /* SwipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewModel.swift; sourceTree = "<group>"; };
 		07670B892AA7109700DE5113 /* GetHeightModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeightModifer.swift; sourceTree = "<group>"; };
+		07670B962AA76E3F00DE5113 /* SwiftPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPracticeView1.swift; sourceTree = "<group>"; };
+		07D345E32AA7FB6300B7329D /* SwipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeModel.swift; sourceTree = "<group>"; };
+		07D345E52AA8583800B7329D /* SwiftPracticeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPracticeView2.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,13 +52,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0701F9F42AA4E78B005B5A88 /* SwipeView */ = {
+		0701F9F42AA4E78B005B5A88 /* Swipe */ = {
 			isa = PBXGroup;
 			children = (
 				0701F9F52AA4E7A2005B5A88 /* SwipeExampleView.swift */,
+				07670B962AA76E3F00DE5113 /* SwiftPracticeView1.swift */,
+				07D345E52AA8583800B7329D /* SwiftPracticeView2.swift */,
 				0701F9F72AA4E964005B5A88 /* SwipeViewModel.swift */,
+				07D345E32AA7FB6300B7329D /* SwipeModel.swift */,
 			);
-			path = SwipeView;
+			path = Swipe;
 			sourceTree = "<group>";
 		};
 		29E852122AA08346003F4AF4 = {
@@ -113,8 +122,8 @@
 		29EAB4082AA1703A004E5429 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0701F9F42AA4E78B005B5A88 /* SwipeView */,
 				29E852352AA08D25003F4AF4 /* MainView */,
+				0701F9F42AA4E78B005B5A88 /* Swipe */,
 				07670B892AA7109700DE5113 /* GetHeightModifer.swift */,
 			);
 			path = View;
@@ -214,14 +223,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D345E62AA8583800B7329D /* SwiftPracticeView2.swift in Sources */,
 				07670B8A2AA7109700DE5113 /* GetHeightModifer.swift in Sources */,
 				0701F9F82AA4E964005B5A88 /* SwipeViewModel.swift in Sources */,
 				0701F9F62AA4E7A2005B5A88 /* SwipeExampleView.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
+				07D345E42AA7FB6300B7329D /* SwipeModel.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */,
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
+				07670B972AA76E3F00DE5113 /* SwiftPracticeView1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
