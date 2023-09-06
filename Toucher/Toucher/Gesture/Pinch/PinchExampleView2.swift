@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PinchExampleView2: View {
+    @State private var isTapped = false
     @State private var isSuceess = false
     @State private var scale: CGFloat = 1
     
@@ -28,13 +29,14 @@ struct PinchExampleView2: View {
                 .scaleEffect(scale)
                 .background {
                     Rectangle()
-                        .frame(width: 320, height: 320)
+                        .frame(width: 360, height: 360)
                         .foregroundColor(Color(UIColor.systemBackground))
                 }
                 .gesture(
                     MagnificationGesture()
                         .onChanged { value in
                             withAnimation {
+                                isTapped = true
                                 self.scale = min(max(value.magnitude, 0.25), 1.5)
                             }
                         }
@@ -48,6 +50,17 @@ struct PinchExampleView2: View {
                         }
                 )
                 .frame(maxHeight: .infinity)
+                .overlay {
+                    if !isTapped {
+                        HStack(spacing: 100) {
+                            Arrows()
+                                .rotationEffect(.degrees(180))
+                            Arrows()
+                        }
+                        .rotationEffect(.degrees(-45))
+                        .allowsHitTesting(false)
+                    }
+                }
             
             Group {
                 Text("사진, 화면을")

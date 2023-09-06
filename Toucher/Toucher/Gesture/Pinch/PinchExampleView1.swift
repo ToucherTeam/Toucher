@@ -58,6 +58,17 @@ struct PinchExampleView1: View {
                                 }
                         )
                         .frame(maxHeight: .infinity)
+                        .overlay {
+                            if !isTapped {
+                                HStack(spacing: 100) {
+                                    Arrows()
+                                    Arrows()
+                                        .rotationEffect(.degrees(180))
+                                }
+                                .rotationEffect(.degrees(-45))
+                                .allowsHitTesting(false)
+                            }
+                        }
                     
                     Group {
                         Text("사진, 화면을")
