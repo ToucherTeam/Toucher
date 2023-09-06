@@ -65,7 +65,7 @@ struct DoubleTapExampleView: View {
             }
             if isSuceess {
                 NavigationLink {
-                    
+                    DoubleTapPracticeView1()
                 } label: {
                     Text("다음")
                         .font(.title3)

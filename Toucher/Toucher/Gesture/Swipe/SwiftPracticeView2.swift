@@ -16,7 +16,7 @@ struct SwiftPracticeView2: View {
                 Text(
                     swipeVM.btnActive ?
                     swipeVM.messageData.isEmpty ? "잘하셨어요!"
-                    : "잘하셨어요!\n다음 버튼을\n눌러주세요!" : "메시지를 밀어서\n삭제해 보세요\n"
+                    : "잘하셨어요!\n\n" : "메시지를 밀어서\n삭제해 보세요\n"
                 )
                     .font(.customTitle())
                     .multilineTextAlignment(.center)
