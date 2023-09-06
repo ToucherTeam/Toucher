@@ -8,52 +8,23 @@
 import SwiftUI
 
 struct DoubleTapFinalView: View {
+    @EnvironmentObject var mainVM: MainViewModel
     
     var body: some View {
-        VStack {
-            Text("두 번 누르기 학습을\n완료했습니다!")
-                .font(.largeTitle)
-                .bold()
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .padding(20)
-                .background {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .foregroundColor(Color("BG1"))
-                        .shadow(radius: 2)
+        FinalView(gestureTitle: "두 번 누르기")
+            .padding(.bottom, 13)
+            .overlay(
+                Rectangle()
+                    .frame(height: 0.5)
+                    .foregroundColor(Color("GR3")),
+                    alignment: .top
+            )
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    CustomToolbar()
                 }
-                .padding(.top, 30)
-            
-            Image("ch_default")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 168)
-                .foregroundStyle(.gray)
-                .frame(maxHeight: .infinity)
-            Button {
-            } label: {
-                Text("다시하기")
-                    .font(.title3)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background {
-                        RoundedRectangle(cornerRadius: 14, style: .continuous)
-                            .stroke()
-                    }
             }
-            Button {
-            } label: {
-                Text("처음으로")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background {
-                        RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    }
-            }
-        }
-        .padding(.horizontal)
+
     }
 }
 

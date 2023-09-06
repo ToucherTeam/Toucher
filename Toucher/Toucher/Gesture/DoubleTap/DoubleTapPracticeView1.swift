@@ -103,7 +103,7 @@ struct DoubleTapPracticeView1: View {
             }
             if isSuceess {
                 NavigationLink {
-                    
+                    DoubleTapPracticeView2()
                 } label: {
                     Text("다음")
                         .font(.title3)
@@ -116,6 +116,17 @@ struct DoubleTapPracticeView1: View {
                 }
                 .padding(.horizontal)
                 .frame(maxHeight: .infinity, alignment: .bottom)
+            }
+        }
+        .overlay(
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(Color("GR3")),
+                alignment: .top
+        )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomToolbar()
             }
         }
         .onAppear {

@@ -57,7 +57,7 @@ struct DoubleTapPracticeView2: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             if isSuceess {
                 NavigationLink {
-                    
+                    DoubleTapFinalView()
                 } label: {
                     Text("완료")
                         .font(.title3)
@@ -70,6 +70,17 @@ struct DoubleTapPracticeView2: View {
                 }
                 .padding(.horizontal)
                 .frame(maxHeight: .infinity, alignment: .bottom)
+            }
+        }
+        .overlay(
+            Rectangle()
+                .frame(height: 0.5)
+                .foregroundColor(Color("GR3")),
+                alignment: .top
+        )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomToolbar()
             }
         }
         .onAppear {

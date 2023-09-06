@@ -117,9 +117,6 @@ struct SwiftPracticeView1: View {
                 CustomToolbar()
             }
         }
-        .onAppear{
-            print(mainVM.navigationPath)
-        }
     }
 }
 
