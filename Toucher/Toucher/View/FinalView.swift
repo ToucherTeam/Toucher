@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct FinalView: View {
-    
+//    @Environment(\.presentationMode) var presentationMode
     /// gestureTitle 을 넣으면 Toolbar 와 말풍선에 적용됩니다
     /// navigation 기능을 위한 mainVM 을 받아와야 합니다
     let gestureTitle: String
-    @ObservedObject var mainVM: MainViewModel
+    @EnvironmentObject var mainVM: MainViewModel
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         
@@ -38,9 +39,10 @@ struct FinalView: View {
                 .frame(maxHeight: .infinity)
                         
             Button {
-                if !path.isEmpty {
-                    path.removeLast(path.count - 1)
-                }
+//                if !path.isEmpty {
+//                    path.removeLast(path.count - 1)
+//                }
+                appState.rootViewId = UUID()
             } label: {
                 Text("다시하기")
                     .font(.customButtonText())
@@ -55,7 +57,7 @@ struct FinalView: View {
                     .padding(.horizontal, 16)
             }
             Button {
-                path.removeAll()
+                mainVM.navigationPath = []
             } label: {
                 Text("처음으로")
                     .font(.customButtonText())
@@ -83,10 +85,10 @@ struct FinalView: View {
     }
 }
 
-struct FinalView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            FinalView(gestureTitle: "길게 누르기", mainVM: MainViewModel())
-        }
-    }
-}
+//struct FinalView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            FinalView(gestureTitle: "길게 누르기", mainVM: MainViewModel())
+//        }
+//    }
+//}
