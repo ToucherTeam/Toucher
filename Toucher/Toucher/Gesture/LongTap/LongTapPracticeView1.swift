@@ -114,7 +114,6 @@ struct LongTapPracticeView1: View {
                 .padding(.horizontal)
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            
         }
         .onAppear {
             isTapped = false

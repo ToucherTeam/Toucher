@@ -12,8 +12,8 @@ struct LongTapExampleView: View {
     @State private var isSuceess = false
     @State private var isOneTapped = false
     
-    @GestureState private var isPressed = false
-        
+    @State private var isPressed = false
+
     var body: some View {
         ZStack {
             if isOneTapped && !isSuceess {
@@ -34,13 +34,18 @@ struct LongTapExampleView: View {
                     .frame(maxHeight: .infinity)
                     .gesture(
                         LongPressGesture(minimumDuration: 1.0)
-                            .updating($isPressed) { value, gestureState, _ in
-                                gestureState = value
+//                            .updating($isPressed) { value, gestureState, _ in
+//                                gestureState = value
+//                            }
+                            .onChanged { _ in
+                                isPressed = true
+
                             }
                             .onEnded {_ in
                                 withAnimation {
                                     isSuceess = true
                                     isTapped = true
+                                    isPressed = false
                                 }
                             }
                             .simultaneously(with: TapGesture()
@@ -48,6 +53,7 @@ struct LongTapExampleView: View {
                                         withAnimation {
                                             isTapped = true
                                             isOneTapped = true
+                                            isPressed = false
                                         }
                                     })
                     )
@@ -90,6 +96,7 @@ struct LongTapExampleView: View {
             isTapped = false
             isSuceess = false
             isOneTapped = false
+            isPressed = false
         }
     }
 }
