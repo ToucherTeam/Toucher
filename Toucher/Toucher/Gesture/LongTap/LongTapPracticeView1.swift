@@ -98,21 +98,24 @@ struct LongTapPracticeView1: View {
                 Spacer()
                 Spacer()
             }
+            .frame(maxWidth: .infinity)
             if isSuceess {
-                NavigationLink {
+                ToucherNavigationLink {
                     LongTapPracticeView2()
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                                alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
                         }
+                        .edgesIgnoringSafeArea(.bottom)
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .onAppear {

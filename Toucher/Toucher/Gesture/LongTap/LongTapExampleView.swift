@@ -13,6 +13,7 @@ struct LongTapExampleView: View {
     @State private var isOneTapped = false
     
     @State private var isPressed = false
+    @State private var timer: Timer?
 
     var body: some View {
         ZStack {
@@ -32,31 +33,6 @@ struct LongTapExampleView: View {
                     .scaledToFit()
                     .frame(width: 184)
                     .frame(maxHeight: .infinity)
-                    .gesture(
-                        LongPressGesture(minimumDuration: 1.0)
-//                            .updating($isPressed) { value, gestureState, _ in
-//                                gestureState = value
-//                            }
-                            .onChanged { _ in
-                                isPressed = true
-
-                            }
-                            .onEnded {_ in
-                                withAnimation {
-                                    isSuceess = true
-                                    isTapped = true
-                                    isPressed = false
-                                }
-                            }
-                            .simultaneously(with: TapGesture()
-                                    .onEnded {
-                                        withAnimation {
-                                            isTapped = true
-                                            isOneTapped = true
-                                            isPressed = false
-                                        }
-                                    })
-                    )
                     .background {
                         ZStack {
                             Circle()
@@ -70,7 +46,36 @@ struct LongTapExampleView: View {
                         .opacity(isSuceess ? 0 : 1)
                         .animation(.easeInOut(duration: 1), value: isPressed)
                     }
-                
+                    .gesture(
+                        LongPressGesture(minimumDuration: 1)
+                            .onChanged { _ in
+                                isTapped = true
+                                isPressed = true
+                                timer?.invalidate() // 이미 진행 중인 타이머를 무효화합니다.
+                                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                                    isPressed = false
+                                    isOneTapped = true
+                                }
+                            }
+                            .onEnded { _ in
+                                timer?.invalidate() // 무효화합니다.
+                                if !isPressed { // 1초 이하로 눌렀을 때
+                                    isPressed = false
+                                } else {
+                                    withAnimation {
+                                        isSuceess = true
+                                    }
+                                }
+                            }
+                            .simultaneously(with: TapGesture()
+                                .onEnded {
+                                    withAnimation {
+                                        isTapped = true
+                                        isOneTapped = true
+                                        isPressed = false
+                                    }
+                                })
+                    )
                     Group {
                         Text("아이콘의 추가")
                             .bold()
@@ -88,6 +93,18 @@ struct LongTapExampleView: View {
             if isSuceess {
                 ToucherNavigationLink {
                     LongTapPracticeView1()
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                                alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
+                        }
                 }
             }
 
@@ -103,6 +120,8 @@ struct LongTapExampleView: View {
 
 struct LongTapExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        LongTapExampleView()
+        NavigationStack {
+            LongTapExampleView()
+        }
     }
 }
