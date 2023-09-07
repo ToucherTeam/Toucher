@@ -103,7 +103,7 @@ struct LongTapPracticeView2: View {
             }
             .scrollDisabled(true)
             if isSuceess {
-                ToucherNavigationLink {
+                ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "길게 누르기")
                         .padding(.bottom, 13)
                         .overlay(
