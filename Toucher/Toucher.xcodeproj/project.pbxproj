@@ -33,6 +33,9 @@
 		29EAB4112AA18B28004E5429 /* DoubleTapPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */; };
 		29EAB4132AA19080004E5429 /* DoubleTapPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4122AA19080004E5429 /* DoubleTapPracticeView2.swift */; };
 		29EAB4152AA19116004E5429 /* DoubleTapFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4142AA19116004E5429 /* DoubleTapFinalView.swift */; };
+		29EAB4272AA63368004E5429 /* DragExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4262AA63368004E5429 /* DragExampleView.swift */; };
+		29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */; };
+		29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */; };
 		29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */; };
 		29F1D5142AA764270074C1FE /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5132AA764270074C1FE /* HStackArrow.swift */; };
 		29F1D5162AA765990074C1FE /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5152AA765990074C1FE /* FinalView.swift */; };
@@ -67,6 +70,9 @@
 		29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapPracticeView1.swift; sourceTree = "<group>"; };
 		29EAB4122AA19080004E5429 /* DoubleTapPracticeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapPracticeView2.swift; sourceTree = "<group>"; };
 		29EAB4142AA19116004E5429 /* DoubleTapFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapFinalView.swift; sourceTree = "<group>"; };
+		29EAB4262AA63368004E5429 /* DragExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragExampleView.swift; sourceTree = "<group>"; };
+		29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPracticeView1.swift; sourceTree = "<group>"; };
+		29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPracticeView2.swift; sourceTree = "<group>"; };
 		29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToucherNavigationLink.swift; path = Toucher/View/ToucherNavigationLink.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5132AA764270074C1FE /* HStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/View/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D5152AA765990074C1FE /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FinalView.swift; path = Toucher/View/FinalView.swift; sourceTree = SOURCE_ROOT; };
@@ -182,6 +188,7 @@
 				29EAB40D2AA188C4004E5429 /* DoubleTap */,
 				07D345E72AA8714F00B7329D /* Swipe */,
 				29E852352AA08D25003F4AF4 /* Main */,
+				29EAB4252AA63359004E5429 /* Drag */,
 				29EAB41C2AA62C3F004E5429 /* LongTap */,
 			);
 			path = Gesture;
@@ -207,6 +214,16 @@
 				29EAB4142AA19116004E5429 /* DoubleTapFinalView.swift */,
 			);
 			path = DoubleTap;
+			sourceTree = "<group>";
+		};
+		29EAB4252AA63359004E5429 /* Drag */ = {
+			isa = PBXGroup;
+			children = (
+				29EAB4262AA63368004E5429 /* DragExampleView.swift */,
+				29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */,
+				29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */,
+			);
+			path = Drag;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,11 +320,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */,
 				07D345EF2AA8716500B7329D /* GetHeightModifer.swift in Sources */,
 				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
+				29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
+				29EAB4272AA63368004E5429 /* DragExampleView.swift in Sources */,
 				29EAB4242AA62FF5004E5429 /* LongTapFinalView.swift in Sources */,
 				29EAB4222AA62ECD004E5429 /* LongTapPracticeView2.swift in Sources */,
 				29EAB4202AA62EC2004E5429 /* LongTapPracticeView1.swift in Sources */,
