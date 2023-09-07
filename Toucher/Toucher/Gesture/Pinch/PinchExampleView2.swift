@@ -30,7 +30,7 @@ struct PinchExampleView2: View {
                     .scaleEffect(scale)
                     .background {
                         Rectangle()
-                            .frame(width: 360, height: 360)
+                            .frame(width: 360, height: 320)
                             .foregroundColor(Color(UIColor.systemBackground))
                     }
                     .gesture(
