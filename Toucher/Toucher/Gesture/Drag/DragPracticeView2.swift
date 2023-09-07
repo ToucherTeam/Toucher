@@ -48,7 +48,7 @@ struct DragPracticeView2: View {
             .frame(maxHeight: .infinity, alignment: .top)
             
             if isSuceess {
-                ToucherNavigationLink {
+                ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "끌어 오기")
                         .padding(.bottom, 13)
                         .overlay(

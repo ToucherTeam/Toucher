@@ -56,8 +56,20 @@ struct DoubleTapPracticeView2: View {
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
             if isSuceess {
-                ToucherNavigationLink {
-                    DoubleTapFinalView()
+                ToucherNavigationLink(label: "완료") {
+                    FinalView(gestureTitle: "두 번 누르기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                            alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar()
+                            }
+                        }
                 }
             }
         }

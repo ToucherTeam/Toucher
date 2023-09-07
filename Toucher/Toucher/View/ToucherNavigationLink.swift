@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ToucherNavigationLink<Content: View>: View {
     
-    let label = "다음"
+    let label: String
     let content: Content
     
-    init(@ViewBuilder content: () -> Content) {
+    init(label: String = "다음", @ViewBuilder content: () -> Content) {
+        self.label = label
         self.content = content()
     }
     

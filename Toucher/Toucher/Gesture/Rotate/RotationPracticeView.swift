@@ -52,7 +52,7 @@ struct RotationPracticeView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             if isSuceess {
-                ToucherNavigationLink {
+                ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "회전하기")
                         .padding(.bottom, 13)
                         .overlay(
