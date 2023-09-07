@@ -40,6 +40,11 @@ struct RotateExampleView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 168)
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .frame(width: 300, height: 300)
+                                .foregroundColor(Color(UIColor.systemBackground))
+                        }
                         .frame(maxHeight: .infinity)
                         .rotationEffect(.degrees(-180) + currentAmount)
                         .gesture(
@@ -60,6 +65,15 @@ struct RotateExampleView: View {
                                         isSuceess = false
                                     }
                                 })
+                        .overlay {
+                            if !isTapped {
+                                Image("rotation_guide")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300)
+                                    .allowsHitTesting(false)
+                            }
+                        }
                 }
                 Group {
                     Text("화면의 물체를")

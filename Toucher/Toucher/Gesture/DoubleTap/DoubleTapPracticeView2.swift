@@ -56,20 +56,9 @@ struct DoubleTapPracticeView2: View {
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
             if isSuceess {
-                NavigationLink {
+                ToucherNavigationLink {
                     DoubleTapFinalView()
-                } label: {
-                    Text("완료")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        }
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .overlay(

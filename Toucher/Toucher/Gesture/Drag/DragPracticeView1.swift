@@ -9,13 +9,17 @@ import SwiftUI
 
 struct DragPracticeView1: View {
     @State private var isSuceess = false
+    @State private var isTapped = false
     @State var value = 0.0
     
     var body: some View {
         ZStack {
+            if isTapped && !isSuceess {
+                Color("Secondary_alert").ignoresSafeArea()
+            }
             VStack {
-                Text(isSuceess ? "잘하셨어요!\n" : "원을 좌우로 움직여주세요.\n")
-                    .foregroundColor(.primary)
+                Text(isSuceess ? "잘하셨어요!\n" : isTapped ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
+                    .foregroundColor(isTapped && !isSuceess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
@@ -23,6 +27,11 @@ struct DragPracticeView1: View {
                     .padding(.top, 30)
                 ZStack(alignment: .leading) {
                     Slider(value: $value)
+                        .onTapGesture {
+                            if !isSuceess {
+                                isTapped = true
+                            }
+                        }
                     Group {
                         Capsule()
                             .foregroundColor(Color(.systemGray5))

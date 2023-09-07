@@ -32,6 +32,13 @@ struct DoubleTapPracticeView1: View {
                     Spacer()
                     Image(systemName: "mic.fill")
                 }
+                .overlay(
+                    Image("paste_bar")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: isSuceess ? 600 : 0, height: 50)
+                        .offset(x: -20, y: -45)
+                )
                 .font(.title)
                 .foregroundColor(.secondary)
                 .padding()
@@ -58,34 +65,6 @@ struct DoubleTapPracticeView1: View {
                                     }
                                 })
                 )
-                .overlay(alignment: .leading) {
-                    if isSuceess {
-                        Button {
-                            
-                        } label: {
-                            HStack {
-                                Text("Action 1")
-                                Divider()
-                                Text("Action 2")
-                                Divider()
-                                Text("Action 3")
-                            }
-                            .padding(5)
-                            .padding(.horizontal, 10)
-                            .padding(.bottom, 10)
-                            .frame(height: 50)
-                            .background {
-                                VStack(spacing: 0) {
-                                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                }
-                                .foregroundStyle(Color(.systemGray6))
-                            }
-                            .padding(.leading, 40)
-                            .padding(.bottom, 100)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
                 
                 Group {
                     Text("사진을 확대/축소")
@@ -102,20 +81,9 @@ struct DoubleTapPracticeView1: View {
                 .padding(.bottom, 80)
             }
             if isSuceess {
-                NavigationLink {
+                ToucherNavigationLink {
                     DoubleTapPracticeView2()
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        }
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .overlay(

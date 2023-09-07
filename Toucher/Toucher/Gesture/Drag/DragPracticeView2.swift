@@ -9,7 +9,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DragPracticeView2: View {
-    @State private var data = ["Clock", "App Store", "Maps", "Wallet", "Camera", "FaceTime", "TV", "Safari"]
+    @State private var data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
     @State private var isSuceess = false
     @State private var isDroped = false
@@ -38,10 +38,12 @@ struct DragPracticeView2: View {
                     }
                 }
                 .padding()
-                VstackArrow()
-                    .rotationEffect(.degrees(180))
-                    .padding(.trailing, UIScreen.main.bounds.width * 0.1)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                if !isSuceess {
+                    VstackArrow()
+                        .rotationEffect(.degrees(180))
+                        .padding(.trailing, UIScreen.main.bounds.width * 0.1)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             

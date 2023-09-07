@@ -18,9 +18,11 @@ struct RotationPracticeView: View {
     
     var body: some View {
         ZStack {
-            Image("RotationMap")
+            Image("Map")
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
+                .frame(maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.bottom)
                 .rotationEffect(currentAmount)
                 .gesture(
                     RotationGesture()
@@ -57,7 +59,7 @@ struct RotationPracticeView: View {
                             Rectangle()
                                 .frame(height: 0.5)
                                 .foregroundColor(Color("GR3")),
-                                alignment: .top
+                            alignment: .top
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
@@ -65,13 +67,14 @@ struct RotationPracticeView: View {
                             }
                         }
                 }
+                .frame(maxWidth: UIScreen.main.bounds.width)
             }
         }
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
                 .foregroundColor(Color("GR3")),
-                alignment: .top
+            alignment: .top
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
