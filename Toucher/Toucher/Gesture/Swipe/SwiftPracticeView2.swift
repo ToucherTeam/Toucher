@@ -85,7 +85,7 @@ struct SwiftPracticeView2: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "살짝 쓸기")
             }
         }
     }

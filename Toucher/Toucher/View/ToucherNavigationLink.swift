@@ -9,25 +9,31 @@ import SwiftUI
 
 struct ToucherNavigationLink<Content: View>: View {
     
+    let label: String
     let content: Content
     
-    init(@ViewBuilder content: () -> Content) {
+    init(label: String = "다음", @ViewBuilder content: () -> Content) {
+        self.label = label
         self.content = content()
     }
     
     var body: some View {
-        NavigationLink {
-            content
-        } label: {
-            Text("다음")
-                .font(.customButtonText())
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-                .frame(height: 64)
-                .frame(maxWidth: UIScreen.main.bounds.width)
-                .background {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                }
+        VStack {
+            VstackArrow()
+                .padding(.bottom)
+            NavigationLink {
+                content
+            } label: {
+                Text(label)
+                    .font(.customButtonText())
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .frame(height: 64)
+                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .background {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    }
+            }
         }
         .padding(.horizontal)
         .frame(maxHeight: .infinity, alignment: .bottom)

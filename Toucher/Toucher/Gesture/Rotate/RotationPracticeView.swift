@@ -18,9 +18,11 @@ struct RotationPracticeView: View {
     
     var body: some View {
         ZStack {
-            Image("RotationMap")
+            Image("Map")
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
+                .frame(maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.bottom)
                 .rotationEffect(currentAmount)
                 .gesture(
                     RotationGesture()
@@ -50,32 +52,33 @@ struct RotationPracticeView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             if isSuceess {
-                ToucherNavigationLink {
+                ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "회전하기")
                         .padding(.bottom, 13)
                         .overlay(
                             Rectangle()
                                 .frame(height: 0.5)
                                 .foregroundColor(Color("GR3")),
-                                alignment: .top
+                            alignment: .top
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                CustomToolbar()
+                                CustomToolbar(title: "회전하기")
                             }
                         }
                 }
+                .frame(maxWidth: UIScreen.main.bounds.width)
             }
         }
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
                 .foregroundColor(Color("GR3")),
-                alignment: .top
+            alignment: .top
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "회전하기")
             }
         }
         .onAppear {

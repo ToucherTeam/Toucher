@@ -31,6 +31,7 @@ struct FinalView: View {
                         .resizable()
                         .frame(width: 312, height: 158)
                 }
+                .padding(.top, UIScreen.main.bounds.height * 0.1)
 
             Image("ch_default")
                 .resizable()
@@ -56,6 +57,7 @@ struct FinalView: View {
                     }
                     .padding(.horizontal, 16)
             }
+            .padding(.bottom, 16)
             Button {
                 mainVM.isFinishActive = true
                 mainVM.navigationPath = []
@@ -86,10 +88,10 @@ struct FinalView: View {
     }
 }
 
-//struct FinalView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            FinalView(gestureTitle: "길게 누르기", mainVM: MainViewModel())
-//        }
-//    }
-//}
+struct FinalView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            FinalView(gestureTitle: "길게 누르기")
+        }
+    }
+}

@@ -11,7 +11,7 @@ struct SwiftPracticeView1: View {
     @EnvironmentObject var mainVM: MainViewModel
     @StateObject var swipeVM = SwipeViewModel()
     
-    var text = ["왼쪽으로\n밀어볼까요?", "삭제버튼이 나왔어요?\n아래도 밀어볼까요?", "이번엔 메일 읽음\n버튼이 나왔어요!"]
+    var text = ["왼쪽으로\n밀어볼까요?", "삭제버튼이 나왔어요.\n아래도 밀어볼까요?", "이번엔 메일 읽음\n버튼이 나왔어요!"]
     
     var body: some View {
         ZStack {
@@ -115,7 +115,7 @@ struct SwiftPracticeView1: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "살짝 쓸기")
             }
         }
     }
@@ -140,12 +140,14 @@ struct SwipePracticeView_Previews: PreviewProvider {
 }
 
 struct CustomToolbar: View {
+    let title: String
+    
     var body: some View {
         
             HStack {
                 Text("")
                 Spacer()
-                Text("살짝 쓸기")
+                Text(title)
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
                     .foregroundColor(Color("GR1"))

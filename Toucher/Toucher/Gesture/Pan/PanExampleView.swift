@@ -133,7 +133,11 @@ struct PanExampleView: View {
                 .font(.title)
                 .padding(.bottom, 80)
             }
-            
+            if isSuceess {
+                ToucherNavigationLink {
+                    PanPracticeView()
+                }
+            }
         }
         .onAppear {
             isTapped = false

@@ -57,64 +57,82 @@ struct LongTapPracticeView1: View {
                                     }
                                 })
                     )
-                    .overlay(alignment: .topLeading) {
+                    .background(alignment: .bottomTrailing) {
                         if isSuceess {
                             VStack {
+                                Group {
+                                    HStack {
+                                        Text("셀피 찍기")
+                                        Spacer()
+                                        Image(systemName: "person.crop.square")
+                                    }
+                                    Divider()
+                                    HStack {
+                                        Text("비디오 녹화")
+                                        Spacer()
+                                        Image(systemName: "person.and.background.dotted")
+                                    }
+                                    Divider()
+                                    HStack {
+                                        Text("인물 사진 찍기")
+                                        Spacer()
+                                        Image(systemName: "person.and.background.dotted")
+                                    }
+                                    Divider()
+                                    HStack {
+                                        Text("인물 사진 셀피 찍기")
+                                        Spacer()
+                                        Image(systemName: "doc.on.doc")
+                                    }
+                                }
+                                Rectangle()
+                                    .frame(width: 250, height: 8)
+                                    .foregroundColor(Color(.systemGray4))
                                 HStack {
-                                    Text("Copy")
+                                    Text("홈 화면 편집")
                                     Spacer()
-                                    Image(systemName: "doc.on.doc")
+                                    Image(systemName: "apps.iphone")
                                 }
                                 Divider()
                                 HStack {
-                                    Text("Share")
+                                    Text("앱 제거")
                                     Spacer()
-                                    Image(systemName: "square.and.arrow.up")
-                                }
-                                Divider()
-                                HStack {
-                                    Text("Favorite")
-                                    Spacer()
-                                    Image(systemName: "heart")
-                                }
-                                Divider()
-                                HStack {
-                                    Text("Delete")
-                                    Spacer()
-                                    Image(systemName: "doc.on.doc")
+                                    Image(systemName: "minus.circle")
                                 }
                                 .foregroundColor(.red)
                             }
                             .padding(10)
-                            .frame(width: 200)
+                            .frame(width: 250)
                             .background {
                                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .foregroundStyle(.thinMaterial)
+                                    .foregroundStyle(Color(.systemGray5))
                             }
-                            .offset(y: -180)
+                            .offset(y: 270)
                             .transition(.scale)
                         }
                     }
                 Spacer()
                 Spacer()
             }
+            .frame(maxWidth: .infinity)
             if isSuceess {
-                NavigationLink {
+                ToucherNavigationLink {
                     LongTapPracticeView2()
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                                alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar(title: "길게 누르기")
+                            }
                         }
+                        .edgesIgnoringSafeArea(.bottom)
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            
         }
         .onAppear {
             isTapped = false

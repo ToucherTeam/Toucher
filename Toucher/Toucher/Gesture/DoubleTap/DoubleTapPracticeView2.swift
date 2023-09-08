@@ -56,20 +56,21 @@ struct DoubleTapPracticeView2: View {
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
             if isSuceess {
-                NavigationLink {
-                    DoubleTapFinalView()
-                } label: {
-                    Text("완료")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                ToucherNavigationLink(label: "완료") {
+                    FinalView(gestureTitle: "두 번 누르기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                            alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar(title: "두 번 누르기")
+                            }
                         }
                 }
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .overlay(
@@ -80,7 +81,7 @@ struct DoubleTapPracticeView2: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "두 번 누르기")
             }
         }
         .onAppear {
