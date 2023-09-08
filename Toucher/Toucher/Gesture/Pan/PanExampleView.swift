@@ -16,6 +16,7 @@ struct PanExampleView: View {
     @State private var scrollOffset: CGFloat = 0
     
     @GestureState private var isPressed = false
+    @Namespace var top
     
     private let isSE = DeviceManager.shared.iPhoneSE()
     private let spaceName = "scroll"
@@ -46,6 +47,7 @@ struct PanExampleView: View {
                 Spacer()
                 
                 ChildSizeReader(size: $wholeSize) {
+                    ScrollViewReader { value in
                     ScrollView {
                         ChildSizeReader(size: $scrollViewSize) {
                             VStack {
@@ -83,6 +85,10 @@ struct PanExampleView: View {
                                     .padding(.horizontal, 14)
                                 }
                             }
+                            .id(top)
+                            .onAppear {
+                                value.scrollTo(top, anchor: .top)
+                            }
                             .background(
                                 GeometryReader { proxy in
                                     Color.clear.preference(
@@ -94,17 +100,14 @@ struct PanExampleView: View {
                             .onPreferenceChange(
                                 ViewOffsetKey.self,
                                 perform: { value in
-                                    
-                                    scrollOffset = value
-                                    
-                                    if scrollOffset != 0 {
+                                    if value != 0 {
                                         isTapped = true
                                     }
                                     print("offset: \(value)")
                                     print("height: \(scrollViewSize.height)")
-
-                                    if scrollOffset >= scrollViewSize.height - wholeSize.height {
-                                         print("User has reached the bottom of the ScrollView.")
+                                    
+                                    if value >= scrollViewSize.height - wholeSize.height {
+                                        print("User has reached the bottom of the ScrollView.")
                                         isSuceess = true
                                     } else {
                                         print("not reached.")
@@ -113,6 +116,7 @@ struct PanExampleView: View {
                             )
                         }
                     }
+                }
 //                    .frame(height: isSE ? 160 : 320)
                     .coordinateSpace(name: spaceName)
                 }
@@ -154,7 +158,6 @@ struct PanExampleView: View {
             isTapped = false
             isSuceess = false
             isOneTapped = false
-            scrollOffset = 0
         }
     }
 }

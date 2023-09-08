@@ -40,10 +40,6 @@ struct SwiftPracticeView1: View {
                                 swipeVM.index = 1
                                 swipeVM.checkSuccess = true
                             }
-                            .onDisappear {
-                                swipeVM.index = 0
-                            }
-
                         }
                         .frame(height: 100)
                         .listRowBackground(Color("GR5"))
@@ -85,6 +81,7 @@ struct SwiftPracticeView1: View {
                 
                 Spacer()
             }
+
                         
             if swipeVM.index == 2 {
                 NavigationLink {
@@ -107,6 +104,10 @@ struct SwiftPracticeView1: View {
                 }
             }
         }
+        .frame(maxHeight: .infinity)
+        .onAppear {
+            swipeVM.checkSuccess = false
+        }
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
@@ -117,9 +118,6 @@ struct SwiftPracticeView1: View {
             ToolbarItem(placement: .principal) {
                 CustomToolbar(title: "살짝 쓸기")
             }
-        }
-        .onAppear {
-            swipeVM.index = 0
         }
     }
 }
