@@ -59,7 +59,7 @@ struct DragPracticeView2: View {
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                CustomToolbar()
+                                CustomToolbar(title: "끌어 오기")
                             }
                         }
                 }
@@ -73,7 +73,7 @@ struct DragPracticeView2: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "끌어 오기")
             }
         }
     }

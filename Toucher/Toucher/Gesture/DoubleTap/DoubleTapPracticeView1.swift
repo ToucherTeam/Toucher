@@ -14,6 +14,7 @@ struct DoubleTapPracticeView1: View {
     @State private var isOneTapped = false
     
     var body: some View {
+        
         ZStack {
             if isOneTapped && !isSuceess {
                 Color("Secondary_alert").ignoresSafeArea()
@@ -94,7 +95,7 @@ struct DoubleTapPracticeView1: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "두 번 누르기")
             }
         }
         .onAppear {

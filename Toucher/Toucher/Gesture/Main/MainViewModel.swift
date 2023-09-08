@@ -9,6 +9,7 @@ import Foundation
 
 class MainViewModel: ObservableObject {
     @Published var navigationPath = [MainModel]()
+    @Published var isFinishActive = false
     
     let gestures: [MainModel] = [
         .init(name: "두 번 누르기", image: "Primary", iconName: "double tap icon"),

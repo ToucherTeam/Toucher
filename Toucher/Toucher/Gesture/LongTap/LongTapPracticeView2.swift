@@ -114,7 +114,7 @@ struct LongTapPracticeView2: View {
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                CustomToolbar()
+                                CustomToolbar(title: "길게 누르기")
                             }
                         }
                 }

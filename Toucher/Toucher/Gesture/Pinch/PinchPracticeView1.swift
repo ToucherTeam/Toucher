@@ -69,7 +69,7 @@ struct PinchPracticeView1: View {
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                CustomToolbar()
+                                CustomToolbar(title: "확대 축소하기")
                             }
                         }
                     
@@ -84,7 +84,7 @@ struct PinchPracticeView1: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "확대 축소하기")
             }
         }
 

@@ -60,7 +60,26 @@ struct PanPracticeView: View {
                 .bold()
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
+            
+            if isSuccess {
+                ToucherNavigationLink(label: "완료") {
+                    FinalView(gestureTitle: "화면 움직이기")
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                            alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar(title: "화면 움직이기")
+                            }
+                        }
+                }
+            }
         }
+        
         .onAppear {
             isTapped = false
             isSuccess = false

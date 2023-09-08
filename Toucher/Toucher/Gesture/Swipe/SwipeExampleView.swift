@@ -26,6 +26,7 @@ struct SwipeExampleView: View {
                     .overlay(
                         Arrows()
                             .rotationEffect( (swipeVM.currentIndex == -1) ? .degrees(0) : .degrees(180))
+                            .allowsHitTesting(false)
                     )
                     .overlay(indicator())
                 Spacer()

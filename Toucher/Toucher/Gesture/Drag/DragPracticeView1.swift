@@ -74,7 +74,7 @@ struct DragPracticeView1: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "끌어오기")
             }
         }
         .onAppear {
