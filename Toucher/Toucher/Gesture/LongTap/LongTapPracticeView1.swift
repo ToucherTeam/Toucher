@@ -91,7 +91,7 @@ struct LongTapPracticeView1: View {
                             .frame(width: 200)
                             .background {
                                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .foregroundStyle(Color(.systemGray5))
+                                    .foregroundStyle(Color(.systemGray6))
                             }
                             .offset(y: -180)
                             .transition(.scale)

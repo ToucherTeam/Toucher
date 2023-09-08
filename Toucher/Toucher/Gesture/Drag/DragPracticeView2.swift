@@ -39,7 +39,7 @@ struct DragPracticeView2: View {
                 }
                 .padding()
                 if !isSuceess {
-                    VstackArrow()
+                    VStackArrow()
                         .rotationEffect(.degrees(180))
                         .padding(.trailing, UIScreen.main.bounds.width * 0.1)
                         .frame(maxWidth: .infinity, alignment: .trailing)

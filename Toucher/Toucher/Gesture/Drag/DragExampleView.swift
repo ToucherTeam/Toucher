@@ -107,7 +107,7 @@ struct DragExampleView: View {
                 .padding(.vertical, 50)
                 .background {
                     if isPressed && !isSuceess {
-                        VstackArrow()
+                        VStackArrow()
                     }
                 }
                 

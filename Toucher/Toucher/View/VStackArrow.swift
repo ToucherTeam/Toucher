@@ -30,6 +30,12 @@ struct VStackArrow: View {
                         .delay(0.3 * Double(3 + index)), value: isAnimating)
             }
         }
+        .padding(.vertical)
+        .padding(.horizontal, 5)
+        .background {
+            RoundedRectangle(cornerRadius: 30)
+                .foregroundColor(Color(UIColor.systemBackground).opacity(0.5))
+        }
         .onAppear {
             self.isAnimating = true
             self.scale = 1.1
@@ -41,6 +47,6 @@ struct VStackArrow: View {
 
 struct VStackArrow_Previews: PreviewProvider {
     static var previews: some View {
-        VStackArrow()
+            VStackArrow()
     }
 }
