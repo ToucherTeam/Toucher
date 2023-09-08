@@ -18,6 +18,7 @@ struct MainView: View {
                 Color.white
                     .ignoresSafeArea()
                 VStack(alignment: .leading, spacing: 0) {
+                    Spacer()
                     ForEach(mainVM.gestures) { gesture in
                         NavigationLink(value: gesture) {
                             LinearGradient(
@@ -62,7 +63,7 @@ struct MainView: View {
                     }
                     Spacer()
                 }
-                .padding(.top, isSE ? 13 : 30)
+                .padding(.bottom, mainVM.isFinishActive ? 30 : 0)
             }
         }
         .accentColor(.red)
@@ -82,7 +83,7 @@ struct MainView: View {
         case "끌어오기":
             return AnyView(DragExampleView().navigationBarBackButtonHidden())
         case "화면 움직이기":
-            return AnyView(Color.gray.navigationBarBackButtonHidden())
+            return AnyView(PanExampleView().navigationBarBackButtonHidden())
         case "확대 축소하기":
             return AnyView(PinchExampleView1().navigationBarBackButtonHidden())
         case "회전하기":

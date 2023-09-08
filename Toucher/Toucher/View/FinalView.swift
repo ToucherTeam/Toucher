@@ -59,6 +59,7 @@ struct FinalView: View {
             }
             .padding(.bottom, 16)
             Button {
+                mainVM.isFinishActive = true
                 mainVM.navigationPath = []
             } label: {
                 Text("처음으로")

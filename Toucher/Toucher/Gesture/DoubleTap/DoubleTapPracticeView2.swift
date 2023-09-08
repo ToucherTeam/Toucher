@@ -67,7 +67,7 @@ struct DoubleTapPracticeView2: View {
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                CustomToolbar()
+                                CustomToolbar(title: "두 번 누르기")
                             }
                         }
                 }
@@ -81,7 +81,7 @@ struct DoubleTapPracticeView2: View {
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CustomToolbar()
+                CustomToolbar(title: "두 번 누르기")
             }
         }
         .onAppear {

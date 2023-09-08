@@ -113,7 +113,7 @@ struct LongTapPracticeView1: View {
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                CustomToolbar()
+                                CustomToolbar(title: "길게 누르기")
                             }
                         }
                         .edgesIgnoringSafeArea(.bottom)

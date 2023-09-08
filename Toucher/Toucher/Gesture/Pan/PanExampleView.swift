@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct PanExampleView: View {
+    @State private var wholeSize: CGSize = .zero
+    @State private var scrollViewSize: CGSize = .zero
     @State private var isTapped = false
     @State private var isSuceess = false
     @State private var isOneTapped = false
+    @State private var scrollOffset: CGFloat = 0
     
     @GestureState private var isPressed = false
     
-    @State private var scrollOffset: CGFloat = 0
+    private let spaceName = "scroll"
+    private let notifications: [NotificationModel] = [
+        .init(imageName: "Warning", time: "9:41 AM", title: "긴급재난문자", subTitle: "[중앙재난안전대책본부] 안녕하세요." ),
+        .init(imageName: "PersonMessage", time: "8:36 AM", title: "1588", subTitle: "(광고) 안녕하세요."),
+        .init(imageName: "PersonMessage", time: "8:23 AM", title: "114", subTitle: "[Web발신] 안녕하세요"),
+        .init(imageName: "Warning", time: "7:58 AM", title: "긴급재난문자", subTitle: "[중앙재난안전대책본부] 안녕하세요." ),
+        .init(imageName: "PersonMessage", time: "7:34 AM", title: "+82 10-0000-0000", subTitle: "안녕하세요. 메세지 내용입니다."),
+        .init(imageName: "PersonMessage", time: "7:17 AM", title: "1588", subTitle: "(광고) 안녕하세요."),
+        .init(imageName: "Warning", time: "6:55 AM", title: "긴급재난문자", subTitle: "[중앙재난안전대책본부] 안녕하세요." ),
+        .init(imageName: "NotiToucher", time: "6:38 AM", title: "Toucher", subTitle: "터치에 세계에 오신 걸 환영합니다!" )
+    ]
     
     var body: some View {
         ZStack {
@@ -29,37 +42,85 @@ struct PanExampleView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 30)
+                Spacer()
                 
-                ScrollView {
-                    Color.clear
-                        .background(
-                            GeometryReader { proxy in
-                                Color.clear
-                                    .preference(key: OffsetPreferenceKey.self, value: proxy.frame(in: .global).minY)
+                ChildSizeReader(size: $wholeSize) {
+                    ScrollView {
+                        ChildSizeReader(size: $scrollViewSize) {
+                            VStack {
+                                ForEach(notifications) { item in
+                                    HStack {
+                                        Image(item.imageName)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 32, height: 32)
+                                            .padding(.leading)
+                                        
+                                        VStack(alignment: .leading) {
+                                            HStack {
+                                                Text(item.title)
+                                                    .bold()
+                                                Spacer()
+                                                Text(item.time)
+                                                    .foregroundColor(Color("GR1"))
+                                                    .font(.system(size: 13))
+                                                    .fontWeight(.regular)
+                                                    .padding(.trailing, 22)
+                                            }
+                                            Text(item.subTitle)
+                                                .font(.system(size: 15))
+                                                .fontWeight(.regular)
+                                        }
+                                        Spacer()
+                                    }
+                                    .frame(height: 66)
+                                    .frame(maxWidth: .infinity)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 24, style: .continuous)
+                                            .foregroundColor(Color(.systemGray5))
+                                    }
+                                    .padding(.horizontal, 14)
+                                }
                             }
-                        )
-                        .onPreferenceChange(OffsetPreferenceKey.self) { minY in
-                            // 추가: ScrollView의 오프셋이 변경될 때 호출되는 핸들러
-                            scrollOffset = minY
-                            isSuceess = true
-                            withAnimation(.easeInOut) {
-                                isTapped = true
-                            }
+                            .background(
+                                GeometryReader { proxy in
+                                    Color.clear.preference(
+                                        key: ViewOffsetKey.self,
+                                        value: -1 * proxy.frame(in: .named(spaceName)).origin.y
+                                    )
+                                }
+                            )
+                            .onPreferenceChange(
+                                ViewOffsetKey.self,
+                                perform: { value in
+                                    if value != 0 {
+                                        isTapped = true
+                                    }
+                                    print("offset: \(value)")
+                                    print("height: \(scrollViewSize.height)")
+
+                                    if value >= scrollViewSize.height - wholeSize.height {
+                                         print("User has reached the bottom of the ScrollView.")
+                                        isSuceess = true
+                                    } else {
+                                        print("not reached.")
+                                    }
+                                }
+                            )
                         }
-                    notification1
-                    notification2(title: "1588", message: "(광고) 안녕하세요")
-                    notification2(title: "114", message: "[Web 발신] 안녕하세요")
-                    notification1
-                }
-                .frame(maxHeight: .infinity)
-                .padding(.vertical, 70)
-                .overlay {
-                    if !isTapped {
-                        Arrows()
-                            .rotationEffect(.degrees(90))
                     }
+                    .frame(height: 320)
+                    .coordinateSpace(name: spaceName)
                 }
+                .onChange(
+                    of: scrollViewSize,
+                    perform: { value in
+                        print(value)
+                    }
+            )
+                .frame(height: 320)
                 
+                Spacer()
                 Group {
                     Text("현재 ")
                     + Text("화면을 상하좌우로")
@@ -72,77 +133,17 @@ struct PanExampleView: View {
                 .font(.title)
                 .padding(.bottom, 80)
             }
-            
+            if isSuceess {
+                ToucherNavigationLink {
+                    PanPracticeView()
+                }
+            }
         }
         .onAppear {
             isTapped = false
             isSuceess = false
             isOneTapped = false
         }
-    }
-    
-    @ViewBuilder
-    private var notification1: some View {
-        HStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .font(.system(size: 32))
-                .foregroundStyle(.black, .yellow)
-                .padding(.leading)
-            VStack(alignment: .leading) {
-                Text("긴급재난문자")
-                    .bold()
-                Text("[중앙재난안전대책본부] 안녕하세요")
-            }
-            Spacer()
-        }
-        .frame(height: 66)
-        .frame(maxWidth: .infinity)
-        .background {
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .foregroundColor(Color(.systemGray5))
-        }
-        .padding(.horizontal, 14)
-    }
-    
-    @ViewBuilder
-    private func notification2(title: String, message: String) -> some View {
-        HStack {
-            Image(systemName: "person.crop.circle.fill")
-                .font(.system(size: 32))
-                .foregroundStyle(.white, .gray)
-                .padding(.leading)
-                .overlay(alignment: .bottomTrailing) {
-                    Image(systemName: "message.fill")
-                        .font(.system(size: 10))
-                        .foregroundColor(.white)
-                        .background {
-                            RoundedRectangle(cornerRadius: 3, style: .continuous)
-                                .foregroundColor(.green)
-                                .frame(width: 16, height: 16)
-                        }
-                }
-            VStack(alignment: .leading) {
-                Text(title)
-                    .bold()
-                Text(message)
-            }
-            Spacer()
-        }
-        .frame(height: 66)
-        .frame(maxWidth: .infinity)
-        .background {
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .foregroundColor(Color(.systemGray5))
-        }
-        .padding(.horizontal, 14)
-    }
-}
-
-struct OffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-    
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
     }
 }
 
