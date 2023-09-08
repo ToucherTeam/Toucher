@@ -76,6 +76,10 @@ struct DragPracticeView2: View {
                 CustomToolbar(title: "끌어 오기")
             }
         }
+        .onAppear {
+            data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
+            isSuceess = false
+        }
     }
 }
 
