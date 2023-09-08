@@ -16,7 +16,9 @@ struct PanExampleView: View {
     @State private var scrollOffset: CGFloat = 0
     
     @GestureState private var isPressed = false
+    @Namespace var top
     
+    private let isSE = DeviceManager.shared.iPhoneSE()
     private let spaceName = "scroll"
     private let notifications: [NotificationModel] = [
         .init(imageName: "Warning", time: "9:41 AM", title: "긴급재난문자", subTitle: "[중앙재난안전대책본부] 안녕하세요." ),
@@ -45,6 +47,7 @@ struct PanExampleView: View {
                 Spacer()
                 
                 ChildSizeReader(size: $wholeSize) {
+                    ScrollViewReader { value in
                     ScrollView {
                         ChildSizeReader(size: $scrollViewSize) {
                             VStack {
@@ -82,6 +85,10 @@ struct PanExampleView: View {
                                     .padding(.horizontal, 14)
                                 }
                             }
+                            .id(top)
+                            .onAppear {
+                                value.scrollTo(top, anchor: .top)
+                            }
                             .background(
                                 GeometryReader { proxy in
                                     Color.clear.preference(
@@ -98,9 +105,9 @@ struct PanExampleView: View {
                                     }
                                     print("offset: \(value)")
                                     print("height: \(scrollViewSize.height)")
-
+                                    
                                     if value >= scrollViewSize.height - wholeSize.height {
-                                         print("User has reached the bottom of the ScrollView.")
+                                        print("User has reached the bottom of the ScrollView.")
                                         isSuceess = true
                                     } else {
                                         print("not reached.")
@@ -109,7 +116,8 @@ struct PanExampleView: View {
                             )
                         }
                     }
-                    .frame(height: 320)
+                }
+//                    .frame(height: isSE ? 160 : 320)
                     .coordinateSpace(name: spaceName)
                 }
                 .onChange(
@@ -118,7 +126,7 @@ struct PanExampleView: View {
                         print(value)
                     }
             )
-                .frame(height: 320)
+                .frame(maxHeight: isSE ? .infinity : 320)
                 
                 Spacer()
                 Group {
@@ -132,6 +140,13 @@ struct PanExampleView: View {
                 .foregroundColor(isTapped ? .clear : .gray)
                 .font(.title)
                 .padding(.bottom, 80)
+            }
+            .overlay {
+                if isTapped == false {
+                    Arrows()
+                        .rotationEffect(Angle(degrees: 90))
+                        .allowsHitTesting(false)
+                }
             }
             if isSuceess {
                 ToucherNavigationLink {
