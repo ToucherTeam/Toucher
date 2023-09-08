@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SwiftPracticeView2: View {
     @StateObject var swipeVM = SwipeViewModel()
-    
+
     var body: some View {
         ZStack {
             VStack {

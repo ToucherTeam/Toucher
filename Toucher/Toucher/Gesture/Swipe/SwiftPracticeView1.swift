@@ -57,6 +57,7 @@ struct SwiftPracticeView1: View {
                         HStack {
                             Arrows()
                                 .rotationEffect(.degrees(180))
+                            
                             Spacer()
                         }
                         .opacity(swipeVM.index == 1 ? 1 : 0)

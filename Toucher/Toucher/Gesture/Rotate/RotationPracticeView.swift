@@ -85,8 +85,8 @@ struct RotationPracticeView: View {
         }
     }
 }
-
 struct RotationPracticeView_Previews: PreviewProvider {
+
     static var previews: some View {
         RotationPracticeView()
     }
