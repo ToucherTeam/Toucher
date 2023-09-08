@@ -19,8 +19,7 @@ struct ToucherNavigationLink<Content: View>: View {
     
     var body: some View {
         VStack {
-            VstackArrow()
-                .padding(.bottom)
+            VStackArrow()
             NavigationLink {
                 content
             } label: {

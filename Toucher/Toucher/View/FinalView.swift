@@ -31,7 +31,7 @@ struct FinalView: View {
                         .resizable()
                         .frame(width: 312, height: 158)
                 }
-                .padding(.top, UIScreen.main.bounds.height * 0.1)
+                .padding(.top, UIScreen.main.bounds.height * 0.07)
 
             Image("ch_default")
                 .resizable()

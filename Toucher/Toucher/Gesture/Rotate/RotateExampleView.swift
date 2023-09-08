@@ -41,8 +41,8 @@ struct RotateExampleView: View {
                         .scaledToFit()
                         .frame(width: 168)
                         .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .frame(width: 300, height: 300)
+                            Circle()
+                                .frame(width: 300)
                                 .foregroundColor(Color(UIColor.systemBackground))
                         }
                         .frame(maxHeight: .infinity)
@@ -70,7 +70,7 @@ struct RotateExampleView: View {
                                 Image("rotation_guide")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 300)
+                                    .frame(width: 330, height: 330)
                                     .allowsHitTesting(false)
                             }
                         }
