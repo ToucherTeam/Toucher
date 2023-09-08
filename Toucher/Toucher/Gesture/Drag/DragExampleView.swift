@@ -74,7 +74,8 @@ struct DragExampleView: View {
                                     }
                                     .onEnded { value in
                                         
-                                        if value.translation.height < UIScreen.main.bounds.height * 0.38, -30...30 ~= value.translation.width {
+                                        if  0...UIScreen.main.bounds.height * 0.4 ~= value.translation.height &&
+                                             -30...30 ~= value.translation.width {
                                             isArrived = true
                                         }
                                         
