@@ -136,6 +136,18 @@ struct PanExampleView: View {
             if isSuceess {
                 ToucherNavigationLink {
                     PanPracticeView()
+                        .padding(.bottom, 13)
+                        .overlay(
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(Color("GR3")),
+                            alignment: .top
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                CustomToolbar(title: "화면 움직이기")
+                            }
+                        }
                 }
             }
         }
