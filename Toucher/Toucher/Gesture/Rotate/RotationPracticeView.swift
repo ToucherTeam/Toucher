@@ -76,7 +76,7 @@ struct RotationPracticeView: View {
                             )
                             .toolbar {
                                 ToolbarItem(placement: .principal) {
-                                    CustomToolbar()
+                                    CustomToolbar(title: "회전하기")
                                 }
                             }
                     }
@@ -91,7 +91,7 @@ struct RotationPracticeView: View {
             )
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    CustomToolbar()
+                    CustomToolbar(title: "회전하기")
                 }
             }
             .onAppear {
