@@ -24,6 +24,7 @@ struct SwipeFinalView: View {
                     CustomToolbar(title: "살짝 쓸기")
                 }
             }
+            .frame(maxHeight: .infinity)
         
     }
 }

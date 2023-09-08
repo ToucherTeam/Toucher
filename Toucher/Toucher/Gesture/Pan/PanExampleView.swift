@@ -17,6 +17,7 @@ struct PanExampleView: View {
     
     @GestureState private var isPressed = false
     
+    private let isSE = DeviceManager.shared.iPhoneSE()
     private let spaceName = "scroll"
     private let notifications: [NotificationModel] = [
         .init(imageName: "Warning", time: "9:41 AM", title: "긴급재난문자", subTitle: "[중앙재난안전대책본부] 안녕하세요." ),
@@ -93,13 +94,16 @@ struct PanExampleView: View {
                             .onPreferenceChange(
                                 ViewOffsetKey.self,
                                 perform: { value in
-                                    if value != 0 {
+                                    
+                                    scrollOffset = value
+                                    
+                                    if scrollOffset != 0 {
                                         isTapped = true
                                     }
                                     print("offset: \(value)")
                                     print("height: \(scrollViewSize.height)")
 
-                                    if value >= scrollViewSize.height - wholeSize.height {
+                                    if scrollOffset >= scrollViewSize.height - wholeSize.height {
                                          print("User has reached the bottom of the ScrollView.")
                                         isSuceess = true
                                     } else {
@@ -109,7 +113,7 @@ struct PanExampleView: View {
                             )
                         }
                     }
-                    .frame(height: 320)
+//                    .frame(height: isSE ? 160 : 320)
                     .coordinateSpace(name: spaceName)
                 }
                 .onChange(
@@ -118,7 +122,7 @@ struct PanExampleView: View {
                         print(value)
                     }
             )
-                .frame(height: 320)
+                .frame(maxHeight: isSE ? .infinity : 320)
                 
                 Spacer()
                 Group {
@@ -133,6 +137,13 @@ struct PanExampleView: View {
                 .font(.title)
                 .padding(.bottom, 80)
             }
+            .overlay {
+                if isTapped == false {
+                    Arrows()
+                        .rotationEffect(Angle(degrees: 90))
+                        .allowsHitTesting(false)
+                }
+            }
             if isSuceess {
                 ToucherNavigationLink {
                     PanPracticeView()
@@ -143,6 +154,7 @@ struct PanExampleView: View {
             isTapped = false
             isSuceess = false
             isOneTapped = false
+            scrollOffset = 0
         }
     }
 }

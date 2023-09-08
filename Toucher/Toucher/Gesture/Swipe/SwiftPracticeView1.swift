@@ -28,7 +28,7 @@ struct SwiftPracticeView1: View {
                                 Spacer()
                                 Arrows()}
                         }
-                        .swipeActions {
+                        .swipeActions(allowsFullSwipe: false) {
                             Button {
                                 
                             } label: {
@@ -62,7 +62,7 @@ struct SwiftPracticeView1: View {
                         }
                         .opacity(swipeVM.index == 1 ? 1 : 0)
                         .animation(.easeInOut)
-                        .swipeActions(edge: .leading) {
+                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button {
                             } label: { Image(systemName: "envelope.badge.fill") }.tint(.blue)
                                 .onAppear {
@@ -117,6 +117,9 @@ struct SwiftPracticeView1: View {
             ToolbarItem(placement: .principal) {
                 CustomToolbar(title: "살짝 쓸기")
             }
+        }
+        .onAppear {
+            swipeVM.index = 0
         }
     }
 }
