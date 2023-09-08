@@ -38,8 +38,8 @@ struct SwipeExampleView: View {
             nextButton()
         }
         .onAppear {
-            print(mainVM.navigationPath)
-            }
+            swipeVM.currentIndexArray = []
+        }
     }
     
     @ViewBuilder

@@ -28,7 +28,7 @@ struct SwiftPracticeView1: View {
                                 Spacer()
                                 Arrows()}
                         }
-                        .swipeActions {
+                        .swipeActions(allowsFullSwipe: false) {
                             Button {
                                 
                             } label: {
@@ -40,10 +40,6 @@ struct SwiftPracticeView1: View {
                                 swipeVM.index = 1
                                 swipeVM.checkSuccess = true
                             }
-                            .onDisappear {
-                                swipeVM.index = 0
-                            }
-
                         }
                         .frame(height: 100)
                         .listRowBackground(Color("GR5"))
@@ -62,7 +58,7 @@ struct SwiftPracticeView1: View {
                         }
                         .opacity(swipeVM.index == 1 ? 1 : 0)
                         .animation(.easeInOut)
-                        .swipeActions(edge: .leading) {
+                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button {
                             } label: { Image(systemName: "envelope.badge.fill") }.tint(.blue)
                                 .onAppear {
@@ -85,6 +81,7 @@ struct SwiftPracticeView1: View {
                 
                 Spacer()
             }
+
                         
             if swipeVM.index == 2 {
                 NavigationLink {
@@ -106,6 +103,10 @@ struct SwiftPracticeView1: View {
                         .offset(y: -100)
                 }
             }
+        }
+        .frame(maxHeight: .infinity)
+        .onAppear {
+            swipeVM.checkSuccess = false
         }
         .overlay(
             Rectangle()
