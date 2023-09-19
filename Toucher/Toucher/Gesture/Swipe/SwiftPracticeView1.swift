@@ -11,7 +11,7 @@ struct SwiftPracticeView1: View {
     @EnvironmentObject var mainVM: MainViewModel
     @StateObject var swipeVM = SwipeViewModel()
     
-    var text = ["왼쪽으로\n밀어볼까요?", "삭제버튼이 나왔어요.\n아래도 밀어볼까요?", "이번엔 메일 읽음\n버튼이 나왔어요!"]
+    var text = ["왼쪽으로\n밀어볼까요?", "삭제버튼이 나왔어요.\n다음 것도 밀어볼까요?", "이번엔 메일 읽음\n버튼이 나왔어요!"]
     
     var body: some View {
         ZStack {
@@ -57,7 +57,6 @@ struct SwiftPracticeView1: View {
                             Spacer()
                         }
                         .opacity(swipeVM.index == 1 ? 1 : 0)
-                        .animation(.easeInOut)
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button {
                             } label: { Image(systemName: "envelope.badge.fill") }.tint(.blue)
@@ -82,7 +81,6 @@ struct SwiftPracticeView1: View {
                 Spacer()
             }
 
-                        
             if swipeVM.index == 2 {
                 NavigationLink {
                     SwiftPracticeView2()

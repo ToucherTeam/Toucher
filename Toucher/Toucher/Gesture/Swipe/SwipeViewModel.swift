@@ -37,6 +37,6 @@ class SwipeViewModel: ObservableObject {
     
 }
 
-final class AppState : ObservableObject {
+final class AppState: ObservableObject {
     @Published var rootViewId = UUID()
 }

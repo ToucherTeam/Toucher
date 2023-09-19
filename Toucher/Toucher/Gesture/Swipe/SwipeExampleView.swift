@@ -15,8 +15,15 @@ struct SwipeExampleView: View {
     
     @Namespace var animation
     
+    @State private var isOneTapped = false
+    
     var body: some View {
         ZStack {
+            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
+                Color("Secondary")
+                    .ignoresSafeArea()
+            }
+
             VStack {
                 titleText()
                 
@@ -39,6 +46,7 @@ struct SwipeExampleView: View {
         }
         .onAppear {
             swipeVM.currentIndexArray = []
+            isOneTapped = false
         }
     }
     
@@ -59,10 +67,32 @@ struct SwipeExampleView: View {
     
     @ViewBuilder
     func titleText() -> some View {
-        Text(checkSuccessCondition(swipeVM.currentIndexArray) ? "잘하셨어요!\n" : (swipeVM.currentIndex == -1) ? "왼쪽으로 밀어볼까요?\n" : "이번에 오른쪽으로\n밀어볼까요?")
-            .multilineTextAlignment(.center)
-            .font(.customTitle())
-            .padding(.top, 42)
+        switch (checkSuccessCondition(swipeVM.currentIndexArray), swipeVM.currentIndex, isOneTapped) {
+        case (true, _, true):
+            Text("잘하셨어요!\n")
+                .multilineTextAlignment(.center)
+                .font(.customTitle())
+                .padding(.top, 42)
+            
+        case (false, -1, true):
+            Text("왼쪽으로\n 살짝쓸어보세요")
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .font(.customTitle())
+                .padding(.top, 42)
+            
+        case (false, -1, false):
+            Text("왼쪽으로 밀어볼까요?\n")
+                .multilineTextAlignment(.center)
+                .font(.customTitle())
+                .padding(.top, 42)
+            
+        default:
+            Text("이번에 오른쪽으로\n밀어볼까요?")
+                .multilineTextAlignment(.center)
+                .font(.customTitle())
+                .padding(.top, 42)
+        }
     }
     
     @ViewBuilder
@@ -85,6 +115,13 @@ struct SwipeExampleView: View {
                 .onEnded { _ in
                     swipeVM.tap = true
                 }
+                .exclusively(
+                    before: TapGesture()
+                        .onEnded {
+                            withAnimation {
+                                isOneTapped = true
+                            }
+                        })
         )
         .gesture(
             dragOffset(width)
@@ -117,7 +154,7 @@ struct SwipeExampleView: View {
     @ViewBuilder
     func indicator() -> some View {
         HStack(spacing: 8) {
-            ForEach(0..<swipeVM.swipeContent.count) { index in
+            ForEach(0..<swipeVM.swipeContent.count, id: \.self) { index in
                 Circle()
                     .foregroundColor(Color("BG2"))
                     .frame(width: 8, height: 8)
@@ -160,16 +197,32 @@ struct SwipeExampleView: View {
     
     fileprivate func checkSuccessCondition<T>(_ sequence: T) -> Bool where T: Sequence, T.Element == Int {
         var iterator = sequence.makeIterator()
-        var previousElement: Int?
         
         while let element = iterator.next() {
             if element == 0, let nextElement = iterator.next(), nextElement == -1 {
                 return true
             }
-            previousElement = element
+            var previousElement = element
         }
         
         return false
+    }
+    
+    fileprivate func shouldReturnTrueForCondition<T: Equatable>(_ array: [T]) -> Bool {
+        guard !array.isEmpty else {
+            isOneTapped = false
+            return isOneTapped
+        }
+        
+        if array.last == array[array.count - 1] {
+            isOneTapped = true
+        }
+        
+        return false
+    }
+        
+    fileprivate func errorHandleArray(_ roundIndex: CGFloat) -> Int {
+        return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 2), -1)
     }
     
     fileprivate func dragOffset(_ width: CGFloat) -> _EndedGesture<GestureStateGesture<DragGesture, CGFloat>> {
@@ -181,8 +234,11 @@ struct SwipeExampleView: View {
                 let offsetX = value.translation.width
                 let progress = -offsetX / width
                 let roundIndex = progress.rounded()
-                swipeVM.currentIndex = max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 2), -1)
+                swipeVM.currentIndex = errorHandleArray(roundIndex)
                 swipeVM.currentIndexArray.append(swipeVM.currentIndex)
+                shouldReturnTrueForCondition(swipeVM.currentIndexArray)
+                print(swipeVM.currentIndexArray)
+                print(isOneTapped)
             }
     }
 }
@@ -190,11 +246,11 @@ struct SwipeExampleView: View {
 struct SwipeExampleView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView()
+            SwipeExampleView()
                 .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
                 .previewDisplayName("iPhone SE")
             
-            MainView()
+            SwipeExampleView()
                 .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
                 .previewDisplayName("iPhone 14")
         }
