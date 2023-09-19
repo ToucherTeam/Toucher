@@ -17,8 +17,6 @@ struct FinalView: View {
     
     var body: some View {
         
-        var path = mainVM.navigationPath
-        
         VStack {
             Text("\(gestureTitle) 학습을\n완료했습니다!")
                 .font(.largeTitle)
