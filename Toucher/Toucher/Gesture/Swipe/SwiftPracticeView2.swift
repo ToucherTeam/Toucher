@@ -39,10 +39,10 @@ struct SwiftPracticeView2: View {
                             }
                         }
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            Button(role: .destructive, action: {
+                            Button(role: .destructive) {
                                 swipeVM.btnActive = true
                                 self.deleteMessage(message)
-                            }) {
+                            } label: {
                                 Image(systemName: "trash.fill")
                             }
                         }

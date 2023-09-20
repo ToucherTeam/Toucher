@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentRectSize : PreferenceKey {
+struct ContentRectSize: PreferenceKey {
     static var defaultValue: CGRect = .zero
     static func reduce(value: inout CGRect, nextValue: () -> CGRect) {}
     
