@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct PinchExampleView1: View {
+    
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
+    @State private var isOneTapped = false
+    
     @State private var isNextView = false
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
         ZStack {
+            if isOneTapped && !isSuccess {
+                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            }
             if !isNextView {
                 VStack {
-                    Text(isSuceess ? "잘하셨어요!\n" : "두 손가락을 원 위에 대고\n벌려보세요")
-                        .foregroundColor(.primary)
+                    Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n벌려보세요")
+                        .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.largeTitle)
@@ -33,8 +39,10 @@ struct PinchExampleView1: View {
                         .background {
                             Rectangle()
                                 .frame(width: 320, height: 320)
-                                .foregroundColor(Color(UIColor.systemBackground))
+                                .foregroundColor(isOneTapped ? .clear : Color(UIColor.systemBackground))
+                                .animation(nil, value: isOneTapped)
                         }
+                        .contentShape(Circle())
                         .gesture(
                             MagnificationGesture()
                                 .onChanged { value in
@@ -46,13 +54,15 @@ struct PinchExampleView1: View {
                                 .onEnded { _ in
                                     withAnimation {
                                         if scale > 1.5 {
-                                            isSuceess = true
+                                            isSuccess = true
                                             self.scale = 2
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                                 withAnimation(.easeInOut) {
                                                     isNextView = true
                                                 }
                                             }
+                                        } else {
+                                            isOneTapped = true
                                         }
                                     }
                                 }
