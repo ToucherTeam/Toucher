@@ -42,7 +42,6 @@ struct PinchExampleView1: View {
                                 .foregroundColor(isOneTapped ? .clear : Color(UIColor.systemBackground))
                                 .animation(nil, value: isOneTapped)
                         }
-                        .contentShape(Circle())
                         .gesture(
                             MagnificationGesture()
                                 .onChanged { value in

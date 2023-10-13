@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DragExampleView: View {
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isPressed = false
     @State private var isTapPressed = false
     @State private var isOneTapped = false
@@ -21,12 +21,12 @@ struct DragExampleView: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
+            if isOneTapped && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
-                Text(isSuceess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                Text(isSuccess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
+                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
@@ -39,7 +39,7 @@ struct DragExampleView: View {
                             .scaledToFit()
                             .frame(width: 120)
                             .zIndex(-1)
-                        if isSuceess {
+                        if isSuccess {
                             Image("ch_button")
                                 .resizable()
                                 .scaledToFit()
@@ -49,7 +49,7 @@ struct DragExampleView: View {
                         }
                     }
                     .frame(maxHeight: .infinity, alignment: .bottom)
-                    if !isSuceess {
+                    if !isSuccess {
                         Image("ch_button")
                             .resizable()
                             .scaledToFit()
@@ -58,6 +58,7 @@ struct DragExampleView: View {
                             .foregroundStyle(.gray.opacity(0.5))
                             .offset(offset)
                             .frame(maxHeight: .infinity, alignment: .top)
+                            .zIndex(1)
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
@@ -79,7 +80,7 @@ struct DragExampleView: View {
                                         
                                         if isArrived {
                                             withAnimation {
-                                                isSuceess = true
+                                                isSuccess = true
                                             }
                                         }
                                         
@@ -106,7 +107,7 @@ struct DragExampleView: View {
                 .frame(maxHeight: .infinity)
                 .padding(.vertical, 50)
                 .background {
-                    if isPressed && !isSuceess {
+                    if isPressed && !isSuccess {
                         VStackArrow()
                     }
                 }
@@ -122,7 +123,7 @@ struct DragExampleView: View {
                 .font(.title)
                 .padding(.bottom, 80)
             }
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink {
                     DragPracticeView1()
                 }
@@ -131,7 +132,7 @@ struct DragExampleView: View {
         }
         .onAppear {
             isPressed = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
             offset = .zero
         }

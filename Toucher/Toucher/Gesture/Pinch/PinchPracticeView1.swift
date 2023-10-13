@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PinchPracticeView1: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
@@ -30,7 +30,7 @@ struct PinchPracticeView1: View {
                         .onEnded { _ in
                             withAnimation {
                                 if scale > 1.2 {
-                                    isSuceess = true
+                                    isSuccess = true
                                     self.scale = 2
                                 }
                             }
@@ -48,7 +48,7 @@ struct PinchPracticeView1: View {
                     }
                 }
             
-            Text(isSuceess ? "잘하셨어요!\n" : "두 손가락을 이용해서\n확대해볼까요?")
+            Text(isSuccess ? "잘하셨어요!\n" : "두 손가락을 이용해서\n확대해볼까요?")
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
                 .lineSpacing(10)
@@ -57,7 +57,7 @@ struct PinchPracticeView1: View {
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
             
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "확대 축소하기")
                         .padding(.bottom, 13)

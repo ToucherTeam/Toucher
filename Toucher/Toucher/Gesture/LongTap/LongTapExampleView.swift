@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LongTapExampleView: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     @State private var isPressed = false
@@ -17,18 +17,18 @@ struct LongTapExampleView: View {
 
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
+            if isOneTapped && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
-                Text(isSuceess ? "잘하셨어요!\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
+                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 30)
-                Image(isSuceess ? "ch_button_pressed" : "ch_button")
+                Image(isSuccess ? "ch_button_pressed" : "ch_button")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 184)
@@ -43,7 +43,7 @@ struct LongTapExampleView: View {
                                 .foregroundColor(Color("Secondary"))
                         }
                         .scaleEffect(isPressed ? 1.6 : 1)
-                        .opacity(isSuceess ? 0 : 1)
+                        .opacity(isSuccess ? 0 : 1)
                         .animation(.easeInOut(duration: 1), value: isPressed)
                     }
                     .gesture(
@@ -63,7 +63,7 @@ struct LongTapExampleView: View {
                                     isPressed = false
                                 } else {
                                     withAnimation {
-                                        isSuceess = true
+                                        isSuccess = true
                                     }
                                 }
                             }
@@ -90,7 +90,7 @@ struct LongTapExampleView: View {
                     .font(.title)
                     .padding(.bottom, 80)
             }
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink {
                     LongTapPracticeView1()
                         .padding(.bottom, 13)
@@ -111,7 +111,7 @@ struct LongTapExampleView: View {
         }
         .onAppear {
             isTapped = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
             isPressed = false
         }

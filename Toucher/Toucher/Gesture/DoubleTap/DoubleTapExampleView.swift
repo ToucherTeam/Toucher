@@ -10,23 +10,23 @@ import SwiftUI
 struct DoubleTapExampleView: View {
 
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
+            if isOneTapped && !isSuccess {
                 Color("Secondary_alert").ignoresSafeArea()
             }
             VStack {
-                Text(isSuceess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
+                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 30)
-                Image(isSuceess ? "ch_button_pressed" : "ch_button")
+                Image(isSuccess ? "ch_button_pressed" : "ch_button")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 184)
@@ -34,7 +34,7 @@ struct DoubleTapExampleView: View {
                         TapGesture(count: 2)
                             .onEnded {
                                 withAnimation {
-                                    isSuceess = true
+                                    isSuccess = true
                                     isTapped = true
                                 }
                             }
@@ -63,7 +63,7 @@ struct DoubleTapExampleView: View {
                     .font(.title)
                     .padding(.bottom, 80)
             }
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink {
                     DoubleTapPracticeView1()
                 }
@@ -72,7 +72,7 @@ struct DoubleTapExampleView: View {
         }
         .onAppear {
             isTapped = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
         }
     }

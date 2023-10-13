@@ -68,6 +68,11 @@ struct RotateExampleView: View {
                                     isOneTapped = true
                                 }
                             })
+                    .onTapGesture {
+                        withAnimation {
+                            isOneTapped = true
+                        }
+                    }
                     .overlay {
                         if !isTapped {
                             Image("rotation_guide")
@@ -85,7 +90,7 @@ struct RotateExampleView: View {
                 }
                 .multilineTextAlignment(.center)
                 .lineSpacing(10)
-                .foregroundColor(isTapped ? .clear : .gray)
+                .foregroundColor(isTapped || isOneTapped ? .clear : .gray)
                 .font(.title)
                 .padding(.bottom, 80)
             }

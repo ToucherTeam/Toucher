@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 struct DragPracticeView2: View {
     @State private var data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isDroped = false
     @State private var isTried = false
     @State private var isOneTapped = false
@@ -22,24 +22,24 @@ struct DragPracticeView2: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
+            if isOneTapped && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
                 Rectangle().frame(height: 0)
                 Spacer().frame(height: 40)
-                Text(isSuceess ? "잘하셨어요!\n\n" :
+                Text(isSuccess ? "잘하셨어요!\n\n" :
                         isTried || isOneTapped ? "카메라 아이콘을\n꾹 누른 상태로\n 움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
                 .multilineTextAlignment(.center)
                 .font(.largeTitle)
                 .padding(10)
-                .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                 .bold()
                 .padding(.top, 30)
                 LazyVGrid(columns: columns) {
                     ReorderableForEach($data,
                                        allowReordering: $allowReordering,
-                                       isReached: $isSuceess,
+                                       isReached: $isSuccess,
                                        isDroped: $isDroped,
                                        isTried: $isTried) { item, _ in
                         Image(item)
@@ -58,13 +58,14 @@ struct DragPracticeView2: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(isSuceess ? .clear : Color("BG2"))
+                                        .foregroundColor(isSuccess ? .clear : Color("BG2"))
                                         .scaleEffect(isAnimate ? 1.6 : 1.4)
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(isSuceess ? .clear : Color("Secondary"))
+                                        .foregroundColor(isSuccess ? .clear : Color("Secondary"))
                                         .scaleEffect(isAnimate ? 1.4 : 1)
                                 }
+                                .animation(.easeInOut, value: isSuccess)
                                 .onAppear {
                                     withAnimation(.easeInOut(duration: 1).repeatForever()) {
                                         isAnimate = true
@@ -76,12 +77,14 @@ struct DragPracticeView2: View {
                 }
                 .padding()
                 .onTapGesture {
-                    isOneTapped = true
+                    withAnimation {
+                        isOneTapped = true
+                    }
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "끌어 오기")
                         .padding(.bottom, 13)
@@ -112,7 +115,7 @@ struct DragPracticeView2: View {
         }
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
-            isSuceess = false
+            isSuccess = false
         }
     }
 }

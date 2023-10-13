@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RotationPracticeView: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     @State private var currentAmount = Angle.degrees(0)
@@ -39,11 +39,11 @@ struct RotationPracticeView: View {
                                 
                                 if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
                                     withAnimation {
-                                        isSuceess = true
+                                        isSuccess = true
                                     }
                                 } else {
                                     print(accumulateAngle.degrees)
-                                    isSuceess = false
+                                    isSuccess = false
                                 }
                             })
                 GeometryReader { geometry in
@@ -59,7 +59,7 @@ struct RotationPracticeView: View {
                                 .edgesIgnoringSafeArea(.top)
                         }
                 }
-                Text(isSuceess ? "잘하셨어요!" : "지도를 회전시켜 볼까요?")
+                Text(isSuccess ? "잘하셨어요!" : "지도를 회전시켜 볼까요?")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -68,7 +68,7 @@ struct RotationPracticeView: View {
                     .padding(.top, 30)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
-                if isSuceess {
+                if isSuccess {
                     ToucherNavigationLink(label: "완료") {
                         FinalView(gestureTitle: "회전하기")
                             .padding(.bottom, 13)
@@ -100,7 +100,7 @@ struct RotationPracticeView: View {
             }
             .onAppear {
                 isTapped = false
-                isSuceess = false
+                isSuccess = false
                 isOneTapped = false
             }
         }

@@ -10,7 +10,7 @@ import SwiftUI
 struct DoubleTapPracticeView2: View {
     
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     let UIWidth = UIScreen.main.bounds.width
@@ -22,13 +22,13 @@ struct DoubleTapPracticeView2: View {
             Image("ex_image")
                 .resizable()
                 .scaledToFit()
-                .scaleEffect(isSuceess ? 2 : 1)
+                .scaleEffect(isSuccess ? 2 : 1)
                 .ignoresSafeArea()
                 .gesture(
                     TapGesture(count: 2)
                         .onEnded {
                             withAnimation {
-                                isSuceess.toggle()
+                                isSuccess.toggle()
                                 isTapped = true
                             }
                         }
@@ -42,15 +42,15 @@ struct DoubleTapPracticeView2: View {
                                 })
                 )
             
-            Text(isSuceess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
-                .foregroundColor(isOneTapped && !isSuceess ? .accentColor : .primary)
+            Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
+                .foregroundColor(isOneTapped && !isSuccess ? .accentColor : .primary)
                 .multilineTextAlignment(.center)
                 .lineSpacing(10)
                 .font(.largeTitle)
                 .bold()
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "두 번 누르기")
                         .padding(.bottom, 13)
@@ -81,7 +81,7 @@ struct DoubleTapPracticeView2: View {
         }
         .onAppear {
             isTapped = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LongTapPracticeView2: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     @GestureState private var isPressed = false
@@ -24,12 +24,12 @@ struct LongTapPracticeView2: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
+            if isOneTapped && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             ScrollView {
-                Text(isSuceess ? "잘하셨어요!\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
+                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
@@ -56,7 +56,7 @@ struct LongTapPracticeView2: View {
                                     }
                                     .onEnded {_ in
                                         withAnimation {
-                                            isSuceess = true
+                                            isSuccess = true
                                             isTapped = true
                                             scale = 1
                                             selectedIndex = index
@@ -76,19 +76,19 @@ struct LongTapPracticeView2: View {
                 //                }
                 .ignoresSafeArea()
                 .overlay {
-                    if isSuceess {
+                    if isSuccess {
                         Rectangle()
                             .foregroundStyle(.ultraThinMaterial)
                             .ignoresSafeArea()
                             .onTapGesture {
-                                isSuceess = false
+                                isSuccess = false
                                 isOneTapped = false
                                 selectedIndex = nil
                             }
                     }
                 }
                 .overlay(alignment: .top) {
-                    if isSuceess {
+                    if isSuccess {
                         if let selectedIndex {
                             Image("Album\(selectedIndex)")
                                 .resizable()
@@ -102,7 +102,7 @@ struct LongTapPracticeView2: View {
                 }
             }
             .scrollDisabled(true)
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "길게 누르기")
                         .padding(.bottom, 13)
@@ -129,7 +129,7 @@ struct LongTapPracticeView2: View {
         }
         .onAppear {
             isTapped = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
         }
     }
