@@ -13,6 +13,7 @@ struct RotationPracticeView: View {
     @State private var isOneTapped = false
     
     @State private var currentAmount = Angle.degrees(0)
+    @State private var accumulateAngle: Angle = .degrees(0)
     
     @Namespace var namespace
     
@@ -23,7 +24,7 @@ struct RotationPracticeView: View {
                     .scaledToFill()
                     .frame(maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.bottom)
-                    .rotationEffect(currentAmount)
+                    .rotationEffect(accumulateAngle + currentAmount)
                     .gesture(
                         RotationGesture()
                             .onChanged { angle in
@@ -32,13 +33,16 @@ struct RotationPracticeView: View {
                                     isTapped = true
                                 }
                             }
-                            .onEnded {_ in
-                                if currentAmount.degrees < -30 || currentAmount.degrees > 30 {
+                            .onEnded { _ in
+                                accumulateAngle += currentAmount
+                                currentAmount = .zero
+                                
+                                if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
                                     withAnimation {
                                         isSuceess = true
                                     }
                                 } else {
-                                    print(currentAmount.degrees)
+                                    print(accumulateAngle.degrees)
                                     isSuceess = false
                                 }
                             })
