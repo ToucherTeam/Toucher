@@ -58,12 +58,12 @@ struct DragPracticeView2: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(Color("BG2"))
+                                        .foregroundColor(isSuceess ? .clear : Color("BG2"))
                                         .scaleEffect(isAnimate ? 1.6 : 1.4)
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(Color("Secondary"))
-                                        .scaleEffect(isAnimate ? 1.4 : 0.9)
+                                        .foregroundColor(isSuceess ? .clear : Color("Secondary"))
+                                        .scaleEffect(isAnimate ? 1.4 : 1)
                                 }
                                 .onAppear {
                                     withAnimation(.easeInOut(duration: 1).repeatForever()) {
