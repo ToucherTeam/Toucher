@@ -28,14 +28,14 @@ struct DragPracticeView2: View {
             VStack {
                 Rectangle().frame(height: 0)
                 Spacer().frame(height: 40)
-                Text(isSuceess ? "잘하셨어요!\n\n" : 
+                Text(isSuceess ? "잘하셨어요!\n\n" :
                         isTried || isOneTapped ? "카메라 아이콘을\n꾹 누른 상태로\n 움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
-                    .multilineTextAlignment(.center)
-                    .font(.largeTitle)
-                    .padding(10)
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
-                    .bold()
-                    .padding(.top, 30)
+                .multilineTextAlignment(.center)
+                .font(.largeTitle)
+                .padding(10)
+                .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                .bold()
+                .padding(.top, 30)
                 LazyVGrid(columns: columns) {
                     ReorderableForEach($data,
                                        allowReordering: $allowReordering,
@@ -47,27 +47,36 @@ struct DragPracticeView2: View {
                             .scaledToFit()
                     }
                 }
+                .background {
+                    LazyVGrid(columns: columns) {
+                        ForEach(0..<8) { index in
+                            if index != 7 {
+                                Rectangle()
+                                    .scaledToFit()
+                                    .foregroundColor(.clear)
+                            } else {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(Color("BG2"))
+                                        .scaleEffect(isAnimate ? 1.6 : 1.4)
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(Color("Secondary"))
+                                        .scaleEffect(isAnimate ? 1.4 : 0.9)
+                                }
+                                .onAppear {
+                                    withAnimation(.easeInOut(duration: 1).repeatForever()) {
+                                        isAnimate = true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 .padding()
                 .onTapGesture {
                     isOneTapped = true
-                }
-                .background(alignment: .bottomTrailing) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(Color("Secondary_alert"))
-                            .scaleEffect(isAnimate ? 1.6 : 1.4)
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(Color("Secondary"))
-                            .scaleEffect(isAnimate ? 1.4 : 1)
-                    }
-                    .onAppear {
-                        withAnimation(.easeInOut(duration: 1).repeatForever()) {
-                            isAnimate = true
-                        }
-                    }
-                    .padding(19)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
