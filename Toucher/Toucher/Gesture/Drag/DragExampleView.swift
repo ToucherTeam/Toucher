@@ -25,8 +25,7 @@ struct DragExampleView: View {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
-                Text(isSuceess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." :
-                        isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
+                Text(isSuceess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
                     .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -73,7 +72,6 @@ struct DragExampleView: View {
                                         }
                                     }
                                     .onEnded { value in
-                                        
                                         if  UIScreen.main.bounds.height * 0.23...UIScreen.main.bounds.height * 0.4 ~= value.translation.height &&
                                              -30...30 ~= value.translation.width {
                                             isArrived = true
@@ -88,8 +86,9 @@ struct DragExampleView: View {
                                         if !isArrived {
                                             withAnimation(.easeInOut) {
                                                 offset = .zero
-                                                scale = 1
+                                                scale = 1.2
                                                 isPressed = false
+                                                isOneTapped = true
                                             }
                                         }
                                     }
@@ -119,7 +118,7 @@ struct DragExampleView: View {
                 }
                 .multilineTextAlignment(.center)
                 .lineSpacing(10)
-                .foregroundColor(isPressed ? .clear : .gray)
+                .foregroundColor(isPressed || isOneTapped ? .clear : .gray)
                 .font(.title)
                 .padding(.bottom, 80)
             }
