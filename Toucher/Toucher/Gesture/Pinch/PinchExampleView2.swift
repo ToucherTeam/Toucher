@@ -9,13 +9,13 @@ import SwiftUI
 
 struct PinchExampleView2: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var scale: CGFloat = 1
     
     var body: some View {
         ZStack {
             VStack {
-                Text(isSuceess ? "잘하셨어요!\n" : "이번엔 크기를 작게\n만들어 볼까요?")
+                Text(isSuccess ? "잘하셨어요!\n" : "이번엔 크기를 작게\n만들어 볼까요?")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -44,7 +44,7 @@ struct PinchExampleView2: View {
                             .onEnded { _ in
                                 withAnimation {
                                     if scale < 0.8 {
-                                        isSuceess = true
+                                        isSuccess = true
                                         self.scale = 0.6
                                     }
                                 }
@@ -78,7 +78,7 @@ struct PinchExampleView2: View {
 
             }
             
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink {
                     PinchPracticeView1()
                 }

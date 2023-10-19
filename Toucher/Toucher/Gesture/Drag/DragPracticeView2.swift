@@ -11,43 +11,80 @@ import UniformTypeIdentifiers
 struct DragPracticeView2: View {
     @State private var data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isDroped = false
+    @State private var isTried = false
+    @State private var isOneTapped = false
+    
+    @State private var isAnimate = false
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 4)
     
     var body: some View {
         ZStack {
+            if isOneTapped && !isSuccess {
+                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            }
             VStack {
                 Rectangle().frame(height: 0)
                 Spacer().frame(height: 40)
-                Text(isSuceess ? "잘하셨어요!\n\n" : "카메라를 3초 누른 뒤\n화살표가 가리키는 곳에\n옮겨볼까요?")
-                    .font(Font.customTitle())
-                    .multilineTextAlignment(.center)
-                    .padding(10)
-                    .bold()
-                    .padding(.top, 30)
+                Text(isSuccess ? "잘하셨어요!\n\n" :
+                        isTried || isOneTapped ? "카메라 아이콘을\n꾹 누른 상태로\n 움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
+                .multilineTextAlignment(.center)
+                .font(.largeTitle)
+                .padding(10)
+                .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                .bold()
+                .padding(.top, 30)
                 LazyVGrid(columns: columns) {
                     ReorderableForEach($data,
                                        allowReordering: $allowReordering,
-                                       isReached: $isSuceess,
-                                       isDroped: $isDroped) { item, _ in
+                                       isReached: $isSuccess,
+                                       isDroped: $isDroped,
+                                       isTried: $isTried) { item, _ in
                         Image(item)
                             .resizable()
                             .scaledToFit()
                     }
                 }
+                .background {
+                    LazyVGrid(columns: columns) {
+                        ForEach(0..<8) { index in
+                            if index != 7 {
+                                Rectangle()
+                                    .scaledToFit()
+                                    .foregroundColor(.clear)
+                            } else {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(isSuccess ? .clear : Color("BG2"))
+                                        .scaleEffect(isAnimate ? 1.6 : 1.4)
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(isSuccess ? .clear : Color("Secondary"))
+                                        .scaleEffect(isAnimate ? 1.4 : 1)
+                                }
+                                .animation(.easeInOut, value: isSuccess)
+                                .onAppear {
+                                    withAnimation(.easeInOut(duration: 1).repeatForever()) {
+                                        isAnimate = true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 .padding()
-                if !isSuceess {
-                    VStackArrow()
-                        .rotationEffect(.degrees(180))
-                        .padding(.trailing, UIScreen.main.bounds.width * 0.1)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                .onTapGesture {
+                    withAnimation {
+                        isOneTapped = true
+                    }
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "끌어 오기")
                         .padding(.bottom, 13)
@@ -55,7 +92,7 @@ struct DragPracticeView2: View {
                             Rectangle()
                                 .frame(height: 0.5)
                                 .foregroundColor(Color("GR3")),
-                                alignment: .top
+                            alignment: .top
                         )
                         .toolbar {
                             ToolbarItem(placement: .principal) {
@@ -69,7 +106,7 @@ struct DragPracticeView2: View {
             Rectangle()
                 .frame(height: 0.5)
                 .foregroundColor(Color("GR3")),
-                alignment: .top
+            alignment: .top
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -78,7 +115,7 @@ struct DragPracticeView2: View {
         }
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
-            isSuceess = false
+            isSuccess = false
         }
     }
 }
@@ -88,6 +125,7 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
     @Binding var allowReordering: Bool
     @Binding var isReached: Bool
     @Binding var isDroped: Bool
+    @Binding var isTried: Bool
     
     private let content: (Data, Bool) -> Content
     
@@ -98,11 +136,13 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
                 allowReordering: Binding<Bool>,
                 isReached: Binding<Bool>,
                 isDroped: Binding<Bool>,
+                isTried: Binding<Bool>,
                 @ViewBuilder content: @escaping (Data, Bool) -> Content) {
         _data = data
         _allowReordering = allowReordering
         _isReached = isReached
         _isDroped = isDroped
+        _isTried = isTried
         self.content = content
     }
     
@@ -120,7 +160,8 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
                         draggedItem: $draggedItem,
                         hasChangedLocation: $hasChangedLocation,
                         isReached: $isReached,
-                        isDroped: $isDroped)
+                        isDroped: $isDroped,
+                        isTried: $isTried)
                     )
             } else {
                 content(item, false)
@@ -136,15 +177,14 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
         @Binding var hasChangedLocation: Bool
         @Binding var isReached: Bool
         @Binding var isDroped: Bool
+        @Binding var isTried: Bool
         
         func dropEntered(info: DropInfo) {
             guard item != draggedItem,
                   let current = draggedItem,
                   let from = data.firstIndex(of: current),
                   let indexTo = data.firstIndex(of: item)
-            else {
-                return
-            }
+            else { return }
             hasChangedLocation = true
             if data[indexTo] != current {
                 print(indexTo)
@@ -152,6 +192,7 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
                     isReached = true
                 } else {
                     isReached = false
+                    isTried = true
                 }
                 withAnimation {
                     data.move(fromOffsets: IndexSet(integer: from),

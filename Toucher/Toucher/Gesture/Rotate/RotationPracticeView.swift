@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RotationPracticeView: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     @State private var currentAmount = Angle.degrees(0)
+    @State private var accumulateAngle: Angle = .degrees(0)
     
     @Namespace var namespace
     
@@ -23,7 +24,7 @@ struct RotationPracticeView: View {
                     .scaledToFill()
                     .frame(maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.bottom)
-                    .rotationEffect(currentAmount)
+                    .rotationEffect(accumulateAngle + currentAmount)
                     .gesture(
                         RotationGesture()
                             .onChanged { angle in
@@ -32,14 +33,17 @@ struct RotationPracticeView: View {
                                     isTapped = true
                                 }
                             }
-                            .onEnded {_ in
-                                if currentAmount.degrees < -30 || currentAmount.degrees > 30 {
+                            .onEnded { _ in
+                                accumulateAngle += currentAmount
+                                currentAmount = .zero
+                                
+                                if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
                                     withAnimation {
-                                        isSuceess = true
+                                        isSuccess = true
                                     }
                                 } else {
-                                    print(currentAmount.degrees)
-                                    isSuceess = false
+                                    print(accumulateAngle.degrees)
+                                    isSuccess = false
                                 }
                             })
                 GeometryReader { geometry in
@@ -55,7 +59,7 @@ struct RotationPracticeView: View {
                                 .edgesIgnoringSafeArea(.top)
                         }
                 }
-                Text(isSuceess ? "잘하셨어요!" : "지도를 회전시켜 볼까요?")
+                Text(isSuccess ? "잘하셨어요!" : "지도를 회전시켜 볼까요?")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -64,7 +68,7 @@ struct RotationPracticeView: View {
                     .padding(.top, 30)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
-                if isSuceess {
+                if isSuccess {
                     ToucherNavigationLink(label: "완료") {
                         FinalView(gestureTitle: "회전하기")
                             .padding(.bottom, 13)
@@ -96,7 +100,7 @@ struct RotationPracticeView: View {
             }
             .onAppear {
                 isTapped = false
-                isSuceess = false
+                isSuccess = false
                 isOneTapped = false
             }
         }

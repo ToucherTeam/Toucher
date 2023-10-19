@@ -9,19 +9,19 @@ import SwiftUI
 
 struct LongTapPracticeView1: View {
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
     @State private var isOneTapped = false
     
     @GestureState private var isPressed = false
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
+            if isOneTapped && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
-                Text(isSuceess ? "잘하셨어요!\n\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                Text(isSuccess ? "잘하셨어요!\n\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
+                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
@@ -45,7 +45,7 @@ struct LongTapPracticeView1: View {
                             }
                             .onEnded {_ in
                                 withAnimation {
-                                    isSuceess = true
+                                    isSuccess = true
                                     isTapped = true
                                 }
                             }
@@ -58,7 +58,7 @@ struct LongTapPracticeView1: View {
                                 })
                     )
                     .background(alignment: .topLeading) {
-                        if isSuceess {
+                        if isSuccess {
                             VStack {
                                 Group {
                                     HStack {
@@ -101,7 +101,7 @@ struct LongTapPracticeView1: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity)
-            if isSuceess {
+            if isSuccess {
                 ToucherNavigationLink {
                     LongTapPracticeView2()
                         .padding(.bottom, 13)
@@ -122,7 +122,7 @@ struct LongTapPracticeView1: View {
         }
         .onAppear {
             isTapped = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
         }
     }
