@@ -19,9 +19,18 @@ struct HelpButton: View {
     var textColor: Color {
         switch style {
         case .primary:
-            return .customPrimary
+            return .customBG1
         case .secondary:
             return .customSecondary
+        }
+    }
+    
+    var backgroundColor: Color {
+        switch style {
+        case .primary:
+            return .customPrimary
+        case .secondary:
+            return .customBG2
         }
     }
     
@@ -30,6 +39,13 @@ struct HelpButton: View {
             Text("도움이 필요하신가요?")
                 .font(.customButton)
                 .foregroundStyle(textColor)
+                .padding(.vertical, 21)
+                .frame(maxWidth: .infinity)
+                .background {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .foregroundStyle(backgroundColor)
+                }
+                .padding(.horizontal, 16)
         }
     }
 }
