@@ -17,7 +17,7 @@ struct DoubleTapPracticeView1: View {
         
         ZStack {
             if isOneTapped && !isSuccess {
-                Color("Secondary_alert").ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게\n두 번 눌러주세요!" : "검색창을 두 번\n눌러볼까요?")
@@ -90,7 +90,7 @@ struct DoubleTapPracticeView1: View {
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
-                .foregroundColor(Color("GR3")),
+                .foregroundColor(.customGR3),
                 alignment: .top
         )
         .toolbar {

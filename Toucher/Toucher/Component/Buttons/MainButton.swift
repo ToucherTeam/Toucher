@@ -38,7 +38,7 @@ struct MainButton: View {
         Image(isTapped ? image + "Pressed" : image)
             .resizable()
             .scaledToFit()
-            .frame(width: 100)
+            .frame(width: 100, height: 95)
             .gesture(type == .none ? nil : longPress)
             .offset(y: isTapped ? 5 : 0)
             .background {
@@ -94,7 +94,13 @@ struct MainButton: View {
 }
 
 #Preview {
-    MainButton(type: .ready, gesture: .doubleTap) {
-        // action here
+    VStack {
+        MainButton(type: .ready, gesture: .doubleTap) {
+            // action here
+        }
+        .padding(.bottom, 40)
+        MainButton(type: .done, gesture: .doubleTap) {
+            // action here
+        }
     }
 }

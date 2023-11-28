@@ -20,7 +20,7 @@ struct SwipeExampleView: View {
     var body: some View {
         ZStack {
             if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
-                Color("Secondary")
+                Color.customSecondary
                     .ignoresSafeArea()
             }
 
@@ -144,7 +144,7 @@ struct SwipeExampleView: View {
                     .font(.customDescription)
             }
         }
-        .foregroundColor(Color("GR1"))
+        .foregroundColor(.customGR1)
         .modifier(GetHeightModifier())
         .onPreferenceChange(ContentRectSize.self) { rects in
             swipeVM.headerAreaHeight = rects
@@ -156,12 +156,12 @@ struct SwipeExampleView: View {
         HStack(spacing: 8) {
             ForEach(0..<swipeVM.swipeContent.count, id: \.self) { index in
                 Circle()
-                    .foregroundColor(Color("BG2"))
+                    .foregroundColor(.customBG2)
                     .frame(width: 8, height: 8)
                     .overlay {
                         if swipeVM.currentIndex == index - 1 {
                             Circle()
-                                .foregroundColor(Color("Primary"))
+                                .foregroundColor(.customPrimary)
                                 .frame(width: 8, height: 8)
                                 .matchedGeometryEffect(id: "INDICATOR", in: animation)
                         }
@@ -272,7 +272,7 @@ struct Arrows: View {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 28))
                             .fontWeight(.black)
-                            .foregroundColor(Color("Primary"))
+                            .foregroundColor(.customPrimary)
                             .opacity(self.fade)
                             .scaleEffect(self.scale)
                             .animation(Animation.easeOut(duration: 0.9)
@@ -280,7 +280,7 @@ struct Arrows: View {
                                 .delay(0.3 * Double(3 - index)), value: isAnimating)
                     }
                     Circle()
-                        .foregroundColor(Color("Secondary"))
+                        .foregroundColor(.customSecondary)
                         .frame(width: 56, height: 56)
                         .padding(.leading, 19)
                         .padding(.trailing, 8)
@@ -305,7 +305,7 @@ struct VstackArrow: View {
                 Image(systemName: "chevron.down")
                     .font(.system(size: 28))
                     .fontWeight(.black)
-                    .foregroundColor(Color("Primary"))
+                    .foregroundColor(.customPrimary)
                     .opacity(self.fade)
                     .scaleEffect(self.scale)
                     .animation(Animation.easeOut(duration: 0.9)

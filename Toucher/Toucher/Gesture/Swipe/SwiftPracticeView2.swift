@@ -26,7 +26,7 @@ struct SwiftPracticeView2: View {
                     ForEach(swipeVM.messageData, id: \.id) { message in
                         HStack {
                             Image(systemName: message.imageName)
-                                .foregroundColor(Color("GR1"))
+                                .foregroundColor(.customGR1)
                                 .font(.system(size: 60))
                             VStack(alignment: .leading) {
                                 HStack {
@@ -80,7 +80,7 @@ struct SwiftPracticeView2: View {
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
-                .foregroundColor(Color("GR3")),
+                .foregroundColor(.customGR3),
                 alignment: .top
         )
         .toolbar {

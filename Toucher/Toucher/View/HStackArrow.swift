@@ -23,7 +23,7 @@ struct HStackArrow: View {
                 Image(systemName: "chevron.left")
                     .font(.system(size: size))
                     .fontWeight(.black)
-                    .foregroundColor(Color("Primary"))
+                    .foregroundColor(.customPrimary)
                     .opacity(fade)
                     .scaleEffect(scale)
                     .animation(Animation.easeOut(duration: 0.9)

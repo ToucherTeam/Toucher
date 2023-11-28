@@ -42,7 +42,7 @@ struct SwiftPracticeView1: View {
                             }
                         }
                         .frame(height: 100)
-                        .listRowBackground(Color("GR5"))
+                        .listRowBackground(Color.customGR5)
                     }
                     .cornerRadius(20)
                     .scrollDisabled(true)
@@ -68,7 +68,7 @@ struct SwiftPracticeView1: View {
                                 }
                         }
                         .frame(height: 100)
-                        .listRowBackground(Color("GR5"))
+                        .listRowBackground(Color.customGR5)
                     }
                     .cornerRadius(20)
                     .scrollDisabled(true)
@@ -109,7 +109,7 @@ struct SwiftPracticeView1: View {
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
-                .foregroundColor(Color("GR3")),
+                .foregroundColor(.customGR3),
                 alignment: .top
         )
         .toolbar {
@@ -149,7 +149,7 @@ struct CustomToolbar: View {
                 Text(title)
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
-                    .foregroundColor(Color("GR1"))
+                    .foregroundColor(.customGR1)
                 Spacer()
                 Image(systemName: "gearshape")
                     .foregroundColor(.clear)
@@ -157,7 +157,7 @@ struct CustomToolbar: View {
             .overlay(alignment: .leading) {
                 Text("이전으로")
                     .offset(x: -25)
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(.customPrimary)
             }
             .frame(maxWidth: .infinity)
         }

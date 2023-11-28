@@ -16,7 +16,7 @@ struct SwipeFinalView: View {
             .overlay(
                 Rectangle()
                     .frame(height: 0.5)
-                    .foregroundColor(Color("GR3")),
+                    .foregroundColor(.customGR3),
                     alignment: .top
             )
             .toolbar {

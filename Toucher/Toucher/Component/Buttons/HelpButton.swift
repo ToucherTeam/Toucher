@@ -58,7 +58,12 @@ struct HelpButton: View {
 }
 
 #Preview {
-    HelpButton(style: .primary) {
-        // action here
+    VStack {
+        HelpButton(style: .primary) {
+            // action here
+        }
+        HelpButton(style: .secondary) {
+            // action here
+        }
     }
 }

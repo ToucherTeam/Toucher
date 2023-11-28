@@ -17,5 +17,4 @@ extension Color {
     static let customSecondary = Color("CustomSecondary")
     static let customBG2 = Color("CustomBG2")
     static let customBG1 = Color("CustomBG1")
-
 }
