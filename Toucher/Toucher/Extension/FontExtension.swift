@@ -11,6 +11,7 @@ import SwiftUI
 extension Font {
     static let customTitle = Font.system(size: 34, weight: .bold)
     static let customButton = Font.system(size: 24, weight: .bold)
+    static let customStart = Font.system(size: 22, weight: .bold)
     static let customDescription = Font.system(size: 28, weight: .regular)
     static let customDescriptionEmphasis = Font.system(size: 28, weight: .bold)
 }

@@ -51,6 +51,7 @@
 		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
 		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
 		F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */; };
+		F0ED9B4B2B160ED800E8D5C9 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buttons.xcassets; sourceTree = "<group>"; };
+		F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */,
+				F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				07791D402AAACDAA0024C04F /* PanViewModel.swift in Sources */,
 				29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */,
 				29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */,
+				F0ED9B4B2B160ED800E8D5C9 /* MainButton.swift in Sources */,
 				07D345EF2AA8716500B7329D /* GetHeightModifer.swift in Sources */,
 				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
