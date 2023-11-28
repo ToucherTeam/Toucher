@@ -50,6 +50,7 @@
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
 		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
 		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
+		F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buttons.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				29E852302AA08BF6003F4AF4 /* Extension */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
 				F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */,
+				F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */,
 				29E852242AA08347003F4AF4 /* Preview Content */,
 			);
 			path = Toucher;
@@ -351,6 +354,7 @@
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
+				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
