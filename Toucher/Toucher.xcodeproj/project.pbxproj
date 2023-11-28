@@ -113,12 +113,12 @@
 		07670B932AA749D600DE5113 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				F0ED9B452B15FCA400E8D5C9 /* Buttons */,
 				07D345E92AA8716500B7329D /* GetHeightModifer.swift */,
 				29F1D5132AA764270074C1FE /* HStackArrow.swift */,
 				29F1D5192AA775520074C1FE /* VStackArrow.swift */,
 				29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */,
 				29F1D5152AA765990074C1FE /* FinalView.swift */,
-				F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -278,6 +278,14 @@
 				29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */,
 			);
 			path = Pinch;
+			sourceTree = "<group>";
+		};
+		F0ED9B452B15FCA400E8D5C9 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
