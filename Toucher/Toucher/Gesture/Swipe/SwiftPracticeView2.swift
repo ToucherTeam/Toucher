@@ -18,7 +18,7 @@ struct SwiftPracticeView2: View {
                     swipeVM.messageData.isEmpty ? "잘하셨어요!"
                     : "잘하셨어요!\n\n" : "메시지를 밀어서\n삭제해 보세요\n"
                 )
-                    .font(.customTitle())
+                    .font(.customTitle)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
                 Spacer()

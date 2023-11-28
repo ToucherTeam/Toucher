@@ -71,26 +71,26 @@ struct SwipeExampleView: View {
         case (true, _, true):
             Text("잘하셨어요!\n")
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
             
         case (false, -1, true):
             Text("왼쪽으로\n 살짝쓸어보세요")
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
             
         case (false, -1, false):
             Text("왼쪽으로 밀어볼까요?\n")
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
             
         default:
             Text("이번에 오른쪽으로\n밀어볼까요?")
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
         }
     }
@@ -133,15 +133,15 @@ struct SwipeExampleView: View {
         VStack(spacing: 10) {
             HStack(spacing: 0) {
                 Text("현재 ")
-                    .font(.customDescription())
+                    .font(.customDescription)
                 Text("보이지 않는 화면을")
-                    .font(.customDescriptionEmphasis())
+                    .font(.customDescriptionEmphasis)
             }
             HStack(spacing: 0) {
                 Text("찾을 때")
-                    .font(.customDescriptionEmphasis())
+                    .font(.customDescriptionEmphasis)
                 Text("주로 사용해요.")
-                    .font(.customDescription())
+                    .font(.customDescription)
             }
         }
         .foregroundColor(Color("GR1"))

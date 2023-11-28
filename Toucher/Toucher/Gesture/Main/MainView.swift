@@ -37,7 +37,7 @@ struct MainView: View {
                                         .frame(width: 60, height: 60)
                                     
                                     Text(gesture.name)
-                                        .font(.customButtonText())
+                                        .font(.customButton)
                                         .foregroundColor(.white)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .padding(.leading, 16)

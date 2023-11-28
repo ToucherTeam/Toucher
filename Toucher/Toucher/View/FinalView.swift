@@ -44,7 +44,7 @@ struct FinalView: View {
                 appState.rootViewId = UUID()
             } label: {
                 Text("다시하기")
-                    .font(.customButtonText())
+                    .font(.customButton)
                     .fontWeight(.bold)
                     .foregroundColor(.accentColor)
                     .frame(height: 64)
@@ -61,7 +61,7 @@ struct FinalView: View {
                 mainVM.navigationPath = []
             } label: {
                 Text("처음으로")
-                    .font(.customButtonText())
+                    .font(.customButton)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .frame(height: 64)
@@ -76,7 +76,7 @@ struct FinalView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(gestureTitle)
-                    .font(.customButtonText())
+                    .font(.customButton)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .frame(height: 64)

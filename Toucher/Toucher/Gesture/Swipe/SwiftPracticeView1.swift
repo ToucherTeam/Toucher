@@ -17,7 +17,7 @@ struct SwiftPracticeView1: View {
         ZStack {
             VStack {
                 Text(text[swipeVM.index])
-                    .font(.customTitle())
+                    .font(.customTitle)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
                     

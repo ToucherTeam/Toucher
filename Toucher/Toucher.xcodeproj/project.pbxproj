@@ -48,6 +48,8 @@
 		29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
+		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
+		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView1.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
+		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				29F1D5192AA775520074C1FE /* VStackArrow.swift */,
 				29F1D5112AA75FE80074C1FE /* ToucherNavigationLink.swift */,
 				29F1D5152AA765990074C1FE /* FinalView.swift */,
+				F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			children = (
 				29E852312AA08C16003F4AF4 /* FontExtension.swift */,
 				29E852332AA08C4E003F4AF4 /* ViewExtension.swift */,
+				F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */,
 				07791D402AAACDAA0024C04F /* PanViewModel.swift in Sources */,
 				29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */,
 				29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */,
@@ -380,6 +387,7 @@
 				29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29EAB4272AA63368004E5429 /* DragExampleView.swift in Sources */,
+				F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */,
 				29EAB4222AA62ECD004E5429 /* LongTapPracticeView2.swift in Sources */,
 				29EAB4202AA62EC2004E5429 /* LongTapPracticeView1.swift in Sources */,
 				29EAB41E2AA62D41004E5429 /* LongTapExampleView.swift in Sources */,
