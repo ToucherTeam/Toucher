@@ -41,7 +41,7 @@ struct ConfettiView: View {
                         .shape(.starPop),
                         .shape(.blink)
                      ],
-                     colors: [.pink, .orange],
+                     colors: [.customPrimary, .customSecondary, .customBG1, .customBG2],
                      confettiSize: 10,
                      rainHeight: UIScreen.main.bounds.height,
                      openingAngle: .degrees(60),
