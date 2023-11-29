@@ -19,3 +19,9 @@ struct MessageModel: Identifiable, Equatable, Hashable {
     var text: String
     var time: String
 }
+
+var messageData =  [
+    MessageModel(imageName: "person.circle.fill", phNumber: "+82 10-0000-0000", text: "메세지 내용", time: "어제"),
+    MessageModel(imageName: "person.circle.fill", phNumber: "+82 10-0000-0000", text: "메세지 내용", time: "금요일"),
+    MessageModel(imageName: "person.circle.fill", phNumber: "+82 10-0000-0000", text: "메세지 내용", time: "수요일")
+]

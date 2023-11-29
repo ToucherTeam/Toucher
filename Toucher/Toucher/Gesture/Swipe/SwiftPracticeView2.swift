@@ -15,7 +15,7 @@ struct SwiftPracticeView2: View {
             VStack {
                 Text(
                     swipeVM.btnActive ?
-                    swipeVM.messageData.isEmpty ? "잘하셨어요!"
+                    messageData.isEmpty ? "잘하셨어요!"
                     : "잘하셨어요!\n\n" : "메시지를 밀어서\n삭제해 보세요\n"
                 )
                     .font(.customTitle)
@@ -23,7 +23,7 @@ struct SwiftPracticeView2: View {
                     .padding(.top, 40)
                 Spacer()
                 List {
-                    ForEach(swipeVM.messageData, id: \.id) { message in
+                    ForEach(messageData, id: \.id) { message in
                         HStack {
                             Image(systemName: message.imageName)
                                 .foregroundColor(.customGR1)
@@ -91,7 +91,7 @@ struct SwiftPracticeView2: View {
     }
 
     func deleteMessage(_ message: MessageModel) {
-        swipeVM.messageData.removeAll(where: { $0 == message })
+        messageData.removeAll(where: { $0 == message })
     }
 }
 

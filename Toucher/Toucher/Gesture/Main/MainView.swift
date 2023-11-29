@@ -58,13 +58,14 @@ struct MainView: View {
                         VStack(spacing: 0) {
                             customHeader(for: gesture)
 
-                            viewForgesture(gesture)
+                            viewForGesture(gesture)
                         }
                     }
                     Spacer()
                 }
                 .padding(.bottom, mainVM.isFinishActive ? 30 : 0)
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
         .accentColor(.red)
         .onAppear {
@@ -72,7 +73,7 @@ struct MainView: View {
         }
     }
     
-    func viewForgesture(_ gesture: MainModel) -> AnyView {
+    func viewForGesture(_ gesture: MainModel) -> AnyView {
         switch gesture.name {
         case "두 번 누르기":
             return AnyView(DoubleTapExampleView().navigationBarBackButtonHidden())

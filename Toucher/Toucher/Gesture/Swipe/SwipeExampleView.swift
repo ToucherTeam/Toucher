@@ -25,6 +25,7 @@ struct SwipeExampleView: View {
             }
 
             VStack {
+                
                 titleText()
                 
                 Spacer()
