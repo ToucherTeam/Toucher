@@ -15,7 +15,7 @@ struct DragPracticeView1: View {
     var body: some View {
         ZStack {
             if isTapped && !isSuccess {
-                Color("Secondary_alert").ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 Text(isSuccess ? "잘하셨어요!\n" : isTapped ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
@@ -69,7 +69,7 @@ struct DragPracticeView1: View {
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
-                .foregroundColor(Color("GR3")),
+                .foregroundColor(.customGR3),
                 alignment: .top
         )
         .toolbar {

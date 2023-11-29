@@ -37,10 +37,10 @@ struct LongTapExampleView: View {
                         ZStack {
                             Circle()
                                 .frame(width: 184)
-                                .foregroundColor(Color("Secondary_alert"))
+                                .foregroundColor(.customBG2)
                             Circle()
                                 .frame(width: 144)
-                                .foregroundColor(Color("Secondary"))
+                                .foregroundColor(.customSecondary)
                         }
                         .scaleEffect(isPressed ? 1.6 : 1)
                         .opacity(isSuccess ? 0 : 1)
@@ -97,7 +97,7 @@ struct LongTapExampleView: View {
                         .overlay(
                             Rectangle()
                                 .frame(height: 0.5)
-                                .foregroundColor(Color("GR3")),
+                                .foregroundColor(.customGR3),
                                 alignment: .top
                         )
                         .toolbar {

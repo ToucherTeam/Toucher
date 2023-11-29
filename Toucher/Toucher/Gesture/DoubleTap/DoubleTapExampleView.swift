@@ -16,7 +16,7 @@ struct DoubleTapExampleView: View {
     var body: some View {
         ZStack {
             if isOneTapped && !isSuccess {
-                Color("Secondary_alert").ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")

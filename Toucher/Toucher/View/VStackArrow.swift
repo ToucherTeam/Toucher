@@ -22,7 +22,7 @@ struct VStackArrow: View {
                 Image(systemName: "chevron.down")
                     .font(.system(size: size))
                     .fontWeight(.black)
-                    .foregroundColor(Color("Primary"))
+                    .foregroundColor(.customPrimary)
                     .opacity(self.fade)
                     .scaleEffect(self.scale)
                     .animation(Animation.easeOut(duration: 0.9)

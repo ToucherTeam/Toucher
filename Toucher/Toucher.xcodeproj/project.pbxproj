@@ -47,6 +47,11 @@
 		29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5192AA775520074C1FE /* VStackArrow.swift */; };
 		29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
+		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
+		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
+		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
+		F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */; };
+		F0ED9B4B2B160ED800E8D5C9 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +96,11 @@
 		29F1D5192AA775520074C1FE /* VStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/View/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView1.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
+		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
+		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buttons.xcassets; sourceTree = "<group>"; };
+		F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,7 @@
 		07670B932AA749D600DE5113 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				F0ED9B452B15FCA400E8D5C9 /* Buttons */,
 				07D345E92AA8716500B7329D /* GetHeightModifer.swift */,
 				29F1D5132AA764270074C1FE /* HStackArrow.swift */,
 				29F1D5192AA775520074C1FE /* VStackArrow.swift */,
@@ -183,6 +194,8 @@
 				29EAB4082AA1703A004E5429 /* Gesture */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
+				F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */,
+				F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */,
 				29E852242AA08347003F4AF4 /* Preview Content */,
 			);
 			path = Toucher;
@@ -201,6 +214,7 @@
 			children = (
 				29E852312AA08C16003F4AF4 /* FontExtension.swift */,
 				29E852332AA08C4E003F4AF4 /* ViewExtension.swift */,
+				F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -271,6 +285,15 @@
 			path = Pinch;
 			sourceTree = "<group>";
 		};
+		F0ED9B452B15FCA400E8D5C9 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */,
+				F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,7 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
+				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
+				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,9 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */,
 				07791D402AAACDAA0024C04F /* PanViewModel.swift in Sources */,
 				29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */,
 				29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */,
+				F0ED9B4B2B160ED800E8D5C9 /* MainButton.swift in Sources */,
 				07D345EF2AA8716500B7329D /* GetHeightModifer.swift in Sources */,
 				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
@@ -376,6 +403,7 @@
 				29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29EAB4272AA63368004E5429 /* DragExampleView.swift in Sources */,
+				F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */,
 				29EAB4222AA62ECD004E5429 /* LongTapPracticeView2.swift in Sources */,
 				29EAB4202AA62EC2004E5429 /* LongTapPracticeView1.swift in Sources */,
 				29EAB41E2AA62D41004E5429 /* LongTapExampleView.swift in Sources */,

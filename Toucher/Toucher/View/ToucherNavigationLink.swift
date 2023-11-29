@@ -24,7 +24,7 @@ struct ToucherNavigationLink<Content: View>: View {
                 content
             } label: {
                 Text(label)
-                    .font(.customButtonText())
+                    .font(.customButton)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .frame(height: 64)

@@ -65,7 +65,7 @@ struct PanExampleView: View {
                                                     .bold()
                                                 Spacer()
                                                 Text(item.time)
-                                                    .foregroundColor(Color("GR1"))
+                                                    .foregroundColor(.customGR1)
                                                     .font(.system(size: 13))
                                                     .fontWeight(.regular)
                                                     .padding(.trailing, 22)
@@ -155,7 +155,7 @@ struct PanExampleView: View {
                         .overlay(
                             Rectangle()
                                 .frame(height: 0.5)
-                                .foregroundColor(Color("GR3")),
+                                .foregroundColor(.customGR3),
                             alignment: .top
                         )
                         .toolbar {
