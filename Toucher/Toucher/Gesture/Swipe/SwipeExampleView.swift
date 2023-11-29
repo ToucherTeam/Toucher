@@ -20,7 +20,7 @@ struct SwipeExampleView: View {
     var body: some View {
         ZStack {
             if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
-                Color("Secondary")
+                Color.customSecondary
                     .ignoresSafeArea()
             }
 
@@ -71,26 +71,26 @@ struct SwipeExampleView: View {
         case (true, _, true):
             Text("잘하셨어요!\n")
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
             
         case (false, -1, true):
             Text("왼쪽으로\n 살짝쓸어보세요")
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
             
         case (false, -1, false):
             Text("왼쪽으로 밀어볼까요?\n")
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
             
         default:
             Text("이번에 오른쪽으로\n밀어볼까요?")
                 .multilineTextAlignment(.center)
-                .font(.customTitle())
+                .font(.customTitle)
                 .padding(.top, 42)
         }
     }
@@ -133,18 +133,18 @@ struct SwipeExampleView: View {
         VStack(spacing: 10) {
             HStack(spacing: 0) {
                 Text("현재 ")
-                    .font(.customDescription())
+                    .font(.customDescription)
                 Text("보이지 않는 화면을")
-                    .font(.customDescriptionEmphasis())
+                    .font(.customDescriptionEmphasis)
             }
             HStack(spacing: 0) {
                 Text("찾을 때")
-                    .font(.customDescriptionEmphasis())
+                    .font(.customDescriptionEmphasis)
                 Text("주로 사용해요.")
-                    .font(.customDescription())
+                    .font(.customDescription)
             }
         }
-        .foregroundColor(Color("GR1"))
+        .foregroundColor(.customGR1)
         .modifier(GetHeightModifier())
         .onPreferenceChange(ContentRectSize.self) { rects in
             swipeVM.headerAreaHeight = rects
@@ -156,12 +156,12 @@ struct SwipeExampleView: View {
         HStack(spacing: 8) {
             ForEach(0..<swipeVM.swipeContent.count, id: \.self) { index in
                 Circle()
-                    .foregroundColor(Color("BG2"))
+                    .foregroundColor(.customBG2)
                     .frame(width: 8, height: 8)
                     .overlay {
                         if swipeVM.currentIndex == index - 1 {
                             Circle()
-                                .foregroundColor(Color("Primary"))
+                                .foregroundColor(.customPrimary)
                                 .frame(width: 8, height: 8)
                                 .matchedGeometryEffect(id: "INDICATOR", in: animation)
                         }
@@ -272,7 +272,7 @@ struct Arrows: View {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 28))
                             .fontWeight(.black)
-                            .foregroundColor(Color("Primary"))
+                            .foregroundColor(.customPrimary)
                             .opacity(self.fade)
                             .scaleEffect(self.scale)
                             .animation(Animation.easeOut(duration: 0.9)
@@ -280,7 +280,7 @@ struct Arrows: View {
                                 .delay(0.3 * Double(3 - index)), value: isAnimating)
                     }
                     Circle()
-                        .foregroundColor(Color("Secondary"))
+                        .foregroundColor(.customSecondary)
                         .frame(width: 56, height: 56)
                         .padding(.leading, 19)
                         .padding(.trailing, 8)
@@ -305,7 +305,7 @@ struct VstackArrow: View {
                 Image(systemName: "chevron.down")
                     .font(.system(size: 28))
                     .fontWeight(.black)
-                    .foregroundColor(Color("Primary"))
+                    .foregroundColor(.customPrimary)
                     .opacity(self.fade)
                     .scaleEffect(self.scale)
                     .animation(Animation.easeOut(duration: 0.9)

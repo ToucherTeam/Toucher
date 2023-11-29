@@ -22,7 +22,7 @@ struct MainView: View {
                     ForEach(mainVM.gestures) { gesture in
                         NavigationLink(value: gesture) {
                             LinearGradient(
-                                colors: [Color("Primary"), Color("Secondary")],
+                                colors: [.customPrimary, .customSecondary],
                                 startPoint: UnitPoint(x: 0.09, y: 0.5),
                                 endPoint: UnitPoint(x: 1.65, y: 0.5)
                             )
@@ -37,7 +37,7 @@ struct MainView: View {
                                         .frame(width: 60, height: 60)
                                     
                                     Text(gesture.name)
-                                        .font(.customButtonText())
+                                        .font(.customButton)
                                         .foregroundColor(.white)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .padding(.leading, 16)
@@ -103,18 +103,18 @@ struct MainView: View {
                 Image(systemName: "chevron.backward")
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
-                    .foregroundColor(Color("Primary"))
+                    .foregroundColor(.customPrimary)
                 
                 Text("이전으로")
                     .font(.system(size: 16))
-                    .foregroundColor(Color("Primary"))
+                    .foregroundColor(.customPrimary)
                 
                 Spacer()
                 
                 Text("\(gesture.name)")
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
-                    .foregroundColor(Color("GR1"))
+                    .foregroundColor(.customGR1)
                 
                 Spacer()
                 
@@ -126,7 +126,7 @@ struct MainView: View {
             .overlay(
                 Rectangle()
                     .frame(height: 0.5)
-                    .foregroundColor(Color("GR3")),
+                    .foregroundColor(.customGR3),
                 alignment: .bottom
             )
             .background(Color.clear)

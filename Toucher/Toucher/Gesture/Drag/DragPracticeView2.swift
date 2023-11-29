@@ -58,11 +58,11 @@ struct DragPracticeView2: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(isSuccess ? .clear : Color("BG2"))
+                                        .foregroundColor(isSuccess ? .clear : .customBG2)
                                         .scaleEffect(isAnimate ? 1.6 : 1.4)
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(isSuccess ? .clear : Color("Secondary"))
+                                        .foregroundColor(isSuccess ? .clear : .customSecondary)
                                         .scaleEffect(isAnimate ? 1.4 : 1)
                                 }
                                 .animation(.easeInOut, value: isSuccess)
@@ -91,7 +91,7 @@ struct DragPracticeView2: View {
                         .overlay(
                             Rectangle()
                                 .frame(height: 0.5)
-                                .foregroundColor(Color("GR3")),
+                                .foregroundColor(.customGR3),
                             alignment: .top
                         )
                         .toolbar {
@@ -105,7 +105,7 @@ struct DragPracticeView2: View {
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
-                .foregroundColor(Color("GR3")),
+                .foregroundColor(.customGR3),
             alignment: .top
         )
         .toolbar {

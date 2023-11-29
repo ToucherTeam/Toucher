@@ -18,7 +18,7 @@ struct SwiftPracticeView2: View {
                     swipeVM.messageData.isEmpty ? "잘하셨어요!"
                     : "잘하셨어요!\n\n" : "메시지를 밀어서\n삭제해 보세요\n"
                 )
-                    .font(.customTitle())
+                    .font(.customTitle)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
                 Spacer()
@@ -26,7 +26,7 @@ struct SwiftPracticeView2: View {
                     ForEach(swipeVM.messageData, id: \.id) { message in
                         HStack {
                             Image(systemName: message.imageName)
-                                .foregroundColor(Color("GR1"))
+                                .foregroundColor(.customGR1)
                                 .font(.system(size: 60))
                             VStack(alignment: .leading) {
                                 HStack {
@@ -80,7 +80,7 @@ struct SwiftPracticeView2: View {
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
-                .foregroundColor(Color("GR3")),
+                .foregroundColor(.customGR3),
                 alignment: .top
         )
         .toolbar {
