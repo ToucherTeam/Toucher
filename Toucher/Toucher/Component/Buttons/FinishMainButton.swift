@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FinishMainButton: View {
-    var isTapped: Bool
     var gesture: GestureType
+    var selectedGesture: GestureType?
     var action: () -> Void
     
     var image: String {
@@ -17,19 +17,24 @@ struct FinishMainButton: View {
     }
     
     var body: some View {
-        Image(isTapped ? image + "Pressed" : image)
+        Image(gesture == selectedGesture ? image + "Pressed" : image)
             .resizable()
             .scaledToFit()
             .frame(width: 100, height: 95)
-            .offset(y: isTapped ? 5 : 0)
+            .offset(y: gesture == selectedGesture ? 5 : 0)
             .onTapGesture {
                 action()
             }
+            .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    FinishMainButton(isTapped: false, gesture: .doubleTap) {
+    ZStack {
+        Color.customBG0.ignoresSafeArea()
         
+        FinishMainButton(gesture: .doubleTap, selectedGesture: .doubleTap) {
+            
+        }
     }
 }

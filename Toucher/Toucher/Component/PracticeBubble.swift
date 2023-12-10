@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PracticeBubble: View {
+    @State private var bubbleAnimation = false
+    
     var gesture: GestureType
     var action: () -> Void
     
@@ -53,6 +55,7 @@ struct PracticeBubble: View {
             Polygon()
                 .frame(width: 30, height: 15)
                 .foregroundColor(.customBG0)
+                .shadow(color: .customShadow.opacity(0.5), radius: 2, y: -4)
                 .offset(y: 2)
                 .zIndex(1)
             VStack(alignment: .leading) {
@@ -88,6 +91,12 @@ struct PracticeBubble: View {
                     .shadow(color: .customShadow, radius: 10, y: 4)
             }
             .padding(.horizontal)
+        }
+        .offset(y: bubbleAnimation ? -3 : 3)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                bubbleAnimation = true
+            }
         }
     }
 }

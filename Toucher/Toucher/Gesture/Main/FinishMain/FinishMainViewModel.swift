@@ -8,12 +8,19 @@
 import SwiftUI
 
 class FinishMainViewModel: ObservableObject {
-    @Published var gestureButtons: [GestureButton] = [
-        GestureButton(buttonType: .done, gestureType: .doubleTap),
-        GestureButton(buttonType: .done, gestureType: .longPress),
-        GestureButton(buttonType: .done, gestureType: .drag),
-        GestureButton(buttonType: .done, gestureType: .pan),
-        GestureButton(buttonType: .done, gestureType: .pinch),
-        GestureButton(buttonType: .done, gestureType: .rotate)
-    ]
+    @Published var gestures: [GestureType] = [.doubleTap, .longPress, .swipe, .drag, .pan, .pinch, .rotate]
+    @Published var selectedGesture: GestureType?
+    @Published var isTapped = false
+    
+    func selectGesture(gesture: GestureType) {
+        if let selectedGesture {
+            if selectedGesture == gesture {
+                self.selectedGesture = nil
+            } else {
+                self.selectedGesture = gesture
+            }
+        } else {
+            selectedGesture = gesture
+        }
+    }
 }
