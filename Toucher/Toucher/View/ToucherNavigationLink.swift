@@ -22,6 +22,7 @@ struct ToucherNavigationLink<Content: View>: View {
             VStackArrow()
             NavigationLink {
                 content
+                    .navigationBarBackButtonHidden(true)
             } label: {
                 Text(label)
                     .font(.customButton)
