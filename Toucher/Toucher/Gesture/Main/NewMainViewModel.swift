@@ -18,4 +18,13 @@ class NewMainViewModel: ObservableObject {
         GestureButton(buttonType: .none, gestureType: .pinch),
         GestureButton(buttonType: .none, gestureType: .rotate)
     ]
+    @Published var headerGesture: GestureType = .doubleTap
+    
+    func updateHeaderGesture() {
+        if let readyGestureButton = gestureButtons.first(where: { $0.buttonType == .ready }) {
+            headerGesture = readyGestureButton.gestureType
+        } else {
+            print("조건을 충족하는 요소를 찾을 수 없습니다.")
+        }
+    }
 }
