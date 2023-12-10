@@ -41,42 +41,34 @@ struct DoubleTapPracticeView2: View {
                                     }
                                 })
                 )
-            
-            Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
-                .foregroundColor(isOneTapped && !isSuccess ? .accentColor : .primary)
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .font(.largeTitle)
-                .bold()
-                .padding(.top, 30)
-                .frame(maxHeight: .infinity, alignment: .top)
-            if isSuccess {
-                ToucherNavigationLink(label: "완료") {
-                    FinalView(gestureTitle: "두 번 누르기")
-                        .padding(.bottom, 13)
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 0.5)
-                                .foregroundColor(.customGR3),
-                            alignment: .top
-                        )
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                CustomToolbar(title: "두 번 누르기")
-                            }
-                        }
-                }
-            }
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-            alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
+            VStack(spacing: 0) {
                 CustomToolbar(title: "두 번 누르기")
+                
+                Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
+                    .foregroundColor(isOneTapped && !isSuccess ? .accentColor : .primary)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(10)
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.top, 30)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                if isSuccess {
+                    ToucherNavigationLink(label: "완료") {
+                        FinalView(gestureTitle: "두 번 누르기")
+                            .padding(.bottom, 13)
+                            .overlay(
+                                Rectangle()
+                                    .frame(height: 0.5)
+                                    .foregroundColor(.customGR3),
+                                alignment: .top
+                            )
+                            .toolbar {
+                                ToolbarItem(placement: .principal) {
+                                    CustomToolbar(title: "두 번 누르기")
+                                }
+                            }
+                    }
+                }
             }
         }
         .onAppear {
