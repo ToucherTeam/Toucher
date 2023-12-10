@@ -62,22 +62,11 @@ struct SwiftPracticeView2: View {
                 Spacer()
             }
 
-            NavigationLink {
-                SwipeFinalView()
-            } label: {
-                Text("완료")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .padding()
-                    .frame(maxWidth: UIScreen.main.bounds.width - 32)
-                    .background {
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    }
+            if swipeVM.btnActive {
+                ToucherNavigationLink {
+                    SwipeFinalView()
+                }
             }
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .padding(.bottom)
-            .opacity(swipeVM.btnActive ? 1 : 0)
-            .padding(.horizontal, 16)
         }
     }
 

@@ -97,7 +97,10 @@ struct RotateExampleView: View {
             
             if isSuccess {
                 ToucherNavigationLink {
-                    RotationPracticeView()
+                    VStack(spacing: 0) {
+                        CustomToolbar(title: "회전하기")
+                        RotationPracticeView()
+                    }
                 }
             }
         }

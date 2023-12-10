@@ -75,12 +75,14 @@ struct PinchExampleView2: View {
                 .foregroundColor(.clear)
                 .font(.title)
                 .padding(.bottom, 80)
-
             }
             
             if isSuccess {
                 ToucherNavigationLink {
-                    PinchPracticeView1()
+                    VStack(spacing: 0) {
+                        CustomToolbar(title: "확대 축소하기")  
+                        PinchPracticeView1()
+                    }
                 }
             }
         }

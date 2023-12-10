@@ -89,18 +89,6 @@ struct DragPracticeView2: View {
             if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "끌어 오기")
-                        .padding(.bottom, 13)
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 0.5)
-                                .foregroundColor(.customGR3),
-                            alignment: .top
-                        )
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                CustomToolbar(title: "끌어 오기")
-                            }
-                        }
                 }
             }
         }

@@ -76,12 +76,9 @@ struct PanPracticeView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             if isSuccess {
-                VStack(spacing: 0) {
-                    CustomToolbar(title: "화면 움직이기")
                     ToucherNavigationLink(label: "완료") {
                         FinalView(gestureTitle: "화면 움직이기")
                     }
-                }
             }
         }
         

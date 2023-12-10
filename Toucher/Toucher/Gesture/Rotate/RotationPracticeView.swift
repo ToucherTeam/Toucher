@@ -71,31 +71,8 @@ struct RotationPracticeView: View {
                 if isSuccess {
                     ToucherNavigationLink(label: "완료") {
                         FinalView(gestureTitle: "회전하기")
-                            .padding(.bottom, 13)
-                            .overlay(
-                                Rectangle()
-                                    .frame(height: 0.5)
-                                    .foregroundColor(.customGR3),
-                                alignment: .top
-                            )
-                            .toolbar {
-                                ToolbarItem(placement: .principal) {
-                                    CustomToolbar(title: "회전하기")
-                                }
-                            }
                     }
                     .frame(maxWidth: UIScreen.main.bounds.width)
-                }
-            }
-            .overlay(
-                Rectangle()
-                    .frame(height: 0.5)
-                    .foregroundColor(.customGR3),
-                alignment: .top
-            )
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    CustomToolbar(title: "회전하기")
                 }
             }
             .onAppear {
