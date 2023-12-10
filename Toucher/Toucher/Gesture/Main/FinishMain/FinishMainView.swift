@@ -20,7 +20,7 @@ struct FinishMainView: View {
                         FinishMainButton(gesture: gesture, selectedGesture: viewModel.selectedGesture) {
                             viewModel.selectGesture(gesture: gesture)
                             withAnimation(.easeIn(duration: 3)) {
-                                proxy.scrollTo(gesture, anchor: .top)
+                                proxy.scrollTo(gesture, anchor: .center)
                             }
                         }
                         .id(gesture)
