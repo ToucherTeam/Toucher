@@ -30,6 +30,9 @@
 		29D51B832B25BF9B00A6923E /* FinishMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */; };
 		29D51B852B25D1BC00A6923E /* PracticeBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B842B25D1BC00A6923E /* PracticeBubble.swift */; };
 		29D51B872B25D5C300A6923E /* FinishMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B862B25D5C300A6923E /* FinishMainButton.swift */; };
+		29B9BB8B2B16B7250042DE19 /* ConfettiShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */; };
+		29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB892B16B7250042DE19 /* ConfettiView.swift */; };
+		29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB8A2B16B7250042DE19 /* Confetti.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -86,6 +89,9 @@
 		29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishMainViewModel.swift; sourceTree = "<group>"; };
 		29D51B842B25D1BC00A6923E /* PracticeBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeBubble.swift; sourceTree = "<group>"; };
 		29D51B862B25D5C300A6923E /* FinishMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishMainButton.swift; sourceTree = "<group>"; };
+		29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiShapes.swift; sourceTree = "<group>"; };
+		29B9BB892B16B7250042DE19 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		29B9BB8A2B16B7250042DE19 /* Confetti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 		07670B932AA749D600DE5113 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				29B9BB872B16B7250042DE19 /* Confetti */,
 				F0ED9B452B15FCA400E8D5C9 /* Buttons */,
 				07D345E92AA8716500B7329D /* GetHeightModifer.swift */,
 				29F1D5132AA764270074C1FE /* HStackArrow.swift */,
@@ -182,6 +189,16 @@
 				29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */,
 			);
 			path = FinishMain;
+			sourceTree = "<group>";
+		};
+		29B9BB872B16B7250042DE19 /* Confetti */ = {
+			isa = PBXGroup;
+			children = (
+				29B9BB892B16B7250042DE19 /* ConfettiView.swift */,
+				29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */,
+				29B9BB8A2B16B7250042DE19 /* Confetti.swift */,
+			);
+			path = Confetti;
 			sourceTree = "<group>";
 		};
 		29E1E4722AA9B04D00D45713 /* LongTap */ = {
@@ -456,10 +473,13 @@
 				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
+				29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */,
 				29EAB40F2AA188DB004E5429 /* DoubleTapExampleView.swift in Sources */,
 				29D51B872B25D5C300A6923E /* FinishMainButton.swift in Sources */,
+				29B9BB8B2B16B7250042DE19 /* ConfettiShapes.swift in Sources */,
 				29EAB4112AA18B28004E5429 /* DoubleTapPracticeView1.swift in Sources */,
 				29EAB4132AA19080004E5429 /* DoubleTapPracticeView2.swift in Sources */,
+				29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */,
 				29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */,
 				07791D422AAAF4840024C04F /* PanModel.swift in Sources */,
 				29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */,
