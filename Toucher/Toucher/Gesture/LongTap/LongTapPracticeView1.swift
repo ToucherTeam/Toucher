@@ -20,6 +20,8 @@ struct LongTapPracticeView1: View {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
+                CustomToolbar(title: "길게 누르기")
+                
                 Text(isSuccess ? "잘하셨어요!\n\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
                     .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
@@ -104,19 +106,6 @@ struct LongTapPracticeView1: View {
             if isSuccess {
                 ToucherNavigationLink {
                     LongTapPracticeView2()
-                        .padding(.bottom, 13)
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 0.5)
-                                .foregroundColor(.customGR3),
-                                alignment: .top
-                        )
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                CustomToolbar(title: "길게 누르기")
-                            }
-                        }
-                        .edgesIgnoringSafeArea(.bottom)
                 }
             }
         }

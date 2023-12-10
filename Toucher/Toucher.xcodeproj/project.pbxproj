@@ -58,6 +58,7 @@
 		29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5192AA775520074C1FE /* VStackArrow.swift */; };
 		29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
+		32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A178402B25E35B007A3CAB /* CustomToolbar.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
 		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
 		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
@@ -118,6 +119,7 @@
 		29F1D5192AA775520074C1FE /* VStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/View/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView1.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
+		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		07670B932AA749D600DE5113 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				32A1783F2B25E350007A3CAB /* Header */,
 				29B9BB872B16B7250042DE19 /* Confetti */,
 				F0ED9B452B15FCA400E8D5C9 /* Buttons */,
 				07D345E92AA8716500B7329D /* GetHeightModifer.swift */,
@@ -333,6 +336,14 @@
 			path = Pinch;
 			sourceTree = "<group>";
 		};
+		32A1783F2B25E350007A3CAB /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				32A178402B25E35B007A3CAB /* CustomToolbar.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		F0ED9B452B15FCA400E8D5C9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +460,7 @@
 				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */,
+				32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */,
 				29D51B7C2B25A38A00A6923E /* NewMainModel.swift in Sources */,

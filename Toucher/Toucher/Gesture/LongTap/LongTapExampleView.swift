@@ -93,22 +93,11 @@ struct LongTapExampleView: View {
             if isSuccess {
                 ToucherNavigationLink {
                     LongTapPracticeView1()
-                        .padding(.bottom, 13)
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 0.5)
-                                .foregroundColor(.customGR3),
-                                alignment: .top
-                        )
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                CustomToolbar(title: "길게 누르기")
-                            }
-                        }
                 }
             }
 
         }
+
         .onAppear {
             isTapped = false
             isSuccess = false
