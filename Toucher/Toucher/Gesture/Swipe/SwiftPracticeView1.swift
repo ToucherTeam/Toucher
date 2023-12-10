@@ -137,29 +137,3 @@ struct SwipePracticeView_Previews: PreviewProvider {
         }
     }
 }
-
-struct CustomToolbar: View {
-    let title: String
-    
-    var body: some View {
-        
-            HStack {
-                Text("")
-                Spacer()
-                Text(title)
-                    .font(.system(size: 17))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.customGR1)
-                Spacer()
-                Image(systemName: "gearshape")
-                    .foregroundColor(.clear)
-            }
-            .overlay(alignment: .leading) {
-                Text("이전으로")
-                    .offset(x: -25)
-                    .foregroundColor(.customPrimary)
-            }
-            .frame(maxWidth: .infinity)
-        }
-    
-}
