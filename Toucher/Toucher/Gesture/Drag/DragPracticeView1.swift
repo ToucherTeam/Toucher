@@ -18,6 +18,8 @@ struct DragPracticeView1: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
+                CustomToolbar(title: "끌어오기")
+                
                 Text(isSuccess ? "잘하셨어요!\n" : isTapped ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
                     .foregroundColor(isTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
@@ -65,17 +67,6 @@ struct DragPracticeView1: View {
                 }
             }
             
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-                alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomToolbar(  title: "끌어오기")
-            }
         }
         .onAppear {
             isSuccess = false
