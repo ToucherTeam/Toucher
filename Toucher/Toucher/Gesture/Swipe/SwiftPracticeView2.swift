@@ -13,6 +13,8 @@ struct SwiftPracticeView2: View {
     var body: some View {
         ZStack {
             VStack {
+                CustomToolbar(title: "살짝 쓸기")
+                
                 Text(
                     swipeVM.btnActive ?
                     messageData.isEmpty ? "잘하셨어요!"
@@ -76,17 +78,6 @@ struct SwiftPracticeView2: View {
             .padding(.bottom)
             .opacity(swipeVM.btnActive ? 1 : 0)
             .padding(.horizontal, 16)
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-                alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomToolbar(title: "살짝 쓸기")
-            }
         }
     }
 

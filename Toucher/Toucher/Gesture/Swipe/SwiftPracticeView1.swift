@@ -16,6 +16,8 @@ struct SwiftPracticeView1: View {
     var body: some View {
         ZStack {
             VStack {
+                CustomToolbar(title: "살짝 쓸기")
+                
                 Text(text[swipeVM.index])
                     .font(.customTitle)
                     .multilineTextAlignment(.center)
@@ -82,42 +84,16 @@ struct SwiftPracticeView1: View {
             }
 
             if swipeVM.index == 2 {
-                NavigationLink {
+                
+                ToucherNavigationLink {
                     SwiftPracticeView2()
-                } label: {
-                    Text("다음")
-                        .font(.title3)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .frame(maxWidth: UIScreen.main.bounds.width - 32)
-                        .background {
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        }
-                }
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .padding(.bottom)
-                .overlay(alignment: .bottom) {
-                    VstackArrow()
-                        .offset(y: -100)
                 }
             }
         }
         .frame(maxHeight: .infinity)
         .onAppear {
             swipeVM.checkSuccess = false
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-                alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomToolbar(title: "살짝 쓸기")
-            }
-        }
-    }
+        }    }
 }
 
 struct SwipePracticeView_Previews: PreviewProvider {
