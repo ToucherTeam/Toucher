@@ -31,17 +31,12 @@ struct LongTapExampleView: View {
                     .bold()
                     .padding(.top, 40)
                 
-                LongPressButton(isTapStart: $isTapStart, isSuccess: $isSuccess, isFail: $isFail)
+                LongPressButton(isSuccess: $isSuccess, isFail: $isFail)
                     .padding(.bottom)
                     .frame(maxHeight: .infinity)
                     .overlay {
                         if isSuccess {
                             ConfettiView()
-                        }
-                    }
-                    .background {
-                        if !isSuccess && !isFail {
-                            circleAnimation
                         }
                     }
 
@@ -69,27 +64,7 @@ struct LongTapExampleView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
     }
-    
-    private var circleAnimation: some View {
-        ZStack {
-            Ellipse()
-                .stroke(Color.customSecondary, lineWidth: 10)
-                .frame(width: 230, height: 185)
-                .opacity(isTapStart ? 1 : 0)
-                .animation(.easeInOut(duration: 0.8).repeatForever(), value: isTapStart)
-            Ellipse()
-                .stroke(Color.customBG2, lineWidth: 10)
-                .frame(width: 306, height: 245)
-                .opacity(isTapStart ? 1 : 0)
-                .animation(.easeInOut(duration: 1).repeatForever(), value: isTapStart)
-            Ellipse()
-                .stroke(Color.customBG1, lineWidth: 10)
-                .frame(width: 380, height: 304)
-                .opacity(isTapStart ? 1 : 0)
-                .animation(.easeInOut(duration: 1.2).repeatForever(), value: isTapStart)
-        }
-    }
-    
+        
     private func reset() {
         isTapStart = false
         isSuccess = false
