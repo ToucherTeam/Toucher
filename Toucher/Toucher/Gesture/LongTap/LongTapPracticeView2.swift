@@ -18,9 +18,9 @@ struct LongTapPracticeView2: View {
     
     @State private var selectIndex: Int?
     @State private var selectedIndex: Int?
-    @State var scale = 1.0
+    @State private var scale = 1.0
     
-    @Namespace var name
+    @Namespace private var name
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
     
@@ -38,48 +38,55 @@ struct LongTapPracticeView2: View {
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.customTitle)
-                        .padding(.top, 30)
+                        .padding(.top, 40)
                     LazyVGrid(columns: columns) {
                         ForEach((1...15), id: \.self) { index in
-                            Image("Album\(index)")
-                                .resizable()
-                                .frame(height: 130)
-                                .scaleEffect(selectIndex == index && isPressed ? 1.2 : 1)
-                                .matchedGeometryEffect(id: index, in: name)
-                                .zIndex(selectIndex == index ? 1 : 0)
-                                .animation(.easeIn, value: isPressed)
-                                .foregroundStyle(.gray)
-                                .gesture(
-                                    LongPressGesture(minimumDuration: 1.0)
-                                        .updating($isPressed) { value, gestureState, _ in
-                                            gestureState = value
-                                        }
-                                        .onChanged { _ in
-                                            selectIndex = index
-                                        }
-                                        .onEnded {_ in
-                                            withAnimation {
-                                                isSuccess = true
-                                                isTapped = true
-                                                scale = 1
-                                                selectedIndex = index
+                            if isSuccess {
+                                Image("Album\(index)")
+                                    .resizable()
+                                    .frame(width: 130, height: 130)
+                            } else {
+                                Image("Album\(index)")
+                                    .resizable()
+                                    .matchedGeometryEffect(id: "Album\(index)", in: name)
+                                    .zIndex(selectIndex == index ? 1 : 0)
+                                    .frame(width: 130, height: 130)
+                                    .scaleEffect(selectIndex == index && isPressed ? 1.2 : 1)
+                                    .animation(.easeIn, value: isPressed)
+                                    .foregroundStyle(.gray)
+                                    .gesture(
+                                        LongPressGesture(minimumDuration: 1.0)
+                                            .updating($isPressed) { value, gestureState, _ in
+                                                gestureState = value
                                             }
-                                        }
-                                        .simultaneously(with: TapGesture()
-                                            .onEnded {
+                                            .onChanged { _ in
+                                                selectIndex = index
+                                            }
+                                            .onEnded {_ in
                                                 withAnimation {
+                                                    isSuccess = true
                                                     isTapped = true
-                                                    isFail = true
                                                     scale = 1
+                                                    selectedIndex = index
                                                 }
-                                            })
-                                )
+                                            }
+                                            .simultaneously(with: TapGesture()
+                                                .onEnded {
+                                                    withAnimation {
+                                                        isTapped = true
+                                                        isFail = true
+                                                        scale = 1
+                                                    }
+                                                })
+                                    )
+                            }
                         }
                     }
                     .ignoresSafeArea()
-                    .overlay {
+                    .overlay(alignment: .top) {
                         if isSuccess {
                             Rectangle()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .foregroundStyle(.ultraThinMaterial)
                                 .ignoresSafeArea()
                         }
@@ -89,11 +96,10 @@ struct LongTapPracticeView2: View {
                             if let selectedIndex {
                                 Image("Album\(selectedIndex)")
                                     .resizable()
-                                    .scaledToFit()
                                     .cornerRadius(16)
+                                    .matchedGeometryEffect(id: "Album\(selectedIndex)", in: name)
                                     .offset(y: -50)
-                                    .frame(width: 360)
-                                    .matchedGeometryEffect(id: selectedIndex, in: name)
+                                    .frame(width: 360, height: 360)
                                     .overlay {
                                         if isSuccess {
                                             ConfettiView()
