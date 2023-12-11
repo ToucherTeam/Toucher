@@ -235,8 +235,8 @@
 		29E8521D2AA08346003F4AF4 /* Toucher */ = {
 			isa = PBXGroup;
 			children = (
-				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
+				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				295A061F2B26ED6B004CAF1C /* Manager */,
 				07670B932AA749D600DE5113 /* Component */,
 				29EAB4082AA1703A004E5429 /* Gesture */,

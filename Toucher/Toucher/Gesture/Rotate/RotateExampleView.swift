@@ -21,7 +21,7 @@ struct RotateExampleView: View {
     var body: some View {
         ZStack {
             if isFail && !isSuccess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 CustomToolbar(title: "회전하기")
@@ -30,9 +30,8 @@ struct RotateExampleView: View {
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top, 30)
+                    .font(.customTitle)
+                    .padding(.top, 40)
                 Image("ToucherCharacter")
                     .resizable()
                     .scaledToFit()

@@ -53,9 +53,8 @@ struct RotationPracticeView: View {
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.vertical, 40)
+                    .font(.customTitle)
+                    .padding(.top, 40)
                     .frame(maxWidth: .infinity)
                     .background {
                         Rectangle()

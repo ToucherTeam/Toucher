@@ -25,8 +25,7 @@ struct DragPracticeView1: View {
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.customTitle)
                     .padding(.top, 40)
                 slider
                     .padding(.bottom, 120)

@@ -22,7 +22,6 @@ struct FinishMainView: View {
                             viewModel.selectGesture(gesture: gesture)
                             withAnimation(.easeInOut(duration: 2)) {
                                 proxy.scrollTo(gesture, anchor: .center)
-
                             }
                         }
                         .id(gesture)

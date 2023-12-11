@@ -32,8 +32,7 @@ struct DragExampleView: View {
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.customTitle)
                     .padding(.top, 40)
                 ZStack {
                     ZStack {

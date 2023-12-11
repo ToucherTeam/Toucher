@@ -29,7 +29,6 @@ struct LongTapPracticeView1: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
-                    .bold()
                     .padding(.top, 40)
                 
                 cameraButton

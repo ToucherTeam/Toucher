@@ -48,9 +48,8 @@ struct PinchPracticeView1: View {
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top, 30)
+                    .font(.customTitle)
+                    .padding(.top, 40)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
                 HelpButton(style: isFail ? .primary : .secondary) {

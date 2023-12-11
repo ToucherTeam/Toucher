@@ -36,7 +36,6 @@ struct DragPracticeView2: View {
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
                 .foregroundColor(isFailed && !isSuccess ? .white : .primary)
-                .bold()
                 .padding(.top, 40)
                 .padding(.bottom, 40)
                 LazyVGrid(columns: columns) {

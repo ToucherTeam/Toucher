@@ -28,7 +28,6 @@ struct LongTapExampleView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
-                    .bold()
                     .padding(.top, 40)
                 
                 LongPressButton(isSuccess: $isSuccess, isFail: $isFail)

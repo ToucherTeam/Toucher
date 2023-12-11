@@ -29,7 +29,7 @@ struct PinchExampleView2: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
-                    .padding(.top, 30)
+                    .padding(.top, 40)
                 
                 Image("ToucherCharacter")
                     .resizable()

@@ -39,8 +39,7 @@ struct DoubleTapPracticeView2: View {
                     .foregroundColor(isFail && !isSuccess ? .accentColor : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.customTitle)
                     .padding(.top, 40)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
