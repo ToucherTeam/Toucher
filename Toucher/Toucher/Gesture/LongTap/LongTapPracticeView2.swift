@@ -99,6 +99,7 @@ struct LongTapPracticeView2: View {
                                     .cornerRadius(16)
                                     .matchedGeometryEffect(id: "Album\(selectedIndex)", in: name)
                                     .offset(y: -50)
+                                    .zIndex(1)
                                     .frame(width: 360, height: 360)
                                     .overlay {
                                         if isSuccess {
@@ -123,7 +124,7 @@ struct LongTapPracticeView2: View {
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     navigationManager.navigate = false
                     navigationManager.updateGesture()
                 }

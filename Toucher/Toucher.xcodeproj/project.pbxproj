@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076655582AA16D0B00DC6687 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655572AA16D0B00DC6687 /* MainModel.swift */; };
 		0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076655592AA22A1E00DC6687 /* DeviceManager.swift */; };
-		07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670B912AA7334000DE5113 /* MainViewModel.swift */; };
 		07791D402AAACDAA0024C04F /* PanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07791D3F2AAACDAA0024C04F /* PanViewModel.swift */; };
 		07791D422AAAF4840024C04F /* PanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07791D412AAAF4840024C04F /* PanModel.swift */; };
 		07D345EE2AA8716500B7329D /* SwipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345E82AA8716500B7329D /* SwipeViewModel.swift */; };
@@ -43,7 +41,6 @@
 		29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852252AA08347003F4AF4 /* Preview Assets.xcassets */; };
 		29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852312AA08C16003F4AF4 /* FontExtension.swift */; };
 		29E852342AA08C4E003F4AF4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852332AA08C4E003F4AF4 /* ViewExtension.swift */; };
-		29E852372AA08D34003F4AF4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852362AA08D34003F4AF4 /* MainView.swift */; };
 		29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */; };
 		29EAB40F2AA188DB004E5429 /* DoubleTapExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB40E2AA188DB004E5429 /* DoubleTapExampleView.swift */; };
 		29EAB4112AA18B28004E5429 /* DoubleTapPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */; };
@@ -70,9 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		076655572AA16D0B00DC6687 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		076655592AA22A1E00DC6687 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
-		07670B912AA7334000DE5113 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		07791D3F2AAACDAA0024C04F /* PanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanViewModel.swift; sourceTree = "<group>"; };
 		07791D412AAAF4840024C04F /* PanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModel.swift; sourceTree = "<group>"; };
 		07D345E82AA8716500B7329D /* SwipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewModel.swift; sourceTree = "<group>"; };
@@ -107,7 +102,6 @@
 		29E852252AA08347003F4AF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29E852312AA08C16003F4AF4 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		29E852332AA08C4E003F4AF4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		29E852362AA08D34003F4AF4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29EAB40E2AA188DB004E5429 /* DoubleTapExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapExampleView.swift; sourceTree = "<group>"; };
 		29EAB4102AA18B28004E5429 /* DoubleTapPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapPracticeView1.swift; sourceTree = "<group>"; };
@@ -276,9 +270,6 @@
 		29E852352AA08D25003F4AF4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				29E852362AA08D34003F4AF4 /* MainView.swift */,
-				076655572AA16D0B00DC6687 /* MainModel.swift */,
-				07670B912AA7334000DE5113 /* MainViewModel.swift */,
 				29D51B752B259EE600A6923E /* NewMainView.swift */,
 				29D51B7B2B25A38A00A6923E /* NewMainModel.swift */,
 				29D51B772B25A29300A6923E /* NewMainViewModel.swift */,
@@ -493,7 +484,6 @@
 				29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */,
 				07D345F12AA8716500B7329D /* SwiftPracticeView1.swift in Sources */,
 				29EF99972AA8A2CA00637F7A /* PanExampleView.swift in Sources */,
-				29E852372AA08D34003F4AF4 /* MainView.swift in Sources */,
 				29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */,
@@ -509,8 +499,6 @@
 				29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwiftPracticeView2.swift in Sources */,
 				07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */,
-				076655582AA16D0B00DC6687 /* MainModel.swift in Sources */,
-				07670B922AA7334000DE5113 /* MainViewModel.swift in Sources */,
 				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
 				29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */,
 				292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */,

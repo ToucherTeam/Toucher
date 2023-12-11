@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SwipeExampleView: View {
-    @EnvironmentObject var mainVM: MainViewModel
     @StateObject var swipeVM = SwipeViewModel()
     
     @GestureState private var dragOffset: CGFloat = 0
