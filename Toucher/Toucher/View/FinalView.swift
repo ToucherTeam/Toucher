@@ -18,6 +18,8 @@ struct FinalView: View {
     var body: some View {
         
         VStack {
+            CustomToolbar(title: "\(gestureTitle)")
+            
             Text("\(gestureTitle) 학습을\n완료했습니다!")
                 .font(.largeTitle)
                 .bold()
@@ -72,16 +74,6 @@ struct FinalView: View {
                     .padding(.horizontal, 16)
             }
 
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text(gestureTitle)
-                    .font(.customButton)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.white)
-                    .frame(height: 64)
-                    .frame(maxWidth: UIScreen.main.bounds.width)
-            }
         }
     }
 }

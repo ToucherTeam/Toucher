@@ -26,6 +26,8 @@ struct DragPracticeView2: View {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
+                CustomToolbar(title: "끌어오기")
+                
                 Rectangle().frame(height: 0)
                 Spacer().frame(height: 40)
                 Text(isSuccess ? "잘하셨어요!\n\n" :
@@ -87,30 +89,7 @@ struct DragPracticeView2: View {
             if isSuccess {
                 ToucherNavigationLink(label: "완료") {
                     FinalView(gestureTitle: "끌어 오기")
-                        .padding(.bottom, 13)
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 0.5)
-                                .foregroundColor(.customGR3),
-                            alignment: .top
-                        )
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                CustomToolbar(title: "끌어 오기")
-                            }
-                        }
                 }
-            }
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-            alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomToolbar(title: "끌어 오기")
             }
         }
         .onAppear {

@@ -43,7 +43,11 @@ struct SwipeExampleView: View {
             }
             .animation(.easeInOut, value: dragOffset == 0)
             
-            nextButton()
+            if checkSuccessCondition(swipeVM.currentIndexArray) {
+                ToucherNavigationLink {
+                    SwiftPracticeView1()
+                }
+            }
         }
         .onAppear {
             swipeVM.currentIndexArray = []
@@ -168,30 +172,6 @@ struct SwipeExampleView: View {
                         }
                     }
                     .offset(y: 114)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func nextButton() -> some View {
-        if checkSuccessCondition(swipeVM.currentIndexArray) {
-            NavigationLink {
-                SwiftPracticeView1()
-            } label: {
-                Text("다음")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .padding()
-                    .frame(maxWidth: UIScreen.main.bounds.width - 32)
-                    .background {
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    }
-            }
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .padding(.bottom)
-            .overlay(alignment: .bottom) {
-                VstackArrow()
-                    .offset(y: -100)
             }
         }
     }

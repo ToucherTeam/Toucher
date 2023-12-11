@@ -20,6 +20,8 @@ struct DoubleTapPracticeView1: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
+                CustomToolbar(title: "두 번 누르기")
+                
                 Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게\n두 번 눌러주세요!" : "검색창을 두 번\n눌러볼까요?")
                     .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
@@ -85,17 +87,6 @@ struct DoubleTapPracticeView1: View {
                 ToucherNavigationLink {
                     DoubleTapPracticeView2()
                 }
-            }
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-                alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomToolbar(title: "두 번 누르기")
             }
         }
         .onAppear {

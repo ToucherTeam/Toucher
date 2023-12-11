@@ -13,6 +13,8 @@ struct SwiftPracticeView2: View {
     var body: some View {
         ZStack {
             VStack {
+                CustomToolbar(title: "살짝 쓸기")
+                
                 Text(
                     swipeVM.btnActive ?
                     messageData.isEmpty ? "잘하셨어요!"
@@ -60,32 +62,10 @@ struct SwiftPracticeView2: View {
                 Spacer()
             }
 
-            NavigationLink {
-                SwipeFinalView()
-            } label: {
-                Text("완료")
-                    .font(.title3)
-                    .foregroundStyle(.white)
-                    .padding()
-                    .frame(maxWidth: UIScreen.main.bounds.width - 32)
-                    .background {
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    }
-            }
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .padding(.bottom)
-            .opacity(swipeVM.btnActive ? 1 : 0)
-            .padding(.horizontal, 16)
-        }
-        .overlay(
-            Rectangle()
-                .frame(height: 0.5)
-                .foregroundColor(.customGR3),
-                alignment: .top
-        )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                CustomToolbar(title: "살짝 쓸기")
+            if swipeVM.btnActive {
+                ToucherNavigationLink {
+                    SwipeFinalView()
+                }
             }
         }
     }

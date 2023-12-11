@@ -29,7 +29,7 @@ struct ToucherNavigationLink<Content: View>: View {
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .frame(height: 64)
-                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .frame(maxWidth: UIScreen.main.bounds.width - 32)
                     .background {
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                     }
