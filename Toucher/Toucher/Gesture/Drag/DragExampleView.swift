@@ -23,7 +23,7 @@ struct DragExampleView: View {
     var body: some View {
         ZStack {
             if isFail && !isSuccess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 CustomToolbar(title: "끌어오기")
