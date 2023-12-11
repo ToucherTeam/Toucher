@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class NavigationManager: ObservableObject {
     @Published var navigate = false
     
