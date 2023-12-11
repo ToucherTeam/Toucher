@@ -22,6 +22,7 @@
 		292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BD2B26C597002E5AAA /* DoubleTapButton.swift */; };
 		292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BF2B26C686002E5AAA /* LongPressButton.swift */; };
 		295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06202B26EE01004CAF1C /* HapticManager.swift */; };
+		295A06232B2708CB004CAF1C /* RotationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06222B2708CB004CAF1C /* RotationMap.swift */; };
 		29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */; };
 		29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872E2AA86C8E006E846E /* RotateExampleView.swift */; };
 		29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD87302AA87527006E846E /* RotationPracticeView.swift */; };
@@ -85,6 +86,7 @@
 		292181BD2B26C597002E5AAA /* DoubleTapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapButton.swift; sourceTree = "<group>"; };
 		292181BF2B26C686002E5AAA /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 		295A06202B26EE01004CAF1C /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		295A06222B2708CB004CAF1C /* RotationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMap.swift; sourceTree = "<group>"; };
 		29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView2.swift; sourceTree = "<group>"; };
 		29AD872E2AA86C8E006E846E /* RotateExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateExampleView.swift; sourceTree = "<group>"; };
 		29AD87302AA87527006E846E /* RotationPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationPracticeView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				29AD872E2AA86C8E006E846E /* RotateExampleView.swift */,
 				29AD87302AA87527006E846E /* RotationPracticeView.swift */,
+				295A06222B2708CB004CAF1C /* RotationMap.swift */,
 			);
 			path = Rotate;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			files = (
 				F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */,
 				07791D402AAACDAA0024C04F /* PanViewModel.swift in Sources */,
+				295A06232B2708CB004CAF1C /* RotationMap.swift in Sources */,
 				29D51B852B25D1BC00A6923E /* PracticeBubble.swift in Sources */,
 				29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */,
 				29EAB42B2AA635D9004E5429 /* DragPracticeView2.swift in Sources */,

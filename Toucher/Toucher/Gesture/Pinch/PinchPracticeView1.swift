@@ -14,51 +14,56 @@ struct PinchPracticeView1: View {
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
-        ZStack {
-            Color(.systemGray6).ignoresSafeArea()
-            Image("ex_image")
-                .resizable()
-                .scaledToFit()
-                .scaleEffect(scale)
-                .gesture(gesture)
-                .overlay {
-                    if !isTapped || isFail && !isSuccess {
-                        HStack(spacing: 100) {
-                            Arrows()
-                            Arrows()
-                                .rotationEffect(.degrees(180))
+        VStack(spacing: 0) {
+            CustomToolbar(title: "확대 축소하기")
+                .zIndex(1)
+
+            ZStack {
+                Color(.systemGray6).ignoresSafeArea()
+                Image("ex_image")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(scale)
+                    .gesture(gesture)
+                    .overlay {
+                        if !isTapped || isFail && !isSuccess {
+                            HStack(spacing: 100) {
+                                Arrows()
+                                Arrows()
+                                    .rotationEffect(.degrees(180))
+                            }
+                            .rotationEffect(.degrees(-45))
+                            .allowsHitTesting(false)
                         }
-                        .rotationEffect(.degrees(-45))
-                        .allowsHitTesting(false)
                     }
-                }
-                .overlay {
-                    if isSuccess {
-                        ConfettiView()
+                    .overlay {
+                        if isSuccess {
+                            ConfettiView()
+                        }
                     }
-                }
-            
-            Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 이용해서\n확대해볼까요?")
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .font(.largeTitle)
-                .bold()
-                .padding(.top, 30)
-                .frame(maxHeight: .infinity, alignment: .top)
-            
-            HelpButton(style: isFail ? .primary : .secondary) {
                 
+                Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 이용해서\n확대해볼까요?")
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(10)
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.top, 30)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                
+                HelpButton(style: isFail ? .primary : .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
+                .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            .opacity(isSuccess ? 0 : 1)
-            .animation(.easeInOut, value: isSuccess)
-            .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    
+                    // go home view
                 }
             }
         }

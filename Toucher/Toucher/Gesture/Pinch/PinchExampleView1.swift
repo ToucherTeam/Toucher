@@ -23,6 +23,8 @@ struct PinchExampleView1: View {
             }
             if !isNextView {
                 VStack {
+                    CustomToolbar(title: "확대 축소하기")
+
                     Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n벌려보세요")
                         .foregroundColor(isFail && !isSuccess ? .white : .primary)
                         .multilineTextAlignment(.center)
@@ -40,18 +42,7 @@ struct PinchExampleView1: View {
                         .gesture(gesture)
                         .frame(maxHeight: .infinity)
                         .overlay {
-                            if !isTapped {
-                                HStack(spacing: 100) {
-                                    Arrows()
-                                    Arrows()
-                                        .rotationEffect(.degrees(180))
-                                }
-                                .rotationEffect(.degrees(-45))
-                                .allowsHitTesting(false)
-                            }
-                        }
-                        .overlay {
-                            if isFail && !isSuccess {
+                            if !isTapped || isFail && !isSuccess {
                                 HStack(spacing: 100) {
                                     Arrows()
                                     Arrows()
@@ -92,6 +83,7 @@ struct PinchExampleView1: View {
                 withAnimation {
                     if scale > 1.5 {
                         isSuccess = true
+                        HapticManager.notification(type: .success)
                         self.scale = 2
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                 isNextView = true
