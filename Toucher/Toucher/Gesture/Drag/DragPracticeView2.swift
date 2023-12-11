@@ -14,7 +14,7 @@ struct DragPracticeView2: View {
     @State private var isSuccess = false
     @State private var isDroped = false
     @State private var isTried = false
-    @State private var isOneTapped = false
+    @State private var isFailed = false
     
     @State private var isAnimate = false
     
@@ -22,22 +22,21 @@ struct DragPracticeView2: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuccess {
+            if isFailed && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
                 CustomToolbar(title: "끌어오기")
                 
                 Rectangle().frame(height: 0)
-                Spacer().frame(height: 40)
-                Text(isSuccess ? "잘하셨어요!\n\n" :
-                        isTried || isOneTapped ? "카메라 아이콘을\n꾹 누른 상태로\n 움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
+                Text(isSuccess ? "성공!\n\n" :
+                        isTried || isFailed ? "카메라 아이콘을\n꾹 누른 상태로\n 움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
                 .multilineTextAlignment(.center)
-                .font(.largeTitle)
-                .padding(10)
-                .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                .font(.customTitle)
+                .foregroundColor(isFailed && !isSuccess ? .white : .primary)
                 .bold()
-                .padding(.top, 30)
+                .padding(.top, 40)
+                .padding(.bottom, 40)
                 LazyVGrid(columns: columns) {
                     ReorderableForEach($data,
                                        allowReordering: $allowReordering,
@@ -80,21 +79,34 @@ struct DragPracticeView2: View {
                 .padding()
                 .onTapGesture {
                     withAnimation {
-                        isOneTapped = true
+                        isFailed = true
                     }
                 }
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
-            
-            if isSuccess {
-                ToucherNavigationLink(label: "완료") {
-                    FinalView(gestureTitle: "끌어 오기")
+                .overlay {
+                    if isSuccess {
+                        ConfettiView()
+                    }
                 }
+                .frame(maxHeight: .infinity, alignment: .top)
+                
+                HelpButton(style: isFailed ? .primary : .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
         }
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
             isSuccess = false
+        }
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    // after success
+                }
+            }
         }
     }
 }

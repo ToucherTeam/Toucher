@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DoubleTapPracticeView1: View {
-    
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isFail = false
