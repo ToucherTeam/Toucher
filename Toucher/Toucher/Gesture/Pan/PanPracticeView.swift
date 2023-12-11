@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PanPracticeView: View {
+    @StateObject private var navigationManager = NavigationManager.shared
+
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isOneTapped = false
@@ -74,14 +76,16 @@ struct PanPracticeView: View {
                 .bold()
                 .padding(.top, 30)
                 .frame(maxHeight: .infinity, alignment: .top)
-            
+        }
+        .onChange(of: isSuccess) { _ in
             if isSuccess {
-                    ToucherNavigationLink(label: "완료") {
-                        FinalView(gestureTitle: "화면 움직이기")
-                    }
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    navigationManager.navigate = false
+                    navigationManager.updateGesture()
+                }
             }
         }
-        
         .onAppear {
             isTapped = false
             isSuccess = false

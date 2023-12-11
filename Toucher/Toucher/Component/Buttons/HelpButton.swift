@@ -13,6 +13,7 @@ enum HelpButtonStyle {
 }
 
 struct HelpButton: View {
+    @State private var animate = false
     var style: HelpButtonStyle
     var action: () -> Void
     
@@ -50,6 +51,14 @@ struct HelpButton: View {
                         .foregroundStyle(backgroundColor)
                 }
                 .padding(.horizontal, 16)
+                .offset(y: animate ? -8 : 0)
+                .onAppear {
+                    DispatchQueue.main.async {
+                        withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                            animate = true
+                        }
+                    }
+                }
         }
     }
 }

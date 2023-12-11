@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LongTapPracticeView2: View {
+    @StateObject private var navigationManager = NavigationManager.shared
+
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isFail = false
@@ -116,7 +118,8 @@ struct LongTapPracticeView2: View {
             if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    // go home View
+                    navigationManager.navigate = false
+                    navigationManager.updateGesture()
                 }
             }
         }

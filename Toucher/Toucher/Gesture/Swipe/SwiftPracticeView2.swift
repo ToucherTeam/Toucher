@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwiftPracticeView2: View {
+    @StateObject private var navigationManager = NavigationManager.shared
     @StateObject var swipeVM = SwipeViewModel()
 
     var body: some View {
@@ -61,10 +62,13 @@ struct SwiftPracticeView2: View {
                 .listStyle(.plain)
                 Spacer()
             }
-
+        }
+        .onChange(of: swipeVM.btnActive) { _ in
             if swipeVM.btnActive {
-                ToucherNavigationLink {
-                    SwipeFinalView()
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    navigationManager.navigate = false
+                    navigationManager.updateGesture()
                 }
             }
         }

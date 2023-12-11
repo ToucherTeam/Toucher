@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var mainVM = MainViewModel()
-    @StateObject var appState = AppState()
+    @AppStorage("finish") private var finish = false
     
     var body: some View {
-        MainView()
-            .id(appState.rootViewId)
-            .environmentObject(appState)
-            .environmentObject(mainVM)
+        NavigationStack {
+            if finish {
+                FinishMainView()
+            } else {
+                NewMainView()
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

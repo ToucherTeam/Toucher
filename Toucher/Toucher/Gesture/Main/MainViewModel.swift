@@ -20,5 +20,4 @@ class MainViewModel: ObservableObject {
         .init(name: "확대 축소하기", image: "Primary", iconName: "pinch icon"),
         .init(name: "회전하기", image: "Primary", iconName: "rotate icon")
     ]
-
 }

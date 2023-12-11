@@ -9,6 +9,8 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DragPracticeView2: View {
+    @StateObject private var navigationManager = NavigationManager.shared
+
     @State private var data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
     @State private var isSuccess = false
@@ -104,7 +106,8 @@ struct DragPracticeView2: View {
             if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    // after success
+                    navigationManager.navigate = false
+                    navigationManager.updateGesture()
                 }
             }
         }

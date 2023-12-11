@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct RotationPracticeView: View {
+    @StateObject private var navigationManager = NavigationManager.shared
+
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isOneTapped = false
@@ -37,7 +39,9 @@ struct RotationPracticeView: View {
                             }
                     )
                     .onChange(of: heading) { _ in
-                        isSuccess = true
+                        if abs(heading) > 10 {
+                            isSuccess = true
+                        }
                     }
                     .overlay {
                         if isSuccess {
@@ -64,7 +68,8 @@ struct RotationPracticeView: View {
             if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    // go home view
+                    navigationManager.navigate = false
+                    navigationManager.updateGesture()
                 }
             }
         }

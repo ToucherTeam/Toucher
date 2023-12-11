@@ -17,10 +17,7 @@ struct RotationMap: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
-        mapView.isZoomEnabled = false
-        mapView.isPitchEnabled = false
-        mapView.isScrollEnabled = false
-        mapView.isRotateEnabled = false
+        mapView.isUserInteractionEnabled = false
         
         mapView.camera = MKMapCamera(lookingAtCenter: center, fromDistance: distance, pitch: pitch, heading: heading)
         return mapView

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DoubleTapPracticeView2: View {
-    
+    @StateObject private var navigationManager = NavigationManager.shared
+
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isFail = false
@@ -25,6 +26,11 @@ struct DoubleTapPracticeView2: View {
                 .scaleEffect(isSuccess ? 2 : 1)
                 .ignoresSafeArea()
                 .gesture(gesture)
+                .overlay {
+                    if isSuccess {
+                        ConfettiView()
+                    }
+                }
             
             VStack(spacing: 0) {
                 CustomToolbar(title: "두 번 누르기")
@@ -49,7 +55,8 @@ struct DoubleTapPracticeView2: View {
             if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    
+                    navigationManager.navigate = false
+                    navigationManager.updateGesture()
                 }
             }
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewMainView: View {
-    @StateObject private var viewModel = NewMainViewModel()
+    @StateObject private var navigationManager = NavigationManager.shared
     
     var body: some View {
         ZStack {
@@ -16,9 +16,9 @@ struct NewMainView: View {
             
             ScrollViewReader { proxy in
                 ScrollView {
-                    ForEach(viewModel.gestureButtons) { button in
+                    ForEach(navigationManager.gestureButtons) { button in
                         MainButton(type: button.buttonType, gesture: button.gestureType) {
-                            
+                            navigationManager.navigate = true
                         }
                         .disabled(button.buttonType != .ready)
                         .id(button.gestureType)
@@ -34,17 +34,25 @@ struct NewMainView: View {
                 }
                 .scrollIndicators(.hidden)
                 .scrollDisabled(true)
-                .onChange(of: viewModel.headerGesture) { gesture in
-                    proxy.scrollTo(gesture, anchor: .top)
+                .onChange(of: navigationManager.headerGesture) { gesture in
+                    withAnimation {
+                        proxy.scrollTo(gesture, anchor: .top)
+                    }
                 }
             }
             
-            MainViewHeader(gesture: viewModel.headerGesture)
+            MainViewHeader(gesture: navigationManager.headerGesture)
                 .frame(maxHeight: .infinity, alignment: .top)
+        }
+        .navigationDestination(isPresented: $navigationManager.navigate) {
+            navigationManager.navigateGestureView(gesture: navigationManager.headerGesture)
+                .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
 
 #Preview {
-    NewMainView()
+    NavigationStack {
+        NewMainView()
+    }
 }
