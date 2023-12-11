@@ -19,9 +19,14 @@
 		07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345EC2AA8716500B7329D /* SwipeExampleView.swift */; };
 		07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345ED2AA8716500B7329D /* SwipeModel.swift */; };
 		07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345F42AA871FA00B7329D /* SwipeFinalView.swift */; };
+		292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BD2B26C597002E5AAA /* DoubleTapButton.swift */; };
+		292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BF2B26C686002E5AAA /* LongPressButton.swift */; };
 		29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */; };
 		29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872E2AA86C8E006E846E /* RotateExampleView.swift */; };
 		29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD87302AA87527006E846E /* RotationPracticeView.swift */; };
+		29B9BB8B2B16B7250042DE19 /* ConfettiShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */; };
+		29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB892B16B7250042DE19 /* ConfettiView.swift */; };
+		29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB8A2B16B7250042DE19 /* Confetti.swift */; };
 		29D51B762B259EE600A6923E /* NewMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B752B259EE600A6923E /* NewMainView.swift */; };
 		29D51B782B25A29300A6923E /* NewMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B772B25A29300A6923E /* NewMainViewModel.swift */; };
 		29D51B7C2B25A38A00A6923E /* NewMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B7B2B25A38A00A6923E /* NewMainModel.swift */; };
@@ -30,9 +35,6 @@
 		29D51B832B25BF9B00A6923E /* FinishMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */; };
 		29D51B852B25D1BC00A6923E /* PracticeBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B842B25D1BC00A6923E /* PracticeBubble.swift */; };
 		29D51B872B25D5C300A6923E /* FinishMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B862B25D5C300A6923E /* FinishMainButton.swift */; };
-		29B9BB8B2B16B7250042DE19 /* ConfettiShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */; };
-		29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB892B16B7250042DE19 /* ConfettiView.swift */; };
-		29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB8A2B16B7250042DE19 /* Confetti.swift */; };
 		29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E8521E2AA08346003F4AF4 /* ToucherApp.swift */; };
 		29E852212AA08346003F4AF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E852202AA08346003F4AF4 /* ContentView.swift */; };
 		29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29E852222AA08347003F4AF4 /* Assets.xcassets */; };
@@ -79,9 +81,14 @@
 		07D345EC2AA8716500B7329D /* SwipeExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeExampleView.swift; sourceTree = "<group>"; };
 		07D345ED2AA8716500B7329D /* SwipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeModel.swift; sourceTree = "<group>"; };
 		07D345F42AA871FA00B7329D /* SwipeFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFinalView.swift; sourceTree = "<group>"; };
+		292181BD2B26C597002E5AAA /* DoubleTapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapButton.swift; sourceTree = "<group>"; };
+		292181BF2B26C686002E5AAA /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 		29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView2.swift; sourceTree = "<group>"; };
 		29AD872E2AA86C8E006E846E /* RotateExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateExampleView.swift; sourceTree = "<group>"; };
 		29AD87302AA87527006E846E /* RotationPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationPracticeView.swift; sourceTree = "<group>"; };
+		29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiShapes.swift; sourceTree = "<group>"; };
+		29B9BB892B16B7250042DE19 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		29B9BB8A2B16B7250042DE19 /* Confetti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		29D51B752B259EE600A6923E /* NewMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainView.swift; sourceTree = "<group>"; };
 		29D51B772B25A29300A6923E /* NewMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainViewModel.swift; sourceTree = "<group>"; };
 		29D51B7B2B25A38A00A6923E /* NewMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainModel.swift; sourceTree = "<group>"; };
@@ -90,9 +97,6 @@
 		29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishMainViewModel.swift; sourceTree = "<group>"; };
 		29D51B842B25D1BC00A6923E /* PracticeBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeBubble.swift; sourceTree = "<group>"; };
 		29D51B862B25D5C300A6923E /* FinishMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishMainButton.swift; sourceTree = "<group>"; };
-		29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiShapes.swift; sourceTree = "<group>"; };
-		29B9BB892B16B7250042DE19 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
-		29B9BB8A2B16B7250042DE19 /* Confetti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		29E8521B2AA08346003F4AF4 /* Toucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E8521E2AA08346003F4AF4 /* ToucherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucherApp.swift; sourceTree = "<group>"; };
 		29E852202AA08346003F4AF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,15 +189,6 @@
 			path = Rotate;
 			sourceTree = "<group>";
 		};
-		29D51B7F2B25BF5000A6923E /* FinishMain */ = {
-			isa = PBXGroup;
-			children = (
-				29D51B802B25BF6100A6923E /* FinishMainView.swift */,
-				29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */,
-			);
-			path = FinishMain;
-			sourceTree = "<group>";
-		};
 		29B9BB872B16B7250042DE19 /* Confetti */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +197,15 @@
 				29B9BB8A2B16B7250042DE19 /* Confetti.swift */,
 			);
 			path = Confetti;
+			sourceTree = "<group>";
+		};
+		29D51B7F2B25BF5000A6923E /* FinishMain */ = {
+			isa = PBXGroup;
+			children = (
+				29D51B802B25BF6100A6923E /* FinishMainView.swift */,
+				29D51B822B25BF9B00A6923E /* FinishMainViewModel.swift */,
+			);
+			path = FinishMain;
 			sourceTree = "<group>";
 		};
 		29E1E4722AA9B04D00D45713 /* LongTap */ = {
@@ -350,6 +354,8 @@
 				F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */,
 				F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */,
 				29D51B862B25D5C300A6923E /* FinishMainButton.swift */,
+				292181BD2B26C597002E5AAA /* DoubleTapButton.swift */,
+				292181BF2B26C686002E5AAA /* LongPressButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */,
+				292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */,
 				32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */,
@@ -502,6 +509,7 @@
 				29F1D5162AA765990074C1FE /* FinalView.swift in Sources */,
 				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
 				29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */,
+				292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
