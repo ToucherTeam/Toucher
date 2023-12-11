@@ -10,71 +10,55 @@ import SwiftUI
 struct RotateExampleView: View {
     @State private var isTapped = false
     @State private var isSuccess = false
-    @State private var isOneTapped = false
+    @State private var isFail = false
+    @State private var navigate = false
     
-    @State private var currentAmount = Angle.degrees(0)
+    @State private var currentAmount: Angle = .degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
     
     @Namespace var namespace
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuccess {
+            if isFail && !isSuccess {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
-                Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
-                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                CustomToolbar(title: "회전하기")
+
+                Text(isSuccess ? "잘하셨어요!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
+                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 30)
-                Image("ch_default")
+                Image("ToucherCharacter")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 168)
                     .matchedGeometryEffect(id: "ch", in: namespace)
-                    .background {
-                        Circle()
-                            .frame(width: 400)
-                            .foregroundColor(isOneTapped ? .clear : Color(UIColor.systemBackground))
-                    }
+                    .frame(width: 400, height: 400)
+                    .contentShape(Rectangle())
                     .frame(maxHeight: .infinity)
                     .rotationEffect(
                         isSuccess ?
                         .degrees(accumulateAngle.degrees > 45 ? 0 : -360) :
                         .degrees(-180) + accumulateAngle + currentAmount
                     )
-                    .gesture(
-                        RotationGesture()
-                            .onChanged { angle in
-                                currentAmount = angle
-                                withAnimation {
-                                    isTapped = true
-                                }
-                            }
-                            .onEnded { _ in
-                                accumulateAngle += currentAmount
-                                currentAmount = .zero
-                                
-                                if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
-                                    withAnimation {
-                                        isSuccess = true
-                                    }
-                                } else {
-                                    print(accumulateAngle.degrees)
-                                    isSuccess = false
-                                    isOneTapped = true
-                                }
-                            })
+                    .gesture(gesture)
                     .onTapGesture {
                         withAnimation {
-                            isOneTapped = true
+                            isFail = true
                         }
                     }
                     .overlay {
-                        if !isTapped {
+                        if isSuccess {
+                            ConfettiView()
+                        }
+                    }
+                    .overlay {
+                        if !isTapped || isFail && !isSuccess && !isTapped {
                             Image("rotation_guide")
                                 .resizable()
                                 .scaledToFit()
@@ -82,35 +66,61 @@ struct RotateExampleView: View {
                                 .allowsHitTesting(false)
                         }
                     }
-                Group {
-                    Text("화면의 물체를")
-                    + Text(" 뒤집어 보고")
-                        .bold()
-                    + Text("\n싶을 때 사용해요.")
+                
+                HelpButton(style: isFail ? .primary : .secondary) {
+                    
                 }
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .foregroundColor(isTapped || isOneTapped ? .clear : .gray)
-                .font(.title)
-                .padding(.bottom, 80)
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
-            
+        }
+        .onChange(of: isSuccess) { _ in
             if isSuccess {
-                ToucherNavigationLink {
-                    VStack(spacing: 0) {
-                        CustomToolbar(title: "회전하기")
-                        RotationPracticeView()
-                    }
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    navigate = true
                 }
             }
+        }
+        .navigationDestination(isPresented: $navigate) {
+            RotationPracticeView()
+                .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            isTapped = false
-            isSuccess = false
-            isOneTapped = false
-            currentAmount = .zero
-            accumulateAngle = .zero
+            reset()
         }
+    }
+    
+    private func reset() {
+        isTapped = false
+        isSuccess = false
+        isFail = false
+        currentAmount = .zero
+        accumulateAngle = .zero
+    }
+    
+    private var gesture: some Gesture {
+        RotationGesture()
+            .onChanged { angle in
+                currentAmount = angle
+                withAnimation {
+                    isTapped = true
+                }
+            }
+            .onEnded { _ in
+                accumulateAngle += currentAmount
+                currentAmount = .zero
+                
+                if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
+                    withAnimation {
+                        isSuccess = true
+                    }
+                } else {
+                    print(accumulateAngle.degrees)
+                    isSuccess = false
+                    isFail = true
+                }
+            }
     }
 }
 

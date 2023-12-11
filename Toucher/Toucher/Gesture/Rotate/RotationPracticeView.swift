@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct RotationPracticeView: View {
     @State private var isTapped = false
@@ -15,76 +16,72 @@ struct RotationPracticeView: View {
     @State private var currentAmount = Angle.degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
     
+    @State private var heading: CLLocationDirection = 0
+    
     @Namespace var namespace
     
     var body: some View {
+        VStack(spacing: 0) {
+            CustomToolbar(title: "회전하기")
+                .zIndex(1)
+
             ZStack {
-                Image("Map")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxHeight: .infinity)
-                    .edgesIgnoringSafeArea(.bottom)
-                    .rotationEffect(accumulateAngle + currentAmount)
+                RotationMap(heading: $heading)
+                    .ignoresSafeArea()
                     .gesture(
                         RotationGesture()
                             .onChanged { angle in
-                                currentAmount = angle
                                 withAnimation {
-                                    isTapped = true
+                                    heading = CLLocationDirection(-angle.degrees)
                                 }
                             }
-                            .onEnded { _ in
-                                accumulateAngle += currentAmount
-                                currentAmount = .zero
-                                
-                                if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
-                                    withAnimation {
-                                        isSuccess = true
-                                    }
-                                } else {
-                                    print(accumulateAngle.degrees)
-                                    isSuccess = false
-                                }
-                            })
-                GeometryReader { geometry in
-                    Color.clear
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .overlay(alignment: .top) {
-                            Text("")
-                                .frame(height: geometry.safeAreaInsets.top)
-                                .frame(maxWidth: .infinity)
-                                .background {
-                                    Color.white
-                                }
-                                .edgesIgnoringSafeArea(.top)
+                    )
+                    .onChange(of: heading) { _ in
+                        isSuccess = true
+                    }
+                    .overlay {
+                        if isSuccess {
+                            ConfettiView()
                         }
-                }
-                Text(isSuccess ? "잘하셨어요!" : "지도를 회전시켜 볼까요?")
+                    }
+                
+                Text(isSuccess ? "성공!" : "지도를 회전시켜 볼까요?")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
                     .bold()
-                    .padding(.top, 30)
-                    .frame(maxHeight: .infinity, alignment: .top)
-                
-                if isSuccess {
-                    ToucherNavigationLink(label: "완료") {
-                        FinalView(gestureTitle: "회전하기")
+                    .padding(.vertical, 40)
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        Rectangle()
+                            .foregroundColor(.customWhite.opacity(0.7))
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .frame(maxHeight: .infinity, alignment: .top)
+            }
+        }
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    // go home view
                 }
             }
-            .onAppear {
-                isTapped = false
-                isSuccess = false
-                isOneTapped = false
-            }
+        }
+        .onAppear {
+            reset()
         }
     }
     
-    struct RotationPracticeView_Previews: PreviewProvider {
-        static var previews: some View {
-            RotationPracticeView()
-        }
+    private func reset() {
+        isTapped = false
+        isSuccess = false
+        isOneTapped = false
     }
+}
+
+struct RotationPracticeView_Previews: PreviewProvider {
+    static var previews: some View {
+        RotationPracticeView()
+    }
+}
