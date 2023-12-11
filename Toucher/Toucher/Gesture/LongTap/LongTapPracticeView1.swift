@@ -62,9 +62,7 @@ struct LongTapPracticeView1: View {
             }
         }
         .onAppear {
-            isTapped = false
-            isSuccess = false
-            isFail = false
+            reset()
         }
     }
     
@@ -138,6 +136,12 @@ struct LongTapPracticeView1: View {
                     .transition(.scale)
                 }
             }
+    }
+    
+    private func reset() {
+        isTapped = false
+        isSuccess = false
+        isFail = false
     }
 }
 

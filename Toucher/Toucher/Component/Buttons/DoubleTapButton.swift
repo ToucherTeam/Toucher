@@ -12,14 +12,14 @@ struct DoubleTapButton: View {
     @State private var count = 0
     private let image = "ToucherButton"
     
-    @State var isSuccess = false
-    @State var isFail = false
+    @Binding var isSuccess: Bool
+    @Binding var isFail: Bool
     
     var body: some View {
         Image(isSuccess ? image + "Success" : isTapped ? image + "Pressed" : image)
             .resizable()
             .scaledToFit()
-            .frame(width: 100, height: 95)
+            .frame(width: 176, height: 165)
             .offset(y: isTapped || isSuccess ? 5 : 0)
             .gesture(doubleTap)
             .frame(maxWidth: .infinity)
@@ -56,5 +56,5 @@ struct DoubleTapButton: View {
 }
 
 #Preview {
-    DoubleTapButton()
+    DoubleTapButton(isSuccess: .constant(false), isFail: .constant(false))
 }
