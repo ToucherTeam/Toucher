@@ -37,6 +37,8 @@ struct PanExampleView: View {
                 Color.accentColor.opacity(0.5).ignoresSafeArea()
             }
             VStack {
+                CustomToolbar(title: "화면 움직이기")
+
                 Text(isSuceess ? "잘하셨어요!\n" : "밑에서 위로\n쓸어 올려보세요.")
                     .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
                     .multilineTextAlignment(.center)

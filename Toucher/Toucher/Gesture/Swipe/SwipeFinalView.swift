@@ -13,17 +13,6 @@ struct SwipeFinalView: View {
     var body: some View {
         FinalView(gestureTitle: "살짝 쓸기")
             .padding(.bottom, 13)
-            .overlay(
-                Rectangle()
-                    .frame(height: 0.5)
-                    .foregroundColor(.customGR3),
-                    alignment: .top
-            )
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    CustomToolbar(title: "살짝 쓸기")
-                }
-            }
             .frame(maxHeight: .infinity)
         
     }
