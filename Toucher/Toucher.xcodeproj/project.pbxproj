@@ -21,6 +21,7 @@
 		07D345F52AA871FA00B7329D /* SwipeFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345F42AA871FA00B7329D /* SwipeFinalView.swift */; };
 		292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BD2B26C597002E5AAA /* DoubleTapButton.swift */; };
 		292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BF2B26C686002E5AAA /* LongPressButton.swift */; };
+		295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06202B26EE01004CAF1C /* HapticManager.swift */; };
 		29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */; };
 		29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872E2AA86C8E006E846E /* RotateExampleView.swift */; };
 		29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD87302AA87527006E846E /* RotationPracticeView.swift */; };
@@ -83,6 +84,7 @@
 		07D345F42AA871FA00B7329D /* SwipeFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFinalView.swift; sourceTree = "<group>"; };
 		292181BD2B26C597002E5AAA /* DoubleTapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapButton.swift; sourceTree = "<group>"; };
 		292181BF2B26C686002E5AAA /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
+		295A06202B26EE01004CAF1C /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView2.swift; sourceTree = "<group>"; };
 		29AD872E2AA86C8E006E846E /* RotateExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateExampleView.swift; sourceTree = "<group>"; };
 		29AD87302AA87527006E846E /* RotationPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationPracticeView.swift; sourceTree = "<group>"; };
@@ -159,14 +161,6 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		07670B942AA749E000DE5113 /* DeviceManager */ = {
-			isa = PBXGroup;
-			children = (
-				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
-			);
-			path = DeviceManager;
-			sourceTree = "<group>";
-		};
 		07D345E72AA8714F00B7329D /* Swipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +172,15 @@
 				07D345F42AA871FA00B7329D /* SwipeFinalView.swift */,
 			);
 			path = Swipe;
+			sourceTree = "<group>";
+		};
+		295A061F2B26ED6B004CAF1C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				295A06202B26EE01004CAF1C /* HapticManager.swift */,
+				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		29AD872D2AA86C7E006E846E /* Rotate */ = {
@@ -240,7 +243,7 @@
 			children = (
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
-				07670B942AA749E000DE5113 /* DeviceManager */,
+				295A061F2B26ED6B004CAF1C /* Manager */,
 				07670B932AA749D600DE5113 /* Component */,
 				29EAB4082AA1703A004E5429 /* Gesture */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
@@ -497,6 +500,7 @@
 				29D51B872B25D5C300A6923E /* FinishMainButton.swift in Sources */,
 				29B9BB8B2B16B7250042DE19 /* ConfettiShapes.swift in Sources */,
 				29EAB4112AA18B28004E5429 /* DoubleTapPracticeView1.swift in Sources */,
+				295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */,
 				29EAB4132AA19080004E5429 /* DoubleTapPracticeView2.swift in Sources */,
 				29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */,
 				29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */,

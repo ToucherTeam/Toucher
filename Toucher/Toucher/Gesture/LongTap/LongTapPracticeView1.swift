@@ -10,110 +10,134 @@ import SwiftUI
 struct LongTapPracticeView1: View {
     @State private var isTapped = false
     @State private var isSuccess = false
-    @State private var isOneTapped = false
+    @State private var isFail = false
     
     @GestureState private var isPressed = false
     
+    @State private var navigate = false
+    
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuccess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            if isFail && !isSuccess {
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 CustomToolbar(title: "길게 누르기")
                 
-                Text(isSuccess ? "잘하셨어요!\n\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
-                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                Text(isSuccess ? "성공!\n\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
+                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
+                    .font(.customTitle)
                     .bold()
-                    .padding(.top, 30)
-                Spacer()
-                Image("Camera")
-                    .resizable()
-                    .frame(width: 130, height: 130)
-                    .foregroundStyle(.gray)
+                    .padding(.top, 40)
+                
+                cameraButton
+                    .padding(.bottom)
+                    .frame(maxHeight: .infinity)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 12)
-                            .foregroundColor(isPressed ? .black.opacity(0.5) : .clear)
-                    }
-                    .scaleEffect(isPressed ? 1.1 : 1)
-                    .animation(.easeInOut(duration: 1), value: isPressed)
-                    .gesture(
-                        LongPressGesture(minimumDuration: 1.0)
-                            .updating($isPressed) { value, gestureState, _ in
-                                gestureState = value
-                            }
-                            .onEnded {_ in
-                                withAnimation {
-                                    isSuccess = true
-                                    isTapped = true
-                                }
-                            }
-                            .simultaneously(with: TapGesture()
-                                .onEnded {
-                                    withAnimation {
-                                        isTapped = true
-                                        isOneTapped = true
-                                    }
-                                })
-                    )
-                    .background(alignment: .topLeading) {
                         if isSuccess {
-                            VStack {
-                                Group {
-                                    HStack {
-                                        Text("복사")
-                                        Spacer()
-                                        Image(systemName: "doc.on.doc")
-                                    }
-                                    Divider()
-                                    HStack {
-                                        Text("공유")
-                                        Spacer()
-                                        Image(systemName: "square.and.arrow.up")
-                                    }
-                                    Divider()
-                                    HStack {
-                                        Text("즐겨찾기")
-                                        Spacer()
-                                        Image(systemName: "heart")
-                                    }
-                                    Divider()
-                                    HStack {
-                                        Text("삭제")
-                                        Spacer()
-                                        Image(systemName: "trash")
-                                    }
-                                    .foregroundColor(.red)
-                                }
-                            }
-                            .padding(10)
-                            .frame(width: 200)
-                            .background {
-                                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                    .foregroundStyle(Color(.systemGray6))
-                            }
-                            .offset(y: -180)
-                            .transition(.scale)
+                            ConfettiView()
                         }
                     }
-                Spacer()
-                Spacer()
+                
+                HelpButton(style: isFail ? .primary : .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
             .frame(maxWidth: .infinity)
-            if isSuccess {
-                ToucherNavigationLink {
-                    LongTapPracticeView2()
+            .onChange(of: isSuccess) { _ in
+                if isSuccess {
+                    HapticManager.notification(type: .success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        navigate = true
+                    }
                 }
+            }
+            .navigationDestination(isPresented: $navigate) {
+                LongTapPracticeView2()
+                    .toolbar(.hidden, for: .navigationBar)
             }
         }
         .onAppear {
             isTapped = false
             isSuccess = false
-            isOneTapped = false
+            isFail = false
         }
+    }
+    
+    private var cameraButton: some View {
+        Image("Camera")
+            .resizable()
+            .frame(width: 130, height: 130)
+            .foregroundStyle(.gray)
+            .overlay {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(isPressed ? .black.opacity(0.5) : .clear)
+            }
+            .scaleEffect(isPressed ? 1.1 : 1)
+            .animation(.easeInOut(duration: 1), value: isPressed)
+            .gesture(
+                LongPressGesture(minimumDuration: 1.0)
+                    .updating($isPressed) { value, gestureState, _ in
+                        gestureState = value
+                    }
+                    .onEnded {_ in
+                        withAnimation {
+                            isSuccess = true
+                            isTapped = true
+                        }
+                    }
+                    .simultaneously(with: TapGesture()
+                        .onEnded {
+                            withAnimation {
+                                isTapped = true
+                                isFail = true
+                            }
+                        })
+            )
+            .background(alignment: .topLeading) {
+                if isSuccess {
+                    VStack {
+                        Group {
+                            HStack {
+                                Text("복사")
+                                Spacer()
+                                Image(systemName: "doc.on.doc")
+                            }
+                            Divider()
+                            HStack {
+                                Text("공유")
+                                Spacer()
+                                Image(systemName: "square.and.arrow.up")
+                            }
+                            Divider()
+                            HStack {
+                                Text("즐겨찾기")
+                                Spacer()
+                                Image(systemName: "heart")
+                            }
+                            Divider()
+                            HStack {
+                                Text("삭제")
+                                Spacer()
+                                Image(systemName: "trash")
+                            }
+                            .foregroundColor(.red)
+                        }
+                    }
+                    .padding(10)
+                    .frame(width: 200)
+                    .background {
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .foregroundStyle(Color(.systemGray6))
+                    }
+                    .offset(y: -180)
+                    .transition(.scale)
+                }
+            }
     }
 }
 

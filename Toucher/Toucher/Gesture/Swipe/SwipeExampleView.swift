@@ -25,7 +25,8 @@ struct SwipeExampleView: View {
             }
 
             VStack {
-                
+                CustomToolbar(title: "살짝 쓸기")
+
                 titleText()
                 
                 Spacer()

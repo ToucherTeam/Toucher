@@ -15,19 +15,16 @@ struct CustomToolbar: View {
     var body: some View {
         
             HStack {
-
-                Spacer()
-                
                 Text(title)
                     .font(.system(size: 17))
                     .fontWeight(.semibold)
                     .foregroundColor(.customGR1)
-                Spacer()
+                    .frame(maxWidth: .infinity)
             }
             .overlay(alignment: .leading) {
-                Button(action: {
+                Button {
                     dismiss()
-                }, label: {
+                } label: {
                     HStack(spacing: 3) {
                         Image(systemName: "chevron.backward")
                             .font(.system(size: 17))
@@ -39,17 +36,20 @@ struct CustomToolbar: View {
                             .fontWeight(.regular)
                             .foregroundColor(.customPrimary)
                     }
-                })
+                }
                 .padding(.leading, 8)
             }
             .frame(height: 44)
             .frame(maxWidth: .infinity)
-            .overlay (
+            .background(.ultraThinMaterial)
+            .overlay(alignment: .bottom) {
                 Rectangle()
                     .frame(height: 0.5)
-                    .foregroundColor(.customGR3),
-                    alignment: .bottom
-            )
+                    .foregroundColor(.customGR3)
+            }
         }
-    
+}
+
+#Preview {
+    CustomToolbar(title: "두번 누르기")
 }

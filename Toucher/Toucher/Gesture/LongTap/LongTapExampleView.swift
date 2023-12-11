@@ -8,109 +8,97 @@
 import SwiftUI
 
 struct LongTapExampleView: View {
-    @State private var isTapped = false
+    @State private var isTapStart = false
     @State private var isSuccess = false
-    @State private var isOneTapped = false
+    @State private var isFail = false
+    @State private var navigate = false
+        
+    @State private var animate = [false, false, false]
     
-    @State private var isPressed = false
-    @State private var timer: Timer?
-
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuccess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            if isFail && !isSuccess {
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
-                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                CustomToolbar(title: "길게 누르기")
+
+                Text(isSuccess ? "성공!\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
+                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
+                    .font(.customTitle)
                     .bold()
-                    .padding(.top, 30)
-                Image(isSuccess ? "ch_button_pressed" : "ch_button")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 184)
+                    .padding(.top, 40)
+                
+                LongPressButton(isTapStart: $isTapStart, isSuccess: $isSuccess, isFail: $isFail)
+                    .padding(.bottom)
                     .frame(maxHeight: .infinity)
-                    .background {
-                        ZStack {
-                            Circle()
-                                .frame(width: 184)
-                                .foregroundColor(.customBG2)
-                            Circle()
-                                .frame(width: 144)
-                                .foregroundColor(.customSecondary)
+                    .overlay {
+                        if isSuccess {
+                            ConfettiView()
                         }
-                        .scaleEffect(isPressed ? 1.6 : 1)
-                        .opacity(isSuccess ? 0 : 1)
-                        .animation(.easeInOut(duration: 1), value: isPressed)
                     }
-                    .gesture(
-                        LongPressGesture(minimumDuration: 1)
-                            .onChanged { _ in
-                                isTapped = true
-                                isPressed = true
-                                timer?.invalidate() // 이미 진행 중인 타이머를 무효화합니다.
-                                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                                    isPressed = false
-                                    isOneTapped = true
-                                }
-                            }
-                            .onEnded { _ in
-                                timer?.invalidate() // 무효화합니다.
-                                if !isPressed { // 1초 이하로 눌렀을 때
-                                    isPressed = false
-                                } else {
-                                    withAnimation {
-                                        isSuccess = true
-                                    }
-                                }
-                            }
-                            .simultaneously(with: TapGesture()
-                                .onEnded {
-                                    withAnimation {
-                                        isTapped = true
-                                        isOneTapped = true
-                                        isPressed = false
-                                    }
-                                })
-                    )
-                    Group {
-                        Text("아이콘의 추가")
-                            .bold()
-                        + Text(" 기능과")
-                        + Text("\n미리보기")
-                            .bold()
-                        + Text("기능을 볼 때 사용해요.")
+                    .background {
+                        if !isSuccess && !isFail {
+                            circleAnimation
+                        }
                     }
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .foregroundColor(isTapped ? .clear : .gray)
-                    .font(.title)
-                    .padding(.bottom, 80)
+
+                HelpButton(style: isFail ? .primary : .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
-            if isSuccess {
-                ToucherNavigationLink {
-                    LongTapPracticeView1()
+            .onChange(of: isSuccess) { _ in
+                if isSuccess {
+                    HapticManager.notification(type: .success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        navigate = true
+                    }
                 }
             }
-
+            .navigationDestination(isPresented: $navigate) {
+                LongTapPracticeView1()
+                    .toolbar(.hidden, for: .navigationBar)
+            }
         }
-
         .onAppear {
-            isTapped = false
-            isSuccess = false
-            isOneTapped = false
-            isPressed = false
+            reset()
         }
+        .toolbar(.hidden, for: .navigationBar)
+    }
+    
+    private var circleAnimation: some View {
+        ZStack {
+            Ellipse()
+                .stroke(Color.customSecondary, lineWidth: 10)
+                .frame(width: 230, height: 185)
+                .opacity(isTapStart ? 1 : 0)
+                .animation(.easeInOut(duration: 0.8).repeatForever(), value: isTapStart)
+            Ellipse()
+                .stroke(Color.customBG2, lineWidth: 10)
+                .frame(width: 306, height: 245)
+                .opacity(isTapStart ? 1 : 0)
+                .animation(.easeInOut(duration: 1).repeatForever(), value: isTapStart)
+            Ellipse()
+                .stroke(Color.customBG1, lineWidth: 10)
+                .frame(width: 380, height: 304)
+                .opacity(isTapStart ? 1 : 0)
+                .animation(.easeInOut(duration: 1.2).repeatForever(), value: isTapStart)
+        }
+    }
+    
+    private func reset() {
+        isTapStart = false
+        isSuccess = false
+        isFail = false
     }
 }
 
 struct LongTapExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            LongTapExampleView()
-        }
+        LongTapExampleView()
     }
 }

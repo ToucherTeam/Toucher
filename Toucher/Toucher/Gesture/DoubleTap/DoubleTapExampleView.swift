@@ -19,6 +19,8 @@ struct DoubleTapExampleView: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
+                CustomToolbar(title: "두 번 누르기")
+                
                 Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
                     .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)

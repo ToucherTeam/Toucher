@@ -10,7 +10,7 @@ import SwiftUI
 struct LongTapPracticeView2: View {
     @State private var isTapped = false
     @State private var isSuccess = false
-    @State private var isOneTapped = false
+    @State private var isFail = false
     
     @GestureState private var isPressed = false
     
@@ -24,22 +24,19 @@ struct LongTapPracticeView2: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuccess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            if isFail && !isSuccess {
+                Color.customSecondary.ignoresSafeArea()
             }
-            VStack(spacing: 0){
-                // MARK: CustomToolBar를 VStack내에 넣음으로서 현재 View가 잘리는 현상이 있음, 수정해야함
+            VStack(spacing: 0) {
                 CustomToolbar(title: "길게 누르기")
                 
                 ScrollView {
-                    Text(isSuccess ? "잘하셨어요!\n" : isOneTapped ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
-                        .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                    Text(isSuccess ? "성공!\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
+                        .foregroundColor(isFail && !isSuccess ? .white : .primary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
-                        .font(.largeTitle)
-                        .bold()
+                        .font(.customTitle)
                         .padding(.top, 30)
-                    //                ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach((1...15), id: \.self) { index in
                             Image("Album\(index)")
@@ -70,25 +67,19 @@ struct LongTapPracticeView2: View {
                                             .onEnded {
                                                 withAnimation {
                                                     isTapped = true
-                                                    isOneTapped = true
+                                                    isFail = true
                                                     scale = 1
                                                 }
                                             })
                                 )
                         }
                     }
-                    //                }
                     .ignoresSafeArea()
                     .overlay {
                         if isSuccess {
                             Rectangle()
                                 .foregroundStyle(.ultraThinMaterial)
                                 .ignoresSafeArea()
-                                .onTapGesture {
-                                    isSuccess = false
-                                    isOneTapped = false
-                                    selectedIndex = nil
-                                }
                         }
                     }
                     .overlay(alignment: .top) {
@@ -101,24 +92,38 @@ struct LongTapPracticeView2: View {
                                     .offset(y: -50)
                                     .frame(width: 360)
                                     .matchedGeometryEffect(id: selectedIndex, in: name)
+                                    .overlay {
+                                        if isSuccess {
+                                            ConfettiView()
+                                        }
+                                    }
                             }
                         }
                     }
                 }
                 .scrollDisabled(true)
-                if isSuccess {
-                    ToucherNavigationLink(label: "완료") {
-                        FinalView(gestureTitle: "길게 누르기")
-                            .padding(.bottom, 13)
+                
+                .overlay(alignment: .bottom) {
+                    HelpButton(style: isFail ? .primary : .secondary) {
+                        
                     }
+                    .opacity(isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: isSuccess)
                 }
             }
-            
+        }
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    // go home View
+                }
+            }
         }
         .onAppear {
             isTapped = false
             isSuccess = false
-            isOneTapped = false
+            isFail = false
         }
     }
 }

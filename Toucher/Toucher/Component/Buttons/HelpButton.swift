@@ -13,25 +13,28 @@ enum HelpButtonStyle {
 }
 
 struct HelpButton: View {
-    @State private var animation = false
     var style: HelpButtonStyle
     var action: () -> Void
     
-    var textColor: Color {
-        switch style {
-        case .primary:
-            return .customBG1
-        case .secondary:
-            return .customSecondary
+    private var textColor: Color {
+        withAnimation {
+            switch style {
+            case .primary:
+                return .customBG1
+            case .secondary:
+                return .customSecondary
+            }
         }
     }
     
-    var backgroundColor: Color {
-        switch style {
-        case .primary:
-            return .customPrimary
-        case .secondary:
-            return .customBG2
+    private var backgroundColor: Color {
+        withAnimation {
+            switch style {
+            case .primary:
+                return .customPrimary
+            case .secondary:
+                return .customBG2
+            }
         }
     }
     
@@ -40,19 +43,13 @@ struct HelpButton: View {
             Text("도움이 필요하신가요?")
                 .font(.customButton)
                 .foregroundStyle(textColor)
-                .padding(.vertical, 21)
+                .padding(.vertical)
                 .frame(maxWidth: .infinity)
                 .background {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
                         .foregroundStyle(backgroundColor)
                 }
                 .padding(.horizontal, 16)
-                .offset(y: animation ? 0 : 10)
-                .onAppear {
-                    withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                        animation = true
-                    }
-                }
         }
     }
 }

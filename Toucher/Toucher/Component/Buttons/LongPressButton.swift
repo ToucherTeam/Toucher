@@ -11,15 +11,15 @@ struct LongPressButton: View {
     @GestureState private var isTapped = false
     private let image = "ToucherButton"
     
-    @State var isTapStart = false
-    @State var isSuccess = false
-    @State var isFail = false
+    @Binding var isTapStart: Bool
+    @Binding var isSuccess: Bool
+    @Binding var isFail: Bool
 
     var body: some View {
         Image(isSuccess ? image + "Success" : isTapped ? image + "Pressed" : image)
             .resizable()
             .scaledToFit()
-            .frame(width: 100, height: 95)
+            .frame(width: 176, height: 165)
             .offset(y: isTapped || isSuccess ? 5 : 0)
             .gesture(longPress)
             .frame(maxWidth: .infinity)
@@ -51,5 +51,5 @@ struct LongPressButton: View {
 }
 
 #Preview {
-    LongPressButton()
+    LongPressButton(isTapStart: .constant(true), isSuccess: .constant(false), isFail: .constant(true))
 }

@@ -56,8 +56,6 @@ struct MainView: View {
                     }
                     .navigationDestination(for: MainModel.self) { gesture in
                         VStack(spacing: 0) {
-                            customHeader(for: gesture)
-
                             viewForGesture(gesture)
                         }
                     }
