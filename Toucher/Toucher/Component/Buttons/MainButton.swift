@@ -73,8 +73,10 @@ struct MainButton: View {
         .offset(y: -83)
         .offset(y: bubbleAnimation ? -3 : 3)
         .onAppear {
-            withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                bubbleAnimation = true
+            DispatchQueue.main.async {
+                withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                    bubbleAnimation = true
+                }
             }
         }
     }
@@ -87,8 +89,10 @@ struct MainButton: View {
                 }
             }
             .onChanged { _ in
-                action()
-                print("action")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    action()
+                    print("action")
+                }
             }
     }
 }

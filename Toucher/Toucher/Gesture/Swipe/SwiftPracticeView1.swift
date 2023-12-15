@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SwiftPracticeView1: View {
-    @EnvironmentObject var mainVM: MainViewModel
     @StateObject var swipeVM = SwipeViewModel()
     
     var text = ["왼쪽으로\n밀어볼까요?", "삭제버튼이 나왔어요.\n다음 것도 밀어볼까요?", "이번엔 메일 읽음\n버튼이 나왔어요!"]

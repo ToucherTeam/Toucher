@@ -11,8 +11,9 @@ struct DragExampleView: View {
     @State private var isSuccess = false
     @State private var isPressed = false
     @State private var isTapPressed = false
-    @State private var isOneTapped = false
+    @State private var isFail = false
     @State private var isArrived = false
+    @State private var navigate = false
     
     @State private var offset: CGSize = .zero
     @State private var scale = 1.0
@@ -21,17 +22,18 @@ struct DragExampleView: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuccess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            if isFail && !isSuccess {
+                Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                Text(isSuccess ? "잘하셨어요!" : isOneTapped ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
-                    .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
+                CustomToolbar(title: "끌어오기")
+
+                Text(isSuccess ? "성공!" : isFail ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
+                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top, 30)
+                    .font(.customTitle)
+                    .padding(.top, 40)
                 ZStack {
                     ZStack {
                         Image("drag_asset")
@@ -40,17 +42,17 @@ struct DragExampleView: View {
                             .frame(width: 120)
                             .zIndex(-1)
                         if isSuccess {
-                            Image("ch_button")
+                            Image("ToucherCharacter")
                                 .resizable()
                                 .scaledToFit()
                                 .matchedGeometryEffect(id: "circle", in: circle)
-                                .frame(width: 120)
+                                .frame(width: 100)
                                 .foregroundColor(.green)
                         }
                     }
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     if !isSuccess {
-                        Image("ch_button")
+                        Image("ToucherCharacter")
                             .resizable()
                             .scaledToFit()
                             .matchedGeometryEffect(id: "circle", in: circle)
@@ -89,7 +91,7 @@ struct DragExampleView: View {
                                                 offset = .zero
                                                 scale = 1.2
                                                 isPressed = false
-                                                isOneTapped = true
+                                                isFail = true
                                             }
                                         }
                                     }
@@ -105,6 +107,11 @@ struct DragExampleView: View {
                     }
                 }
                 .frame(maxHeight: .infinity)
+                .overlay {
+                    if isSuccess {
+                        ConfettiView()
+                    }
+                }
                 .padding(.vertical, 50)
                 .background {
                     if isPressed && !isSuccess {
@@ -112,30 +119,39 @@ struct DragExampleView: View {
                     }
                 }
                 
-                Group {
-                    Text("아이콘을 움직일 때,\n음량을 바꿀 때 ")
-                        .bold()
-                    + Text("사용해요.")
+                HelpButton(style: isFail ? .primary : .secondary) {
+                    
                 }
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .foregroundColor(isPressed || isOneTapped ? .clear : .gray)
-                .font(.title)
-                .padding(.bottom, 80)
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
+        }
+        .onChange(of: isSuccess) { _ in
             if isSuccess {
-                ToucherNavigationLink {
-                    DragPracticeView1()
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    navigate = true
                 }
             }
-            
+        }
+        .navigationDestination(isPresented: $navigate) {
+            DragPracticeView1()
+                .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            isPressed = false
-            isSuccess = false
-            isOneTapped = false
-            offset = .zero
+            reset()
         }
+    }
+    
+    private func reset() {
+        isSuccess = false
+        isPressed = false
+        isTapPressed = false
+        isFail = false
+        isArrived = false
+        
+        offset = .zero
+        scale = 1.0
     }
 }
 
