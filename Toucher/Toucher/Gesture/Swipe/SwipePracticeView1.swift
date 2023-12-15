@@ -43,7 +43,7 @@ struct SwipePracticeView1: View {
                             }
                         }
                         .frame(height: 100)
-                        .listRowBackground(Color.customGR5)
+                        .listRowBackground(Color.customBG2)
                     }
                     .cornerRadius(20)
                     .scrollDisabled(true)
@@ -69,7 +69,7 @@ struct SwipePracticeView1: View {
                                 }
                         }
                         .frame(height: 100)
-                        .listRowBackground(Color.customGR5)
+                        .listRowBackground(Color.customBG2)
                     }
                     .cornerRadius(20)
                     .scrollDisabled(true)
@@ -82,7 +82,7 @@ struct SwipePracticeView1: View {
                 Spacer()
             }
 
-            if swipeVM.index == 2 {	
+            if swipeVM.index == 2 {
                 ToucherNavigationLink {
                     SwipePracticeView2()
                 }
