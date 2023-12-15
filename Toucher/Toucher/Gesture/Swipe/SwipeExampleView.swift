@@ -45,7 +45,7 @@ struct SwipeExampleView: View {
             
             if checkSuccessCondition(swipeVM.currentIndexArray) {
                 ToucherNavigationLink {
-                    SwiftPracticeView1()
+                    SwipePracticeView1()
                 }
             }
         }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwiftPracticeView2: View {
+struct SwipePracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject var swipeVM = SwipeViewModel()
 
@@ -79,20 +79,8 @@ struct SwiftPracticeView2: View {
     }
 }
 
-struct SwiftPracticeView2_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            NavigationView {
-                SwipeExampleView()
-            }
-            .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
-            .previewDisplayName("iPhone SE")
-            
-            NavigationView {
-                SwipeExampleView()
-            }
-            .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
-            .previewDisplayName("iPhone 14")
-        }
+#Preview {
+    NavigationStack {
+        SwipePracticeView2()
     }
 }

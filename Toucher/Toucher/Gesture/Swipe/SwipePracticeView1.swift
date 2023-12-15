@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwiftPracticeView1: View {
+struct SwipePracticeView1: View {
     @StateObject var swipeVM = SwipeViewModel()
     
     var text = ["왼쪽으로\n밀어볼까요?", "삭제버튼이 나왔어요.\n다음 것도 밀어볼까요?", "이번엔 메일 읽음\n버튼이 나왔어요!"]
@@ -82,10 +82,9 @@ struct SwiftPracticeView1: View {
                 Spacer()
             }
 
-            if swipeVM.index == 2 {
-                
+            if swipeVM.index == 2 {	
                 ToucherNavigationLink {
-                    SwiftPracticeView2()
+                    SwipePracticeView2()
                 }
             }
         }
@@ -95,20 +94,8 @@ struct SwiftPracticeView1: View {
         }    }
 }
 
-struct SwipePracticeView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            NavigationView {
-                SwipeExampleView()
-            }
-            .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
-            .previewDisplayName("iPhone SE")
-            
-            NavigationView {
-                SwipeExampleView()
-            }
-            .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
-            .previewDisplayName("iPhone 14")
-        }
+#Preview {
+    NavigationStack {
+        SwipePracticeView1()
     }
 }
