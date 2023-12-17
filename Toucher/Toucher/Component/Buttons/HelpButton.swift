@@ -50,6 +50,7 @@ struct HelpButton: View {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
                         .foregroundStyle(backgroundColor)
                 }
+                .frame(width: UIScreen.main.bounds.width - 32)
                 .padding(.horizontal, 16)
                 .offset(y: animate ? -8 : 0)
                 .onAppear {
