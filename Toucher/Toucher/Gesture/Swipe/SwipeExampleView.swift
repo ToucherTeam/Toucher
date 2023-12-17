@@ -41,12 +41,18 @@ struct SwipeExampleView: View {
                     .overlay(indicator())
                 Spacer()
                 
-                footerContent()
+                HelpButton(style: isFail()  ? .primary : .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
             .animation(.easeInOut, value: dragOffset == 0)
-            .navigationDestination(isPresented: $navigate) {
-                SwipePracticeView1()
-                    .toolbar(.hidden, for: .navigationBar)
+            .onAppear {
+                swipeVM.currentIndexArray = []
+                isOneTapped = false
+                isSuccess = false
+                print("찍힘")
             }
             .overlay {
                 if isSuccess {
@@ -60,11 +66,10 @@ struct SwipeExampleView: View {
                         navigate = true
                 }
             }
-        }
-        .onAppear {
-            swipeVM.currentIndexArray = []
-            isOneTapped = false
-            isSuccess = false
+            .navigationDestination(isPresented: $navigate) {
+                SwipePracticeView1()
+                    .toolbar(.hidden, for: .navigationBar)
+            }
         }
     }
     
@@ -234,6 +239,10 @@ struct SwipeExampleView: View {
                 print(swipeVM.currentIndexArray)
                 print(isOneTapped)
             }
+    }
+    
+    private func isFail() -> Bool {
+        return !checkSuccessCondition(swipeVM.currentIndexArray) && swipeVM.currentIndex == -1 && isOneTapped
     }
 }
 
