@@ -21,7 +21,6 @@ struct SwipePracticeView1: View {
                     .font(.customTitle)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
-                    
                 VStack(spacing: 16) {
                     List {
                         HStack {
@@ -34,13 +33,12 @@ struct SwipePracticeView1: View {
                                 
                             } label: {
                                 Image(systemName: "trash.fill")
-                                    .padding(50)
+                                    .onAppear {
+                                        swipeVM.index = 1
+                                        swipeVM.checkSuccess = true
+                                    }
                             }
                             .tint(.red)
-                            .onAppear {
-                                swipeVM.index = 1
-                                swipeVM.checkSuccess = true
-                            }
                         }
                         .frame(height: 100)
                         .listRowBackground(Color.customBG2)
@@ -91,7 +89,8 @@ struct SwipePracticeView1: View {
         .frame(maxHeight: .infinity)
         .onAppear {
             swipeVM.checkSuccess = false
-        }    }
+        }
+    }
 }
 
 #Preview {
