@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct PanPracticeView: View {
     @StateObject private var navigationManager = NavigationManager.shared
@@ -17,79 +18,81 @@ struct PanPracticeView: View {
     @State private var imageOffset: CGSize = .zero
     @State private var gestureOffset: CGSize = .zero
     
+    @State private var heading: CLLocationDirection = 0
+    @State private var centerCoordinate = CLLocationCoordinate2D(latitude: 37.57605, longitude: 126.97723)
+
+    
     var body: some View {
-        ZStack {
-            Image("Map")
-                .resizable()
-                .scaledToFill()
-                .frame(maxHeight: .infinity)
-                .offset(x: imageOffset.width + gestureOffset.width, y: imageOffset.height + gestureOffset.height)
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            gestureOffset = CGSize(width: value.translation.width, height: value.translation.height)
-                            withAnimation(.easeInOut) {
-                                isSuccess = true
+        VStack(spacing: 0) {
+            CustomToolbar(title: "화면 움직이기")
+                .zIndex(1)
+            ZStack {
+                PanMap(heading: $heading, centerCoordinate: $centerCoordinate)
+                    .ignoresSafeArea()
+                    .gesture(
+                        DragGesture()
+                            .onChanged { _ in
+                                withAnimation {
+                                    isSuccess = true
+                                }
                             }
+                    )
+                
+                
+                GeometryReader { geometry in
+                    Color.clear
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .overlay(alignment: .top) {
+                            Text("")
+                                .frame(height: geometry.safeAreaInsets.top)
+                                .frame(maxWidth: .infinity)
+                                .background {
+                                    Color.white
+                                }
+                                .edgesIgnoringSafeArea(.top)
                         }
-                        .onEnded { value in
-                            imageOffset.width += value.translation.width
-                            imageOffset.height += value.translation.height
-                            gestureOffset = .zero
-                        }
-                )
-            if !isSuccess {
+                }
+                
+                Text(isSuccess ? "성공!\n" : "사방으로 움직여\n지도를 이동해보세요.\n")
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(10)
+                    .font(.customTitle)
+                    .padding(.top, 40)
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        Rectangle()
+                            .foregroundColor(.customWhite.opacity(0.7))
+                    }
+                    .frame(maxHeight: .infinity, alignment: .top)
                 VStack {
-                    HStackArrow()
-                        .rotationEffect(.degrees(90))
-                    HStack(spacing: 60) {
-                        VstackArrow()
-                            .rotationEffect(.degrees(90))
-                            .padding(20)
-                        VstackArrow()
-                            .rotationEffect(.degrees(-90))
-                            .padding(20)
+                    Spacer()
+                    HelpButton(style: .secondary) {
+                        
                     }
-                    HStackArrow()
-                        .rotationEffect(.degrees(-90))
+                    .opacity(isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: isSuccess)
                 }
             }
-            GeometryReader { geometry in
-                Color.clear
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .overlay(alignment: .top) {
-                        Text("")
-                            .frame(height: geometry.safeAreaInsets.top)
-                            .frame(maxWidth: .infinity)
-                            .background {
-                                Color.white
-                            }
-                            .edgesIgnoringSafeArea(.top)
-                    }
-            }
-            
-            Text(isSuccess ? "잘하셨어요!\n" : "사방으로 움직여\n지도를 이동해보세요.")
-                .foregroundColor(isOneTapped && !isSuccess ? .white : .primary)
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .font(.largeTitle)
-                .bold()
-                .padding(.top, 30)
-                .frame(maxHeight: .infinity, alignment: .top)
-        }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
+            .overlay {
+                if isSuccess {
+                    ConfettiView()
                 }
             }
-        }
-        .onAppear {
-            isTapped = false
-            isSuccess = false
-            isOneTapped = false
+            .onChange(of: isSuccess) { _ in
+                if isSuccess {
+                    HapticManager.notification(type: .success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        navigationManager.navigate = false
+                        navigationManager.updateGesture()
+                    }
+                }
+            }
+            .onAppear {
+                isTapped = false
+                isSuccess = false
+                isOneTapped = false
+            }
         }
     }
 }
