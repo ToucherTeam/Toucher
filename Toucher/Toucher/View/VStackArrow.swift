@@ -45,6 +45,35 @@ struct VStackArrow: View {
     }
 }
 
+struct VstackArrow: View {
+    @State var scale: CGFloat = 1.0
+    @State var fade: Double = 0.2
+    @State var isAnimating: Bool = false
+    
+    var body: some View {
+        VStack {
+            ForEach(0..<3) { index in
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 28))
+                    .fontWeight(.black)
+                    .foregroundColor(.customPrimary)
+                    .opacity(self.fade)
+                    .scaleEffect(self.scale)
+                    .animation(Animation.easeOut(duration: 0.9)
+                        .repeatForever(autoreverses: true)
+                        .delay(0.3 * Double(3 + index)), value: isAnimating)
+            }
+        }
+        .onAppear {
+            self.isAnimating = true
+            self.scale = 1.1
+            self.fade = 1.0
+        }
+        
+    }
+}
+
+
 struct VStackArrow_Previews: PreviewProvider {
     static var previews: some View {
             VStackArrow()
