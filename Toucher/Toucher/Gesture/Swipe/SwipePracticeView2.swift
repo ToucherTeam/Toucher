@@ -10,61 +10,103 @@ import SwiftUI
 struct SwipePracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject var swipeVM = SwipeViewModel()
-
+    
+    @State private var isSuccess = false
+    @State private var isFail = false
+    
     var body: some View {
         ZStack {
+            if isFail && !isSuccess {
+                Color.customSecondary.ignoresSafeArea()
+            }
             VStack {
                 CustomToolbar(title: "살짝 쓸기")
                 
-                Text(
-                    swipeVM.btnActive ?
-                    messageData.isEmpty ? "잘하셨어요!"
-                    : "잘하셨어요!\n\n" : "메시지를 밀어서\n삭제해 보세요\n"
+                Text(isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" :
+                    isSuccess ? "성공!\n\n"
+                    : "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n"
                 )
-                    .font(.customTitle)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 40)
+                .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                .font(.customTitle)
+                .multilineTextAlignment(.center)
+                .padding(.top, 40)
                 Spacer()
                 List {
                     ForEach(messageData, id: \.id) { message in
                         HStack {
                             Image(systemName: message.imageName)
-                                .foregroundColor(.customGR1)
+                                .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.customGR1)
                                 .font(.system(size: 60))
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(message.phNumber).bold()
+                                    Text(message.phNumber)
+                                        .bold()
+                                        .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
                                     Spacer()
                                     Text(message.time)
+                                        .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
                                     Image(systemName: "chevron.right")
+                                        .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
                                 }
                                 Text(message.text)
+                                    .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
                             }
                         }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    if value.translation.width < 0 {
+                                        isFail = false
+                                    } else {
+                                        if !isSuccess {
+                                            withAnimation {
+                                                isFail = true
+                                            }
+                                        }
+                                    }
+                                }
+                                .onEnded { _ in
+                                    // Handle the end of drag if needed
+                                }
+                        )
+                        .swipeActions(allowsFullSwipe: false) {
                             Button(role: .destructive) {
-                                swipeVM.btnActive = true
-                                self.deleteMessage(message)
+                                print("Deleting conversation")
                             } label: {
                                 Image(systemName: "trash.fill")
                             }
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            .onAppear {
+                                isFail = false
+                                isSuccess = true
+                            }
+                            
                             Button {
+                                
                             } label: {
                                 Image(systemName: "bell.slash.fill")
                             }
-                            .tint(Color.purple)
-                            .disabled(true)
+                            .tint(.indigo)
                         }
+                        .listRowBackground(isFail ? Color.customSecondary : Color.customWhite)
                     }
                 }
                 .listStyle(.plain)
                 Spacer()
+                
+                HelpButton(style: .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
         }
-        .onChange(of: swipeVM.btnActive) { _ in
-            if swipeVM.btnActive {
+        .overlay {
+            if isSuccess {
+                ConfettiView()
+            }
+        }
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     navigationManager.navigate = false
@@ -73,7 +115,7 @@ struct SwipePracticeView2: View {
             }
         }
     }
-
+    
     func deleteMessage(_ message: MessageModel) {
         messageData.removeAll(where: { $0 == message })
     }

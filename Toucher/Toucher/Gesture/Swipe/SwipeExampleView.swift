@@ -52,7 +52,6 @@ struct SwipeExampleView: View {
                 swipeVM.currentIndexArray = []
                 isOneTapped = false
                 isSuccess = false
-                print("찍힘")
             }
             .overlay {
                 if isSuccess {
