@@ -15,12 +15,14 @@ struct SwipeExampleView: View {
     @Namespace var animation
     
     @State private var isOneTapped = false
+    @State private var navigate = false
+    @State private var isSuccess = false
+    
     
     var body: some View {
         ZStack {
             if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
-                Color.customSecondary
-                    .ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
 
             VStack {
@@ -42,16 +44,27 @@ struct SwipeExampleView: View {
                 footerContent()
             }
             .animation(.easeInOut, value: dragOffset == 0)
-            
-            if checkSuccessCondition(swipeVM.currentIndexArray) {
-                ToucherNavigationLink {
-                    SwipePracticeView1()
+            .navigationDestination(isPresented: $navigate) {
+                SwipePracticeView1()
+                    .toolbar(.hidden, for: .navigationBar)
+            }
+            .overlay {
+                if isSuccess {
+                    ConfettiView()
+                }
+            }
+            .onChange(of: checkSuccessCondition(swipeVM.currentIndexArray)) { _ in
+                    isSuccess = true
+                    HapticManager.notification(type: .success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        navigate = true
                 }
             }
         }
         .onAppear {
             swipeVM.currentIndexArray = []
             isOneTapped = false
+            isSuccess = false
         }
     }
     
