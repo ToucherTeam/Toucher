@@ -42,7 +42,7 @@ struct PanExampleView: View {
             VStack {
                 CustomToolbar(title: "화면 움직이기")
                 
-                Text(isFail ? "위로 가볍게 쓸어올리세요." : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
+                Text(isFail ? "위로 가볍게 쓸어올리세요.\n" : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
