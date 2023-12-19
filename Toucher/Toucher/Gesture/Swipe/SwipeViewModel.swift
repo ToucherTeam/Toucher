@@ -24,7 +24,7 @@ class SwipeViewModel: ObservableObject {
     @Published var tap = false
     
     // MARK: Practice1
-    @Published var index = 0
+    @Published var textIndex = 0
     @Published var checkSuccess = false
     
     // MARK: Practice2

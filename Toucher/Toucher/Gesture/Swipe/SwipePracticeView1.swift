@@ -24,7 +24,7 @@ struct SwipePracticeView1: View {
             VStack {
                 CustomToolbar(title: "살짝 쓸기")
                 
-                Text(isFail ? "왼쪽으로\n살짝 쓸어보세요." : text[swipeVM.index])
+                Text(isFail ? "왼쪽으로\n살짝 쓸어보세요." : text[swipeVM.textIndex])
                     .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
                     .font(.customTitle)
                     .multilineTextAlignment(.center)
@@ -40,7 +40,7 @@ struct SwipePracticeView1: View {
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text("phNumber")
-//                                    Spacer()
+                                    
                                     Text("message.time")
 
                                     Image(systemName: "chevron.right")
@@ -77,12 +77,12 @@ struct SwipePracticeView1: View {
                             .tint(.red)
                             .onAppear {
                                 isFail = false
-                                swipeVM.index = 1
+                                swipeVM.textIndex = 1
                             }
                             
                         }
                         .overlay(alignment: .trailing) {
-                            if swipeVM.index == 0 {
+                            if swipeVM.textIndex == 0 {
                                 Arrows()
                                     .offset(x: 40, y: -2)
                                     .allowsHitTesting(true)
@@ -124,13 +124,13 @@ struct SwipePracticeView1: View {
                             .tint(Color.blue)
                             .onAppear {
                                 isFail = false
-                                swipeVM.index = 2
+                                swipeVM.textIndex = 2
                                 isSuccess = true
                             }
                             
                         }
                         .overlay(alignment: .leading) {
-                            if swipeVM.index == 1 {
+                            if swipeVM.textIndex == 1 {
                                 Arrows()
                                     .rotationEffect(.degrees(180))
                                     .offset(x: -10, y: -2)
@@ -157,7 +157,7 @@ struct SwipePracticeView1: View {
         }
         .frame(maxHeight: .infinity)
         .onDisappear {
-            swipeVM.index = 0
+            swipeVM.textIndex = 0
             isSuccess = false
         }
         .overlay {
@@ -166,7 +166,7 @@ struct SwipePracticeView1: View {
             }
         }
         .onChange(of: isSuccess ) { _ in
-            if swipeVM.index == 2 {
+            if swipeVM.textIndex == 2 {
                 isSuccess = true
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
