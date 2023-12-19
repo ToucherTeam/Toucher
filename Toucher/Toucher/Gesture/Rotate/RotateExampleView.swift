@@ -73,6 +73,7 @@ struct RotateExampleView: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

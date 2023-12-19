@@ -72,6 +72,7 @@ struct SwipeExampleView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .allowsHitTesting(!isSuccess)
     }
     
     @ViewBuilder

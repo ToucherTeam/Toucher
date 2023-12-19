@@ -148,6 +148,7 @@ struct PanExampleView: View {
             }
             
         }
+        .allowsHitTesting(!isSuccess)
         .onAppear {
             isFail = false
             isSuccess = false

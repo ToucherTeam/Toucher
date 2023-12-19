@@ -63,6 +63,7 @@ struct RotationPracticeView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

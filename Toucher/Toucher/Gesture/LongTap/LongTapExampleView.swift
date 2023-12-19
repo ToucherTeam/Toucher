@@ -58,6 +58,7 @@ struct LongTapExampleView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .onAppear {
             reset()
         }

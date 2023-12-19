@@ -211,6 +211,7 @@ struct SwipePracticeView1: View {
             }
             
         }
+        .allowsHitTesting(!isSuccess)
         .frame(maxHeight: .infinity)
         .onAppear {
             swipeVM.textIndex = 0

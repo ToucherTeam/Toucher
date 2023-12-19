@@ -60,6 +60,7 @@ struct LongTapPracticeView1: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .onAppear {
             reset()
         }
