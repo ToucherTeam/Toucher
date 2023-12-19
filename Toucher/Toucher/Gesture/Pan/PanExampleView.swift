@@ -127,7 +127,7 @@ struct PanExampleView: View {
                         print(value)
                     }
                 )
-                .padding(.top, 96)
+                .padding(.top, isSE ? 0 : 96)
                 .frame(maxHeight: isSE ? .infinity : 320)
                 
                 Spacer()
