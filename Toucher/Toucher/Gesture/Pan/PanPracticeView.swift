@@ -14,12 +14,8 @@ struct PanPracticeView: View {
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isOneTapped = false
-    
     @State private var imageOffset: CGSize = .zero
     @State private var gestureOffset: CGSize = .zero
-    
-    @State private var heading: CLLocationDirection = 0
-    @State private var centerCoordinate = CLLocationCoordinate2D(latitude: 37.57605, longitude: 126.97723)
 
     
     var body: some View {
@@ -27,7 +23,7 @@ struct PanPracticeView: View {
             CustomToolbar(title: "화면 움직이기")
                 .zIndex(1)
             ZStack {
-                PanMap(heading: $heading, centerCoordinate: $centerCoordinate)
+                PanMap()
                     .ignoresSafeArea()
                     .gesture(
                         DragGesture()

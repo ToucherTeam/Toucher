@@ -9,8 +9,8 @@ import SwiftUI
 import MapKit
 
 struct PanMap: UIViewRepresentable {
-    @Binding var heading: CLLocationDirection
-    @Binding var centerCoordinate: CLLocationCoordinate2D
+    var centerCoordinate =  CLLocationCoordinate2D(latitude: 37.57605, longitude: 126.97723)
+    var heading: CLLocationDirection?
 
     private let distance: CLLocationDistance = 3000
     private let pitch: CGFloat = 0
@@ -24,14 +24,20 @@ struct PanMap: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.isUserInteractionEnabled = true
 
-        let camera = MKMapCamera(lookingAtCenter: centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+        var camera: MKMapCamera
+        if let heading = heading {
+            camera = MKMapCamera(lookingAtCenter: centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+        } else {
+            camera = MKMapCamera(lookingAtCenter: centerCoordinate, fromDistance: distance, pitch: pitch, heading: 0)
+        }
+
         mapView.camera = camera
 
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        view.camera.heading = heading
+        view.camera.heading = heading ?? 0
         view.camera.centerCoordinate = centerCoordinate
     }
 
@@ -47,4 +53,5 @@ struct PanMap: UIViewRepresentable {
         }
     }
 }
+
 
