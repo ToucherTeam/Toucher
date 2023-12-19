@@ -34,8 +34,13 @@ struct NewMainView: View {
                 }
                 .scrollIndicators(.hidden)
                 .scrollDisabled(true)
+                .onAppear {
+                    DispatchQueue.main.async {
+                        navigationManager.updateButtonTypes()
+                    }
+                }
                 .onChange(of: navigationManager.headerGesture) { gesture in
-                    withAnimation {
+                    withAnimation(.easeInOut(duration: 2)) {
                         proxy.scrollTo(gesture, anchor: .top)
                     }
                 }
