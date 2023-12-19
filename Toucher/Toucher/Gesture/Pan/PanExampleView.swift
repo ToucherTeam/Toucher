@@ -50,8 +50,6 @@ struct PanExampleView: View {
                     .bold()
                     .padding(.top, 30)
                 
-                //                Spacer()
-                
                 ChildSizeReader(size: $wholeSize) {
                     ScrollViewReader { value in
                         ScrollView {
@@ -167,11 +165,12 @@ struct PanExampleView: View {
                 ConfettiView()
             }
         }
-        .onChange(of: isSuccess ) { _ in
-            isSuccess = true
-            HapticManager.notification(type: .success)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                navigate = true
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    navigate = true
+                }
             }
         }
         .navigationDestination(isPresented: $navigate) {
