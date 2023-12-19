@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LongTapPracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
-
+    
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isFail = false
@@ -42,15 +42,25 @@ struct LongTapPracticeView2: View {
                     LazyVGrid(columns: columns) {
                         ForEach((1...15), id: \.self) { index in
                             if isSuccess {
-                                Image("Album\(index)")
-                                    .resizable()
-                                    .frame(width: 130, height: 130)
+                                Rectangle()
+                                    .aspectRatio(1, contentMode: .fill)
+                                    .overlay {
+                                        Image("Album\(index)")
+                                            .resizable()
+                                            .scaledToFill()
+                                    }
+                                    .clipShape(Rectangle())
                             } else {
-                                Image("Album\(index)")
-                                    .resizable()
+                                Rectangle()
+                                    .aspectRatio(1, contentMode: .fill)
+                                    .overlay {
+                                        Image("Album\(index)")
+                                            .resizable()
+                                            .scaledToFill()
+                                    }
+                                    .clipShape(Rectangle())
                                     .matchedGeometryEffect(id: "Album\(index)", in: name)
                                     .zIndex(selectIndex == index ? 1 : 0)
-                                    .frame(width: 130, height: 130)
                                     .scaleEffect(selectIndex == index && isPressed ? 1.2 : 1)
                                     .animation(.easeIn, value: isPressed)
                                     .foregroundStyle(.gray)
@@ -94,9 +104,14 @@ struct LongTapPracticeView2: View {
                     .overlay(alignment: .top) {
                         if isSuccess {
                             if let selectedIndex {
-                                Image("Album\(selectedIndex)")
-                                    .resizable()
-                                    .cornerRadius(16)
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .aspectRatio(1, contentMode: .fill)
+                                    .overlay {
+                                        Image("Album\(selectedIndex)")
+                                            .resizable()
+                                            .scaledToFill()
+                                    }
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                                     .matchedGeometryEffect(id: "Album\(selectedIndex)", in: name)
                                     .offset(y: -50)
                                     .zIndex(1)
