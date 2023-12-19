@@ -24,7 +24,7 @@ struct PinchPracticeView1: View {
                 Color(.systemGray6).ignoresSafeArea()
                 Image("ex_image")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .scaleEffect(scale)
                     .gesture(gesture)
                     .overlay {
