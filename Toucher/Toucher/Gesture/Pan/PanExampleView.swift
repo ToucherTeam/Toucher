@@ -103,10 +103,11 @@ struct PanExampleView: View {
                                     ViewOffsetKey.self,
                                     perform: { value in
                                         if value >= scrollViewSize.height - wholeSize.height {
-                                            print("User has reached the bottom of the ScrollView.")
                                             isSuccess = true
+                                        } else if value < 0 {
+                                            isFail = true
                                         } else {
-                                            print("not reached.")
+                                            isFail = false
                                         }
                                     }
                                 )
