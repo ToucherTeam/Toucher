@@ -14,14 +14,14 @@ struct SwipeExampleView: View {
     
     @Namespace var animation
     
-    @State private var isOneTapped = false
+    @State private var isFail = false
     @State private var navigate = false
     @State private var isSuccess = false
     
     
     var body: some View {
         ZStack {
-            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
+            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isFail {
                 Color.customSecondary.ignoresSafeArea()
             }
 
@@ -41,7 +41,7 @@ struct SwipeExampleView: View {
                     .overlay(indicator())
                 Spacer()
                 
-                HelpButton(style: isFail()  ? .primary : .secondary) {
+                HelpButton(style: isFail  ? .primary : .secondary) {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)
@@ -50,7 +50,7 @@ struct SwipeExampleView: View {
             .animation(.easeInOut, value: dragOffset == 0)
             .onAppear {
                 swipeVM.currentIndexArray = []
-                isOneTapped = false
+                isFail = false
                 isSuccess = false
             }
             .overlay {
@@ -73,23 +73,8 @@ struct SwipeExampleView: View {
     }
     
     @ViewBuilder
-    func footerContent() -> some View {
-        switch (swipeVM.tap, checkSuccessCondition(swipeVM.currentIndexArray)) {
-        case (false, _):
-            descriptionText()
-                .frame(height: swipeVM.headerAreaHeight.size.height)
-                .padding(.bottom, 89)
-        default:
-            descriptionText()
-                .frame(height: swipeVM.headerAreaHeight.size.height)
-                .opacity(0)
-                .padding(.bottom, 89)
-        }
-    }
-    
-    @ViewBuilder
     func titleText() -> some View {
-        switch (checkSuccessCondition(swipeVM.currentIndexArray), swipeVM.currentIndex, isOneTapped) {
+        switch (checkSuccessCondition(swipeVM.currentIndexArray), swipeVM.currentIndex, isFail) {
         case (true, _, true):
             Text("잘하셨어요!\n")
                 .multilineTextAlignment(.center)
@@ -141,36 +126,13 @@ struct SwipeExampleView: View {
                     before: TapGesture()
                         .onEnded {
                             withAnimation {
-                                isOneTapped = true
+                                isFail = true
                             }
                         })
         )
         .gesture(
             dragOffset(width)
         )
-    }
-    
-    @ViewBuilder
-    func descriptionText() -> some View {
-        VStack(spacing: 10) {
-            HStack(spacing: 0) {
-                Text("현재 ")
-                    .font(.customDescription)
-                Text("보이지 않는 화면을")
-                    .font(.customDescriptionEmphasis)
-            }
-            HStack(spacing: 0) {
-                Text("찾을 때")
-                    .font(.customDescriptionEmphasis)
-                Text("주로 사용해요.")
-                    .font(.customDescription)
-            }
-        }
-        .foregroundColor(.customGR1)
-        .modifier(GetHeightModifier())
-        .onPreferenceChange(ContentRectSize.self) { rects in
-            swipeVM.headerAreaHeight = rects
-        }
     }
     
     @ViewBuilder
@@ -208,12 +170,12 @@ struct SwipeExampleView: View {
     
     fileprivate func shouldReturnTrueForCondition<T: Equatable>(_ array: [T]) -> Bool {
         guard !array.isEmpty else {
-            isOneTapped = false
-            return isOneTapped
+            isFail = false
+            return isFail
         }
         
         if array.last == array[array.count - 1] {
-            isOneTapped = true
+            isFail = true
         }
         
         return false
@@ -236,12 +198,8 @@ struct SwipeExampleView: View {
                 swipeVM.currentIndexArray.append(swipeVM.currentIndex)
                 shouldReturnTrueForCondition(swipeVM.currentIndexArray)
                 print(swipeVM.currentIndexArray)
-                print(isOneTapped)
+                print(isFail)
             }
-    }
-    
-    private func isFail() -> Bool {
-        return !checkSuccessCondition(swipeVM.currentIndexArray) && swipeVM.currentIndex == -1 && isOneTapped
     }
 }
 
