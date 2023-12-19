@@ -21,13 +21,13 @@ struct SwipeExampleView: View {
     
     var body: some View {
         ZStack {
-            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == 0, isFail {
+            if isFail && !isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
-
+            
             VStack {
                 CustomToolbar(title: "살짝 쓸기")
-
+                
                 titleText()
                 
                 Spacer()
@@ -59,11 +59,12 @@ struct SwipeExampleView: View {
                     ConfettiView()
                 }
             }
-            .onChange(of: checkSuccessCondition(swipeVM.currentIndexArray)) { _ in
-                    isSuccess = true
+            .onChange(of: isSuccess) { _ in
+                if isSuccess {
                     HapticManager.notification(type: .success)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                         navigate = true
+                    }
                 }
             }
             .navigationDestination(isPresented: $navigate) {
@@ -75,21 +76,28 @@ struct SwipeExampleView: View {
     
     @ViewBuilder
     func titleText() -> some View {
-        switch (checkSuccessCondition(swipeVM.currentIndexArray), swipeVM.currentIndex, isFail) {
-        case (true, _, true):
+        switch (isSuccess, swipeVM.currentIndex, isFail) {
+        case (true, _, false):
             Text("잘하셨어요!\n")
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
                 .padding(.top, 42)
             
-        case (false, -1, true):
+        case (_, 0, true):
             Text("왼쪽으로\n 살짝쓸어보세요")
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
                 .padding(.top, 42)
             
-        case (false, -1, false):
+        case (_, 1, true):
+            Text("오른쪽으로\n 살짝쓸어보세요")
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .font(.customTitle)
+                .padding(.top, 42)
+            
+        case (false, 0, false):
             Text("왼쪽으로 밀어볼까요?\n")
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
@@ -156,32 +164,6 @@ struct SwipeExampleView: View {
         }
     }
     
-    fileprivate func checkSuccessCondition<T>(_ sequence: T) -> Bool where T: Sequence, T.Element == Int {
-        var iterator = sequence.makeIterator()
-        
-        while let element = iterator.next() {
-            if element == 1, let nextElement = iterator.next(), nextElement == 0 {
-                return true
-            }
-            var previousElement = element
-        }
-        
-        return false
-    }
-    
-    fileprivate func shouldReturnTrueForCondition<T: Equatable>(_ array: [T]) -> Bool {
-        guard !array.isEmpty else {
-            isFail = false
-            return isFail
-        }
-        
-        if array.last == array[array.count - 1] {
-            isFail = true
-        }
-        
-        return false
-    }
-        
     fileprivate func errorHandleArray(_ roundIndex: CGFloat) -> Int {
         return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 1), 0)
     }
@@ -197,10 +179,27 @@ struct SwipeExampleView: View {
                 let roundIndex = progress.rounded()
                 swipeVM.currentIndex = errorHandleArray(roundIndex)
                 swipeVM.currentIndexArray.append(swipeVM.currentIndex)
-                shouldReturnTrueForCondition(swipeVM.currentIndexArray)
-                print(swipeVM.currentIndexArray)
-                print(isFail)
+                checkSuccessCondition(swipeVM.currentIndexArray)
             }
+    }
+    
+    fileprivate func checkSuccessCondition(_ array: [Int]) {
+        let lastIndex = array.count - 1
+        if array[lastIndex] == 0 {
+            self.isFail = true
+        }
+        if array.count >= 2 {
+            if array[lastIndex] == 0 && array[lastIndex - 1] == 1 {
+                self.isSuccess = true
+                self.isFail = false
+            } else if array[lastIndex] != array[lastIndex - 1] {
+                self.isSuccess = false
+                self.isFail = false
+            } else {
+                self.isSuccess = false
+                self.isFail = true
+            }
+        }
     }
 }
 

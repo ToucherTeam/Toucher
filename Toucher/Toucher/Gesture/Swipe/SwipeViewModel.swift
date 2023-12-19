@@ -15,7 +15,7 @@ class SwipeViewModel: ObservableObject {
     let trailingSpacing: CGFloat = 42
     let swipeContent: [CarouselModel] = [
         .init(color: Color.customBG2),
-        .init(color: Color.customSecondary)
+        .init(color: Color.customPrimary)
     ]
     @Published var currentIndexArray: [Int] = []
     @Published var headerAreaHeight: CGRect = .zero
