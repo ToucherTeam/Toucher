@@ -10,11 +10,9 @@ import SwiftUI
 struct PanExampleView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var scrollViewSize: CGSize = .zero
-    @State private var isTapped = false
     @State private var isSuccess = false
     @State private var navigate = false
     @State private var isFail = false
-    @State private var isOneTapped = false
     @State private var scrollOffset: CGFloat = 0
     
     @GestureState private var isPressed = false
@@ -104,12 +102,6 @@ struct PanExampleView: View {
                                 .onPreferenceChange(
                                     ViewOffsetKey.self,
                                     perform: { value in
-                                        if value != 0 {
-                                            isTapped = true
-                                        }
-                                        print("offset: \(value)")
-                                        print("height: \(scrollViewSize.height)")
-                                        
                                         if value >= scrollViewSize.height - wholeSize.height {
                                             print("User has reached the bottom of the ScrollView.")
                                             isSuccess = true
@@ -156,9 +148,8 @@ struct PanExampleView: View {
             
         }
         .onAppear {
-            isTapped = false
+            isFail = false
             isSuccess = false
-            isOneTapped = false
         }
         .overlay {
             if isSuccess {
