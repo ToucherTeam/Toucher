@@ -18,7 +18,6 @@ struct SwipeExampleView: View {
     @State private var navigate = false
     @State private var isSuccess = false
     
-    
     var body: some View {
         ZStack {
             if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
@@ -263,10 +262,11 @@ struct Arrows: View {
     @State var scale: CGFloat = 1.0
     @State var fade: Double = 0.2
     @State var isAnimating: Bool = false
+    var arrowColor: Color = .white.opacity(0.5)
     
     var body: some View {
         RoundedRectangle(cornerRadius: 36)
-            .fill(.white.opacity(0.5))
+            .fill(arrowColor)
             .frame(width: 180, height: 72)
             .overlay(alignment: .trailing) {
                 HStack(spacing: 0) {
