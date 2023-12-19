@@ -12,15 +12,14 @@ class SwipeViewModel: ObservableObject {
     // MARK: ExampleView
     let deviceWidth = UIScreen.main.bounds.width
     let spacing: CGFloat = 12
-    let trailingSpacing: CGFloat = 66
+    let trailingSpacing: CGFloat = 42
     let swipeContent: [CarouselModel] = [
         .init(color: Color.customBG2),
-        .init(color: Color.customSecondary),
-        .init(color: Color.customPrimary)
+        .init(color: Color.customSecondary)
     ]
     @Published var currentIndexArray: [Int] = []
     @Published var headerAreaHeight: CGRect = .zero
-    @Published var currentIndex = -1
+    @Published var currentIndex = 0
     @Published var tap = false
     
     // MARK: Practice1

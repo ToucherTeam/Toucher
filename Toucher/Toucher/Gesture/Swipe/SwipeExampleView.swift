@@ -21,7 +21,7 @@ struct SwipeExampleView: View {
     
     var body: some View {
         ZStack {
-            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isFail {
+            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == 0, isFail {
                 Color.customSecondary.ignoresSafeArea()
             }
 
@@ -32,27 +32,28 @@ struct SwipeExampleView: View {
                 
                 Spacer()
                 
-                carousel()
-                    .overlay(
-                        Arrows()
-                            .rotationEffect( (swipeVM.currentIndex == -1) ? .degrees(0) : .degrees(180))
-                            .allowsHitTesting(false)
-                    )
-                    .overlay(indicator())
-                Spacer()
-                
                 HelpButton(style: isFail  ? .primary : .secondary) {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }
-            .animation(.easeInOut, value: dragOffset == 0)
             .onAppear {
                 swipeVM.currentIndexArray = []
                 isFail = false
                 isSuccess = false
             }
+            .overlay(alignment: .leading) {
+                carousel()
+                    .padding(.horizontal, 24)
+            }
+            .overlay(alignment: .center) {
+                Arrows()
+                    .rotationEffect( (swipeVM.currentIndex == 0) ? .degrees(0) : .degrees(180))
+                    .allowsHitTesting(false)
+            }
+            .overlay(alignment: .center) {indicator()}
+            .animation(.easeInOut, value: dragOffset == 0)
             .overlay {
                 if isSuccess {
                     ConfettiView()
@@ -143,7 +144,7 @@ struct SwipeExampleView: View {
                     .foregroundColor(.customBG2)
                     .frame(width: 8, height: 8)
                     .overlay {
-                        if swipeVM.currentIndex == index - 1 {
+                        if swipeVM.currentIndex == index {
                             Circle()
                                 .foregroundColor(.customPrimary)
                                 .frame(width: 8, height: 8)
@@ -159,7 +160,7 @@ struct SwipeExampleView: View {
         var iterator = sequence.makeIterator()
         
         while let element = iterator.next() {
-            if element == 0, let nextElement = iterator.next(), nextElement == -1 {
+            if element == 1, let nextElement = iterator.next(), nextElement == 0 {
                 return true
             }
             var previousElement = element
@@ -182,7 +183,7 @@ struct SwipeExampleView: View {
     }
         
     fileprivate func errorHandleArray(_ roundIndex: CGFloat) -> Int {
-        return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 2), -1)
+        return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 1), 0)
     }
     
     fileprivate func dragOffset(_ width: CGFloat) -> _EndedGesture<GestureStateGesture<DragGesture, CGFloat>> {
