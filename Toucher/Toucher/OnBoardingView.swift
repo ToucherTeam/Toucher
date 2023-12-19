@@ -34,9 +34,11 @@ struct OnBoardingView: View {
                     .padding(.top, 56)
             }
             .onChange(of: isSuccess) { value in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    withAnimation {
-                        self.isFirst = false
+                if isSuccess {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        withAnimation {
+                            self.isFirst = false
+                        }
                     }
                 }
             }
