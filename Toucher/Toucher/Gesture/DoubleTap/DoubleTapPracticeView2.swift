@@ -22,8 +22,9 @@ struct DoubleTapPracticeView2: View {
             Color(.systemGray6).ignoresSafeArea()
             Image("ex_image")
                 .resizable()
-                .scaledToFit()
-                .scaleEffect(isSuccess ? 2 : 1)
+                .scaledToFill()
+                .padding(.top, 60)
+                .scaleEffect(isSuccess ? 3 : 1)
                 .ignoresSafeArea()
                 .gesture(gesture)
                 .overlay {
