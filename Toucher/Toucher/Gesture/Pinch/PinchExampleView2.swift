@@ -94,11 +94,25 @@ struct PinchExampleView2: View {
                     if scale < 0.8 {
                         isSuccess = true
                         self.scale = 0.6
-                    } else {
-                        isFail = true
                     }
                 }
             }
+            .simultaneously(
+                with: TapGesture()
+                    .onEnded { _ in
+                        withAnimation {
+                            isFail = true
+                        }
+                    }
+            )
+            .simultaneously(
+                with: DragGesture()
+                    .onEnded { _ in
+                        withAnimation {
+                            isFail = true
+                        }
+                    }
+            )
     }
     
     private func reset() {

@@ -88,11 +88,25 @@ struct PinchExampleView1: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                 isNextView = true
                         }
-                    } else {
-                        isFail = true
                     }
                 }
             }
+            .simultaneously(
+                with: TapGesture()
+                    .onEnded { _ in
+                        withAnimation {
+                            isFail = true
+                        }
+                    }
+            )
+            .simultaneously(
+                with: DragGesture()
+                    .onEnded { _ in
+                        withAnimation {
+                            isFail = true
+                        }
+                    }
+            )
     }
 }
 
