@@ -15,12 +15,14 @@ struct SwipeExampleView: View {
     @Namespace var animation
     
     @State private var isOneTapped = false
+    @State private var navigate = false
+    @State private var isSuccess = false
+    
     
     var body: some View {
         ZStack {
             if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
-                Color.customSecondary
-                    .ignoresSafeArea()
+                Color.customSecondary.ignoresSafeArea()
             }
 
             VStack {
@@ -39,19 +41,34 @@ struct SwipeExampleView: View {
                     .overlay(indicator())
                 Spacer()
                 
-                footerContent()
+                HelpButton(style: isFail()  ? .primary : .secondary) {
+                    
+                }
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
             .animation(.easeInOut, value: dragOffset == 0)
-            
-            if checkSuccessCondition(swipeVM.currentIndexArray) {
-                ToucherNavigationLink {
-                    SwiftPracticeView1()
+            .onAppear {
+                swipeVM.currentIndexArray = []
+                isOneTapped = false
+                isSuccess = false
+            }
+            .overlay {
+                if isSuccess {
+                    ConfettiView()
                 }
             }
-        }
-        .onAppear {
-            swipeVM.currentIndexArray = []
-            isOneTapped = false
+            .onChange(of: checkSuccessCondition(swipeVM.currentIndexArray)) { _ in
+                    isSuccess = true
+                    HapticManager.notification(type: .success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        navigate = true
+                }
+            }
+            .navigationDestination(isPresented: $navigate) {
+                SwipePracticeView1()
+                    .toolbar(.hidden, for: .navigationBar)
+            }
         }
     }
     
@@ -222,6 +239,10 @@ struct SwipeExampleView: View {
                 print(isOneTapped)
             }
     }
+    
+    private func isFail() -> Bool {
+        return !checkSuccessCondition(swipeVM.currentIndexArray) && swipeVM.currentIndex == -1 && isOneTapped
+    }
 }
 
 struct SwipeExampleView_Previews: PreviewProvider {
@@ -272,33 +293,5 @@ struct Arrows: View {
                 self.scale = 1.1
                 self.fade = 1.0
             }
-    }
-}
-
-struct VstackArrow: View {
-    @State var scale: CGFloat = 1.0
-    @State var fade: Double = 0.2
-    @State var isAnimating: Bool = false
-    
-    var body: some View {
-        VStack {
-            ForEach(0..<3) { index in
-                Image(systemName: "chevron.down")
-                    .font(.system(size: 28))
-                    .fontWeight(.black)
-                    .foregroundColor(.customPrimary)
-                    .opacity(self.fade)
-                    .scaleEffect(self.scale)
-                    .animation(Animation.easeOut(duration: 0.9)
-                        .repeatForever(autoreverses: true)
-                        .delay(0.3 * Double(3 + index)), value: isAnimating)
-            }
-        }
-        .onAppear {
-            self.isAnimating = true
-            self.scale = 1.1
-            self.fade = 1.0
-        }
-        
     }
 }

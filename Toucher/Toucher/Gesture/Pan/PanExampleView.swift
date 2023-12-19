@@ -11,7 +11,9 @@ struct PanExampleView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var scrollViewSize: CGSize = .zero
     @State private var isTapped = false
-    @State private var isSuceess = false
+    @State private var isSuccess = false
+    @State private var navigate = false
+    @State private var isFail = false
     @State private var isOneTapped = false
     @State private var scrollOffset: CGFloat = 0
     
@@ -33,137 +35,148 @@ struct PanExampleView: View {
     
     var body: some View {
         ZStack {
-            if isOneTapped && !isSuceess {
-                Color.accentColor.opacity(0.5).ignoresSafeArea()
+            if isFail && !isSuccess {
+                Color.customSecondary
+                    .ignoresSafeArea()
             }
             VStack {
                 CustomToolbar(title: "화면 움직이기")
-
-                Text(isSuceess ? "잘하셨어요!\n" : "밑에서 위로\n쓸어 올려보세요.")
-                    .foregroundColor(isOneTapped && !isSuceess ? .white : .primary)
+                
+                Text(isFail ? "위로 가볍게 쓸어올리세요." : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
+                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 30)
-                Spacer()
+                
+                //                Spacer()
                 
                 ChildSizeReader(size: $wholeSize) {
                     ScrollViewReader { value in
-                    ScrollView {
-                        ChildSizeReader(size: $scrollViewSize) {
-                            VStack {
-                                ForEach(notifications) { item in
-                                    HStack {
-                                        Image(item.imageName)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 32, height: 32)
-                                            .padding(.leading)
-                                        
-                                        VStack(alignment: .leading) {
-                                            HStack {
-                                                Text(item.title)
-                                                    .bold()
-                                                Spacer()
-                                                Text(item.time)
-                                                    .foregroundColor(.customGR1)
-                                                    .font(.system(size: 13))
+                        ScrollView {
+                            ChildSizeReader(size: $scrollViewSize) {
+                                VStack {
+                                    ForEach(notifications) { item in
+                                        HStack {
+                                            Image(item.imageName)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 32, height: 32)
+                                                .padding(.leading)
+                                            
+                                            VStack(alignment: .leading) {
+                                                HStack {
+                                                    Text(item.title)
+                                                        .bold()
+                                                    Spacer()
+                                                    Text(item.time)
+                                                        .foregroundColor(.customGR1)
+                                                        .font(.system(size: 13))
+                                                        .fontWeight(.regular)
+                                                        .padding(.trailing, 22)
+                                                }
+                                                Text(item.subTitle)
+                                                    .font(.system(size: 15))
                                                     .fontWeight(.regular)
-                                                    .padding(.trailing, 22)
                                             }
-                                            Text(item.subTitle)
-                                                .font(.system(size: 15))
-                                                .fontWeight(.regular)
+                                            Spacer()
                                         }
-                                        Spacer()
+                                        .frame(height: 66)
+                                        .frame(maxWidth: .infinity)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                                                .foregroundColor(Color(.systemGray5))
+                                        }
+                                        .padding(.horizontal, 14)
                                     }
-                                    .frame(height: 66)
-                                    .frame(maxWidth: .infinity)
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 24, style: .continuous)
-                                            .foregroundColor(Color(.systemGray5))
-                                    }
-                                    .padding(.horizontal, 14)
                                 }
+                                .id(top)
+                                .onAppear {
+                                    value.scrollTo(top, anchor: .top)
+                                }
+                                .background(
+                                    GeometryReader { proxy in
+                                        Color.clear.preference(
+                                            key: ViewOffsetKey.self,
+                                            value: -1 * proxy.frame(in: .named(spaceName)).origin.y
+                                        )
+                                    }
+                                )
+                                .onPreferenceChange(
+                                    ViewOffsetKey.self,
+                                    perform: { value in
+                                        if value != 0 {
+                                            isTapped = true
+                                        }
+                                        print("offset: \(value)")
+                                        print("height: \(scrollViewSize.height)")
+                                        
+                                        if value >= scrollViewSize.height - wholeSize.height {
+                                            print("User has reached the bottom of the ScrollView.")
+                                            isSuccess = true
+                                        } else {
+                                            print("not reached.")
+                                        }
+                                    }
+                                )
                             }
-                            .id(top)
-                            .onAppear {
-                                value.scrollTo(top, anchor: .top)
-                            }
-                            .background(
-                                GeometryReader { proxy in
-                                    Color.clear.preference(
-                                        key: ViewOffsetKey.self,
-                                        value: -1 * proxy.frame(in: .named(spaceName)).origin.y
-                                    )
-                                }
-                            )
-                            .onPreferenceChange(
-                                ViewOffsetKey.self,
-                                perform: { value in
-                                    if value != 0 {
-                                        isTapped = true
-                                    }
-                                    print("offset: \(value)")
-                                    print("height: \(scrollViewSize.height)")
-                                    
-                                    if value >= scrollViewSize.height - wholeSize.height {
-                                        print("User has reached the bottom of the ScrollView.")
-                                        isSuceess = true
-                                    } else {
-                                        print("not reached.")
-                                    }
-                                }
-                            )
                         }
+                        .frame(height: 290)
                     }
-                }
-//                    .frame(height: isSE ? 160 : 320)
                     .coordinateSpace(name: spaceName)
                 }
+                .onTapGesture(perform: {
+                    withAnimation {
+                        isFail = true
+                    }
+                })
                 .onChange(
                     of: scrollViewSize,
                     perform: { value in
                         print(value)
                     }
-            )
+                )
+                .padding(.top, 96)
                 .frame(maxHeight: isSE ? .infinity : 320)
                 
                 Spacer()
-                Group {
-                    Text("현재 ")
-                    + Text("화면을 상하좌우로")
-                        .bold()
-                    + Text("\n움직일 때 사용해요.")
+                
+                HelpButton(style: .secondary) {
+                    
                 }
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .foregroundColor(isTapped ? .clear : .gray)
-                .font(.title)
-                .padding(.bottom, 80)
+                .opacity(isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: isSuccess)
             }
             .overlay {
-                if isTapped == false {
+                if isFail || !isSuccess {
                     Arrows()
                         .rotationEffect(Angle(degrees: 90))
                         .allowsHitTesting(false)
                 }
             }
-            if isSuceess {
-                ToucherNavigationLink {
-                    VStack(spacing: 0) {
-                        CustomToolbar(title: "화면 움직이기")
-                        
-                        PanPracticeView()
-                    }
-                }
-            }
+            
         }
         .onAppear {
             isTapped = false
-            isSuceess = false
+            isSuccess = false
             isOneTapped = false
+        }
+        .overlay {
+            if isSuccess {
+                ConfettiView()
+            }
+        }
+        .onChange(of: isSuccess ) { _ in
+            isSuccess = true
+            HapticManager.notification(type: .success)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                navigate = true
+            }
+        }
+        .navigationDestination(isPresented: $navigate) {
+            PanPracticeView()
+                .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

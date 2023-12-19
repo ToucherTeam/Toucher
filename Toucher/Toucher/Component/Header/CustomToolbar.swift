@@ -21,6 +21,7 @@ struct CustomToolbar: View {
                     .foregroundColor(.customGR1)
                     .frame(maxWidth: .infinity)
             }
+            .frame(width: UIScreen.main.bounds.width)
             .overlay(alignment: .leading) {
                 Button {
                     dismiss()
