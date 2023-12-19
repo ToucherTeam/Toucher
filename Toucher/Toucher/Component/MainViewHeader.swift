@@ -62,8 +62,8 @@ struct MainViewHeader: View {
             }
             .foregroundColor(.customPrimary)
         }
-        .padding(.trailing)
-        .frame(maxWidth: .infinity)
+        .padding(.leading, 40)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
