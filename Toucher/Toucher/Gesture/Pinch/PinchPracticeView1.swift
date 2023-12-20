@@ -24,14 +24,14 @@ struct PinchPracticeView1: View {
                 Color(.systemGray6).ignoresSafeArea()
                 Image("ex_image")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .scaleEffect(scale)
                     .gesture(gesture)
                     .overlay {
                         if !isTapped || isFail && !isSuccess {
                             HStack(spacing: 100) {
-                                Arrows()
-                                Arrows()
+                                Arrows(arrowColor: .customBG1)
+                                Arrows(arrowColor: .customBG1)
                                     .rotationEffect(.degrees(180))
                             }
                             .rotationEffect(.degrees(-45))
@@ -76,14 +76,14 @@ struct PinchPracticeView1: View {
             .onChanged { value in
                 withAnimation {
                     isTapped = true
-                    self.scale = min(max(value.magnitude, 0.8), 2.5)
+                    self.scale = min(max(value.magnitude, 0.8), 3)
                 }
             }
             .onEnded { _ in
                 withAnimation {
                     if scale > 1.2 {
                         isSuccess = true
-                        self.scale = 2
+                        self.scale = 3
                     } else {
                         isFail = true
                     }

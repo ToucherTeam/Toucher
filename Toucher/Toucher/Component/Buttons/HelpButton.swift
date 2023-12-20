@@ -57,8 +57,8 @@ struct HelpButton: View {
                 .frame(width: UIScreen.main.bounds.width - 32)
                 .padding(.horizontal, 16)
                 .offset(y: animate ? -8 : 0)
-                .onAppear {
-                    DispatchQueue.main.async {
+                .onChange(of: style) { _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         withAnimation(.easeInOut(duration: 2).repeatForever()) {
                             animate = true
                         }
@@ -71,9 +71,9 @@ struct HelpButton: View {
                 Color.black
                     .ignoresSafeArea()
                     .overlay(alignment: .top) {
-                            ProgressView()
-                                .progressViewStyle(CustomProgressViewStyle())
-                                .padding(.leading, 15)
+                        ProgressView()
+                            .progressViewStyle(CustomProgressViewStyle())
+                            .padding(.leading, 15)
                     }
                 Image("Album3")
                     .ignoresSafeArea()

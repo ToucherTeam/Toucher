@@ -44,8 +44,8 @@ struct PinchExampleView1: View {
                         .overlay {
                             if !isTapped || isFail && !isSuccess {
                                 HStack(spacing: 100) {
-                                    Arrows()
-                                    Arrows()
+                                    Arrows(arrowColor: .customBG1)
+                                    Arrows(arrowColor: .customBG1)
                                         .rotationEffect(.degrees(180))
                                 }
                                 .rotationEffect(.degrees(-45))
@@ -88,11 +88,25 @@ struct PinchExampleView1: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                 isNextView = true
                         }
-                    } else {
-                        isFail = true
                     }
                 }
             }
+            .simultaneously(
+                with: TapGesture()
+                    .onEnded { _ in
+                        withAnimation {
+                            isFail = true
+                        }
+                    }
+            )
+            .simultaneously(
+                with: DragGesture()
+                    .onEnded { _ in
+                        withAnimation {
+                            isFail = true
+                        }
+                    }
+            )
     }
 }
 

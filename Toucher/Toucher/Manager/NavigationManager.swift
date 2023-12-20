@@ -21,6 +21,8 @@ final class NavigationManager: ObservableObject {
         GestureButton(buttonType: .none, gestureType: .rotate)
     ]
     @Published var headerGesture: GestureType = .doubleTap
+    
+    @AppStorage("savedGesture") private var savedGesture: GestureType = .doubleTap
     @AppStorage("finish") private var finish = false
     
     static let shared = NavigationManager()
@@ -69,8 +71,20 @@ final class NavigationManager: ObservableObject {
     private func updateHeaderGesture() {
         if let readyGestureButton = gestureButtons.first(where: { $0.buttonType == .ready }) {
             headerGesture = readyGestureButton.gestureType
+            savedGesture = readyGestureButton.gestureType
         } else {
             print("조건을 충족하는 요소를 찾을 수 없습니다.")
+        }
+    }
+    
+    func updateButtonTypes() {
+        for index in gestureButtons.indices {
+            if gestureButtons[index].gestureType == savedGesture {
+                gestureButtons[index].buttonType = .ready
+                headerGesture = savedGesture
+                break
+            }
+            gestureButtons[index].buttonType = .done
         }
     }
 }

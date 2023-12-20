@@ -43,9 +43,24 @@ struct FinishMainView: View {
                 }
                 .scrollIndicators(.hidden)
                 .safeAreaInset(edge: .top) {
-                    Color.clear.frame(height: 50)
+                    Color.clear.frame(height: 80)
                 }
             }
+        }
+        .overlay(alignment: .top) {
+            Text("자유롭게 눌러 학습하세요!")
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+                .foregroundColor(.customPrimary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .padding(.leading, 40)
+                .background {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .foregroundStyle(Color.customBG0)
+                        .shadow(color: .customShadow, radius: 10, y: 4)
+                }
+                .padding(.horizontal)
         }
         .navigationDestination(isPresented: $navigationManager.navigate) {
             if let selectedGesture = viewModel.selectedGesture {
