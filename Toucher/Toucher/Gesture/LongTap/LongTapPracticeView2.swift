@@ -30,7 +30,7 @@ struct LongTapPracticeView2: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack(spacing: 0) {
-                CustomToolbar(title: "길게 누르기")
+                CustomToolbar(title: "길게 누르기", isSuccess: isSuccess)
                 
                 ScrollView {
                     Text(isSuccess ? "성공!\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
@@ -135,8 +135,7 @@ struct LongTapPracticeView2: View {
                     .animation(.easeInOut, value: isSuccess)
                 }
             }
-        }
-        .allowsHitTesting(!isSuccess) 
+        } 
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

@@ -24,7 +24,7 @@ struct RotationPracticeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "회전하기")
+            CustomToolbar(title: "회전하기", isSuccess: isSuccess)
                 .zIndex(1)
 
             ZStack {
@@ -63,7 +63,6 @@ struct RotationPracticeView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

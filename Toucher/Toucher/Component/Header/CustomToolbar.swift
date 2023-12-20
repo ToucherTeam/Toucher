@@ -11,6 +11,7 @@ struct CustomToolbar: View {
     @Environment(\.dismiss) var dismiss
     
     let title: String
+    var isSuccess = false
     
     var body: some View {
         
@@ -30,15 +31,14 @@ struct CustomToolbar: View {
                         Image(systemName: "chevron.backward")
                             .font(.system(size: 17))
                             .fontWeight(.semibold)
-                            .foregroundColor(.customPrimary)
-                        
                         Text("이전으로")
                             .font(.system(size: 17))
                             .fontWeight(.regular)
-                            .foregroundColor(.customPrimary)
                     }
+                    .foregroundColor(.accentColor)
                 }
                 .padding(.leading, 8)
+                .disabled(isSuccess)
             }
             .frame(height: 44)
             .frame(maxWidth: .infinity)

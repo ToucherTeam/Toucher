@@ -17,7 +17,7 @@ struct PinchPracticeView1: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "확대 축소하기")
+            CustomToolbar(title: "확대 축소하기", isSuccess: isSuccess)
                 .zIndex(1)
 
             ZStack {
@@ -60,7 +60,6 @@ struct PinchPracticeView1: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

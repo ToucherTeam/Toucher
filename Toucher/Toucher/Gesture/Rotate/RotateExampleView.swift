@@ -24,7 +24,7 @@ struct RotateExampleView: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "회전하기")
+                CustomToolbar(title: "회전하기", isSuccess: isSuccess)
 
                 Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
@@ -73,7 +73,6 @@ struct RotateExampleView: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

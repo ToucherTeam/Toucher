@@ -28,7 +28,7 @@ struct DragPracticeView2: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "끌어오기")
+                CustomToolbar(title: "끌어오기", isSuccess: isSuccess)
                 
                 Rectangle().frame(height: 0)
                 Text(isSuccess ? "성공!\n\n" : isDroped ? "위치를 오른쪽 가장\n아래로 움직여 주세요\n" :
@@ -98,7 +98,6 @@ struct DragPracticeView2: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
             isSuccess = false

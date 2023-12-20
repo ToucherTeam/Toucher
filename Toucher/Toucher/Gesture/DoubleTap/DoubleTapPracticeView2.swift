@@ -19,7 +19,7 @@ struct DoubleTapPracticeView2: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "두 번 누르기")
+            CustomToolbar(title: "두 번 누르기", isSuccess: isSuccess)
                 .zIndex(1)
             
             ZStack {
@@ -64,7 +64,6 @@ struct DoubleTapPracticeView2: View {
             .onAppear {
                 reset()
             }
-            .allowsHitTesting(!isSuccess)
         }
     }
     

@@ -20,7 +20,7 @@ struct SwipePracticeView2: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "살짝 쓸기")
+                CustomToolbar(title: "살짝 쓸기", isSuccess: isSuccess)
                 
                 Text(isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" :
                     isSuccess ? "성공!\n\n"
@@ -104,7 +104,6 @@ struct SwipePracticeView2: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .overlay {
             if isSuccess {
                 ConfettiView()

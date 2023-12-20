@@ -20,8 +20,9 @@ struct PanPracticeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "화면 움직이기")
+            CustomToolbar(title: "화면 움직이기", isSuccess: isSuccess)
                 .zIndex(1)
+            
             ZStack {
                 PanMap()
                     .ignoresSafeArea()

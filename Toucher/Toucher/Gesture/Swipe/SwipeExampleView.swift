@@ -25,7 +25,7 @@ struct SwipeExampleView: View {
             }
             
             VStack {
-                CustomToolbar(title: "살짝 쓸기")
+                CustomToolbar(title: "살짝 쓸기", isSuccess: isSuccess)
                 
                 titleText()
                 
@@ -71,7 +71,6 @@ struct SwipeExampleView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
-        .allowsHitTesting(!isSuccess)
     }
     
     @ViewBuilder

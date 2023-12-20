@@ -19,7 +19,7 @@ struct DragPracticeView1: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "끌어오기")
+                CustomToolbar(title: "끌어오기", isSuccess: isSuccess)
                 
                 Text(isSuccess ? "성공!\n" : isFail ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
@@ -43,7 +43,6 @@ struct DragPracticeView1: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

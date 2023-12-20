@@ -21,7 +21,7 @@ struct LongTapExampleView: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "길게 누르기")
+                CustomToolbar(title: "길게 누르기", isSuccess: isSuccess)
 
                 Text(isSuccess ? "성공!\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
@@ -58,7 +58,6 @@ struct LongTapExampleView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onAppear {
             reset()
         }

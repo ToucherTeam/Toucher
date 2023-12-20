@@ -22,7 +22,7 @@ struct PinchExampleView2: View {
             }
             
             VStack {
-                CustomToolbar(title: "확대 축소하기")
+                CustomToolbar(title: "확대 축소하기", isSuccess: isSuccess)
 
                 Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "이번엔 크기를 작게\n만들어 볼까요?")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
@@ -64,7 +64,6 @@ struct PinchExampleView2: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

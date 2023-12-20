@@ -38,7 +38,7 @@ struct PanExampleView: View {
                     .ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "화면 움직이기")
+                CustomToolbar(title: "화면 움직이기", isSuccess: isSuccess)
                 
                 Text(isFail ? "위로 가볍게 쓸어올리세요.\n" : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
@@ -148,7 +148,6 @@ struct PanExampleView: View {
             }
             
         }
-        .allowsHitTesting(!isSuccess)
         .onAppear {
             isFail = false
             isSuccess = false

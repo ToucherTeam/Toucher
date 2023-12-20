@@ -22,7 +22,7 @@ struct SwipePracticeView1: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "살짝 쓸기")
+                CustomToolbar(title: "살짝 쓸기", isSuccess: isSuccess)
                 
                 Text(isFail ? "왼쪽으로\n살짝 쓸어보세요." : text[swipeVM.textIndex])
                     .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
@@ -211,7 +211,6 @@ struct SwipePracticeView1: View {
             }
             
         }
-        .allowsHitTesting(!isSuccess)
         .frame(maxHeight: .infinity)
         .onAppear {
             swipeVM.textIndex = 0

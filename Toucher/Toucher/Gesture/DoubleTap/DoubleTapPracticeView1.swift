@@ -20,7 +20,7 @@ struct DoubleTapPracticeView1: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "두 번 누르기")
+                CustomToolbar(title: "두 번 누르기", isSuccess: isSuccess)
                 
                 Text(isSuccess ? "성공!\n" : isFail ? "조금만 더 빠르게\n두 번 눌러주세요!" : "검색창을 두 번\n눌러볼까요?")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
@@ -45,7 +45,6 @@ struct DoubleTapPracticeView1: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
-        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)
