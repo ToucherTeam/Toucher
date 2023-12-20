@@ -17,6 +17,7 @@ struct SplashView: View {
                 .scaledToFit()
                 .padding(.horizontal, 100)
         }
+        .ignoresSafeArea()
     }
 }
 
