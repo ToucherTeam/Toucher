@@ -10,7 +10,7 @@ import UniformTypeIdentifiers
 
 struct DragPracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
-
+    
     @State private var data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
     @State private var isSuccess = false
@@ -24,18 +24,18 @@ struct DragPracticeView2: View {
     
     var body: some View {
         ZStack {
-            if isFailed && !isSuccess {
+            if isFailed && !isSuccess || isDroped && !isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
                 CustomToolbar(title: "끌어오기")
                 
                 Rectangle().frame(height: 0)
-                Text(isSuccess ? "성공!\n\n" :
-                        isTried || isFailed ? "카메라 아이콘을\n꾹 누른 상태로\n 움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
+                Text(isSuccess ? "성공!\n\n" : isDroped ? "위치를 오른쪽 가장\n아래로 움직여 주세요\n" :
+                        isTried || isFailed ? "카메라 아이콘을\n꾹 누른 상태로\n움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
-                .foregroundColor(isFailed && !isSuccess ? .white : .primary)
+                .foregroundColor(isFailed && !isSuccess || isDroped && !isSuccess ? .white : .primary)
                 .padding(.top, 40)
                 .padding(.bottom, 40)
                 LazyVGrid(columns: columns) {
@@ -73,6 +73,7 @@ struct DragPracticeView2: View {
                                         isAnimate = true
                                     }
                                 }
+                                .opacity(isTried ? 1 : 0)
                             }
                         }
                     }
@@ -90,7 +91,7 @@ struct DragPracticeView2: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(style: isFailed ? .primary : .secondary) {
+                HelpButton(style: isFailed || isDroped ? .primary : .secondary) {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)
@@ -163,11 +164,10 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
         }
     }
     
-    struct ReorderDropDelegate<Data>: DropDelegate
-    where Data: Equatable {
-        let item: Data
-        @Binding var data: [Data]
-        @Binding var draggedItem: Data?
+    struct ReorderDropDelegate<ItemType>: DropDelegate where ItemType: Equatable {
+        let item: ItemType
+        @Binding var data: [ItemType]
+        @Binding var draggedItem: ItemType?
         @Binding var hasChangedLocation: Bool
         @Binding var isReached: Bool
         @Binding var isDroped: Bool
@@ -184,7 +184,7 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
                 print(indexTo)
                 if current as! String == "Camera" && indexTo == 7 {
                     isReached = true
-                } else {
+                } else if current as! String == "Camera" {
                     isReached = false
                     isTried = true
                 }
@@ -197,11 +197,21 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
         
         /// + 버튼이 표시되지 않게 하기 위함
         func dropUpdated(info: DropInfo) -> DropProposal? {
-            DropProposal(operation: .move)
+            return DropProposal(operation: .move)
         }
         
         /// for Protocol
         func performDrop(info: DropInfo) -> Bool {
+            if let current = draggedItem as? String, current == "Camera" {
+                if let indexTo = data.firstIndex(of: item) {
+                    if indexTo != 7 {
+                        withAnimation {
+                            isDroped = true
+                        }
+                    }
+                }
+            }
+            draggedItem = nil
             return true
         }
     }

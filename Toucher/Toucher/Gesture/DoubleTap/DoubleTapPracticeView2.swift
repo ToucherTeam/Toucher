@@ -18,36 +18,48 @@ struct DoubleTapPracticeView2: View {
     let UIHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        ZStack {
-            Color(.systemGray6).ignoresSafeArea()
-            Image("ex_image")
-                .resizable()
-                .scaledToFit()
-                .scaleEffect(isSuccess ? 2 : 1)
-                .ignoresSafeArea()
-                .gesture(gesture)
-                .overlay {
-                    if isSuccess {
-                        ConfettiView()
+        VStack(spacing: 0) {
+            CustomToolbar(title: "두 번 누르기")
+                .zIndex(1)
+
+            ZStack {
+                Color(.systemGray6).ignoresSafeArea()
+                Image("ex_image")
+                    .resizable()
+                    .scaledToFill()
+                    .scaleEffect(isSuccess ? 3 : 1)
+                    .ignoresSafeArea()
+                    .gesture(gesture)
+                    .overlay {
+                        if isSuccess {
+                            ConfettiView()
+                        }
+                    }
+                
+                VStack(spacing: 0) {
+                    Text(isSuccess ? "성공!\n" : isFail ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
+                        .foregroundColor(isFail && !isSuccess ? .accentColor : .primary)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(10)
+                        .font(.customTitle)
+                        .padding(.top, 40)
+                        .frame(maxHeight: .infinity, alignment: .top)
+                    
+                    HelpButton(style: isFail ? .primary : .secondary) {
+                        
+                    }
+                    .opacity(isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: isSuccess)
+                }
+            }
+            .onChange(of: isSuccess) { _ in
+                if isSuccess {
+                    HapticManager.notification(type: .success)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        navigationManager.navigate = false
+                        navigationManager.updateGesture()
                     }
                 }
-            
-            VStack(spacing: 0) {
-                CustomToolbar(title: "두 번 누르기")
-                
-                Text(isSuccess ? "성공!\n" : isFail ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
-                    .foregroundColor(isFail && !isSuccess ? .accentColor : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                    .frame(maxHeight: .infinity, alignment: .top)
-                
-                HelpButton(style: isFail ? .primary : .secondary) {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
             }
         }
         .allowsHitTesting(!isSuccess)
@@ -58,11 +70,10 @@ struct DoubleTapPracticeView2: View {
                     navigationManager.navigate = false
                     navigationManager.updateGesture()
                 }
+        }
+                    .onAppear {
+                reset()
             }
-        }
-        .onAppear {
-            reset()
-        }
     }
     
     private func reset() {
