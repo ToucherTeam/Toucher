@@ -31,18 +31,19 @@ struct SwipePracticeView1: View {
                     .padding(.top, 40)
                     .padding(.bottom, 108)
                 
-                List {
+                if navigate {
+                    List {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.customBG2)
                                 .font(.system(size: 60))
-
+                            
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text("phNumber")
                                     
                                     Text("message.time")
-
+                                    
                                     Image(systemName: "chevron.right")
                                 }
                                 Text("message.text")
@@ -50,7 +51,61 @@ struct SwipePracticeView1: View {
                             .foregroundColor(Color.customBG2)
                             
                         }
+                        .listRowBackground(Color.customBG2)
+                    }
+                    .frame(height: 90)
+                    .frame(width: UIScreen.main.bounds.width - 32)
+                    .cornerRadius(20)
+                    .listStyle(.plain)
+                    .padding(.bottom, 6)
                     
+                    List {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.customBG2)
+                                .font(.system(size: 60))
+                            
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("phNumber")
+                                    
+                                    Text("message.time")
+                                    
+                                    Image(systemName: "chevron.right")
+                                }
+                                Text("message.text")
+                            }
+                            .foregroundColor(Color.customBG2)
+                            
+                        }
+                        .listRowBackground(Color.customBG2)
+                    }
+                    .frame(height: 90)
+                    .frame(width: UIScreen.main.bounds.width - 32)
+                    .cornerRadius(20)
+                    .listStyle(.plain)
+                    .padding(.bottom, 6)
+                } else {
+                    List {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.customBG2)
+                                .font(.system(size: 60))
+                            
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("phNumber")
+                                    
+                                    Text("message.time")
+                                    
+                                    Image(systemName: "chevron.right")
+                                }
+                                Text("message.text")
+                            }
+                            .foregroundColor(Color.customBG2)
+                            
+                        }
+                        
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
@@ -65,7 +120,6 @@ struct SwipePracticeView1: View {
                                     }
                                 }
                                 .onEnded { _ in
-                                    // Handle the end of drag if needed
                                 }
                         )
                         .swipeActions(allowsFullSwipe: false) {
@@ -89,25 +143,25 @@ struct SwipePracticeView1: View {
                             }
                         }
                         .listRowBackground(Color.customBG2)
-                }
-                .scrollDisabled(true)
-                .frame(height: 90)
-                .frame(width: UIScreen.main.bounds.width - 32)
-                .cornerRadius(20)
-                .listStyle(.plain)
-                .padding(.bottom, 6)
-                List {
+                    }
+                    .scrollDisabled(true)
+                    .frame(height: 90)
+                    .frame(width: UIScreen.main.bounds.width - 32)
+                    .cornerRadius(20)
+                    .listStyle(.plain)
+                    .padding(.bottom, 6)
+                    List {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.customBG2)
                                 .font(.system(size: 60))
-
+                            
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text("phNumber")
-//                                    Spacer()
+                                    //                                    Spacer()
                                     Text("message.time")
-
+                                    
                                     Image(systemName: "chevron.right")
                                 }
                                 Text("message.text")
@@ -138,12 +192,14 @@ struct SwipePracticeView1: View {
                             }
                         }
                         .listRowBackground(Color.customBG2)
+                    }
+                    .scrollDisabled(true)
+                    .frame(height: 90)
+                    .frame(width: UIScreen.main.bounds.width - 32)
+                    .cornerRadius(20)
+                    .listStyle(.plain)
                 }
-                .scrollDisabled(true)
-                .frame(height: 90)
-                .frame(width: UIScreen.main.bounds.width - 32)
-                .cornerRadius(20)
-                .listStyle(.plain)
+                
                 
                 Spacer()
                 
@@ -155,8 +211,9 @@ struct SwipePracticeView1: View {
             }
             
         }
+        .allowsHitTesting(!isSuccess)
         .frame(maxHeight: .infinity)
-        .onDisappear {
+        .onAppear {
             swipeVM.textIndex = 0
             isSuccess = false
         }
@@ -165,9 +222,8 @@ struct SwipePracticeView1: View {
                 ConfettiView()
             }
         }
-        .onChange(of: isSuccess ) { _ in
-            if swipeVM.textIndex == 2 {
-                isSuccess = true
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     navigate = true

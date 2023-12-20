@@ -98,6 +98,7 @@ struct DragPracticeView2: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
             isSuccess = false

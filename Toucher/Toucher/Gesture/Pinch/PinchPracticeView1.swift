@@ -60,6 +60,7 @@ struct PinchPracticeView1: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .onChange(of: isSuccess) { _ in
             if isSuccess {
                 HapticManager.notification(type: .success)

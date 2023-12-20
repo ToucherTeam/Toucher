@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DoubleTapPracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
-
+    
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isFail = false
@@ -21,7 +21,7 @@ struct DoubleTapPracticeView2: View {
         VStack(spacing: 0) {
             CustomToolbar(title: "두 번 누르기")
                 .zIndex(1)
-
+            
             ZStack {
                 Color(.systemGray6).ignoresSafeArea()
                 Image("ex_image")
@@ -64,6 +64,7 @@ struct DoubleTapPracticeView2: View {
             .onAppear {
                 reset()
             }
+            .allowsHitTesting(!isSuccess)
         }
     }
     

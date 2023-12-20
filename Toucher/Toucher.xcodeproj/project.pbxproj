@@ -58,6 +58,9 @@
 		29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5192AA775520074C1FE /* VStackArrow.swift */; };
 		29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
+		3266082E2B31E5EB006A58B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082D2B31E5EB006A58B8 /* SplashView.swift */; };
+		326608302B31E78E006A58B8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082F2B31E78E006A58B8 /* OnBoardingView.swift */; };
+		326608322B31EC01006A58B8 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326608312B31EC01006A58B8 /* TapButton.swift */; };
 		32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A178402B25E35B007A3CAB /* CustomToolbar.swift */; };
 		32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3F592B2F898F0017F9E0 /* PanMap.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
@@ -120,6 +123,9 @@
 		29F1D5192AA775520074C1FE /* VStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/View/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView1.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
+		3266082D2B31E5EB006A58B8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		3266082F2B31E78E006A58B8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		326608312B31EC01006A58B8 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
 		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		32EC3F592B2F898F0017F9E0 /* PanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMap.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -239,6 +245,8 @@
 			children = (
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
+				3266082D2B31E5EB006A58B8 /* SplashView.swift */,
+				3266082F2B31E78E006A58B8 /* OnBoardingView.swift */,
 				295A061F2B26ED6B004CAF1C /* Manager */,
 				07670B932AA749D600DE5113 /* Component */,
 				29EAB4082AA1703A004E5429 /* Gesture */,
@@ -353,6 +361,7 @@
 				29D51B862B25D5C300A6923E /* FinishMainButton.swift */,
 				292181BD2B26C597002E5AAA /* DoubleTapButton.swift */,
 				292181BF2B26C686002E5AAA /* LongPressButton.swift */,
+				326608312B31EC01006A58B8 /* TapButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -488,8 +497,11 @@
 				07D345F12AA8716500B7329D /* SwipePracticeView1.swift in Sources */,
 				29EF99972AA8A2CA00637F7A /* PanExampleView.swift in Sources */,
 				29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */,
+				326608322B31EC01006A58B8 /* TapButton.swift in Sources */,
+				3266082E2B31E5EB006A58B8 /* SplashView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */,
+				326608302B31E78E006A58B8 /* OnBoardingView.swift in Sources */,
 				29EAB40F2AA188DB004E5429 /* DoubleTapExampleView.swift in Sources */,
 				32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */,
 				29D51B872B25D5C300A6923E /* FinishMainButton.swift in Sources */,

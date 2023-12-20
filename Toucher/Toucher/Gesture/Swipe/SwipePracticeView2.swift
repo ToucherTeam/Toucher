@@ -42,6 +42,23 @@ struct SwipePracticeView2: View {
                                     Text(message.phNumber)
                                         .bold()
                                         .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                                        .gesture(
+                                            DragGesture()
+                                                .onChanged { value in
+                                                    if value.translation.width < 0 {
+                                                        isFail = false
+                                                    } else {
+                                                        if !isSuccess {
+                                                            withAnimation {
+                                                                isFail = true
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                .onEnded { _ in
+                                                    // Handle the end of drag if needed
+                                                }
+                                        )
                                     Spacer()
                                     Text(message.time)
                                         .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
@@ -52,32 +69,18 @@ struct SwipePracticeView2: View {
                                     .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
                             }
                         }
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                    if value.translation.width < 0 {
-                                        isFail = false
-                                    } else {
-                                        if !isSuccess {
-                                            withAnimation {
-                                                isFail = true
-                                            }
-                                        }
-                                    }
-                                }
-                                .onEnded { _ in
-                                    // Handle the end of drag if needed
-                                }
-                        )
+                        
                         .swipeActions(allowsFullSwipe: false) {
                             Button(role: .destructive) {
+                                isFail = false
+                                isSuccess = true
+                                if let index = messageData.firstIndex(where: { $0.id == message.id }) {
+                                    messageData.remove(at: index)
+                                }
+                                
                                 print("Deleting conversation")
                             } label: {
                                 Image(systemName: "trash.fill")
-                            }
-                            .onAppear {
-                                isFail = false
-                                isSuccess = true
                             }
                             
                             Button {
@@ -89,6 +92,7 @@ struct SwipePracticeView2: View {
                         }
                         .listRowBackground(isFail ? Color.customSecondary : Color.customWhite)
                     }
+
                 }
                 .listStyle(.plain)
                 Spacer()
@@ -100,6 +104,7 @@ struct SwipePracticeView2: View {
                 .animation(.easeInOut, value: isSuccess)
             }
         }
+        .allowsHitTesting(!isSuccess)
         .overlay {
             if isSuccess {
                 ConfettiView()
@@ -114,10 +119,6 @@ struct SwipePracticeView2: View {
                 }
             }
         }
-    }
-    
-    func deleteMessage(_ message: MessageModel) {
-        messageData.removeAll(where: { $0 == message })
     }
 }
 

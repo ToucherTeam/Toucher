@@ -14,54 +14,56 @@ struct SwipeExampleView: View {
     
     @Namespace var animation
     
-    @State private var isOneTapped = false
+    @State private var isFail = false
     @State private var navigate = false
     @State private var isSuccess = false
     
     var body: some View {
         ZStack {
-            if checkSuccessCondition(swipeVM.currentIndexArray) == false, swipeVM.currentIndex == -1, isOneTapped {
+            if isFail && !isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
-
+            
             VStack {
                 CustomToolbar(title: "살짝 쓸기")
-
+                
                 titleText()
                 
                 Spacer()
                 
-                carousel()
-                    .overlay(
-                        Arrows()
-                            .rotationEffect( (swipeVM.currentIndex == -1) ? .degrees(0) : .degrees(180))
-                            .allowsHitTesting(false)
-                    )
-                    .overlay(indicator())
-                Spacer()
-                
-                HelpButton(style: isFail()  ? .primary : .secondary) {
+                HelpButton(style: isFail  ? .primary : .secondary) {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }
-            .animation(.easeInOut, value: dragOffset == 0)
             .onAppear {
                 swipeVM.currentIndexArray = []
-                isOneTapped = false
+                isFail = false
                 isSuccess = false
             }
+            .overlay(alignment: .leading) {
+                carousel()
+                    .padding(.horizontal, 24)
+            }
+            .overlay(alignment: .center) {
+                Arrows()
+                    .rotationEffect( (swipeVM.currentIndex == 0) ? .degrees(0) : .degrees(180))
+                    .allowsHitTesting(false)
+            }
+            .overlay(alignment: .center) {indicator()}
+            .animation(.easeInOut, value: dragOffset == 0)
             .overlay {
                 if isSuccess {
                     ConfettiView()
                 }
             }
-            .onChange(of: checkSuccessCondition(swipeVM.currentIndexArray)) { _ in
-                    isSuccess = true
+            .onChange(of: isSuccess) { _ in
+                if isSuccess {
                     HapticManager.notification(type: .success)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                         navigate = true
+                    }
                 }
             }
             .navigationDestination(isPresented: $navigate) {
@@ -69,40 +71,33 @@ struct SwipeExampleView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
-    }
-    
-    @ViewBuilder
-    func footerContent() -> some View {
-        switch (swipeVM.tap, checkSuccessCondition(swipeVM.currentIndexArray)) {
-        case (false, _):
-            descriptionText()
-                .frame(height: swipeVM.headerAreaHeight.size.height)
-                .padding(.bottom, 89)
-        default:
-            descriptionText()
-                .frame(height: swipeVM.headerAreaHeight.size.height)
-                .opacity(0)
-                .padding(.bottom, 89)
-        }
+        .allowsHitTesting(!isSuccess)
     }
     
     @ViewBuilder
     func titleText() -> some View {
-        switch (checkSuccessCondition(swipeVM.currentIndexArray), swipeVM.currentIndex, isOneTapped) {
-        case (true, _, true):
+        switch (isSuccess, swipeVM.currentIndex, isFail) {
+        case (true, _, false):
             Text("잘하셨어요!\n")
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
                 .padding(.top, 42)
             
-        case (false, -1, true):
+        case (_, 0, true):
             Text("왼쪽으로\n 살짝쓸어보세요")
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
                 .padding(.top, 42)
             
-        case (false, -1, false):
+        case (_, 1, true):
+            Text("오른쪽으로\n 살짝쓸어보세요")
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .font(.customTitle)
+                .padding(.top, 42)
+            
+        case (false, 0, false):
             Text("왼쪽으로 밀어볼까요?\n")
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
@@ -140,36 +135,13 @@ struct SwipeExampleView: View {
                     before: TapGesture()
                         .onEnded {
                             withAnimation {
-                                isOneTapped = true
+                                isFail = true
                             }
                         })
         )
         .gesture(
             dragOffset(width)
         )
-    }
-    
-    @ViewBuilder
-    func descriptionText() -> some View {
-        VStack(spacing: 10) {
-            HStack(spacing: 0) {
-                Text("현재 ")
-                    .font(.customDescription)
-                Text("보이지 않는 화면을")
-                    .font(.customDescriptionEmphasis)
-            }
-            HStack(spacing: 0) {
-                Text("찾을 때")
-                    .font(.customDescriptionEmphasis)
-                Text("주로 사용해요.")
-                    .font(.customDescription)
-            }
-        }
-        .foregroundColor(.customGR1)
-        .modifier(GetHeightModifier())
-        .onPreferenceChange(ContentRectSize.self) { rects in
-            swipeVM.headerAreaHeight = rects
-        }
     }
     
     @ViewBuilder
@@ -180,7 +152,7 @@ struct SwipeExampleView: View {
                     .foregroundColor(.customBG2)
                     .frame(width: 8, height: 8)
                     .overlay {
-                        if swipeVM.currentIndex == index - 1 {
+                        if swipeVM.currentIndex == index {
                             Circle()
                                 .foregroundColor(.customPrimary)
                                 .frame(width: 8, height: 8)
@@ -192,34 +164,8 @@ struct SwipeExampleView: View {
         }
     }
     
-    fileprivate func checkSuccessCondition<T>(_ sequence: T) -> Bool where T: Sequence, T.Element == Int {
-        var iterator = sequence.makeIterator()
-        
-        while let element = iterator.next() {
-            if element == 0, let nextElement = iterator.next(), nextElement == -1 {
-                return true
-            }
-            var previousElement = element
-        }
-        
-        return false
-    }
-    
-    fileprivate func shouldReturnTrueForCondition<T: Equatable>(_ array: [T]) -> Bool {
-        guard !array.isEmpty else {
-            isOneTapped = false
-            return isOneTapped
-        }
-        
-        if array.last == array[array.count - 1] {
-            isOneTapped = true
-        }
-        
-        return false
-    }
-        
     fileprivate func errorHandleArray(_ roundIndex: CGFloat) -> Int {
-        return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 2), -1)
+        return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 1), 0)
     }
     
     fileprivate func dragOffset(_ width: CGFloat) -> _EndedGesture<GestureStateGesture<DragGesture, CGFloat>> {
@@ -233,14 +179,27 @@ struct SwipeExampleView: View {
                 let roundIndex = progress.rounded()
                 swipeVM.currentIndex = errorHandleArray(roundIndex)
                 swipeVM.currentIndexArray.append(swipeVM.currentIndex)
-                shouldReturnTrueForCondition(swipeVM.currentIndexArray)
-                print(swipeVM.currentIndexArray)
-                print(isOneTapped)
+                checkSuccessCondition(swipeVM.currentIndexArray)
             }
     }
     
-    private func isFail() -> Bool {
-        return !checkSuccessCondition(swipeVM.currentIndexArray) && swipeVM.currentIndex == -1 && isOneTapped
+    fileprivate func checkSuccessCondition(_ array: [Int]) {
+        let lastIndex = array.count - 1
+        if array[lastIndex] == 0 {
+            self.isFail = true
+        }
+        if array.count >= 2 {
+            if array[lastIndex] == 0 && array[lastIndex - 1] == 1 {
+                self.isSuccess = true
+                self.isFail = false
+            } else if array[lastIndex] != array[lastIndex - 1] {
+                self.isSuccess = false
+                self.isFail = false
+            } else {
+                self.isSuccess = false
+                self.isFail = true
+            }
+        }
     }
 }
 

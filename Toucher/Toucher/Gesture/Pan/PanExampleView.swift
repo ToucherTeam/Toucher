@@ -10,11 +10,9 @@ import SwiftUI
 struct PanExampleView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var scrollViewSize: CGSize = .zero
-    @State private var isTapped = false
     @State private var isSuccess = false
     @State private var navigate = false
     @State private var isFail = false
-    @State private var isOneTapped = false
     @State private var scrollOffset: CGFloat = 0
     
     @GestureState private var isPressed = false
@@ -42,15 +40,13 @@ struct PanExampleView: View {
             VStack {
                 CustomToolbar(title: "화면 움직이기")
                 
-                Text(isFail ? "위로 가볍게 쓸어올리세요." : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
+                Text(isFail ? "위로 가볍게 쓸어올리세요.\n" : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
                     .foregroundColor(isFail && !isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 30)
-                
-                //                Spacer()
                 
                 ChildSizeReader(size: $wholeSize) {
                     ScrollViewReader { value in
@@ -106,17 +102,12 @@ struct PanExampleView: View {
                                 .onPreferenceChange(
                                     ViewOffsetKey.self,
                                     perform: { value in
-                                        if value != 0 {
-                                            isTapped = true
-                                        }
-                                        print("offset: \(value)")
-                                        print("height: \(scrollViewSize.height)")
-                                        
                                         if value >= scrollViewSize.height - wholeSize.height {
-                                            print("User has reached the bottom of the ScrollView.")
                                             isSuccess = true
+                                        } else if value < 0 {
+                                            isFail = true
                                         } else {
-                                            print("not reached.")
+                                            isFail = false
                                         }
                                     }
                                 )
@@ -137,7 +128,7 @@ struct PanExampleView: View {
                         print(value)
                     }
                 )
-                .padding(.top, 96)
+                .padding(.top, isSE ? 0 : 96)
                 .frame(maxHeight: isSE ? .infinity : 320)
                 
                 Spacer()
@@ -157,21 +148,22 @@ struct PanExampleView: View {
             }
             
         }
+        .allowsHitTesting(!isSuccess)
         .onAppear {
-            isTapped = false
+            isFail = false
             isSuccess = false
-            isOneTapped = false
         }
         .overlay {
             if isSuccess {
                 ConfettiView()
             }
         }
-        .onChange(of: isSuccess ) { _ in
-            isSuccess = true
-            HapticManager.notification(type: .success)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                navigate = true
+        .onChange(of: isSuccess) { _ in
+            if isSuccess {
+                HapticManager.notification(type: .success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    navigate = true
+                }
             }
         }
         .navigationDestination(isPresented: $navigate) {
