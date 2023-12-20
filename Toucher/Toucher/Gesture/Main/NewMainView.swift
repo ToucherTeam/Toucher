@@ -35,7 +35,7 @@ struct NewMainView: View {
                 .scrollIndicators(.hidden)
                 .scrollDisabled(true)
                 .onAppear {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         navigationManager.updateButtonTypes()
                     }
                 }
