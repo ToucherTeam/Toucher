@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DoubleTapPracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
-
+    
     @State private var isTapped = false
     @State private var isSuccess = false
     @State private var isFail = false
@@ -21,7 +21,7 @@ struct DoubleTapPracticeView2: View {
         VStack(spacing: 0) {
             CustomToolbar(title: "두 번 누르기")
                 .zIndex(1)
-
+            
             ZStack {
                 Color(.systemGray6).ignoresSafeArea()
                 Image("ex_image")
@@ -61,19 +61,11 @@ struct DoubleTapPracticeView2: View {
                     }
                 }
             }
-        }
-        .allowsHitTesting(!isSuccess)
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
-                }
-        }
-                    .onAppear {
+            .onAppear {
                 reset()
             }
+            .allowsHitTesting(!isSuccess)
+        }
     }
     
     private func reset() {

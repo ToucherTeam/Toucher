@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TapButton: View {
-    @State private var count = 0
-    
     @Binding var isSuccess: Bool
     private let image = "ToucherButton"
     
@@ -20,9 +18,7 @@ struct TapButton: View {
             .frame(width: 176, height: 165)
             .offset(y: isSuccess ? 5 : 0)
             .onTapGesture {
-                withAnimation {
-                    isSuccess = true
-                }
+                isSuccess = true
             }
             .frame(maxWidth: .infinity)
     }
