@@ -12,6 +12,8 @@ struct GuideView: View {
 
     @Binding var isFullScreenPresented: Bool
     
+    let currentViewName: String?
+    
     var body: some View {
         ZStack {
             Color.black
@@ -41,7 +43,7 @@ struct GuideView: View {
             }
             .padding(.top, 68)
             
-            GifImage("RotatePracticeView")
+            GifImage(currentViewName ?? "")
                 .frame(width: 300,height: 650)
                 .padding(.top, 68)
         }
@@ -50,7 +52,7 @@ struct GuideView: View {
 }
 
 #Preview {
-    GuideView(isFullScreenPresented: .constant(false))
+    GuideView(isFullScreenPresented: .constant(false), currentViewName: "DoubleTapExampleView")
 }
 
 struct BarProgressStyle: ProgressViewStyle {
