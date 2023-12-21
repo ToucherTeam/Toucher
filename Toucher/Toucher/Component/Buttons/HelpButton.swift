@@ -17,8 +17,9 @@ struct HelpButton: View {
     @State private var isFullScreenPresented = false
     
     var style: HelpButtonStyle
+    var currentViewName: String = "LongTapExampleView"
     var action: () -> Void
-    
+        
     private var textColor: Color {
         withAnimation {
             switch style {
@@ -67,7 +68,7 @@ struct HelpButton: View {
                 }
         }
         .fullScreenCover(isPresented: $isFullScreenPresented, content: {
-            GuideView(isFullScreenPresented: $isFullScreenPresented)
+            GuideView(isFullScreenPresented: $isFullScreenPresented, currentViewName: currentViewName)
         })
     }
 }
