@@ -39,7 +39,7 @@ struct LongTapExampleView: View {
                         }
                     }
 
-                HelpButton(style: isFail ? .primary : .secondary) {
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "LongTapExampleView") {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)

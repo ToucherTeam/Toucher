@@ -58,9 +58,30 @@
 		29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D5192AA775520074C1FE /* VStackArrow.swift */; };
 		29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
+		3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239F21E2B32B97F001CDE0D /* GuideView.swift */; };
+		3239F2252B32BBC7001CDE0D /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239F2242B32BBC7001CDE0D /* GIFImage.swift */; };
+		3239F2872B32D91F001CDE0D /* DoubleTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */; };
+		3239F2882B32D91F001CDE0D /* DoubleTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */; };
+		3239F2892B32D91F001CDE0D /* DoubleTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */; };
+		3239F2932B32D92F001CDE0D /* PanPracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2912B32D92F001CDE0D /* PanPracticeView.gif */; };
+		3239F2992B32D9C4001CDE0D /* PinchPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2982B32D9C4001CDE0D /* PinchPracticeView1.gif */; };
+		3239F29C2B32D9CA001CDE0D /* RotateExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F29A2B32D9CA001CDE0D /* RotateExampleView.gif */; };
+		3239F29D2B32D9CA001CDE0D /* RotatePracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F29B2B32D9CA001CDE0D /* RotatePracticeView.gif */; };
 		3266082E2B31E5EB006A58B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082D2B31E5EB006A58B8 /* SplashView.swift */; };
 		326608302B31E78E006A58B8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082F2B31E78E006A58B8 /* OnBoardingView.swift */; };
 		326608322B31EC01006A58B8 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326608312B31EC01006A58B8 /* TapButton.swift */; };
+		3286E9C02B349F6100E9DE63 /* LongTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9BD2B349F6100E9DE63 /* LongTapPracticeView1.gif */; };
+		3286E9C12B349F6100E9DE63 /* LongTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9BE2B349F6100E9DE63 /* LongTapPracticeView2.gif */; };
+		3286E9C22B349F6100E9DE63 /* LongTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9BF2B349F6100E9DE63 /* LongTapExampleView.gif */; };
+		3286E9C62B349FB500E9DE63 /* SwipeExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9C32B349FB500E9DE63 /* SwipeExampleView.gif */; };
+		3286E9C72B349FB500E9DE63 /* SwipePracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9C42B349FB500E9DE63 /* SwipePracticeView2.gif */; };
+		3286E9C82B349FB500E9DE63 /* SwipePracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9C52B349FB500E9DE63 /* SwipePracticeView1.gif */; };
+		3286E9CC2B349FC500E9DE63 /* DragPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9C92B349FC500E9DE63 /* DragPracticeView1.gif */; };
+		3286E9CD2B349FC500E9DE63 /* DragPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9CA2B349FC500E9DE63 /* DragPracticeView2.gif */; };
+		3286E9CE2B349FC500E9DE63 /* DragExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9CB2B349FC500E9DE63 /* DragExampleView.gif */; };
+		3286E9D52B34A01E00E9DE63 /* PinchExampleView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9D32B34A01E00E9DE63 /* PinchExampleView1.gif */; };
+		3286E9D62B34A01E00E9DE63 /* PinchExampleView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9D42B34A01E00E9DE63 /* PinchExampleView2.gif */; };
+		3286E9D82B34A2F500E9DE63 /* PanExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3286E9D72B34A2F500E9DE63 /* PanExampleView.gif */; };
 		32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A178402B25E35B007A3CAB /* CustomToolbar.swift */; };
 		32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3F592B2F898F0017F9E0 /* PanMap.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
@@ -123,9 +144,30 @@
 		29F1D5192AA775520074C1FE /* VStackArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/View/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		29F1D51C2AA83AE70074C1FE /* PinchExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView1.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
+		3239F21E2B32B97F001CDE0D /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		3239F2242B32BBC7001CDE0D /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
+		3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapPracticeView2.gif; path = ../../../../../../Downloads/DoubleTapPracticeView2.gif; sourceTree = "<group>"; };
+		3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapPracticeView1.gif; path = ../../../../../../Downloads/DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
+		3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapExampleView.gif; path = ../../../../../../Downloads/DoubleTapExampleView.gif; sourceTree = "<group>"; };
+		3239F2912B32D92F001CDE0D /* PanPracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PanPracticeView.gif; path = ../../../../../../Downloads/PanPracticeView.gif; sourceTree = "<group>"; };
+		3239F2982B32D9C4001CDE0D /* PinchPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PinchPracticeView1.gif; path = ../../../../../../Downloads/PinchPracticeView1.gif; sourceTree = "<group>"; };
+		3239F29A2B32D9CA001CDE0D /* RotateExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = RotateExampleView.gif; path = ../../../../../../Downloads/RotateExampleView.gif; sourceTree = "<group>"; };
+		3239F29B2B32D9CA001CDE0D /* RotatePracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = RotatePracticeView.gif; path = ../../../../../../Downloads/RotatePracticeView.gif; sourceTree = "<group>"; };
 		3266082D2B31E5EB006A58B8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3266082F2B31E78E006A58B8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		326608312B31EC01006A58B8 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
+		3286E9BD2B349F6100E9DE63 /* LongTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LongTapPracticeView1.gif; path = ../../../../../../Documents/GIF/LongTapPracticeView1.gif; sourceTree = "<group>"; };
+		3286E9BE2B349F6100E9DE63 /* LongTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LongTapPracticeView2.gif; path = ../../../../../../Documents/GIF/LongTapPracticeView2.gif; sourceTree = "<group>"; };
+		3286E9BF2B349F6100E9DE63 /* LongTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LongTapExampleView.gif; path = ../../../../../../Documents/GIF/LongTapExampleView.gif; sourceTree = "<group>"; };
+		3286E9C32B349FB500E9DE63 /* SwipeExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SwipeExampleView.gif; path = ../../../../../../Documents/GIF/SwipeExampleView.gif; sourceTree = "<group>"; };
+		3286E9C42B349FB500E9DE63 /* SwipePracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SwipePracticeView2.gif; path = ../../../../../../Documents/GIF/SwipePracticeView2.gif; sourceTree = "<group>"; };
+		3286E9C52B349FB500E9DE63 /* SwipePracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SwipePracticeView1.gif; path = ../../../../../../Documents/GIF/SwipePracticeView1.gif; sourceTree = "<group>"; };
+		3286E9C92B349FC500E9DE63 /* DragPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DragPracticeView1.gif; path = ../../../../../../Documents/GIF/DragPracticeView1.gif; sourceTree = "<group>"; };
+		3286E9CA2B349FC500E9DE63 /* DragPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DragPracticeView2.gif; path = ../../../../../../Documents/GIF/DragPracticeView2.gif; sourceTree = "<group>"; };
+		3286E9CB2B349FC500E9DE63 /* DragExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DragExampleView.gif; path = ../../../../../../Documents/GIF/DragExampleView.gif; sourceTree = "<group>"; };
+		3286E9D32B34A01E00E9DE63 /* PinchExampleView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PinchExampleView1.gif; path = ../../../../../../Documents/GIF/PinchExampleView1.gif; sourceTree = "<group>"; };
+		3286E9D42B34A01E00E9DE63 /* PinchExampleView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PinchExampleView2.gif; path = ../../../../../../Documents/GIF/PinchExampleView2.gif; sourceTree = "<group>"; };
+		3286E9D72B34A2F500E9DE63 /* PanExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PanExampleView.gif; path = ../../../../../../Documents/GIF/PanExampleView.gif; sourceTree = "<group>"; };
 		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		32EC3F592B2F898F0017F9E0 /* PanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMap.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -243,10 +285,13 @@
 		29E8521D2AA08346003F4AF4 /* Toucher */ = {
 			isa = PBXGroup;
 			children = (
+				3239F2422B32C1E8001CDE0D /* GuideGIFs */,
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				3266082D2B31E5EB006A58B8 /* SplashView.swift */,
 				3266082F2B31E78E006A58B8 /* OnBoardingView.swift */,
+				3239F21E2B32B97F001CDE0D /* GuideView.swift */,
+				3239F2242B32BBC7001CDE0D /* GIFImage.swift */,
 				295A061F2B26ED6B004CAF1C /* Manager */,
 				07670B932AA749D600DE5113 /* Component */,
 				29EAB4082AA1703A004E5429 /* Gesture */,
@@ -345,6 +390,88 @@
 			path = Pinch;
 			sourceTree = "<group>";
 		};
+		3239F2422B32C1E8001CDE0D /* GuideGIFs */ = {
+			isa = PBXGroup;
+			children = (
+				3239F2682B32D75A001CDE0D /* DoubleTap */,
+				3239F26C2B32D766001CDE0D /* LongTap */,
+				3239F2702B32D78B001CDE0D /* Swipe */,
+				3239F2712B32D79A001CDE0D /* Drag */,
+				3239F2722B32D7A5001CDE0D /* Pan */,
+				3239F2742B32D7E5001CDE0D /* Pinch */,
+				3239F2732B32D7D3001CDE0D /* Rotate */,
+			);
+			path = GuideGIFs;
+			sourceTree = "<group>";
+		};
+		3239F2682B32D75A001CDE0D /* DoubleTap */ = {
+			isa = PBXGroup;
+			children = (
+				3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */,
+				3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */,
+				3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */,
+			);
+			path = DoubleTap;
+			sourceTree = "<group>";
+		};
+		3239F26C2B32D766001CDE0D /* LongTap */ = {
+			isa = PBXGroup;
+			children = (
+				3286E9BF2B349F6100E9DE63 /* LongTapExampleView.gif */,
+				3286E9BD2B349F6100E9DE63 /* LongTapPracticeView1.gif */,
+				3286E9BE2B349F6100E9DE63 /* LongTapPracticeView2.gif */,
+			);
+			path = LongTap;
+			sourceTree = "<group>";
+		};
+		3239F2702B32D78B001CDE0D /* Swipe */ = {
+			isa = PBXGroup;
+			children = (
+				3286E9C32B349FB500E9DE63 /* SwipeExampleView.gif */,
+				3286E9C52B349FB500E9DE63 /* SwipePracticeView1.gif */,
+				3286E9C42B349FB500E9DE63 /* SwipePracticeView2.gif */,
+			);
+			path = Swipe;
+			sourceTree = "<group>";
+		};
+		3239F2712B32D79A001CDE0D /* Drag */ = {
+			isa = PBXGroup;
+			children = (
+				3286E9CB2B349FC500E9DE63 /* DragExampleView.gif */,
+				3286E9C92B349FC500E9DE63 /* DragPracticeView1.gif */,
+				3286E9CA2B349FC500E9DE63 /* DragPracticeView2.gif */,
+			);
+			path = Drag;
+			sourceTree = "<group>";
+		};
+		3239F2722B32D7A5001CDE0D /* Pan */ = {
+			isa = PBXGroup;
+			children = (
+				3286E9D72B34A2F500E9DE63 /* PanExampleView.gif */,
+				3239F2912B32D92F001CDE0D /* PanPracticeView.gif */,
+			);
+			path = Pan;
+			sourceTree = "<group>";
+		};
+		3239F2732B32D7D3001CDE0D /* Rotate */ = {
+			isa = PBXGroup;
+			children = (
+				3239F29A2B32D9CA001CDE0D /* RotateExampleView.gif */,
+				3239F29B2B32D9CA001CDE0D /* RotatePracticeView.gif */,
+			);
+			path = Rotate;
+			sourceTree = "<group>";
+		};
+		3239F2742B32D7E5001CDE0D /* Pinch */ = {
+			isa = PBXGroup;
+			children = (
+				3286E9D32B34A01E00E9DE63 /* PinchExampleView1.gif */,
+				3286E9D42B34A01E00E9DE63 /* PinchExampleView2.gif */,
+				3239F2982B32D9C4001CDE0D /* PinchPracticeView1.gif */,
+			);
+			path = Pinch;
+			sourceTree = "<group>";
+		};
 		32A1783F2B25E350007A3CAB /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,11 +553,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3239F2992B32D9C4001CDE0D /* PinchPracticeView1.gif in Resources */,
+				3286E9CD2B349FC500E9DE63 /* DragPracticeView2.gif in Resources */,
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
+				3286E9CE2B349FC500E9DE63 /* DragExampleView.gif in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
+				3239F29C2B32D9CA001CDE0D /* RotateExampleView.gif in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
+				3239F2892B32D91F001CDE0D /* DoubleTapExampleView.gif in Resources */,
+				3239F29D2B32D9CA001CDE0D /* RotatePracticeView.gif in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
+				3286E9D62B34A01E00E9DE63 /* PinchExampleView2.gif in Resources */,
+				3286E9D82B34A2F500E9DE63 /* PanExampleView.gif in Resources */,
+				3286E9C02B349F6100E9DE63 /* LongTapPracticeView1.gif in Resources */,
+				3239F2932B32D92F001CDE0D /* PanPracticeView.gif in Resources */,
+				3239F2872B32D91F001CDE0D /* DoubleTapPracticeView2.gif in Resources */,
+				3286E9C72B349FB500E9DE63 /* SwipePracticeView2.gif in Resources */,
+				3286E9D52B34A01E00E9DE63 /* PinchExampleView1.gif in Resources */,
+				3286E9C22B349F6100E9DE63 /* LongTapExampleView.gif in Resources */,
+				3286E9CC2B349FC500E9DE63 /* DragPracticeView1.gif in Resources */,
+				3239F2882B32D91F001CDE0D /* DoubleTapPracticeView1.gif in Resources */,
+				3286E9C62B349FB500E9DE63 /* SwipeExampleView.gif in Resources */,
+				3286E9C82B349FB500E9DE63 /* SwipePracticeView1.gif in Resources */,
+				3286E9C12B349F6100E9DE63 /* LongTapPracticeView2.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,9 +659,11 @@
 				29F1D5122AA75FE80074C1FE /* ToucherNavigationLink.swift in Sources */,
 				07791D422AAAF4840024C04F /* PanModel.swift in Sources */,
 				29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */,
+				3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwipePracticeView2.swift in Sources */,
 				07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */,
 				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
+				3239F2252B32BBC7001CDE0D /* GIFImage.swift in Sources */,
 				29F1D51A2AA775520074C1FE /* VStackArrow.swift in Sources */,
 				292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */,
 			);
@@ -646,7 +794,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -680,7 +828,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";

@@ -128,7 +128,7 @@ struct LongTapPracticeView2: View {
                 .scrollDisabled(true)
                 
                 .overlay(alignment: .bottom) {
-                    HelpButton(style: isFail ? .primary : .secondary) {
+                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView2") {
                         
                     }
                     .opacity(isSuccess ? 0 : 1)

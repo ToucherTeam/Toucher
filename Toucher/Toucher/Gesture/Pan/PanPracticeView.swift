@@ -64,7 +64,7 @@ struct PanPracticeView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
                 VStack {
                     Spacer()
-                    HelpButton(style: .secondary) {
+                    HelpButton(style: .secondary, currentViewName: "PanPracticeView") {
                         
                     }
                     .opacity(isSuccess ? 0 : 1)

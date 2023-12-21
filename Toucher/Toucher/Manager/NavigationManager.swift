@@ -87,4 +87,5 @@ final class NavigationManager: ObservableObject {
             gestureButtons[index].buttonType = .done
         }
     }
+
 }

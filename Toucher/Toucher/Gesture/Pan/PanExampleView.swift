@@ -133,7 +133,7 @@ struct PanExampleView: View {
                 
                 Spacer()
                 
-                HelpButton(style: .secondary) {
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PanExampleView") {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)
