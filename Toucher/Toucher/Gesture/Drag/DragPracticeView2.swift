@@ -91,7 +91,7 @@ struct DragPracticeView2: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(style: isFailed || isDroped ? .primary : .secondary) {
+                HelpButton(style: isFailed || isDroped ? .primary : .secondary, currentViewName: "DragPracticeView2") {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)

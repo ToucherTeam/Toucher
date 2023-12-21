@@ -52,7 +52,7 @@ struct PinchPracticeView1: View {
                     .padding(.top, 40)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(style: isFail ? .primary : .secondary) {
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PinchPracticeView1") {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)

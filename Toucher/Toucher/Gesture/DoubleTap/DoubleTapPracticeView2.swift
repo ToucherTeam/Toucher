@@ -45,7 +45,7 @@ struct DoubleTapPracticeView2: View {
                         .padding(.top, 40)
                         .frame(maxHeight: .infinity, alignment: .top)
                     
-                    HelpButton(style: isFail ? .primary : .secondary) {
+                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DoubleTapPracticeView2") {
                         
                     }
                     .opacity(isSuccess ? 0 : 1)

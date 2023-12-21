@@ -203,7 +203,7 @@ struct SwipePracticeView1: View {
                 
                 Spacer()
                 
-                HelpButton(style: .secondary) {
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "SwipePracticeView1") {
                     
                 }
                 .opacity(isSuccess ? 0 : 1)
