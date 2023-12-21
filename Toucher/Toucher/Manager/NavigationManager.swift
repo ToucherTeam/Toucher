@@ -87,4 +87,8 @@ final class NavigationManager: ObservableObject {
             gestureButtons[index].buttonType = .done
         }
     }
+    
+    func getStructName<T>(_ type: T.Type) -> String {
+        return String(describing: type)
+    }
 }
