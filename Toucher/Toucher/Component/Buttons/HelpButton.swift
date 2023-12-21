@@ -15,6 +15,7 @@ enum HelpButtonStyle {
 struct HelpButton: View {
     @State private var animate = false
     @State private var isFullScreenPresented = false
+    
     var style: HelpButtonStyle
     var action: () -> Void
     
@@ -66,27 +67,7 @@ struct HelpButton: View {
                 }
         }
         .fullScreenCover(isPresented: $isFullScreenPresented, content: {
-            // Your full-screen content goes here
-            ZStack {
-                Color.black
-                    .ignoresSafeArea()
-                    .overlay(alignment: .top) {
-                        ProgressView()
-                            .progressViewStyle(CustomProgressViewStyle())
-                            .padding(.leading, 15)
-                    }
-                Image("Album3")
-                    .ignoresSafeArea()
-            }
-            .overlay(alignment: .topTrailing) {
-                Button(action: {
-                    isFullScreenPresented.toggle()
-                }, label: {
-                    Image(systemName: "xmark")
-                        .frame(height: 14)
-                        .foregroundStyle(.white)
-                })
-            }
+            GuideView(isFullScreenPresented: $isFullScreenPresented)
         })
     }
 }
