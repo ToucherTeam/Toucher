@@ -63,22 +63,19 @@
 		3239F2872B32D91F001CDE0D /* DoubleTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */; };
 		3239F2882B32D91F001CDE0D /* DoubleTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */; };
 		3239F2892B32D91F001CDE0D /* DoubleTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */; };
-		3262BA9D2B457B6700CDEE87 /* LongTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BA9A2B457B6700CDEE87 /* LongTapPracticeView2.gif */; };
-		3262BA9E2B457B6700CDEE87 /* LongTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BA9B2B457B6700CDEE87 /* LongTapPracticeView1.gif */; };
-		3262BA9F2B457B6700CDEE87 /* LongTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BA9C2B457B6700CDEE87 /* LongTapExampleView.gif */; };
-		3262BAAB2B457BB000CDEE87 /* DragExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAA82B457BB000CDEE87 /* DragExampleView.gif */; };
-		3262BAAC2B457BB000CDEE87 /* DragPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAA92B457BB000CDEE87 /* DragPracticeView1.gif */; };
-		3262BAAD2B457BB000CDEE87 /* DragPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAAA2B457BB000CDEE87 /* DragPracticeView2.gif */; };
-		3262BAB22B457DEE00CDEE87 /* SwipePracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAAF2B457DED00CDEE87 /* SwipePracticeView1.gif */; };
-		3262BAB32B457DEE00CDEE87 /* SwipePracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAB02B457DEE00CDEE87 /* SwipePracticeView2.gif */; };
-		3262BAB42B457DEE00CDEE87 /* SwipeExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAB12B457DEE00CDEE87 /* SwipeExampleView.gif */; };
-		3262BAB72B457DFD00CDEE87 /* PanPracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAB52B457DFD00CDEE87 /* PanPracticeView.gif */; };
-		3262BAB82B457DFD00CDEE87 /* PanExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAB62B457DFD00CDEE87 /* PanExampleView.gif */; };
-		3262BABC2B457E1D00CDEE87 /* RotateExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BABA2B457E1D00CDEE87 /* RotateExampleView.gif */; };
-		3262BABD2B457E1D00CDEE87 /* RotatePracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BABB2B457E1D00CDEE87 /* RotatePracticeView.gif */; };
-		3262BAC22B457E3A00CDEE87 /* PinchExampleView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BABF2B457E3A00CDEE87 /* PinchExampleView1.gif */; };
-		3262BAC32B457E3A00CDEE87 /* PinchExampleView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAC02B457E3A00CDEE87 /* PinchExampleView2.gif */; };
-		3262BAC42B457E3A00CDEE87 /* PinchPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BAC12B457E3A00CDEE87 /* PinchPracticeView1.gif */; };
+		3262BB032B458DA300CDEE87 /* LongExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB012B458DA200CDEE87 /* LongExampleView.gif */; };
+		3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */; };
+		3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */; };
+		3262BB0A2B458DF400CDEE87 /* SwipeExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB072B458DF400CDEE87 /* SwipeExampleView.gif */; };
+		3262BB0B2B458DF400CDEE87 /* SwipePracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB082B458DF400CDEE87 /* SwipePracticeView1.gif */; };
+		3262BB0C2B458DF400CDEE87 /* SwipePracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB092B458DF400CDEE87 /* SwipePracticeView2.gif */; };
+		3262BB0F2B458E0A00CDEE87 /* PanExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB0D2B458E0A00CDEE87 /* PanExampleView.gif */; };
+		3262BB102B458E0A00CDEE87 /* PanPracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB0E2B458E0A00CDEE87 /* PanPracticeView.gif */; };
+		3262BB142B458EC000CDEE87 /* PinchExampleView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB112B458EC000CDEE87 /* PinchExampleView1.gif */; };
+		3262BB152B458EC000CDEE87 /* PinchPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB122B458EC000CDEE87 /* PinchPracticeView1.gif */; };
+		3262BB162B458EC000CDEE87 /* PinchExampleView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB132B458EC000CDEE87 /* PinchExampleView2.gif */; };
+		3262BB192B458EDD00CDEE87 /* RotateExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB172B458EDD00CDEE87 /* RotateExampleView.gif */; };
+		3262BB1A2B458EDD00CDEE87 /* RotatePracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB182B458EDD00CDEE87 /* RotatePracticeView.gif */; };
 		3266082E2B31E5EB006A58B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082D2B31E5EB006A58B8 /* SplashView.swift */; };
 		326608302B31E78E006A58B8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082F2B31E78E006A58B8 /* OnBoardingView.swift */; };
 		326608322B31EC01006A58B8 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326608312B31EC01006A58B8 /* TapButton.swift */; };
@@ -149,22 +146,22 @@
 		3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapPracticeView2.gif; path = ../../../../../../Downloads/DoubleTapPracticeView2.gif; sourceTree = "<group>"; };
 		3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapPracticeView1.gif; path = ../../../../../../Downloads/DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
 		3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapExampleView.gif; path = ../../../../../../Downloads/DoubleTapExampleView.gif; sourceTree = "<group>"; };
-		3262BA9A2B457B6700CDEE87 /* LongTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LongTapPracticeView2.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/LongTapPracticeView2.gif; sourceTree = "<group>"; };
-		3262BA9B2B457B6700CDEE87 /* LongTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LongTapPracticeView1.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/LongTapPracticeView1.gif; sourceTree = "<group>"; };
-		3262BA9C2B457B6700CDEE87 /* LongTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LongTapExampleView.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/LongTapExampleView.gif; sourceTree = "<group>"; };
-		3262BAA82B457BB000CDEE87 /* DragExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DragExampleView.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/DragExampleView.gif; sourceTree = "<group>"; };
-		3262BAA92B457BB000CDEE87 /* DragPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DragPracticeView1.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/DragPracticeView1.gif; sourceTree = "<group>"; };
-		3262BAAA2B457BB000CDEE87 /* DragPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DragPracticeView2.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/DragPracticeView2.gif; sourceTree = "<group>"; };
-		3262BAAF2B457DED00CDEE87 /* SwipePracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SwipePracticeView1.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/SwipePracticeView1.gif; sourceTree = "<group>"; };
-		3262BAB02B457DEE00CDEE87 /* SwipePracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SwipePracticeView2.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/SwipePracticeView2.gif; sourceTree = "<group>"; };
-		3262BAB12B457DEE00CDEE87 /* SwipeExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SwipeExampleView.gif; path = ../../../../../../Documents/GIF/ToucherGuideGIF/SwipeExampleView.gif; sourceTree = "<group>"; };
-		3262BAB52B457DFD00CDEE87 /* PanPracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PanPracticeView.gif; path = ../../../../../../Documents/GIF/Drag/PanPracticeView.gif; sourceTree = "<group>"; };
-		3262BAB62B457DFD00CDEE87 /* PanExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PanExampleView.gif; path = ../../../../../../Documents/GIF/Drag/PanExampleView.gif; sourceTree = "<group>"; };
-		3262BABA2B457E1D00CDEE87 /* RotateExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = RotateExampleView.gif; path = ../../../../../../Documents/GIF/Drag/RotateExampleView.gif; sourceTree = "<group>"; };
-		3262BABB2B457E1D00CDEE87 /* RotatePracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = RotatePracticeView.gif; path = ../../../../../../Documents/GIF/Drag/RotatePracticeView.gif; sourceTree = "<group>"; };
-		3262BABF2B457E3A00CDEE87 /* PinchExampleView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PinchExampleView1.gif; path = ../../../../../../Documents/GIF/Drag/PinchExampleView1.gif; sourceTree = "<group>"; };
-		3262BAC02B457E3A00CDEE87 /* PinchExampleView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PinchExampleView2.gif; path = ../../../../../../Documents/GIF/Drag/PinchExampleView2.gif; sourceTree = "<group>"; };
-		3262BAC12B457E3A00CDEE87 /* PinchPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = PinchPracticeView1.gif; path = ../../../../../../Documents/GIF/Drag/PinchPracticeView1.gif; sourceTree = "<group>"; };
+		3262BAD62B45828A00CDEE87 /* DragPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DragPracticeView2.gif; sourceTree = "<group>"; };
+		3262BAD72B45828A00CDEE87 /* DragExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DragExampleView.gif; sourceTree = "<group>"; };
+		3262BAD82B45828A00CDEE87 /* DragPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DragPracticeView1.gif; sourceTree = "<group>"; };
+		3262BB012B458DA200CDEE87 /* LongExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongExampleView.gif; sourceTree = "<group>"; };
+		3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView1.gif; sourceTree = "<group>"; };
+		3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView2.gif; sourceTree = "<group>"; };
+		3262BB072B458DF400CDEE87 /* SwipeExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SwipeExampleView.gif; sourceTree = "<group>"; };
+		3262BB082B458DF400CDEE87 /* SwipePracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SwipePracticeView1.gif; sourceTree = "<group>"; };
+		3262BB092B458DF400CDEE87 /* SwipePracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SwipePracticeView2.gif; sourceTree = "<group>"; };
+		3262BB0D2B458E0A00CDEE87 /* PanExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PanExampleView.gif; sourceTree = "<group>"; };
+		3262BB0E2B458E0A00CDEE87 /* PanPracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PanPracticeView.gif; sourceTree = "<group>"; };
+		3262BB112B458EC000CDEE87 /* PinchExampleView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinchExampleView1.gif; sourceTree = "<group>"; };
+		3262BB122B458EC000CDEE87 /* PinchPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinchPracticeView1.gif; sourceTree = "<group>"; };
+		3262BB132B458EC000CDEE87 /* PinchExampleView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinchExampleView2.gif; sourceTree = "<group>"; };
+		3262BB172B458EDD00CDEE87 /* RotateExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = RotateExampleView.gif; sourceTree = "<group>"; };
+		3262BB182B458EDD00CDEE87 /* RotatePracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = RotatePracticeView.gif; sourceTree = "<group>"; };
 		3266082D2B31E5EB006A58B8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3266082F2B31E78E006A58B8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		326608312B31EC01006A58B8 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
@@ -404,9 +401,9 @@
 			isa = PBXGroup;
 			children = (
 				3239F2682B32D75A001CDE0D /* DoubleTap */,
-				3262BA992B457B5800CDEE87 /* LongTap */,
+				3262BAF82B458D3400CDEE87 /* LongTap */,
 				3262BAA02B457B6D00CDEE87 /* Swipe */,
-				3262BAA72B457B9E00CDEE87 /* Drag */,
+				3262BAD52B45828A00CDEE87 /* Drag */,
 				3262BAAE2B457BB900CDEE87 /* Pan */,
 				3262BABE2B457E2A00CDEE87 /* Pinch */,
 				3262BAB92B457E0600CDEE87 /* Rotate */,
@@ -414,41 +411,21 @@
 			path = GestureGifs;
 			sourceTree = "<group>";
 		};
-		3262BA992B457B5800CDEE87 /* LongTap */ = {
-			isa = PBXGroup;
-			children = (
-				3262BA9C2B457B6700CDEE87 /* LongTapExampleView.gif */,
-				3262BA9B2B457B6700CDEE87 /* LongTapPracticeView1.gif */,
-				3262BA9A2B457B6700CDEE87 /* LongTapPracticeView2.gif */,
-			);
-			path = LongTap;
-			sourceTree = "<group>";
-		};
 		3262BAA02B457B6D00CDEE87 /* Swipe */ = {
 			isa = PBXGroup;
 			children = (
-				3262BAB12B457DEE00CDEE87 /* SwipeExampleView.gif */,
-				3262BAAF2B457DED00CDEE87 /* SwipePracticeView1.gif */,
-				3262BAB02B457DEE00CDEE87 /* SwipePracticeView2.gif */,
+				3262BB072B458DF400CDEE87 /* SwipeExampleView.gif */,
+				3262BB082B458DF400CDEE87 /* SwipePracticeView1.gif */,
+				3262BB092B458DF400CDEE87 /* SwipePracticeView2.gif */,
 			);
 			path = Swipe;
-			sourceTree = "<group>";
-		};
-		3262BAA72B457B9E00CDEE87 /* Drag */ = {
-			isa = PBXGroup;
-			children = (
-				3262BAA82B457BB000CDEE87 /* DragExampleView.gif */,
-				3262BAA92B457BB000CDEE87 /* DragPracticeView1.gif */,
-				3262BAAA2B457BB000CDEE87 /* DragPracticeView2.gif */,
-			);
-			path = Drag;
 			sourceTree = "<group>";
 		};
 		3262BAAE2B457BB900CDEE87 /* Pan */ = {
 			isa = PBXGroup;
 			children = (
-				3262BAB62B457DFD00CDEE87 /* PanExampleView.gif */,
-				3262BAB52B457DFD00CDEE87 /* PanPracticeView.gif */,
+				3262BB0D2B458E0A00CDEE87 /* PanExampleView.gif */,
+				3262BB0E2B458E0A00CDEE87 /* PanPracticeView.gif */,
 			);
 			path = Pan;
 			sourceTree = "<group>";
@@ -456,8 +433,8 @@
 		3262BAB92B457E0600CDEE87 /* Rotate */ = {
 			isa = PBXGroup;
 			children = (
-				3262BABA2B457E1D00CDEE87 /* RotateExampleView.gif */,
-				3262BABB2B457E1D00CDEE87 /* RotatePracticeView.gif */,
+				3262BB172B458EDD00CDEE87 /* RotateExampleView.gif */,
+				3262BB182B458EDD00CDEE87 /* RotatePracticeView.gif */,
 			);
 			path = Rotate;
 			sourceTree = "<group>";
@@ -465,11 +442,31 @@
 		3262BABE2B457E2A00CDEE87 /* Pinch */ = {
 			isa = PBXGroup;
 			children = (
-				3262BABF2B457E3A00CDEE87 /* PinchExampleView1.gif */,
-				3262BAC02B457E3A00CDEE87 /* PinchExampleView2.gif */,
-				3262BAC12B457E3A00CDEE87 /* PinchPracticeView1.gif */,
+				3262BB112B458EC000CDEE87 /* PinchExampleView1.gif */,
+				3262BB132B458EC000CDEE87 /* PinchExampleView2.gif */,
+				3262BB122B458EC000CDEE87 /* PinchPracticeView1.gif */,
 			);
 			path = Pinch;
+			sourceTree = "<group>";
+		};
+		3262BAD52B45828A00CDEE87 /* Drag */ = {
+			isa = PBXGroup;
+			children = (
+				3262BAD82B45828A00CDEE87 /* DragPracticeView1.gif */,
+				3262BAD62B45828A00CDEE87 /* DragPracticeView2.gif */,
+				3262BAD72B45828A00CDEE87 /* DragExampleView.gif */,
+			);
+			path = Drag;
+			sourceTree = "<group>";
+		};
+		3262BAF82B458D3400CDEE87 /* LongTap */ = {
+			isa = PBXGroup;
+			children = (
+				3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */,
+				3262BB012B458DA200CDEE87 /* LongExampleView.gif */,
+				3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */,
+			);
+			path = LongTap;
 			sourceTree = "<group>";
 		};
 		32A1783F2B25E350007A3CAB /* Header */ = {
@@ -553,30 +550,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3262BAAD2B457BB000CDEE87 /* DragPracticeView2.gif in Resources */,
-				3262BAAB2B457BB000CDEE87 /* DragExampleView.gif in Resources */,
-				3262BAB42B457DEE00CDEE87 /* SwipeExampleView.gif in Resources */,
+				3262BB102B458E0A00CDEE87 /* PanPracticeView.gif in Resources */,
+				3262BB142B458EC000CDEE87 /* PinchExampleView1.gif in Resources */,
+				3262BB0F2B458E0A00CDEE87 /* PanExampleView.gif in Resources */,
+				3262BB152B458EC000CDEE87 /* PinchPracticeView1.gif in Resources */,
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
+				3262BB0B2B458DF400CDEE87 /* SwipePracticeView1.gif in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
 				3239F2892B32D91F001CDE0D /* DoubleTapExampleView.gif in Resources */,
-				3262BA9F2B457B6700CDEE87 /* LongTapExampleView.gif in Resources */,
-				3262BAAC2B457BB000CDEE87 /* DragPracticeView1.gif in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
-				3262BAC32B457E3A00CDEE87 /* PinchExampleView2.gif in Resources */,
-				3262BAB32B457DEE00CDEE87 /* SwipePracticeView2.gif in Resources */,
-				3262BAB72B457DFD00CDEE87 /* PanPracticeView.gif in Resources */,
+				3262BB0C2B458DF400CDEE87 /* SwipePracticeView2.gif in Resources */,
 				3239F2872B32D91F001CDE0D /* DoubleTapPracticeView2.gif in Resources */,
-				3262BAB22B457DEE00CDEE87 /* SwipePracticeView1.gif in Resources */,
-				3262BAC22B457E3A00CDEE87 /* PinchExampleView1.gif in Resources */,
-				3262BABC2B457E1D00CDEE87 /* RotateExampleView.gif in Resources */,
+				3262BB0A2B458DF400CDEE87 /* SwipeExampleView.gif in Resources */,
 				3239F2882B32D91F001CDE0D /* DoubleTapPracticeView1.gif in Resources */,
-				3262BAC42B457E3A00CDEE87 /* PinchPracticeView1.gif in Resources */,
-				3262BAB82B457DFD00CDEE87 /* PanExampleView.gif in Resources */,
-				3262BA9D2B457B6700CDEE87 /* LongTapPracticeView2.gif in Resources */,
-				3262BA9E2B457B6700CDEE87 /* LongTapPracticeView1.gif in Resources */,
-				3262BABD2B457E1D00CDEE87 /* RotatePracticeView.gif in Resources */,
+				3262BB192B458EDD00CDEE87 /* RotateExampleView.gif in Resources */,
+				3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */,
+				3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */,
+				3262BB032B458DA300CDEE87 /* LongExampleView.gif in Resources */,
+				3262BB162B458EC000CDEE87 /* PinchExampleView2.gif in Resources */,
+				3262BB1A2B458EDD00CDEE87 /* RotatePracticeView.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,7 +803,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToucherTeam.Toucher;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToucherTeam.Touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -843,7 +837,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToucherTeam.Toucher;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToucherTeam.Touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
