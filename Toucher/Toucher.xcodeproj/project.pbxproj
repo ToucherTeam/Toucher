@@ -60,9 +60,6 @@
 		29F1D51F2AA84E240074C1FE /* PinchPracticeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */; };
 		3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239F21E2B32B97F001CDE0D /* GuideView.swift */; };
 		3239F2252B32BBC7001CDE0D /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239F2242B32BBC7001CDE0D /* GIFImage.swift */; };
-		3239F2872B32D91F001CDE0D /* DoubleTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */; };
-		3239F2882B32D91F001CDE0D /* DoubleTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */; };
-		3239F2892B32D91F001CDE0D /* DoubleTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */; };
 		3262BB032B458DA300CDEE87 /* LongTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */; };
 		3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */; };
 		3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */; };
@@ -82,6 +79,9 @@
 		3266082E2B31E5EB006A58B8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082D2B31E5EB006A58B8 /* SplashView.swift */; };
 		326608302B31E78E006A58B8 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082F2B31E78E006A58B8 /* OnBoardingView.swift */; };
 		326608322B31EC01006A58B8 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326608312B31EC01006A58B8 /* TapButton.swift */; };
+		329AEA572B4667D500F044FA /* DoubleTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA542B4667D500F044FA /* DoubleTapExampleView.gif */; };
+		329AEA582B4667D500F044FA /* DoubleTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA552B4667D500F044FA /* DoubleTapPracticeView2.gif */; };
+		329AEA592B4667D500F044FA /* DoubleTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */; };
 		32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A178402B25E35B007A3CAB /* CustomToolbar.swift */; };
 		32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3F592B2F898F0017F9E0 /* PanMap.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
@@ -146,9 +146,6 @@
 		29F1D51E2AA84E240074C1FE /* PinchPracticeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchPracticeView1.swift; sourceTree = "<group>"; };
 		3239F21E2B32B97F001CDE0D /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		3239F2242B32BBC7001CDE0D /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
-		3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapPracticeView2.gif; path = ../../../../../../Downloads/DoubleTapPracticeView2.gif; sourceTree = "<group>"; };
-		3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapPracticeView1.gif; path = ../../../../../../Downloads/DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
-		3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = DoubleTapExampleView.gif; path = ../../../../../../Downloads/DoubleTapExampleView.gif; sourceTree = "<group>"; };
 		3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapExampleView.gif; sourceTree = "<group>"; };
 		3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView1.gif; sourceTree = "<group>"; };
 		3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView2.gif; sourceTree = "<group>"; };
@@ -168,6 +165,9 @@
 		3266082D2B31E5EB006A58B8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3266082F2B31E78E006A58B8 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		326608312B31EC01006A58B8 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
+		329AEA542B4667D500F044FA /* DoubleTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapExampleView.gif; sourceTree = "<group>"; };
+		329AEA552B4667D500F044FA /* DoubleTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapPracticeView2.gif; sourceTree = "<group>"; };
+		329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
 		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		32EC3F592B2F898F0017F9E0 /* PanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMap.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -390,20 +390,10 @@
 			path = Pinch;
 			sourceTree = "<group>";
 		};
-		3239F2682B32D75A001CDE0D /* DoubleTap */ = {
-			isa = PBXGroup;
-			children = (
-				3239F2862B32D91E001CDE0D /* DoubleTapExampleView.gif */,
-				3239F2852B32D91E001CDE0D /* DoubleTapPracticeView1.gif */,
-				3239F2842B32D91E001CDE0D /* DoubleTapPracticeView2.gif */,
-			);
-			path = DoubleTap;
-			sourceTree = "<group>";
-		};
 		3262BA982B457B2D00CDEE87 /* GestureGifs */ = {
 			isa = PBXGroup;
 			children = (
-				3239F2682B32D75A001CDE0D /* DoubleTap */,
+				329AEA532B4667C800F044FA /* Double */,
 				3262BAF82B458D3400CDEE87 /* LongTap */,
 				3262BAA02B457B6D00CDEE87 /* Swipe */,
 				3262BAD52B45828A00CDEE87 /* Drag */,
@@ -470,6 +460,16 @@
 				3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */,
 			);
 			path = LongTap;
+			sourceTree = "<group>";
+		};
+		329AEA532B4667C800F044FA /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				329AEA542B4667D500F044FA /* DoubleTapExampleView.gif */,
+				329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */,
+				329AEA552B4667D500F044FA /* DoubleTapPracticeView2.gif */,
+			);
+			path = Double;
 			sourceTree = "<group>";
 		};
 		32A1783F2B25E350007A3CAB /* Header */ = {
@@ -558,25 +558,25 @@
 				3262BB0F2B458E0A00CDEE87 /* PanExampleView.gif in Resources */,
 				3262BB152B458EC000CDEE87 /* PinchPracticeView1.gif in Resources */,
 				3262BB1E2B45917C00CDEE87 /* DragExampleView.gif in Resources */,
+				329AEA592B4667D500F044FA /* DoubleTapPracticeView1.gif in Resources */,
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
 				3262BB0B2B458DF400CDEE87 /* SwipePracticeView1.gif in Resources */,
 				3262BB202B45917C00CDEE87 /* DragPracticeView2.gif in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
-				3239F2892B32D91F001CDE0D /* DoubleTapExampleView.gif in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
 				3262BB0C2B458DF400CDEE87 /* SwipePracticeView2.gif in Resources */,
-				3239F2872B32D91F001CDE0D /* DoubleTapPracticeView2.gif in Resources */,
 				3262BB0A2B458DF400CDEE87 /* SwipeExampleView.gif in Resources */,
-				3239F2882B32D91F001CDE0D /* DoubleTapPracticeView1.gif in Resources */,
 				3262BB192B458EDD00CDEE87 /* RotateExampleView.gif in Resources */,
 				3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */,
 				3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */,
 				3262BB1F2B45917C00CDEE87 /* DragPracticeView1.gif in Resources */,
+				329AEA582B4667D500F044FA /* DoubleTapPracticeView2.gif in Resources */,
 				3262BB032B458DA300CDEE87 /* LongTapExampleView.gif in Resources */,
 				3262BB162B458EC000CDEE87 /* PinchExampleView2.gif in Resources */,
 				3262BB1A2B458EDD00CDEE87 /* RotatePracticeView.gif in Resources */,
+				329AEA572B4667D500F044FA /* DoubleTapExampleView.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
