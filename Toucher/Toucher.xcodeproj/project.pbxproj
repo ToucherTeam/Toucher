@@ -81,6 +81,9 @@
 		F06CACE72B4688C40024E366 /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACE62B4688C40024E366 /* HStackArrow.swift */; };
 		F06CACE92B4688CB0024E366 /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACE82B4688CB0024E366 /* VStackArrow.swift */; };
 		F06CACF02B468C610024E366 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACEF2B468C610024E366 /* Arrows.swift */; };
+		F06CACF32B4693960024E366 /* LongTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACF22B4693960024E366 /* LongTapViewModel.swift */; };
+		F06CACF62B4696900024E366 /* SuccessNavigateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACF52B4696900024E366 /* SuccessNavigateModifier.swift */; };
+		F06CACF82B4696D90024E366 /* EndNavigateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACF72B4696D90024E366 /* EndNavigateModifier.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
 		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
 		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
@@ -164,6 +167,9 @@
 		F06CACE62B4688C40024E366 /* HStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/Component/Arrow/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		F06CACE82B4688CB0024E366 /* VStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/Component/Arrow/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		F06CACEF2B468C610024E366 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
+		F06CACF22B4693960024E366 /* LongTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTapViewModel.swift; sourceTree = "<group>"; };
+		F06CACF52B4696900024E366 /* SuccessNavigateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessNavigateModifier.swift; sourceTree = "<group>"; };
+		F06CACF72B4696D90024E366 /* EndNavigateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndNavigateModifier.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 				29EAB41D2AA62D41004E5429 /* LongTapExampleView.swift */,
 				29EAB41F2AA62EC2004E5429 /* LongTapPracticeView1.swift */,
 				29EAB4212AA62ECD004E5429 /* LongTapPracticeView2.swift */,
+				F06CACF22B4693960024E366 /* LongTapViewModel.swift */,
 			);
 			path = LongTap;
 			sourceTree = "<group>";
@@ -280,6 +287,7 @@
 				07670B932AA749D600DE5113 /* Component */,
 				295A061F2B26ED6B004CAF1C /* Manager */,
 				29E852302AA08BF6003F4AF4 /* Extension */,
+				F06CACF42B4696490024E366 /* Modifier */,
 				F06CACE42B46871C0024E366 /* Assets */,
 				29E852242AA08347003F4AF4 /* Preview Content */,
 			);
@@ -495,6 +503,15 @@
 			path = Arrow;
 			sourceTree = "<group>";
 		};
+		F06CACF42B4696490024E366 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				F06CACF52B4696900024E366 /* SuccessNavigateModifier.swift */,
+				F06CACF72B4696D90024E366 /* EndNavigateModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		F0ED9B452B15FCA400E8D5C9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +650,7 @@
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */,
 				292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */,
+				F06CACF32B4693960024E366 /* LongTapViewModel.swift in Sources */,
 				32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */,
 				29E852322AA08C16003F4AF4 /* FontExtension.swift in Sources */,
 				29EAB4292AA635CB004E5429 /* DragPracticeView1.swift in Sources */,
@@ -658,6 +676,7 @@
 				29EF99972AA8A2CA00637F7A /* PanExampleView.swift in Sources */,
 				29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */,
 				326608322B31EC01006A58B8 /* TapButton.swift in Sources */,
+				F06CACF62B4696900024E366 /* SuccessNavigateModifier.swift in Sources */,
 				3266082E2B31E5EB006A58B8 /* SplashView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */,
@@ -674,6 +693,7 @@
 				29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */,
 				F06CACF02B468C610024E366 /* Arrows.swift in Sources */,
 				3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */,
+				F06CACF82B4696D90024E366 /* EndNavigateModifier.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwipePracticeView2.swift in Sources */,
 				07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */,
 				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
