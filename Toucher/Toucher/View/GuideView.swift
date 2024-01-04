@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct GuideView: View {
     @State var progress = 0.0
@@ -51,10 +52,6 @@ struct GuideView: View {
     }
 }
 
-#Preview {
-    GuideView(isFullScreenPresented: .constant(false), currentViewName: "DoubleTapExampleView")
-}
-
 struct BarProgressStyle: ProgressViewStyle {
     @Binding var isFullScreenPresented: Bool
     
@@ -93,4 +90,40 @@ struct BarProgressStyle: ProgressViewStyle {
             }
         }
     }
+}
+
+struct GifImage: UIViewRepresentable {
+    private let name: String
+
+    init(_ name: String) {
+        self.name = name
+    }
+
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        if let url = Bundle.main.url(forResource: name, withExtension: "gif") {
+            do {
+                let data = try Data(contentsOf: url)
+                webView.load(
+                    data,
+                    mimeType: "image/gif",
+                    characterEncodingName: "UTF-8",
+                    baseURL: url.deletingLastPathComponent()
+                )
+            } catch {
+                print("Error loading gif: \(error)")
+            }
+        }
+        webView.scrollView.isScrollEnabled = false
+
+        return webView
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.reload()
+    }
+}
+
+#Preview {
+    GuideView(isFullScreenPresented: .constant(false), currentViewName: "DoubleTapExampleView")
 }
