@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SuccessNavigateModifier: ViewModifier {
-    @Binding var navigate: Bool
+    @Binding var isNavigate: Bool
     @Binding var isSuccess: Bool
 
     func body(content: Content) -> some View {
@@ -16,7 +16,7 @@ struct SuccessNavigateModifier: ViewModifier {
             if isSuccess {
                 HapticManager.notification(type: .success)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
+                    isNavigate = true
                 }
             }
         }

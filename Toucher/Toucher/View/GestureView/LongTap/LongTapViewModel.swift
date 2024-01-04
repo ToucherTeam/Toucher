@@ -11,7 +11,7 @@ class LongTapViewModel: ObservableObject {
     @Published var isTapped = false
     @Published var isSuccess = false
     @Published var isFail = false
-    @Published var navigate = false
+    @Published var isNavigate = false
     
     func reset() {
         isTapped = false

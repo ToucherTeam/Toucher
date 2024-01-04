@@ -129,7 +129,7 @@ struct LongTapPracticeView2: View {
                 }
             }
         }
-        .modifier(EndNavigateModifier(navigate: $longTapVM.navigate, isSuccess: $longTapVM.isSuccess))
+        .modifier(EndNavigateModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
         .onAppear {
             longTapVM.reset()
         }

@@ -36,17 +36,18 @@ struct LongTapPracticeView1: View {
                         }
                     }
                 
-                HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1")                .opacity(longTapVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: longTapVM.isSuccess)
+                HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1")
+                    .opacity(longTapVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: longTapVM.isSuccess)
             }
             .frame(maxWidth: .infinity)
             .modifier(
                 SuccessNavigateModifier(
-                    navigate: $longTapVM.navigate,
+                    isNavigate: $longTapVM.isNavigate,
                     isSuccess: $longTapVM.isSuccess
                 )
             )
-            .navigationDestination(isPresented: $longTapVM.navigate) {
+            .navigationDestination(isPresented: $longTapVM.isNavigate) {
                 LongTapPracticeView2()
                     .toolbar(.hidden, for: .navigationBar)
             }

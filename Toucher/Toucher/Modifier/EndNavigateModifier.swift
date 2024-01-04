@@ -10,7 +10,7 @@ import SwiftUI
 struct EndNavigateModifier: ViewModifier {
     @StateObject private var navigationManager = NavigationManager.shared
     
-    @Binding var navigate: Bool
+    @Binding var isNavigate: Bool
     @Binding var isSuccess: Bool
     
     func body(content: Content) -> some View {

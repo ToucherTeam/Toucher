@@ -40,11 +40,11 @@ struct LongTapExampleView: View {
             }
             .modifier(
                 SuccessNavigateModifier(
-                    navigate: $longTapVM.navigate,
+                    isNavigate: $longTapVM.isNavigate,
                     isSuccess: $longTapVM.isSuccess
                 )
             )
-            .navigationDestination(isPresented: $longTapVM.navigate) {
+            .navigationDestination(isPresented: $longTapVM.isNavigate) {
                 LongTapPracticeView1()
                     .toolbar(.hidden, for: .navigationBar)
             }
