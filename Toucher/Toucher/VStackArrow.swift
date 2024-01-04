@@ -73,7 +73,6 @@ struct VstackArrow: View {
     }
 }
 
-
 struct VStackArrow_Previews: PreviewProvider {
     static var previews: some View {
             VStackArrow()
