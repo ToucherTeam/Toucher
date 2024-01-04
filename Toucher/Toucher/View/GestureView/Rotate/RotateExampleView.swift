@@ -66,9 +66,7 @@ struct RotateExampleView: View {
                         }
                     }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "RotateExampleView") {
-                    
-                }
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "RotateExampleView")
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }

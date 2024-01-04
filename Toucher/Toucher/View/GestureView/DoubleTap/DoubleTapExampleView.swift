@@ -37,9 +37,7 @@ struct DoubleTapExampleView: View {
                         }
                     }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DoubleTapExampleView") {
-                    
-                }
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DoubleTapExampleView") 
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }

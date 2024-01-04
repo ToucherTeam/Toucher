@@ -58,9 +58,7 @@ struct PinchExampleView1: View {
                             }
                         }
                     
-                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PinchExampleView1") {
-                        
-                    }
+                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PinchExampleView1")
                     .opacity(isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: isSuccess)
                 }

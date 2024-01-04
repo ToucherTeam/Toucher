@@ -97,9 +97,7 @@ struct SwipePracticeView2: View {
                 .listStyle(.plain)
                 Spacer()
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "SwipePracticeView2") {
-                    
-                }
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "SwipePracticeView2")
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }

@@ -31,9 +31,7 @@ struct SwipeExampleView: View {
                 
                 Spacer()
                 
-                HelpButton(style: isFail  ? .primary : .secondary, currentViewName: "SwipeExampleView") {
-                    
-                }
+                HelpButton(style: isFail  ? .primary : .secondary, currentViewName: "SwipeExampleView")
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }

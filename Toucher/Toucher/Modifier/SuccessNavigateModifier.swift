@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SuccessNavigateModifier: ViewModifier {
     @Binding var navigate: Bool
-    
-    let isSuccess: Bool
+    @Binding var isSuccess: Bool
 
     func body(content: Content) -> some View {
         content.onChange(of: isSuccess) { _ in

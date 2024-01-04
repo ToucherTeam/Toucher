@@ -133,9 +133,7 @@ struct PanExampleView: View {
                 
                 Spacer()
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PanExampleView") {
-                    
-                }
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PanExampleView")
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }

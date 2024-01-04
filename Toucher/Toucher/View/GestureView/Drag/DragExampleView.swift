@@ -119,9 +119,7 @@ struct DragExampleView: View {
                     }
                 }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DragExampleView") {
-                    
-                }
+                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DragExampleView")
                 .opacity(isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: isSuccess)
             }

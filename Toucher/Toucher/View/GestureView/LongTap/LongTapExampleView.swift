@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LongTapExampleView: View {
     @StateObject private var longTapVM = LongTapViewModel()
-            
+    
     var body: some View {
         ZStack {
             if longTapVM.isFail && !longTapVM.isSuccess {
@@ -17,7 +17,7 @@ struct LongTapExampleView: View {
             }
             VStack {
                 CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
-
+                
                 Text(longTapVM.isSuccess ? "성공!\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
                     .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
@@ -33,14 +33,17 @@ struct LongTapExampleView: View {
                             ConfettiView()
                         }
                     }
-
-                HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapExampleView") {
-                    
-                }
+                
+                HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapExampleView")
                 .opacity(longTapVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: longTapVM.isSuccess)
             }
-            .modifier(SuccessNavigateModifier(navigate: $longTapVM.navigate, isSuccess: longTapVM.isSuccess))
+            .modifier(
+                SuccessNavigateModifier(
+                    navigate: $longTapVM.navigate,
+                    isSuccess: $longTapVM.isSuccess
+                )
+            )
             .navigationDestination(isPresented: $longTapVM.navigate) {
                 LongTapPracticeView1()
                     .toolbar(.hidden, for: .navigationBar)
@@ -53,8 +56,6 @@ struct LongTapExampleView: View {
     }
 }
 
-struct LongTapExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        LongTapExampleView()
-    }
+#Preview {
+    LongTapExampleView()
 }

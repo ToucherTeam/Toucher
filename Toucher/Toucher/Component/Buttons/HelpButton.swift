@@ -18,8 +18,7 @@ struct HelpButton: View {
     
     var style: HelpButtonStyle
     var currentViewName: String = "LongTapExampleView"
-    var action: () -> Void
-        
+    
     private var textColor: Color {
         withAnimation {
             switch style {
@@ -43,10 +42,9 @@ struct HelpButton: View {
     }
     
     var body: some View {
-        Button(action: {
+        Button {
             isFullScreenPresented.toggle()
-            action()
-        }) {
+        } label: {
             Text("도움이 필요하신가요?")
                 .font(.customButton)
                 .foregroundStyle(textColor)
@@ -76,12 +74,8 @@ struct HelpButton: View {
 struct HelpButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            HelpButton(style: .primary) {
-                // action here
-            }
-            HelpButton(style: .secondary) {
-                // action here
-            }
+            HelpButton(style: .primary)
+            HelpButton(style: .secondary)
         }
     }
 }

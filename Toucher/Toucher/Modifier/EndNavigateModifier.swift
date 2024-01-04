@@ -11,8 +11,7 @@ struct EndNavigateModifier: ViewModifier {
     @StateObject private var navigationManager = NavigationManager.shared
     
     @Binding var navigate: Bool
-    
-    let isSuccess: Bool
+    @Binding var isSuccess: Bool
     
     func body(content: Content) -> some View {
         content.onChange(of: isSuccess) { _ in
