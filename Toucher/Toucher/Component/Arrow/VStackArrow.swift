@@ -41,7 +41,7 @@ struct VStackArrow: View {
             self.scale = 1.1
             self.fade = 1.0
         }
-
+        
     }
 }
 
@@ -75,6 +75,6 @@ struct VstackArrow: View {
 
 struct VStackArrow_Previews: PreviewProvider {
     static var previews: some View {
-            VStackArrow()
+        VStackArrow()
     }
 }

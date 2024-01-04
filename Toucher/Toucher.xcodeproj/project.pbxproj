@@ -80,7 +80,6 @@
 		32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3F592B2F898F0017F9E0 /* PanMap.swift */; };
 		F06CACE72B4688C40024E366 /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACE62B4688C40024E366 /* HStackArrow.swift */; };
 		F06CACE92B4688CB0024E366 /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACE82B4688CB0024E366 /* VStackArrow.swift */; };
-		F06CACEB2B4688D50024E366 /* ToucherNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACEA2B4688D50024E366 /* ToucherNavigationLink.swift */; };
 		F06CACF02B468C610024E366 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACEF2B468C610024E366 /* Arrows.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
 		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
@@ -162,9 +161,8 @@
 		329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
 		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		32EC3F592B2F898F0017F9E0 /* PanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMap.swift; sourceTree = "<group>"; };
-		F06CACE62B4688C40024E366 /* HStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
-		F06CACE82B4688CB0024E366 /* VStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
-		F06CACEA2B4688D50024E366 /* ToucherNavigationLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToucherNavigationLink.swift; path = Toucher/ToucherNavigationLink.swift; sourceTree = SOURCE_ROOT; };
+		F06CACE62B4688C40024E366 /* HStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/Component/Arrow/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
+		F06CACE82B4688CB0024E366 /* VStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/Component/Arrow/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		F06CACEF2B468C610024E366 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
@@ -190,12 +188,8 @@
 				32A1783F2B25E350007A3CAB /* Header */,
 				29B9BB872B16B7250042DE19 /* Confetti */,
 				F0ED9B452B15FCA400E8D5C9 /* Buttons */,
-				F06CACEA2B4688D50024E366 /* ToucherNavigationLink.swift */,
-				F06CACE62B4688C40024E366 /* HStackArrow.swift */,
-				F06CACE82B4688CB0024E366 /* VStackArrow.swift */,
-				29D51B7D2B25A6AB00A6923E /* MainViewHeader.swift */,
+				F06CACF12B468F470024E366 /* Arrow */,
 				29D51B842B25D1BC00A6923E /* PracticeBubble.swift */,
-				F06CACEF2B468C610024E366 /* Arrows.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -320,7 +314,7 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		29EAB4082AA1703A004E5429 /* Gesture */ = {
+		29EAB4082AA1703A004E5429 /* GestureView */ = {
 			isa = PBXGroup;
 			children = (
 				29E1E4722AA9B04D00D45713 /* LongTap */,
@@ -332,7 +326,7 @@
 				29F1D51B2AA83ADA0074C1FE /* Pinch */,
 				29EAB4252AA63359004E5429 /* Drag */,
 			);
-			path = Gesture;
+			path = GestureView;
 			sourceTree = "<group>";
 		};
 		29EAB40D2AA188C4004E5429 /* DoubleTap */ = {
@@ -360,8 +354,8 @@
 			children = (
 				29EF99962AA8A2CA00637F7A /* PanExampleView.swift */,
 				29EF99982AA8A2D400637F7A /* PanPracticeView.swift */,
-				07791D3F2AAACDAA0024C04F /* PanViewModel.swift */,
 				07791D412AAAF4840024C04F /* PanModel.swift */,
+				07791D3F2AAACDAA0024C04F /* PanViewModel.swift */,
 				32EC3F592B2F898F0017F9E0 /* PanMap.swift */,
 			);
 			path = Pan;
@@ -463,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				32A178402B25E35B007A3CAB /* CustomToolbar.swift */,
+				29D51B7D2B25A6AB00A6923E /* MainViewHeader.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -481,13 +476,23 @@
 		F06CACED2B4689FD0024E366 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				3266082D2B31E5EB006A58B8 /* SplashView.swift */,
 				3266082F2B31E78E006A58B8 /* OnBoardingView.swift */,
+				29E852202AA08346003F4AF4 /* ContentView.swift */,
 				3239F21E2B32B97F001CDE0D /* GuideView.swift */,
-				29EAB4082AA1703A004E5429 /* Gesture */,
+				29EAB4082AA1703A004E5429 /* GestureView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F06CACF12B468F470024E366 /* Arrow */ = {
+			isa = PBXGroup;
+			children = (
+				F06CACE82B4688CB0024E366 /* VStackArrow.swift */,
+				F06CACE62B4688C40024E366 /* HStackArrow.swift */,
+				F06CACEF2B468C610024E366 /* Arrows.swift */,
+			);
+			path = Arrow;
 			sourceTree = "<group>";
 		};
 		F0ED9B452B15FCA400E8D5C9 /* Buttons */ = {
@@ -646,7 +651,6 @@
 				29D51B812B25BF6100A6923E /* FinishMainView.swift in Sources */,
 				07D345EE2AA8716500B7329D /* SwipeViewModel.swift in Sources */,
 				295A06252B271B56004CAF1C /* NavigationManager.swift in Sources */,
-				F06CACEB2B4688D50024E366 /* ToucherNavigationLink.swift in Sources */,
 				29D51B762B259EE600A6923E /* NewMainView.swift in Sources */,
 				29EF99992AA8A2D400637F7A /* PanPracticeView.swift in Sources */,
 				29F1D51D2AA83AE70074C1FE /* PinchExampleView1.swift in Sources */,

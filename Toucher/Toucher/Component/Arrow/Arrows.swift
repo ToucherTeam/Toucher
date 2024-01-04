@@ -44,3 +44,7 @@ struct Arrows: View {
             }
     }
 }
+
+#Preview {
+    Arrows()
+}
