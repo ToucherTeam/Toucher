@@ -8,25 +8,21 @@
 import SwiftUI
 
 struct PinchExampleView1: View {
+    @StateObject private var pinchVM = PinchViewModel()
     
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
-    
-    @State private var isNextView = false
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if pinchVM.isFail && !pinchVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
-            if !isNextView {
+            if !pinchVM.isNavigate {
                 VStack {
-                    CustomToolbar(title: "확대 축소하기", isSuccess: isSuccess)
+                    CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
 
-                    Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n벌려보세요")
-                        .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                    Text(pinchVM.isSuccess ? "성공!\n" : pinchVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n벌려보세요")
+                        .foregroundColor(pinchVM.isFail && !pinchVM.isSuccess ? .white : .primary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.customTitle)
@@ -42,7 +38,7 @@ struct PinchExampleView1: View {
                         .gesture(gesture)
                         .frame(maxHeight: .infinity)
                         .overlay {
-                            if !isTapped || isFail && !isSuccess {
+                            if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
                                 HStack(spacing: 100) {
                                     Arrows(arrowColor: .customBG1)
                                     Arrows(arrowColor: .customBG1)
@@ -53,17 +49,17 @@ struct PinchExampleView1: View {
                             }
                         }
                         .overlay {
-                            if isSuccess {
+                            if pinchVM.isSuccess {
                                 ConfettiView()
                             }
                         }
                     
-                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PinchExampleView1")
-                    .opacity(isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: isSuccess)
+                    HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView1")
+                    .opacity(pinchVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: pinchVM.isSuccess)
                 }
             }
-            if isNextView {
+            if pinchVM.isNavigate {
                 PinchExampleView2()
             }
         }
@@ -73,18 +69,18 @@ struct PinchExampleView1: View {
         MagnificationGesture()
             .onChanged { value in
                 withAnimation {
-                    isTapped = true
+                    pinchVM.isTapped = true
                     self.scale = min(max(value.magnitude, 1), 2.5)
                 }
             }
             .onEnded { _ in
                 withAnimation {
                     if scale > 1.5 {
-                        isSuccess = true
+                        pinchVM.isSuccess = true
                         HapticManager.notification(type: .success)
                         self.scale = 2
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                isNextView = true
+                                pinchVM.isNavigate = true
                         }
                     }
                 }
@@ -93,7 +89,7 @@ struct PinchExampleView1: View {
                 with: TapGesture()
                     .onEnded { _ in
                         withAnimation {
-                            isFail = true
+                            pinchVM.isFail = true
                         }
                     }
             )
@@ -101,7 +97,7 @@ struct PinchExampleView1: View {
                 with: DragGesture()
                     .onEnded { _ in
                         withAnimation {
-                            isFail = true
+                            pinchVM.isFail = true
                         }
                     }
             )
