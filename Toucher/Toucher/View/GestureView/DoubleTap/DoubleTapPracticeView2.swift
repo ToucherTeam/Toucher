@@ -9,17 +9,14 @@ import SwiftUI
 
 struct DoubleTapPracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
-    
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
+    @StateObject private var doubleTapVM = DoubleTapViewModel()
     
     let UIWidth = UIScreen.main.bounds.width
     let UIHeight = UIScreen.main.bounds.height
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "두 번 누르기", isSuccess: isSuccess)
+            CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
                 .zIndex(1)
             
             ZStack {
@@ -27,64 +24,50 @@ struct DoubleTapPracticeView2: View {
                 Image("ex_image")
                     .resizable()
                     .scaledToFill()
-                    .scaleEffect(isSuccess ? 3 : 1)
+                    .scaleEffect(doubleTapVM.isSuccess ? 3 : 1)
                     .ignoresSafeArea()
                     .gesture(gesture)
                     .overlay {
-                        if isSuccess {
+                        if doubleTapVM.isSuccess {
                             ConfettiView()
                         }
                     }
                 
                 VStack(spacing: 0) {
-                    Text(isSuccess ? "성공!\n" : isFail ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
-                        .foregroundColor(isFail && !isSuccess ? .accentColor : .primary)
+                    Text(doubleTapVM.isSuccess ? "성공!\n" : doubleTapVM.isFail ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
+                        .foregroundColor(doubleTapVM.isFail && !doubleTapVM.isSuccess ? .accentColor : .primary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.customTitle)
                         .padding(.top, 40)
                         .frame(maxHeight: .infinity, alignment: .top)
                     
-                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DoubleTapPracticeView2")
-                    .opacity(isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: isSuccess)
+                    HelpButton(style: doubleTapVM.isFail ? .primary : .secondary, currentViewName: "DoubleTapPracticeView2")
+                        .opacity(doubleTapVM.isSuccess ? 0 : 1)
+                        .animation(.easeInOut, value: doubleTapVM.isSuccess)
                 }
             }
-            .onChange(of: isSuccess) { _ in
-                if isSuccess {
-                    HapticManager.notification(type: .success)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        navigationManager.navigate = false
-                        navigationManager.updateGesture()
-                    }
-                }
-            }
+            .modifier(EndNavigateModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
             .onAppear {
-                reset()
+                doubleTapVM.reset()
             }
         }
-    }
-    
-    private func reset() {
-        isTapped = false
-        isSuccess = false
-        isFail = false
     }
     
     private var gesture: some Gesture {
         TapGesture(count: 2)
             .onEnded {
                 withAnimation {
-                    isSuccess.toggle()
-                    isTapped = true
+                    doubleTapVM.isSuccess.toggle()
+                    doubleTapVM.isTapped = true
                 }
             }
             .exclusively(
                 before: TapGesture()
                     .onEnded {
                         withAnimation {
-                            isTapped.toggle()
-                            isFail = true
+                            doubleTapVM.isTapped.toggle()
+                            doubleTapVM.isFail = true
                         }
                     })
     }
