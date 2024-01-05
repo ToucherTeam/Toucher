@@ -9,18 +9,11 @@ import SwiftUI
 import CoreLocation
 
 struct PanPracticeView: View {
-    @StateObject private var navigationManager = NavigationManager.shared
-
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isOneTapped = false
-    @State private var imageOffset: CGSize = .zero
-    @State private var gestureOffset: CGSize = .zero
-
+    @StateObject private var panVM = PanViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "화면 움직이기", isSuccess: isSuccess)
+            CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
                 .zIndex(1)
             
             ZStack {
@@ -30,11 +23,10 @@ struct PanPracticeView: View {
                         DragGesture()
                             .onChanged { _ in
                                 withAnimation {
-                                    isSuccess = true
+                                    panVM.isSuccess = true
                                 }
                             }
                     )
-                
                 
                 GeometryReader { geometry in
                     Color.clear
@@ -50,7 +42,7 @@ struct PanPracticeView: View {
                         }
                 }
                 
-                Text(isSuccess ? "성공!\n" : "사방으로 움직여\n지도를 이동해보세요.\n")
+                Text(panVM.isSuccess ? "성공!\n" : "사방으로 움직여\n지도를 이동해보세요.\n")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -65,28 +57,18 @@ struct PanPracticeView: View {
                 VStack {
                     Spacer()
                     HelpButton(style: .secondary, currentViewName: "PanPracticeView")
-                    .opacity(isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: isSuccess)
+                    .opacity(panVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: panVM.isSuccess)
                 }
             }
             .overlay {
-                if isSuccess {
+                if panVM.isSuccess {
                     ConfettiView()
                 }
             }
-            .onChange(of: isSuccess) { _ in
-                if isSuccess {
-                    HapticManager.notification(type: .success)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        navigationManager.navigate = false
-                        navigationManager.updateGesture()
-                    }
-                }
-            }
+            .modifier(EndNavigateModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
             .onAppear {
-                isTapped = false
-                isSuccess = false
-                isOneTapped = false
+                panVM.reset()
             }
         }
     }
