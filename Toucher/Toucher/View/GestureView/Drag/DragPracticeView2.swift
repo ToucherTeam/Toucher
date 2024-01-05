@@ -10,13 +10,12 @@ import UniformTypeIdentifiers
 
 struct DragPracticeView2: View {
     @StateObject private var navigationManager = NavigationManager.shared
+    @StateObject private var dragVM = DragViewModel()
     
     @State private var data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
     @State private var allowReordering = true
-    @State private var isSuccess = false
     @State private var isDroped = false
     @State private var isTried = false
-    @State private var isFailed = false
     
     @State private var isAnimate = false
     
@@ -24,24 +23,24 @@ struct DragPracticeView2: View {
     
     var body: some View {
         ZStack {
-            if isFailed && !isSuccess || isDroped && !isSuccess {
+            if dragVM.isFail && !dragVM.isSuccess || isDroped && !dragVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: isSuccess)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
                 
                 Rectangle().frame(height: 0)
-                Text(isSuccess ? "성공!\n\n" : isDroped ? "위치를 오른쪽 가장\n아래로 움직여 주세요\n" :
-                        isTried || isFailed ? "카메라 아이콘을\n꾹 누른 상태로\n움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
+                Text(dragVM.isSuccess ? "성공!\n\n" : isDroped ? "위치를 오른쪽 가장\n아래로 움직여 주세요\n" :
+                        isTried || dragVM.isFail ? "카메라 아이콘을\n꾹 누른 상태로\n움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
                 .multilineTextAlignment(.center)
                 .font(.customTitle)
-                .foregroundColor(isFailed && !isSuccess || isDroped && !isSuccess ? .white : .primary)
+                .foregroundColor(dragVM.isFail && !dragVM.isSuccess || isDroped && !dragVM.isSuccess ? .white : .primary)
                 .padding(.top, 40)
                 .padding(.bottom, 40)
                 LazyVGrid(columns: columns) {
                     ReorderableForEach($data,
                                        allowReordering: $allowReordering,
-                                       isReached: $isSuccess,
+                                       isReached: $dragVM.isSuccess,
                                        isDroped: $isDroped,
                                        isTried: $isTried) { item, _ in
                         Image(item)
@@ -60,14 +59,14 @@ struct DragPracticeView2: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(isSuccess ? .clear : .customBG2)
+                                        .foregroundColor(dragVM.isSuccess ? .clear : .customBG2)
                                         .scaleEffect(isAnimate ? 1.6 : 1.4)
                                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                                         .frame(width: 80, height: 80)
-                                        .foregroundColor(isSuccess ? .clear : .customSecondary)
+                                        .foregroundColor(dragVM.isSuccess ? .clear : .customSecondary)
                                         .scaleEffect(isAnimate ? 1.4 : 1)
                                 }
-                                .animation(.easeInOut, value: isSuccess)
+                                .animation(.easeInOut, value: dragVM.isSuccess)
                                 .onAppear {
                                     withAnimation(.easeInOut(duration: 1).repeatForever()) {
                                         isAnimate = true
@@ -81,34 +80,26 @@ struct DragPracticeView2: View {
                 .padding()
                 .onTapGesture {
                     withAnimation {
-                        isFailed = true
+                        dragVM.isFail = true
                     }
                 }
                 .overlay {
-                    if isSuccess {
+                    if dragVM.isSuccess {
                         ConfettiView()
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(style: isFailed || isDroped ? .primary : .secondary, currentViewName: "DragPracticeView2")
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: dragVM.isFail || isDroped ? .primary : .secondary, currentViewName: "DragPracticeView2")
+                .opacity(dragVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: dragVM.isSuccess)
             }
         }
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
-            isSuccess = false
+            dragVM.isSuccess = false
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
-                }
-            }
-        }
+        .modifier(EndNavigateModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
     }
 }
 

@@ -21,6 +21,7 @@
 		295A06232B2708CB004CAF1C /* RotationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06222B2708CB004CAF1C /* RotationMap.swift */; };
 		295A06252B271B56004CAF1C /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06242B271B56004CAF1C /* NavigationManager.swift */; };
 		2978053F2B47F2010019D138 /* DoubleTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2978053E2B47F2010019D138 /* DoubleTapViewModel.swift */; };
+		297805412B47F4770019D138 /* DragViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297805402B47F4770019D138 /* DragViewModel.swift */; };
 		29AD872C2AA85C7C006E846E /* PinchExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */; };
 		29AD872F2AA86C8E006E846E /* RotateExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872E2AA86C8E006E846E /* RotateExampleView.swift */; };
 		29AD87312AA87527006E846E /* RotationPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD87302AA87527006E846E /* RotationPracticeView.swift */; };
@@ -107,6 +108,7 @@
 		295A06222B2708CB004CAF1C /* RotationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationMap.swift; sourceTree = "<group>"; };
 		295A06242B271B56004CAF1C /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		2978053E2B47F2010019D138 /* DoubleTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapViewModel.swift; sourceTree = "<group>"; };
+		297805402B47F4770019D138 /* DragViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragViewModel.swift; sourceTree = "<group>"; };
 		29AD872B2AA85C7C006E846E /* PinchExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchExampleView2.swift; sourceTree = "<group>"; };
 		29AD872E2AA86C8E006E846E /* RotateExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateExampleView.swift; sourceTree = "<group>"; };
 		29AD87302AA87527006E846E /* RotationPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationPracticeView.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				29EAB4262AA63368004E5429 /* DragExampleView.swift */,
 				29EAB4282AA635CB004E5429 /* DragPracticeView1.swift */,
 				29EAB42A2AA635D9004E5429 /* DragPracticeView2.swift */,
+				297805402B47F4770019D138 /* DragViewModel.swift */,
 			);
 			path = Drag;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */,
 				F06CACF82B4696D90024E366 /* EndNavigateModifier.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwipePracticeView2.swift in Sources */,
+				297805412B47F4770019D138 /* DragViewModel.swift in Sources */,
 				07D345F22AA8716500B7329D /* SwipeExampleView.swift in Sources */,
 				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
 				292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */,
