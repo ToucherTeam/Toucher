@@ -12,17 +12,16 @@ class SwipeViewModel: ObservableObject {
     @Published var isFail = false
     @Published var isNavigate = false
     @Published var isSuccess = false
+    @Published var currentIndex = 0
     
-    // MARK: Practice1
-    @Published var textIndex = 0
-    @Published var checkSuccess = false
-    
-    // MARK: Practice2
-    @Published var btnActive = false
+    var messageData =  [
+        MessageModel(imageName: "person.circle.fill", phNumber: "+82 10-0000-0000", text: "메세지 내용", time: "어제"),
+        MessageModel(imageName: "person.circle.fill", phNumber: "+82 10-0000-0000", text: "메세지 내용", time: "금요일"),
+        MessageModel(imageName: "person.circle.fill", phNumber: "+82 10-0000-0000", text: "메세지 내용", time: "수요일")
+    ]
     
     func reset() {
         isFail = false
-        isNavigate = false
         isSuccess = false
     }
     

@@ -10,81 +10,35 @@ import SwiftUI
 struct SwipePracticeView1: View {
     @StateObject var swipeVM = SwipeViewModel()
     
-    @State private var isSuccess = false
-    @State private var isFail = false
-    @State private var navigate = false
-    
-    var text = ["왼쪽으로 밀어볼까요?\n", "삭제버튼이 나왔어요.\n다음 것도 밀어볼까요?", "성공!\n",]
+    @State private var textIndex = 0
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if swipeVM.isFail && !swipeVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
-                Text(isFail ? "왼쪽으로\n살짝 쓸어보세요." : text[swipeVM.textIndex])
-                    .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                titleText
+                    .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                     .font(.customTitle)
                     .multilineTextAlignment(.center)
                     .padding(.top, 40)
                     .padding(.bottom, 108)
                 
-                if navigate {
-                    List {
-                        HStack {
-                            Image(systemName: "trash.fill")
-                                .foregroundColor(Color.customBG2)
-                                .font(.system(size: 60))
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("phNumber")
-                                    
-                                    Text("message.time")
-                                    
-                                    Image(systemName: "chevron.right")
-                                }
-                                Text("message.text")
+                if swipeVM.isNavigate {
+                    ForEach(0..<2, id: \.self) { _ in
+                        List {
+                            HStack {
+                                Image(systemName: "trash.fill")
+                                    .foregroundColor(Color.customBG2)
+                                    .font(.system(size: 60))
                             }
-                            .foregroundColor(Color.customBG2)
-                            
+                            .listRowBackground(Color.customBG2)
                         }
-                        .listRowBackground(Color.customBG2)
+                        .modifier(ListModifier())
                     }
-                    .frame(height: 90)
-                    .frame(width: UIScreen.main.bounds.width - 32)
-                    .cornerRadius(20)
-                    .listStyle(.plain)
-                    .padding(.bottom, 6)
-                    
-                    List {
-                        HStack {
-                            Image(systemName: "trash.fill")
-                                .foregroundColor(Color.customBG2)
-                                .font(.system(size: 60))
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("phNumber")
-                                    
-                                    Text("message.time")
-                                    
-                                    Image(systemName: "chevron.right")
-                                }
-                                Text("message.text")
-                            }
-                            .foregroundColor(Color.customBG2)
-                            
-                        }
-                        .listRowBackground(Color.customBG2)
-                    }
-                    .frame(height: 90)
-                    .frame(width: UIScreen.main.bounds.width - 32)
-                    .cornerRadius(20)
-                    .listStyle(.plain)
-                    .padding(.bottom, 6)
                 } else {
                     List {
                         HStack {
@@ -105,21 +59,18 @@ struct SwipePracticeView1: View {
                             .foregroundColor(Color.customBG2)
                             
                         }
-                        
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
                                     if value.translation.width < 0 {
-                                        isFail = false
+                                        swipeVM.isFail = false
                                     } else {
-                                        if !isSuccess {
+                                        if !swipeVM.isSuccess {
                                             withAnimation {
-                                                isFail = true
+                                                swipeVM.isFail = true
                                             }
                                         }
                                     }
-                                }
-                                .onEnded { _ in
                                 }
                         )
                         .swipeActions(allowsFullSwipe: false) {
@@ -130,13 +81,12 @@ struct SwipePracticeView1: View {
                             }
                             .tint(.red)
                             .onAppear {
-                                isFail = false
-                                swipeVM.textIndex = 1
+                                swipeVM.isFail = false
+                                textIndex = 1
                             }
-                            
                         }
                         .overlay(alignment: .trailing) {
-                            if swipeVM.textIndex == 0 {
+                            if textIndex == 0 {
                                 Arrows()
                                     .offset(x: 40, y: -2)
                                     .allowsHitTesting(true)
@@ -144,12 +94,8 @@ struct SwipePracticeView1: View {
                         }
                         .listRowBackground(Color.customBG2)
                     }
-                    .scrollDisabled(true)
-                    .frame(height: 90)
-                    .frame(width: UIScreen.main.bounds.width - 32)
-                    .cornerRadius(20)
-                    .listStyle(.plain)
-                    .padding(.bottom, 6)
+                    .modifier(ListModifier())
+                    
                     List {
                         HStack {
                             Image(systemName: "trash.fill")
@@ -159,7 +105,7 @@ struct SwipePracticeView1: View {
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text("phNumber")
-                                    //                                    Spacer()
+                                    
                                     Text("message.time")
                                     
                                     Image(systemName: "chevron.right")
@@ -177,14 +123,14 @@ struct SwipePracticeView1: View {
                             }
                             .tint(Color.blue)
                             .onAppear {
-                                isFail = false
-                                swipeVM.textIndex = 2
-                                isSuccess = true
+                                swipeVM.isFail = false
+                                textIndex = 2
+                                swipeVM.isSuccess = true
                             }
                             
                         }
                         .overlay(alignment: .leading) {
-                            if swipeVM.textIndex == 1 {
+                            if textIndex == 1 {
                                 Arrows()
                                     .rotationEffect(.degrees(180))
                                     .offset(x: -10, y: -2)
@@ -193,44 +139,61 @@ struct SwipePracticeView1: View {
                         }
                         .listRowBackground(Color.customBG2)
                     }
-                    .scrollDisabled(true)
-                    .frame(height: 90)
-                    .frame(width: UIScreen.main.bounds.width - 32)
-                    .cornerRadius(20)
-                    .listStyle(.plain)
+                    .modifier(ListModifier())
                 }
-                
                 
                 Spacer()
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "SwipePracticeView1")
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: swipeVM.isFail ? .primary : .secondary, currentViewName: "SwipePracticeView1")
+                .opacity(swipeVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: swipeVM.isSuccess)
             }
             
         }
-        .frame(maxHeight: .infinity)
         .onAppear {
-            swipeVM.textIndex = 0
-            isSuccess = false
+            textIndex = 0
+            swipeVM.reset()
         }
         .overlay {
-            if isSuccess {
+            if swipeVM.isSuccess {
                 ConfettiView()
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
-                }
-            }
-        }
-        .navigationDestination(isPresented: $navigate) {
+        .modifier(SuccessNavigateModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+        .navigationDestination(isPresented: $swipeVM.isNavigate) {
             SwipePracticeView2()
                 .toolbar(.hidden, for: .navigationBar)
         }
+    }
+    
+    private var titleText: some View {
+        switch (swipeVM.isSuccess, textIndex, swipeVM.isFail) {
+        case (true, _, false):
+            Text("잘하셨어요!\n")
+            
+        case (false, 1, false):
+            Text("삭제버튼이 나왔어요.\n다음 것도 밀어볼까요?")
+            
+        case (_, 0, true):
+            Text("왼쪽으로\n 살짝쓸어보세요")
+            
+        case (false, 0, false):
+            Text("왼쪽으로 밀어볼까요?\n")
+            
+        default:
+            Text("왼쪽으로 밀어볼까요?\n")
+        }
+    }
+}
+
+struct ListModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scrollDisabled(true)
+            .frame(height: 90)
+            .frame(width: UIScreen.main.bounds.width - 32)
+            .cornerRadius(20)
+            .listStyle(.plain)
     }
 }
 

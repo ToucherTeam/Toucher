@@ -8,74 +8,68 @@
 import SwiftUI
 
 struct SwipePracticeView2: View {
-    @StateObject private var navigationManager = NavigationManager.shared
     @StateObject var swipeVM = SwipeViewModel()
-    
-    @State private var isSuccess = false
-    @State private var isFail = false
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if swipeVM.isFail && !swipeVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
-                Text(isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" :
-                    isSuccess ? "성공!\n\n"
-                    : "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n"
-                )
-                .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                Text(swipeVM.isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" : swipeVM.isSuccess ? "성공!\n\n" : "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n")
+                .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                 .font(.customTitle)
                 .multilineTextAlignment(.center)
                 .padding(.top, 40)
+                
                 Spacer()
+                
                 List {
-                    ForEach(messageData, id: \.id) { message in
+                    ForEach(swipeVM.messageData, id: \.id) { message in
                         HStack {
                             Image(systemName: message.imageName)
-                                .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.customGR1)
+                                .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.customGR1)
                                 .font(.system(size: 60))
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text(message.phNumber)
                                         .bold()
-                                        .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                                        .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                                         .gesture(
                                             DragGesture()
                                                 .onChanged { value in
                                                     if value.translation.width < 0 {
-                                                        isFail = false
+                                                        swipeVM.isFail = false
                                                     } else {
-                                                        if !isSuccess {
+                                                        if !swipeVM.isSuccess {
                                                             withAnimation {
-                                                                isFail = true
+                                                                swipeVM.isFail = true
                                                             }
                                                         }
                                                     }
                                                 }
-                                                .onEnded { _ in
-                                                    // Handle the end of drag if needed
-                                                }
                                         )
+                                    
                                     Spacer()
+                                    
                                     Text(message.time)
-                                        .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                                        .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                                     Image(systemName: "chevron.right")
-                                        .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                                        .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                                 }
                                 Text(message.text)
-                                    .foregroundColor(isFail && !isSuccess ? Color.customWhite : Color.black)
+                                    .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                             }
                         }
                         
                         .swipeActions(allowsFullSwipe: false) {
                             Button(role: .destructive) {
-                                isFail = false
-                                isSuccess = true
-                                if let index = messageData.firstIndex(where: { $0.id == message.id }) {
-                                    messageData.remove(at: index)
+                                swipeVM.isFail = false
+                                swipeVM.isSuccess = true
+                                if let index = swipeVM.messageData.firstIndex(where: { $0.id == message.id }) {
+                                    swipeVM.messageData.remove(at: index)
                                 }
                                 
                                 print("Deleting conversation")
@@ -90,32 +84,25 @@ struct SwipePracticeView2: View {
                             }
                             .tint(.indigo)
                         }
-                        .listRowBackground(isFail ? Color.customSecondary : Color.customWhite)
+                        .listRowBackground(swipeVM.isFail ? Color.customSecondary : Color.customWhite)
                     }
-
+                    
                 }
                 .listStyle(.plain)
+                
                 Spacer()
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "SwipePracticeView2")
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: swipeVM.isFail ? .primary : .secondary, currentViewName: "SwipePracticeView2")
+                    .opacity(swipeVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: swipeVM.isSuccess)
             }
         }
         .overlay {
-            if isSuccess {
+            if swipeVM.isSuccess {
                 ConfettiView()
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
-                }
-            }
-        }
+        .modifier(EndNavigateModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
     }
 }
 

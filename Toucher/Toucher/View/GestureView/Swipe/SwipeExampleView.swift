@@ -11,7 +11,6 @@ struct SwipeExampleView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
     @State private var currentIndexArray: [Int] = []
-    @State private var headerAreaHeight: CGRect = .zero
     @State private var currentIndex = 0
     
     @GestureState private var dragOffset: CGFloat = 0
@@ -35,6 +34,10 @@ struct SwipeExampleView: View {
                 CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
                 titleText
+                    .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
+                    .multilineTextAlignment(.center)
+                    .font(.customTitle)
+                    .padding(.top, 42)
                 
                 Spacer()
                 
@@ -52,7 +55,7 @@ struct SwipeExampleView: View {
             }
             .overlay(alignment: .center) {
                 Arrows()
-                    .rotationEffect( (currentIndex == 0) ? .degrees(0) : .degrees(180))
+                    .rotationEffect((currentIndex == 0) ? .degrees(0) : .degrees(180))
                     .allowsHitTesting(false)
             }
             .overlay {
@@ -76,35 +79,18 @@ struct SwipeExampleView: View {
         switch (swipeVM.isSuccess, currentIndex, swipeVM.isFail) {
         case (true, _, false):
             Text("잘하셨어요!\n")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
             
         case (_, 0, true):
             Text("왼쪽으로\n 살짝쓸어보세요")
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
             
         case (_, 1, true):
             Text("오른쪽으로\n 살짝쓸어보세요")
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
-            
+
         case (false, 0, false):
             Text("왼쪽으로 밀어볼까요?\n")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
-            
+
         default:
             Text("이번에 오른쪽으로\n밀어볼까요?")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
         }
     }
     
