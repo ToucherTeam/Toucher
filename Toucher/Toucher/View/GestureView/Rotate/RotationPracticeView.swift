@@ -10,10 +10,7 @@ import MapKit
 
 struct RotationPracticeView: View {
     @StateObject private var navigationManager = NavigationManager.shared
-
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isOneTapped = false
+    @StateObject private var rotateVM = RotateViewModel()
     
     @State private var currentAmount = Angle.degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
@@ -24,7 +21,7 @@ struct RotationPracticeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "회전하기", isSuccess: isSuccess)
+            CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
                 .zIndex(1)
 
             ZStack {
@@ -40,16 +37,16 @@ struct RotationPracticeView: View {
                     )
                     .onChange(of: heading) { _ in
                         if abs(heading) > 10 {
-                            isSuccess = true
+                            rotateVM.isSuccess = true
                         }
                     }
                     .overlay {
-                        if isSuccess {
+                        if rotateVM.isSuccess {
                             ConfettiView()
                         }
                     }
                 
-                Text(isSuccess ? "성공!" : "지도를 회전시켜 볼까요?")
+                Text(rotateVM.isSuccess ? "성공!" : "지도를 회전시켜 볼까요?")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -63,24 +60,10 @@ struct RotationPracticeView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
-                }
-            }
-        }
+        .modifier(EndNavigateModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .onAppear {
-            reset()
+            rotateVM.reset()
         }
-    }
-    
-    private func reset() {
-        isTapped = false
-        isSuccess = false
-        isOneTapped = false
     }
 }
 
