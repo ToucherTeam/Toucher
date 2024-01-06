@@ -80,7 +80,6 @@ struct HelpButton_Previews: PreviewProvider {
     }
 }
 
-
 struct CustomProgressViewStyle: ProgressViewStyle {
     let height: CGFloat = 10
     var foregroundColor: Color = .customSecondary

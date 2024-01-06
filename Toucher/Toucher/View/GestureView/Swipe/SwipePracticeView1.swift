@@ -75,7 +75,6 @@ struct SwipePracticeView1: View {
                         )
                         .swipeActions(allowsFullSwipe: false) {
                             Button() {
-                                
                             } label: {
                                 Image(systemName: "trash.fill")
                             }
