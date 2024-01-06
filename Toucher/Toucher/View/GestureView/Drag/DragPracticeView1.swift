@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct DragPracticeView1: View {
-    @State private var isSuccess = false
-    @State private var isFail = false
+    @StateObject private var dragVM = DragViewModel()
+
     @State private var value = 0.0
-    @State private var navigate = false
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if dragVM.isFail && !dragVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: isSuccess)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
                 
-                Text(isSuccess ? "성공!\n" : isFail ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
-                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                Text(dragVM.isSuccess ? "성공!\n" : dragVM.isFail ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
+                    .foregroundColor(dragVM.isFail && !dragVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
@@ -31,32 +30,24 @@ struct DragPracticeView1: View {
                     .padding(.bottom, 120)
                     .frame(maxHeight: .infinity)
                     .overlay {
-                        if isSuccess {
+                        if dragVM.isSuccess {
                             ConfettiView()
                         }
                     }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DragPracticeView1") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: dragVM.isFail ? .primary : .secondary, currentViewName: "DragPracticeView1")
+                .opacity(dragVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: dragVM.isSuccess)
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
-                }
-            }
-        }
-        .navigationDestination(isPresented: $navigate) {
+        .modifier(SuccessNavigateModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
+        .navigationDestination(isPresented: $dragVM.isNavigate) {
             DragPracticeView2()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            reset()
+            dragVM.reset()
+            value = 0.0
         }
     }
     
@@ -64,8 +55,8 @@ struct DragPracticeView1: View {
         ZStack(alignment: .leading) {
             Slider(value: $value)
                 .onTapGesture {
-                    if !isSuccess {
-                        isFail = true
+                    if !dragVM.isSuccess {
+                        dragVM.isFail = true
                     }
                 }
             Group {
@@ -85,18 +76,12 @@ struct DragPracticeView1: View {
             .allowsHitTesting(false)
             .onChange(of: value) { newValue in
                 if newValue >= 0.3 {
-                    isSuccess = true
+                    dragVM.isSuccess = true
                 }
             }
         }
         .frame(maxHeight: .infinity)
         .padding(.horizontal)
-    }
-    
-    private func reset() {
-        isSuccess = false
-        isFail = false
-        value = 0.0
     }
 }
 

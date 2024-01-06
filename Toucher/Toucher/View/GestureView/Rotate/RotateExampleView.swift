@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct RotateExampleView: View {
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
-    @State private var navigate = false
+    @StateObject private var rotateVM = RotateViewModel()
     
     @State private var currentAmount: Angle = .degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
@@ -20,14 +17,14 @@ struct RotateExampleView: View {
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if rotateVM.isFail && !rotateVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "회전하기", isSuccess: isSuccess)
+                CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
 
-                Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
-                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                Text(rotateVM.isSuccess ? "성공!\n" : rotateVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
+                    .foregroundColor(rotateVM.isFail && !rotateVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
@@ -41,23 +38,23 @@ struct RotateExampleView: View {
                     .contentShape(Rectangle())
                     .frame(maxHeight: .infinity)
                     .rotationEffect(
-                        isSuccess ?
+                        rotateVM.isSuccess ?
                         .degrees(accumulateAngle.degrees > 45 ? 0 : -360) :
                         .degrees(-180) + accumulateAngle + currentAmount
                     )
                     .gesture(gesture)
                     .onTapGesture {
                         withAnimation {
-                            isFail = true
+                            rotateVM.isFail = true
                         }
                     }
                     .overlay {
-                        if isSuccess {
+                        if rotateVM.isSuccess {
                             ConfettiView()
                         }
                     }
                     .overlay {
-                        if !isTapped || isFail && !isSuccess && !isTapped {
+                        if !rotateVM.isTapped || rotateVM.isFail && !rotateVM.isSuccess && !rotateVM.isTapped {
                             Image("rotation_guide")
                                 .resizable()
                                 .scaledToFit()
@@ -66,36 +63,21 @@ struct RotateExampleView: View {
                         }
                     }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "RotateExampleView") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: rotateVM.isFail ? .primary : .secondary, currentViewName: "RotateExampleView")
+                .opacity(rotateVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: rotateVM.isSuccess)
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
-                }
-            }
-        }
-        .navigationDestination(isPresented: $navigate) {
+        .modifier(SuccessNavigateModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
+        .navigationDestination(isPresented: $rotateVM.isNavigate) {
             RotationPracticeView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            reset()
+            rotateVM.reset()
+            currentAmount = .zero
+            accumulateAngle = .zero
         }
-    }
-    
-    private func reset() {
-        isTapped = false
-        isSuccess = false
-        isFail = false
-        currentAmount = .zero
-        accumulateAngle = .zero
     }
     
     private var gesture: some Gesture {
@@ -103,7 +85,7 @@ struct RotateExampleView: View {
             .onChanged { angle in
                 currentAmount = angle
                 withAnimation {
-                    isTapped = true
+                    rotateVM.isTapped = true
                 }
             }
             .onEnded { _ in
@@ -112,12 +94,12 @@ struct RotateExampleView: View {
                 
                 if accumulateAngle.degrees < -45 || accumulateAngle.degrees > 45 {
                     withAnimation {
-                        isSuccess = true
+                        rotateVM.isSuccess = true
                     }
                 } else {
                     print(accumulateAngle.degrees)
-                    isSuccess = false
-                    isFail = true
+                    rotateVM.isSuccess = false
+                    rotateVM.isFail = true
                 }
             }
     }

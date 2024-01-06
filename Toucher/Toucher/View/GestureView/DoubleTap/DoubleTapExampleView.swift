@@ -8,63 +8,44 @@
 import SwiftUI
 
 struct DoubleTapExampleView: View {
-
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
-    @State private var navigate = false
+    @StateObject private var doubleTapVM = DoubleTapViewModel()
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if doubleTapVM.isFail && !doubleTapVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "두 번 누르기", isSuccess: isSuccess)
+                CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
                 
-                Text(isSuccess ? "성공!\n" : isFail ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
-                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                Text(doubleTapVM.isSuccess ? "성공!\n" : doubleTapVM.isFail ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
+                    .foregroundColor(doubleTapVM.isFail && !doubleTapVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
                     .padding(.top, 40)
-                DoubleTapButton(isSuccess: $isSuccess, isFail: $isFail)
+                DoubleTapButton(isSuccess: $doubleTapVM.isSuccess, isFail: $doubleTapVM.isFail)
                     .padding(.bottom)
                     .frame(maxHeight: .infinity)
                     .overlay {
-                        if isSuccess {
+                        if doubleTapVM.isSuccess {
                             ConfettiView()
                         }
                     }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DoubleTapExampleView") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: doubleTapVM.isFail ? .primary : .secondary, currentViewName: "DoubleTapExampleView") 
+                .opacity(doubleTapVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: doubleTapVM.isSuccess)
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
-                }
-            }
-        }
-        .navigationDestination(isPresented: $navigate) {
+        .modifier(SuccessNavigateModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
+        .navigationDestination(isPresented: $doubleTapVM.isNavigate) {
             DoubleTapPracticeView1()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            reset()
+            doubleTapVM.reset()
         }
-    }
-    
-    private func reset() {
-        isTapped = false
-        isSuccess = false
-        isFail = false
     }
 }
 

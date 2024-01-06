@@ -10,131 +10,108 @@ import SwiftUI
 struct SwipeExampleView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
+    @State private var currentIndexArray: [Int] = []
+    @State private var currentIndex = 0
+    
     @GestureState private var dragOffset: CGFloat = 0
-    
     @Namespace var animation
-    
-    @State private var isFail = false
-    @State private var navigate = false
-    @State private var isSuccess = false
+
+    private let deviceWidth = UIScreen.main.bounds.width
+    private let spacing: CGFloat = 12
+    private let trailingSpacing: CGFloat = 42
+    private let swipeContent: [CarouselModel] = [
+        .init(color: Color.customBG2),
+        .init(color: Color.customPrimary)
+    ]
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if swipeVM.isFail && !swipeVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
-                titleText()
+                titleText
+                    .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
+                    .multilineTextAlignment(.center)
+                    .font(.customTitle)
+                    .padding(.top, 42)
                 
                 Spacer()
                 
-                HelpButton(style: isFail  ? .primary : .secondary, currentViewName: "SwipeExampleView") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: swipeVM.isFail  ? .primary : .secondary, currentViewName: "SwipeExampleView")
+                .opacity(swipeVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: swipeVM.isSuccess)
             }
             .onAppear {
-                swipeVM.currentIndexArray = []
-                isFail = false
-                isSuccess = false
+                currentIndexArray = []
+                swipeVM.reset()
             }
             .overlay(alignment: .leading) {
-                carousel()
+                carousel
                     .padding(.horizontal, 24)
             }
             .overlay(alignment: .center) {
                 Arrows()
-                    .rotationEffect( (swipeVM.currentIndex == 0) ? .degrees(0) : .degrees(180))
+                    .rotationEffect((currentIndex == 0) ? .degrees(0) : .degrees(180))
                     .allowsHitTesting(false)
             }
-            .overlay(alignment: .center) {indicator()}
+            .overlay {
+                indicator
+            }
             .animation(.easeInOut, value: dragOffset == 0)
             .overlay {
-                if isSuccess {
+                if swipeVM.isSuccess {
                     ConfettiView()
                 }
             }
-            .onChange(of: isSuccess) { _ in
-                if isSuccess {
-                    HapticManager.notification(type: .success)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        navigate = true
-                    }
-                }
-            }
-            .navigationDestination(isPresented: $navigate) {
+            .modifier(SuccessNavigateModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+            .navigationDestination(isPresented: $swipeVM.isNavigate) {
                 SwipePracticeView1()
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
     }
     
-    @ViewBuilder
-    func titleText() -> some View {
-        switch (isSuccess, swipeVM.currentIndex, isFail) {
+    private var titleText: some View {
+        switch (swipeVM.isSuccess, currentIndex, swipeVM.isFail) {
         case (true, _, false):
             Text("잘하셨어요!\n")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
             
         case (_, 0, true):
             Text("왼쪽으로\n 살짝쓸어보세요")
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
             
         case (_, 1, true):
             Text("오른쪽으로\n 살짝쓸어보세요")
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
-            
+
         case (false, 0, false):
             Text("왼쪽으로 밀어볼까요?\n")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
-            
+
         default:
             Text("이번에 오른쪽으로\n밀어볼까요?")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .padding(.top, 42)
         }
     }
     
-    @ViewBuilder
-    func carousel() -> some View {
-        let width = swipeVM.deviceWidth - (swipeVM.trailingSpacing - swipeVM.spacing)
+    private var carousel: some View {
+        let width = deviceWidth - (trailingSpacing - spacing)
         
-        HStack(spacing: swipeVM.spacing) {
-            ForEach(swipeVM.swipeContent) { rectangle in
+        return HStack(spacing: spacing) {
+            ForEach(swipeContent) { rectangle in
                 RoundedRectangle(cornerRadius: 12)
-                    .frame(width: swipeVM.deviceWidth - swipeVM.trailingSpacing, height: 180)
+                    .frame(width: deviceWidth - trailingSpacing, height: 180)
                     .foregroundColor(rectangle.color)
             }
-            .offset(x: (CGFloat(swipeVM.currentIndex) * -width) + dragOffset)
+            .offset(x: (CGFloat(currentIndex) * -width) + dragOffset)
         }
         .gesture(
             LongPressGesture()
-                .onChanged { _ in
-                    swipeVM.tap = true
-                }
-                .onEnded { _ in
-                    swipeVM.tap = true
-                }
                 .exclusively(
                     before: TapGesture()
                         .onEnded {
                             withAnimation {
-                                isFail = true
+                                swipeVM.isFail = true
                             }
                         })
         )
@@ -143,15 +120,14 @@ struct SwipeExampleView: View {
         )
     }
     
-    @ViewBuilder
-    func indicator() -> some View {
+    private var indicator: some View {
         HStack(spacing: 8) {
-            ForEach(0..<swipeVM.swipeContent.count, id: \.self) { index in
+            ForEach(0..<swipeContent.count, id: \.self) { index in
                 Circle()
                     .foregroundColor(.customBG2)
                     .frame(width: 8, height: 8)
                     .overlay {
-                        if swipeVM.currentIndex == index {
+                        if currentIndex == index {
                             Circle()
                                 .foregroundColor(.customPrimary)
                                 .frame(width: 8, height: 8)
@@ -163,11 +139,8 @@ struct SwipeExampleView: View {
         }
     }
     
-    fileprivate func errorHandleArray(_ roundIndex: CGFloat) -> Int {
-        return max(min(swipeVM.currentIndex + Int(roundIndex), swipeVM.swipeContent.count - 1), 0)
-    }
-    
-    fileprivate func dragOffset(_ width: CGFloat) -> _EndedGesture<GestureStateGesture<DragGesture, CGFloat>> {
+    /// Drag Offset 값을 조정하는 함수
+    private func dragOffset(_ width: CGFloat) -> _EndedGesture<GestureStateGesture<DragGesture, CGFloat>> {
         return DragGesture()
             .updating($dragOffset) { value, state, _ in
                 state = value.translation.width
@@ -176,42 +149,18 @@ struct SwipeExampleView: View {
                 let offsetX = value.translation.width
                 let progress = -offsetX / width
                 let roundIndex = progress.rounded()
-                swipeVM.currentIndex = errorHandleArray(roundIndex)
-                swipeVM.currentIndexArray.append(swipeVM.currentIndex)
-                checkSuccessCondition(swipeVM.currentIndexArray)
+                currentIndex = errorHandleArray(roundIndex)
+                currentIndexArray.append(currentIndex)
+                swipeVM.checkSuccessCondition(currentIndexArray)
             }
     }
     
-    fileprivate func checkSuccessCondition(_ array: [Int]) {
-        let lastIndex = array.count - 1
-        if array[lastIndex] == 0 {
-            self.isFail = true
-        }
-        if array.count >= 2 {
-            if array[lastIndex] == 0 && array[lastIndex - 1] == 1 {
-                self.isSuccess = true
-                self.isFail = false
-            } else if array[lastIndex] != array[lastIndex - 1] {
-                self.isSuccess = false
-                self.isFail = false
-            } else {
-                self.isSuccess = false
-                self.isFail = true
-            }
-        }
+    ///  현재 swipeContent 개수 만큼 Swipe가 가능하게 만들어 주는 함수 (에러 방지)
+    private func errorHandleArray(_ roundIndex: CGFloat) -> Int {
+        return max(min(currentIndex + Int(roundIndex), swipeContent.count - 1), 0)
     }
 }
 
-struct SwipeExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SwipeExampleView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
-                .previewDisplayName("iPhone SE")
-            
-            SwipeExampleView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
-                .previewDisplayName("iPhone 14")
-        }
-    }
+#Preview {
+    SwipeExampleView()
 }

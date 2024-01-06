@@ -53,5 +53,3 @@ struct PanMap: UIViewRepresentable {
         }
     }
 }
-
-

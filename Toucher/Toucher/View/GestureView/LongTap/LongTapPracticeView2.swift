@@ -8,40 +8,35 @@
 import SwiftUI
 
 struct LongTapPracticeView2: View {
-    @StateObject private var navigationManager = NavigationManager.shared
-    
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
-    
-    @GestureState private var isPressed = false
+    @StateObject private var longTapVM = LongTapViewModel()
     
     @State private var selectIndex: Int?
     @State private var selectedIndex: Int?
     @State private var scale = 1.0
     
+    @GestureState private var isPressed = false
     @Namespace private var name
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if longTapVM.isFail && !longTapVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack(spacing: 0) {
-                CustomToolbar(title: "길게 누르기", isSuccess: isSuccess)
+                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
                 
                 ScrollView {
-                    Text(isSuccess ? "성공!\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
-                        .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                    Text(longTapVM.isSuccess ? "성공!\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
+                        .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.customTitle)
                         .padding(.top, 40)
                     LazyVGrid(columns: columns) {
                         ForEach((1...15), id: \.self) { index in
-                            if isSuccess {
+                            if longTapVM.isSuccess {
                                 Rectangle()
                                     .aspectRatio(1, contentMode: .fill)
                                     .overlay {
@@ -74,8 +69,8 @@ struct LongTapPracticeView2: View {
                                             }
                                             .onEnded {_ in
                                                 withAnimation {
-                                                    isSuccess = true
-                                                    isTapped = true
+                                                    longTapVM.isSuccess = true
+                                                    longTapVM.isTapped = true
                                                     scale = 1
                                                     selectedIndex = index
                                                 }
@@ -83,8 +78,8 @@ struct LongTapPracticeView2: View {
                                             .simultaneously(with: TapGesture()
                                                 .onEnded {
                                                     withAnimation {
-                                                        isTapped = true
-                                                        isFail = true
+                                                        longTapVM.isTapped = true
+                                                        longTapVM.isFail = true
                                                         scale = 1
                                                     }
                                                 })
@@ -94,7 +89,7 @@ struct LongTapPracticeView2: View {
                     }
                     .ignoresSafeArea()
                     .overlay(alignment: .top) {
-                        if isSuccess {
+                        if longTapVM.isSuccess {
                             Rectangle()
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .foregroundStyle(.ultraThinMaterial)
@@ -102,7 +97,7 @@ struct LongTapPracticeView2: View {
                         }
                     }
                     .overlay(alignment: .top) {
-                        if isSuccess {
+                        if longTapVM.isSuccess {
                             if let selectedIndex {
                                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                                     .aspectRatio(1, contentMode: .fill)
@@ -117,7 +112,7 @@ struct LongTapPracticeView2: View {
                                     .zIndex(1)
                                     .frame(width: 360, height: 360)
                                     .overlay {
-                                        if isSuccess {
+                                        if longTapVM.isSuccess {
                                             ConfettiView()
                                         }
                                     }
@@ -128,33 +123,19 @@ struct LongTapPracticeView2: View {
                 .scrollDisabled(true)
                 
                 .overlay(alignment: .bottom) {
-                    HelpButton(style: isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView2") {
-                        
-                    }
-                    .opacity(isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: isSuccess)
-                }
-            }
-        } 
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
+                    HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView2")
+                    .opacity(longTapVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: longTapVM.isSuccess)
                 }
             }
         }
+        .modifier(EndNavigateModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
         .onAppear {
-            isTapped = false
-            isSuccess = false
-            isFail = false
+            longTapVM.reset()
         }
     }
 }
 
-struct LongTapPracticeView2_Previews: PreviewProvider {
-    static var previews: some View {
-        LongTapPracticeView2()
-    }
+#Preview {
+    LongTapPracticeView2()
 }

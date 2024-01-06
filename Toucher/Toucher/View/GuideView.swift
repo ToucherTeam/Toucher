@@ -13,6 +13,7 @@ struct GuideView: View {
 
     @Binding var isFullScreenPresented: Bool
     
+    private let isSE = DeviceManager.shared.iPhoneSE()
     let currentViewName: String?
     
     var body: some View {
@@ -45,7 +46,7 @@ struct GuideView: View {
             .padding(.top, 68)
             
             GifImage(currentViewName ?? "")
-                .frame(width: 300,height: 650)
+                .frame(width: 300, height: isSE ? 500 : 650)
                 .padding(.top, 68)
         }
         .ignoresSafeArea()

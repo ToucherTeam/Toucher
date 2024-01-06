@@ -9,15 +9,13 @@ import SwiftUI
 
 struct PinchPracticeView1: View {
     @StateObject private var navigationManager = NavigationManager.shared
+    @StateObject private var pinchVM = PinchViewModel()
 
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "확대 축소하기", isSuccess: isSuccess)
+            CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
                 .zIndex(1)
 
             ZStack {
@@ -28,7 +26,7 @@ struct PinchPracticeView1: View {
                     .scaleEffect(scale)
                     .gesture(gesture)
                     .overlay {
-                        if !isTapped || isFail && !isSuccess {
+                        if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
                             HStack(spacing: 100) {
                                 Arrows(arrowColor: .customBG1)
                                 Arrows(arrowColor: .customBG1)
@@ -39,12 +37,12 @@ struct PinchPracticeView1: View {
                         }
                     }
                     .overlay {
-                        if isSuccess {
+                        if pinchVM.isSuccess {
                             ConfettiView()
                         }
                     }
                 
-                Text(isSuccess ? "성공!\n" : isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 이용해서\n확대해볼까요?")
+                Text(pinchVM.isSuccess ? "성공!\n" : pinchVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 이용해서\n확대해볼까요?")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
@@ -52,40 +50,30 @@ struct PinchPracticeView1: View {
                     .padding(.top, 40)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PinchPracticeView1") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchPracticeView1")
+                .opacity(pinchVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: pinchVM.isSuccess)
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigationManager.navigate = false
-                    navigationManager.updateGesture()
-                }
-            }
-        }
+        .modifier(EndNavigateModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
     }
     
     private var gesture: some Gesture {
         MagnificationGesture()
             .onChanged { value in
                 withAnimation {
-                    isTapped = true
+                    pinchVM.isTapped = true
                     self.scale = min(max(value.magnitude, 0.8), 3)
                 }
             }
             .onEnded { _ in
                 withAnimation {
                     if scale > 1.2 {
-                        isSuccess = true
+                        pinchVM.isSuccess = true
                         self.scale = 3
                     } else {
-                        isFail = true
+                        pinchVM.isFail = true
                     }
                 }
             }

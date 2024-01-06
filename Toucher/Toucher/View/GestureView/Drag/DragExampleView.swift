@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct DragExampleView: View {
-    @State private var isSuccess = false
-    @State private var isPressed = false
-    @State private var isTapPressed = false
-    @State private var isFail = false
-    @State private var isArrived = false
-    @State private var navigate = false
+    @StateObject private var dragVM = DragViewModel()
     
+    @State private var isArrived = false
     @State private var offset: CGSize = .zero
     @State private var scale = 1.0
     
@@ -22,14 +18,14 @@ struct DragExampleView: View {
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if dragVM.isFail && !dragVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: isSuccess)
-
-                Text(isSuccess ? "성공!" : isFail ? "꾹 누른 상태로 옮겨주세요." : isPressed ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
-                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
+                
+                Text(dragVM.isSuccess ? "성공!" : dragVM.isFail ? "꾹 누른 상태로 옮겨주세요." : dragVM.isTapped ? "아래 원으로 옮겨보세요" : "캐릭터를 꾹 눌러 볼까요?")
+                    .foregroundColor(dragVM.isFail && !dragVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
@@ -41,7 +37,7 @@ struct DragExampleView: View {
                             .scaledToFit()
                             .frame(width: 120)
                             .zIndex(-1)
-                        if isSuccess {
+                        if dragVM.isSuccess {
                             Image("ToucherCharacter")
                                 .resizable()
                                 .scaledToFit()
@@ -51,7 +47,7 @@ struct DragExampleView: View {
                         }
                     }
                     .frame(maxHeight: .infinity, alignment: .bottom)
-                    if !isSuccess {
+                    if !dragVM.isSuccess {
                         Image("ToucherCharacter")
                             .resizable()
                             .scaledToFit()
@@ -71,18 +67,18 @@ struct DragExampleView: View {
                                                         height: start.y + trans.height - 100/2)
                                         withAnimation(.easeInOut) {
                                             scale = 1.2
-                                            isPressed = true
+                                            dragVM.isTapped = true
                                         }
                                     }
                                     .onEnded { value in
                                         if  UIScreen.main.bounds.height * 0.2...UIScreen.main.bounds.height * 0.5 ~= value.translation.height &&
-                                             -30...30 ~= value.translation.width {
+                                                -30...30 ~= value.translation.width {
                                             isArrived = true
                                         }
                                         
                                         if isArrived {
                                             withAnimation {
-                                                isSuccess = true
+                                                dragVM.isSuccess = true
                                             }
                                         }
                                         
@@ -90,8 +86,8 @@ struct DragExampleView: View {
                                             withAnimation(.easeInOut) {
                                                 offset = .zero
                                                 scale = 1.2
-                                                isPressed = false
-                                                isFail = true
+                                                dragVM.isTapped = false
+                                                dragVM.isFail = true
                                             }
                                         }
                                     }
@@ -99,7 +95,7 @@ struct DragExampleView: View {
                                         .onEnded { _ in
                                             withAnimation {
                                                 scale = 1.2
-                                                isPressed = true
+                                                dragVM.isTapped = true
                                             }
                                         }
                                     )
@@ -108,55 +104,36 @@ struct DragExampleView: View {
                 }
                 .frame(maxHeight: .infinity)
                 .overlay {
-                    if isSuccess {
+                    if dragVM.isSuccess {
                         ConfettiView()
                     }
                 }
                 .padding(.vertical, 50)
                 .background {
-                    if isPressed && !isSuccess {
+                    if dragVM.isTapped && !dragVM.isSuccess {
                         VStackArrow()
                     }
                 }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "DragExampleView") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: dragVM.isFail ? .primary : .secondary, currentViewName: "DragExampleView")
+                    .opacity(dragVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: dragVM.isSuccess)
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
-                }
-            }
-        }
-        .navigationDestination(isPresented: $navigate) {
+        .modifier(SuccessNavigateModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
+        .navigationDestination(isPresented: $dragVM.isNavigate) {
             DragPracticeView1()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            reset()
+            dragVM.reset()
+            isArrived = false
+            offset = .zero
+            scale = 1.0
         }
-    }
-    
-    private func reset() {
-        isSuccess = false
-        isPressed = false
-        isTapPressed = false
-        isFail = false
-        isArrived = false
-        
-        offset = .zero
-        scale = 1.0
     }
 }
 
-struct DragExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        DragExampleView()
-    }
+#Preview {
+    DragExampleView()
 }

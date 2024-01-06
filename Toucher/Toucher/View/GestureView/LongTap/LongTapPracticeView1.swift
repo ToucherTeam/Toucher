@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct LongTapPracticeView1: View {
-    @State private var isTapped = false
-    @State private var isSuccess = false
-    @State private var isFail = false
+    @StateObject private var longTapVM = LongTapViewModel()
     
     @GestureState private var isPressed = false
     
-    @State private var navigate = false
-    
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if longTapVM.isFail && !longTapVM.isSuccess {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "길게 누르기", isSuccess: isSuccess)
+                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
                 
-                Text(isSuccess ? "성공!\n\n" : isFail ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
-                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                Text(longTapVM.isSuccess ? "성공!\n\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
+                    .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
@@ -35,33 +31,29 @@ struct LongTapPracticeView1: View {
                     .padding(.bottom)
                     .frame(maxHeight: .infinity)
                     .overlay {
-                        if isSuccess {
+                        if longTapVM.isSuccess {
                             ConfettiView()
                         }
                     }
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1")
+                    .opacity(longTapVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: longTapVM.isSuccess)
             }
             .frame(maxWidth: .infinity)
-            .onChange(of: isSuccess) { _ in
-                if isSuccess {
-                    HapticManager.notification(type: .success)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        navigate = true
-                    }
-                }
-            }
-            .navigationDestination(isPresented: $navigate) {
+            .modifier(
+                SuccessNavigateModifier(
+                    isNavigate: $longTapVM.isNavigate,
+                    isSuccess: $longTapVM.isSuccess
+                )
+            )
+            .navigationDestination(isPresented: $longTapVM.isNavigate) {
                 LongTapPracticeView2()
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
         .onAppear {
-            reset()
+            longTapVM.reset()
         }
     }
     
@@ -83,20 +75,20 @@ struct LongTapPracticeView1: View {
                     }
                     .onEnded {_ in
                         withAnimation {
-                            isSuccess = true
-                            isTapped = true
+                            longTapVM.isSuccess = true
+                            longTapVM.isTapped = true
                         }
                     }
                     .simultaneously(with: TapGesture()
                         .onEnded {
                             withAnimation {
-                                isTapped = true
-                                isFail = true
+                                longTapVM.isTapped = true
+                                longTapVM.isFail = true
                             }
                         })
             )
             .background(alignment: .topLeading) {
-                if isSuccess {
+                if longTapVM.isSuccess {
                     VStack {
                         Group {
                             HStack {
@@ -136,16 +128,8 @@ struct LongTapPracticeView1: View {
                 }
             }
     }
-    
-    private func reset() {
-        isTapped = false
-        isSuccess = false
-        isFail = false
-    }
 }
 
-struct LongTapPracticeView1_Previews: PreviewProvider {
-    static var previews: some View {
-        LongTapPracticeView1()
-    }
+#Preview {
+    LongTapPracticeView1()
 }

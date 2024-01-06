@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct PanExampleView: View {
+    @StateObject private var panVM = PanViewModel()
+    
     @State private var wholeSize: CGSize = .zero
     @State private var scrollViewSize: CGSize = .zero
-    @State private var isSuccess = false
-    @State private var navigate = false
-    @State private var isFail = false
     @State private var scrollOffset: CGFloat = 0
     
-    @GestureState private var isPressed = false
     @Namespace var top
     
     private let isSE = DeviceManager.shared.iPhoneSE()
     private let spaceName = "scroll"
+    private let scrollSize: CGFloat = 290
     private let notifications: [NotificationModel] = [
         .init(imageName: "Warning", time: "9:41 AM", title: "긴급재난문자", subTitle: "[중앙재난안전대책본부] 안녕하세요." ),
         .init(imageName: "PersonMessage", time: "8:36 AM", title: "1588", subTitle: "(광고) 안녕하세요."),
@@ -33,15 +32,15 @@ struct PanExampleView: View {
     
     var body: some View {
         ZStack {
-            if isFail && !isSuccess {
+            if panVM.isFail && !panVM.isSuccess {
                 Color.customSecondary
                     .ignoresSafeArea()
             }
             VStack {
-                CustomToolbar(title: "화면 움직이기", isSuccess: isSuccess)
+                CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
                 
-                Text(isFail ? "위로 가볍게 쓸어올리세요.\n" : isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
-                    .foregroundColor(isFail && !isSuccess ? .white : .primary)
+                Text(panVM.isFail ? "위로 가볍게 쓸어올리세요.\n" : panVM.isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
+                    .foregroundColor(panVM.isFail && !panVM.isSuccess ? .white : .primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.largeTitle)
@@ -103,25 +102,25 @@ struct PanExampleView: View {
                                     ViewOffsetKey.self,
                                     perform: { value in
                                         if value >= scrollViewSize.height - wholeSize.height {
-                                            isSuccess = true
+                                            panVM.isSuccess = true
                                         } else if value < 0 {
-                                            isFail = true
+                                            panVM.isFail = true
                                         } else {
-                                            isFail = false
+                                            panVM.isFail = false
                                         }
                                     }
                                 )
                             }
                         }
-                        .frame(height: 290)
+                        .frame(height: scrollSize)
                     }
                     .coordinateSpace(name: spaceName)
                 }
-                .onTapGesture(perform: {
+                .onTapGesture {
                     withAnimation {
-                        isFail = true
+                        panVM.isFail = true
                     }
-                })
+                }
                 .onChange(
                     of: scrollViewSize,
                     perform: { value in
@@ -133,14 +132,12 @@ struct PanExampleView: View {
                 
                 Spacer()
                 
-                HelpButton(style: isFail ? .primary : .secondary, currentViewName: "PanExampleView") {
-                    
-                }
-                .opacity(isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: isSuccess)
+                HelpButton(style: panVM.isFail ? .primary : .secondary, currentViewName: "PanExampleView")
+                .opacity(panVM.isSuccess ? 0 : 1)
+                .animation(.easeInOut, value: panVM.isSuccess)
             }
             .overlay {
-                if isFail || !isSuccess {
+                if panVM.isFail || !panVM.isSuccess {
                     Arrows()
                         .rotationEffect(Angle(degrees: 90))
                         .allowsHitTesting(false)
@@ -149,31 +146,21 @@ struct PanExampleView: View {
             
         }
         .onAppear {
-            isFail = false
-            isSuccess = false
+            panVM.reset()
         }
         .overlay {
-            if isSuccess {
+            if panVM.isSuccess {
                 ConfettiView()
             }
         }
-        .onChange(of: isSuccess) { _ in
-            if isSuccess {
-                HapticManager.notification(type: .success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    navigate = true
-                }
-            }
-        }
-        .navigationDestination(isPresented: $navigate) {
+        .modifier(SuccessNavigateModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
+        .navigationDestination(isPresented: $panVM.isNavigate) {
             PanPracticeView()
                 .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
 
-struct PanExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        PanExampleView()
-    }
+#Preview {
+    PanExampleView()
 }
