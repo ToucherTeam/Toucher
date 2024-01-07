@@ -55,7 +55,7 @@ final class NavigationManager: ObservableObject {
                     withAnimation {
                         self.gestureButtons[index + 1].buttonType = .ready
                         self.gestureButtons[index].buttonType = .done
-                        self.updateHeaderGesture()
+                        self.updateGestureData()
                     }
                 }
             } else {
@@ -68,16 +68,8 @@ final class NavigationManager: ObservableObject {
         }
     }
     
-    private func updateHeaderGesture() {
-        if let readyGestureButton = gestureButtons.first(where: { $0.buttonType == .ready }) {
-            headerGesture = readyGestureButton.gestureType
-            savedGesture = readyGestureButton.gestureType
-        } else {
-            print("조건을 충족하는 요소를 찾을 수 없습니다.")
-        }
-    }
-    
-    func updateButtonTypes() {
+    /// 저장된 제스처를 불러옵니다
+    func loadSavedGesture() {
         for index in gestureButtons.indices {
             if gestureButtons[index].gestureType == savedGesture {
                 gestureButtons[index].buttonType = .ready
@@ -88,4 +80,13 @@ final class NavigationManager: ObservableObject {
         }
     }
 
+    /// 재스쳐 학습이 완료된 후 데이터를 업데이트 시킵니다
+    private func updateGestureData() {
+        if let readyGestureButton = gestureButtons.first(where: { $0.buttonType == .ready }) {
+            headerGesture = readyGestureButton.gestureType
+            savedGesture = readyGestureButton.gestureType
+        } else {
+            print("조건을 충족하는 요소를 찾을 수 없습니다.")
+        }
+    }
 }

@@ -8,10 +8,9 @@
 import SwiftUI
 
 class DeviceManager {
-    // 싱글톤 인스턴스
     static let shared = DeviceManager()
     
-    private init() {} // 외부에서 생성자 호출 방지
+    private init() {}
     
     func iPhoneSE() -> Bool {
         let screenHeight = UIScreen.main.bounds.size.height

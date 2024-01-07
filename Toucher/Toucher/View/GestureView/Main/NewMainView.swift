@@ -36,7 +36,7 @@ struct NewMainView: View {
                 .scrollDisabled(true)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        navigationManager.updateButtonTypes()
+                        navigationManager.loadSavedGesture()
                     }
                 }
                 .onChange(of: navigationManager.headerGesture) { gesture in
