@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct Arrows: View {
-    @State var scale: CGFloat = 1.0
-    @State var fade: Double = 0.2
-    @State var isAnimating: Bool = false
-    var arrowColor: Color = .white.opacity(0.5)
+    @State private var scale: CGFloat = 1.0
+    @State private var fade = 0.2
+    @State private var isAnimating: Bool = false
+    @State private var duration = 0.9
+    
+    var arrowColor: Color = .customBG1
     
     var body: some View {
         RoundedRectangle(cornerRadius: 36)
@@ -26,7 +28,7 @@ struct Arrows: View {
                             .foregroundColor(.customPrimary)
                             .opacity(self.fade)
                             .scaleEffect(self.scale)
-                            .animation(Animation.easeOut(duration: 0.9)
+                            .animation(Animation.easeOut(duration: duration)
                                 .repeatForever(autoreverses: true)
                                 .delay(0.3 * Double(3 - index)), value: isAnimating)
                     }

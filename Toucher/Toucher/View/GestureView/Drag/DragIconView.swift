@@ -111,7 +111,8 @@ struct DragIconView: View {
                 .padding(.vertical, 50)
                 .background {
                     if dragVM.isTapped && !dragVM.isSuccess {
-                        VStackArrow()
+                        Arrows()
+                            .rotationEffect(.degrees(270))
                     }
                 }
                 
