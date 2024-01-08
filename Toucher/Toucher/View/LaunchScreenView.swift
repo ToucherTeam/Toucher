@@ -1,5 +1,5 @@
 //
-//  SplashView.swift
+//  LaunchScreenView.swift
 //  Toucher
 //
 //  Created by bulmang on 12/19/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SplashView: View {
+struct LaunchScreenView: View {
     var body: some View {
         ZStack {
             Color.customWhite
@@ -22,5 +22,5 @@ struct SplashView: View {
 }
 
 #Preview {
-    SplashView()
+    LaunchScreenView()
 }

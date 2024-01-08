@@ -1,5 +1,5 @@
 //
-//  DoubleTapPracticeView1.swift
+//  DoubleTapSearchBarView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/01.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DoubleTapPracticeView1: View {
+struct DoubleTapSearchBarView: View {
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
     var body: some View {
@@ -40,9 +40,9 @@ struct DoubleTapPracticeView1: View {
                 .animation(.easeInOut, value: doubleTapVM.isSuccess)
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
         .navigationDestination(isPresented: $doubleTapVM.isNavigate) {
-            DoubleTapPracticeView2()
+            DoubleTapImageView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
@@ -96,6 +96,6 @@ struct DoubleTapPracticeView1: View {
 
 struct DoubleTapPracticeView1_Previews: PreviewProvider {
     static var previews: some View {
-        DoubleTapPracticeView1()
+        DoubleTapSearchBarView()
     }
 }

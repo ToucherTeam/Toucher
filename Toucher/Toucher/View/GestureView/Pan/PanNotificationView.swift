@@ -1,13 +1,13 @@
 //
-//  PanExampleView.swift
+//  PanNotificationView.swift
 //  Toucher
 //
-//  Created by hyunjun on 2023/09/06.
+//  Created by hyunjun on 2023/11/06.
 //
 
 import SwiftUI
 
-struct PanExampleView: View {
+struct PanNotificationView: View {
     @StateObject private var panVM = PanViewModel()
     
     @State private var wholeSize: CGSize = .zero
@@ -47,10 +47,10 @@ struct PanExampleView: View {
                     .bold()
                     .padding(.top, 30)
                 
-                ChildSizeReader(size: $wholeSize) {
+                PanChildSizeReader(size: $wholeSize) {
                     ScrollViewReader { value in
                         ScrollView {
-                            ChildSizeReader(size: $scrollViewSize) {
+                            PanChildSizeReader(size: $scrollViewSize) {
                                 VStack {
                                     ForEach(notifications) { item in
                                         HStack {
@@ -153,14 +153,14 @@ struct PanExampleView: View {
                 ConfettiView()
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
         .navigationDestination(isPresented: $panVM.isNavigate) {
-            PanPracticeView()
+            PanMapView()
                 .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
 
 #Preview {
-    PanExampleView()
+    PanNotificationView()
 }

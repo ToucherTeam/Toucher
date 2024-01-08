@@ -1,5 +1,5 @@
 //
-//  DragExampleView.swift
+//  DragIconView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DragExampleView: View {
+struct DragIconView: View {
     @StateObject private var dragVM = DragViewModel()
     
     @State private var isArrived = false
@@ -120,9 +120,9 @@ struct DragExampleView: View {
                     .animation(.easeInOut, value: dragVM.isSuccess)
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
         .navigationDestination(isPresented: $dragVM.isNavigate) {
-            DragPracticeView1()
+            DragProgressBarView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
@@ -135,5 +135,5 @@ struct DragExampleView: View {
 }
 
 #Preview {
-    DragExampleView()
+    DragIconView()
 }

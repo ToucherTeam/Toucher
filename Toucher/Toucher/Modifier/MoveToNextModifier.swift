@@ -1,5 +1,5 @@
 //
-//  SuccessNavigateModifier.swift
+//  MoveToNextModifier.swift
 //  Toucher
 //
 //  Created by Hyunjun Kim on 1/4/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SuccessNavigateModifier: ViewModifier {
+struct MoveToNextModifier: ViewModifier {
     @Binding var isNavigate: Bool
     @Binding var isSuccess: Bool
 

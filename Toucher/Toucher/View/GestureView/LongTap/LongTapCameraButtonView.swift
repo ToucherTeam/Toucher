@@ -1,5 +1,5 @@
 //
-//  LongTapPracticeView1.swift
+//  LongTapCameraButtonView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LongTapPracticeView1: View {
+struct LongTapCameraButtonView: View {
     @StateObject private var longTapVM = LongTapViewModel()
     
     @GestureState private var isPressed = false
@@ -42,13 +42,13 @@ struct LongTapPracticeView1: View {
             }
             .frame(maxWidth: .infinity)
             .modifier(
-                SuccessNavigateModifier(
+                MoveToNextModifier(
                     isNavigate: $longTapVM.isNavigate,
                     isSuccess: $longTapVM.isSuccess
                 )
             )
             .navigationDestination(isPresented: $longTapVM.isNavigate) {
-                LongTapPracticeView2()
+                LongTapAlbumPhotoView()
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
@@ -131,5 +131,5 @@ struct LongTapPracticeView1: View {
 }
 
 #Preview {
-    LongTapPracticeView1()
+    LongTapCameraButtonView()
 }

@@ -1,5 +1,5 @@
 //
-//  OnBoardingView.swift
+//  OnboardingView.swift
 //  Toucher
 //
 //  Created by bulmang on 12/20/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnBoardingView: View {
+struct OnboardingView: View {
     @AppStorage("first") private var isFirst = true
     
     @State private var isSuccess = false
@@ -52,5 +52,5 @@ struct OnBoardingView: View {
 }
 
 #Preview {
-    OnBoardingView()
+    OnboardingView()
 }

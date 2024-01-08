@@ -1,5 +1,5 @@
 //
-//  SwiftPracticeView1.swift
+//  SwipeListView.swift
 //  Toucher
 //
 //  Created by 하명관 on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwipePracticeView1: View {
+struct SwipeListView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
     @State private var textIndex = 0
@@ -159,9 +159,9 @@ struct SwipePracticeView1: View {
                 ConfettiView()
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
         .navigationDestination(isPresented: $swipeVM.isNavigate) {
-            SwipePracticeView2()
+            SwipeMessageView()
                 .toolbar(.hidden, for: .navigationBar)
         }
     }
@@ -199,6 +199,6 @@ struct ListModifier: ViewModifier {
 
 #Preview {
     NavigationStack {
-        SwipePracticeView1()
+        SwipeListView()
     }
 }

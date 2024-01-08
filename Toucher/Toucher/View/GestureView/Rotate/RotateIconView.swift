@@ -1,5 +1,5 @@
 //
-//  RotateExampleView.swift
+//  RotateIconView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RotateExampleView: View {
+struct RotateIconView: View {
     @StateObject private var rotateVM = RotateViewModel()
     
     @State private var currentAmount: Angle = .degrees(0)
@@ -68,9 +68,9 @@ struct RotateExampleView: View {
                 .animation(.easeInOut, value: rotateVM.isSuccess)
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .navigationDestination(isPresented: $rotateVM.isNavigate) {
-            RotationPracticeView()
+            RotateMapView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
@@ -107,6 +107,6 @@ struct RotateExampleView: View {
 
 struct RotateExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        RotateExampleView()
+        RotateIconView()
     }
 }

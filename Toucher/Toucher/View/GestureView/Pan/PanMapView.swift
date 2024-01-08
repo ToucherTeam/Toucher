@@ -2,13 +2,13 @@
 //  PanPracticeView.swift
 //  Toucher
 //
-//  Created by hyunjun on 2023/09/06.
+//  Created by hyunjun on 2023/11/06.
 //
 
 import SwiftUI
 import CoreLocation
 
-struct PanPracticeView: View {
+struct PanMapView: View {
     @StateObject private var panVM = PanViewModel()
     
     var body: some View {
@@ -66,7 +66,7 @@ struct PanPracticeView: View {
                     ConfettiView()
                 }
             }
-            .modifier(EndNavigateModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
+            .modifier(FinishModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
             .onAppear {
                 panVM.reset()
             }
@@ -76,6 +76,6 @@ struct PanPracticeView: View {
 
 struct PanPracticeView_Previews: PreviewProvider {
     static var previews: some View {
-        PanPracticeView()
+        PanMapView()
     }
 }

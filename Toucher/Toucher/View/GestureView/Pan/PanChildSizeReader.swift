@@ -1,5 +1,5 @@
 //
-//  PinchViewModel.swift
+//  PanChildSizeReader.swift
 //  Toucher
 //
 //  Created by 하명관 on 2023/09/08.
@@ -15,7 +15,7 @@ struct ViewOffsetKey: PreferenceKey {
     }
 }
 
-struct ChildSizeReader<Content: View>: View {
+struct PanChildSizeReader<Content: View>: View {
     @Binding var size: CGSize
     
     let content: () -> Content

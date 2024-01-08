@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LongTapExampleView: View {
+struct LongTapButtonView: View {
     @StateObject private var longTapVM = LongTapViewModel()
     
     var body: some View {
@@ -39,13 +39,13 @@ struct LongTapExampleView: View {
                 .animation(.easeInOut, value: longTapVM.isSuccess)
             }
             .modifier(
-                SuccessNavigateModifier(
+                MoveToNextModifier(
                     isNavigate: $longTapVM.isNavigate,
                     isSuccess: $longTapVM.isSuccess
                 )
             )
             .navigationDestination(isPresented: $longTapVM.isNavigate) {
-                LongTapPracticeView1()
+                LongTapCameraButtonView()
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
@@ -57,5 +57,5 @@ struct LongTapExampleView: View {
 }
 
 #Preview {
-    LongTapExampleView()
+    LongTapButtonView()
 }

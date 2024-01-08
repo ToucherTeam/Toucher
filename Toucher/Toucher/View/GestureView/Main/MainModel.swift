@@ -1,5 +1,5 @@
 //
-//  NewMainModel.swift
+//  MainModel.swift
 //  Toucher
 //
 //  Created by hyunjun on 12/10/23.

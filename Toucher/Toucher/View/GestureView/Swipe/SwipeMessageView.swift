@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwipePracticeView2: View {
+struct SwipeMessageView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
     var body: some View {
@@ -102,12 +102,12 @@ struct SwipePracticeView2: View {
                 ConfettiView()
             }
         }
-        .modifier(EndNavigateModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+        .modifier(FinishModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
     }
 }
 
 #Preview {
     NavigationStack {
-        SwipePracticeView2()
+        SwipeMessageView()
     }
 }

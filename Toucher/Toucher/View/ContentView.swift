@@ -17,16 +17,16 @@ struct ContentView: View {
     var body: some View {
         Group {
             if isSplashActive {
-                SplashView()
+                LaunchScreenView()
             } else if isFirst {
-                OnBoardingView()
+                OnboardingView()
                     .transition(.move(edge: .leading))
             } else {
                 NavigationStack {
                     if finish {
                         FinishMainView()
                     } else {
-                        NewMainView()
+                        MainView()
                     }
                 }
             }

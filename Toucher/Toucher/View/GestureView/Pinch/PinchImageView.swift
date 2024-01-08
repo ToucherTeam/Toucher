@@ -1,5 +1,5 @@
 //
-//  PinchPracticeView1.swift
+//  PinchImageView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PinchPracticeView1: View {
+struct PinchImageView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var pinchVM = PinchViewModel()
 
@@ -56,7 +56,7 @@ struct PinchPracticeView1: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
-        .modifier(EndNavigateModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
+        .modifier(FinishModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
     }
     
     private var gesture: some Gesture {
@@ -82,6 +82,6 @@ struct PinchPracticeView1: View {
 
 struct PinchPracticeView1_Previews: PreviewProvider {
     static var previews: some View {
-        PinchPracticeView1()
+        PinchImageView()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DragPracticeView1.swift
+//  DragProgressBarView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DragPracticeView1: View {
+struct DragProgressBarView: View {
     @StateObject private var dragVM = DragViewModel()
 
     @State private var value = 0.0
@@ -40,9 +40,9 @@ struct DragPracticeView1: View {
                 .animation(.easeInOut, value: dragVM.isSuccess)
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
         .navigationDestination(isPresented: $dragVM.isNavigate) {
-            DragPracticeView2()
+            DragAppIconView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
@@ -87,6 +87,6 @@ struct DragPracticeView1: View {
 
 struct DragPracticeView1_Previews: PreviewProvider {
     static var previews: some View {
-        DragPracticeView1()
+        DragProgressBarView()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  NewMainViewModel.swift
+//  MainViewModel.swift
 //  Toucher
 //
 //  Created by hyunjun on 12/10/23.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class NewMainViewModel: ObservableObject {
+class MainViewModel: ObservableObject {
     @Published var gestureButtons: [GestureButton] = [
         GestureButton(buttonType: .ready, gestureType: .doubleTap),
         GestureButton(buttonType: .none, gestureType: .longPress),
