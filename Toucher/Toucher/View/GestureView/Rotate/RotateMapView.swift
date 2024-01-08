@@ -1,5 +1,5 @@
 //
-//  RotationPracticeView.swift
+//  RotateMapView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/06.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct RotationPracticeView: View {
+struct RotateMapView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var rotateVM = RotateViewModel()
     
@@ -25,7 +25,7 @@ struct RotationPracticeView: View {
                 .zIndex(1)
 
             ZStack {
-                RotationMap(heading: $heading)
+                RotateMap(heading: $heading)
                     .ignoresSafeArea()
                     .gesture(
                         RotationGesture()
@@ -60,7 +60,7 @@ struct RotationPracticeView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
             }
         }
-        .modifier(EndNavigateModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
+        .modifier(FinishModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .onAppear {
             rotateVM.reset()
         }
@@ -69,6 +69,6 @@ struct RotationPracticeView: View {
 
 struct RotationPracticeView_Previews: PreviewProvider {
     static var previews: some View {
-        RotationPracticeView()
+        RotateMapView()
     }
 }

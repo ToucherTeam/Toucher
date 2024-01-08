@@ -1,5 +1,5 @@
 //
-//  LongTapPracticeView2.swift
+//  LongTapAlbumPhotoView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LongTapPracticeView2: View {
+struct LongTapAlbumPhotoView: View {
     @StateObject private var longTapVM = LongTapViewModel()
     
     @State private var selectIndex: Int?
@@ -129,7 +129,7 @@ struct LongTapPracticeView2: View {
                 }
             }
         }
-        .modifier(EndNavigateModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
+        .modifier(FinishModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
         .onAppear {
             longTapVM.reset()
         }
@@ -137,5 +137,5 @@ struct LongTapPracticeView2: View {
 }
 
 #Preview {
-    LongTapPracticeView2()
+    LongTapAlbumPhotoView()
 }

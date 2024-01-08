@@ -32,19 +32,19 @@ final class NavigationManager: ObservableObject {
     @ViewBuilder func navigateGestureView(gesture: GestureType) -> some View {
         switch gesture {
         case .doubleTap:
-            DoubleTapExampleView()
+            DoubleTapButtonView()
         case .longPress:
-            LongTapExampleView()
+            LongTapButtonView()
         case .swipe:
-            SwipeExampleView()
+            SwipeCarouselView()
         case .drag:
-            DragExampleView()
+            DragIconView()
         case .pan:
-            PanExampleView()
+            PanNotificationView()
         case .pinch:
-            PinchExampleView1()
+            PinchIconZoomInView()
         case .rotate:
-            RotateExampleView()
+            RotateIconView()
         }
     }
     

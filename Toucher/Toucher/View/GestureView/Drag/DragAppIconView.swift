@@ -8,7 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct DragPracticeView2: View {
+struct DragAppIconView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var dragVM = DragViewModel()
     
@@ -99,7 +99,7 @@ struct DragPracticeView2: View {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
             dragVM.isSuccess = false
         }
-        .modifier(EndNavigateModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
+        .modifier(FinishModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
     }
 }
 
@@ -207,6 +207,6 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
 
 struct DragPracticeView2_Previews: PreviewProvider {
     static var previews: some View {
-        DragPracticeView2()
+        DragAppIconView()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  EndNavigateModifier.swift
+//  FinishModifier.swift
 //  Toucher
 //
 //  Created by Hyunjun Kim on 1/4/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EndNavigateModifier: ViewModifier {
+struct FinishModifier: ViewModifier {
     @StateObject private var navigationManager = NavigationManager.shared
     
     @Binding var isNavigate: Bool

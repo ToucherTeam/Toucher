@@ -1,5 +1,5 @@
 //
-//  PinchExampleView2.swift
+//  PinchIconZoomOutView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PinchExampleView2: View {
+struct PinchIconZoomOutView: View {
     @StateObject private var pinchVM = PinchViewModel()
     
     @State private var scale: CGFloat = 1
@@ -59,9 +59,9 @@ struct PinchExampleView2: View {
                     .animation(.easeInOut, value: pinchVM.isSuccess)
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
         .navigationDestination(isPresented: $pinchVM.isNavigate) {
-            PinchPracticeView1()
+            PinchImageView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
@@ -106,5 +106,5 @@ struct PinchExampleView2: View {
 }
 
 #Preview {
-    PinchExampleView2()
+    PinchIconZoomOutView()
 }

@@ -1,5 +1,5 @@
 //
-//  RotationMap.swift
+//  RotateMap.swift
 //  Toucher
 //
 //  Created by hyunjun on 12/11/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct RotationMap: UIViewRepresentable {
+struct RotateMap: UIViewRepresentable {
     @Binding var heading: CLLocationDirection
     
     private let center = CLLocationCoordinate2D(latitude: 37.57605, longitude: 126.97723)
@@ -29,5 +29,5 @@ struct RotationMap: UIViewRepresentable {
 }
 
 #Preview {
-    RotationPracticeView()
+    RotateMapView()
 }

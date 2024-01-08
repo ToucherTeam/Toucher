@@ -1,5 +1,5 @@
 //
-//  NewMainView.swift
+//  MainView.swift
 //  Toucher
 //
 //  Created by hyunjun on 12/10/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewMainView: View {
+struct MainView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     
     var body: some View {
@@ -58,6 +58,6 @@ struct NewMainView: View {
 
 #Preview {
     NavigationStack {
-        NewMainView()
+        MainView()
     }
 }

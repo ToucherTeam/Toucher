@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DoubleTapPracticeView2: View {
+struct DoubleTapImageView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
@@ -47,7 +47,7 @@ struct DoubleTapPracticeView2: View {
                         .animation(.easeInOut, value: doubleTapVM.isSuccess)
                 }
             }
-            .modifier(EndNavigateModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
+            .modifier(FinishModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
             .onAppear {
                 doubleTapVM.reset()
             }
@@ -75,6 +75,6 @@ struct DoubleTapPracticeView2: View {
 
 struct DoubleTapPracticeView2_Previews: PreviewProvider {
     static var previews: some View {
-        DoubleTapPracticeView2()
+        DoubleTapImageView()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PinchView.swift
+//  PinchIconZoomInView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PinchExampleView1: View {
+struct PinchIconZoomInView: View {
     @StateObject private var pinchVM = PinchViewModel()
     
     @State private var scale: CGFloat = 1.0
@@ -60,7 +60,7 @@ struct PinchExampleView1: View {
                 }
             }
             if pinchVM.isNavigate {
-                PinchExampleView2()
+                PinchIconZoomOutView()
             }
         }
     }
@@ -106,6 +106,6 @@ struct PinchExampleView1: View {
 
 struct PinchExampleView1_Previews: PreviewProvider {
     static var previews: some View {
-        PinchExampleView1()
+        PinchIconZoomInView()
     }
 }

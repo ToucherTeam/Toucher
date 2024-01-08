@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwipeExampleView: View {
+struct SwipeCarouselView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
     @State private var currentIndexArray: [Int] = []
@@ -67,9 +67,9 @@ struct SwipeExampleView: View {
                     ConfettiView()
                 }
             }
-            .modifier(SuccessNavigateModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+            .modifier(MoveToNextModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
             .navigationDestination(isPresented: $swipeVM.isNavigate) {
-                SwipePracticeView1()
+                SwipeListView()
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
@@ -162,5 +162,5 @@ struct SwipeExampleView: View {
 }
 
 #Preview {
-    SwipeExampleView()
+    SwipeCarouselView()
 }

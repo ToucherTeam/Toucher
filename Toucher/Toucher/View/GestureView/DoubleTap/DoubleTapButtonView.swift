@@ -1,5 +1,5 @@
 //
-//  DoubleTapExampleView.swift
+//  DoubleTapButtonView.swift
 //  Toucher
 //
 //  Created by hyunjun on 2023/09/01.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DoubleTapExampleView: View {
+struct DoubleTapButtonView: View {
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
     var body: some View {
@@ -38,9 +38,9 @@ struct DoubleTapExampleView: View {
                 .animation(.easeInOut, value: doubleTapVM.isSuccess)
             }
         }
-        .modifier(SuccessNavigateModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
+        .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
         .navigationDestination(isPresented: $doubleTapVM.isNavigate) {
-            DoubleTapPracticeView1()
+            DoubleTapSearchBarView()
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
@@ -51,6 +51,6 @@ struct DoubleTapExampleView: View {
 
 struct DoubleTapExampleView_Previews: PreviewProvider {
     static var previews: some View {
-            DoubleTapExampleView()
+            DoubleTapButtonView()
     }
 }
