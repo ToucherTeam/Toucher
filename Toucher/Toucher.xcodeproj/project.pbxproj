@@ -83,8 +83,6 @@
 		329AEA592B4667D500F044FA /* DoubleTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */; };
 		32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A178402B25E35B007A3CAB /* CustomToolbar.swift */; };
 		32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3F592B2F898F0017F9E0 /* PanMap.swift */; };
-		F06CACE72B4688C40024E366 /* HStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACE62B4688C40024E366 /* HStackArrow.swift */; };
-		F06CACE92B4688CB0024E366 /* VStackArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACE82B4688CB0024E366 /* VStackArrow.swift */; };
 		F06CACF02B468C610024E366 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACEF2B468C610024E366 /* Arrows.swift */; };
 		F06CACF32B4693960024E366 /* LongTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACF22B4693960024E366 /* LongTapViewModel.swift */; };
 		F06CACF62B4696900024E366 /* MoveToNextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACF52B4696900024E366 /* MoveToNextModifier.swift */; };
@@ -174,8 +172,6 @@
 		329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
 		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		32EC3F592B2F898F0017F9E0 /* PanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMap.swift; sourceTree = "<group>"; };
-		F06CACE62B4688C40024E366 /* HStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HStackArrow.swift; path = Toucher/Component/Arrow/HStackArrow.swift; sourceTree = SOURCE_ROOT; };
-		F06CACE82B4688CB0024E366 /* VStackArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VStackArrow.swift; path = Toucher/Component/Arrow/VStackArrow.swift; sourceTree = SOURCE_ROOT; };
 		F06CACEF2B468C610024E366 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
 		F06CACF22B4693960024E366 /* LongTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTapViewModel.swift; sourceTree = "<group>"; };
 		F06CACF52B4696900024E366 /* MoveToNextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToNextModifier.swift; sourceTree = "<group>"; };
@@ -511,8 +507,6 @@
 		F06CACF12B468F470024E366 /* Arrow */ = {
 			isa = PBXGroup;
 			children = (
-				F06CACE82B4688CB0024E366 /* VStackArrow.swift */,
-				F06CACE62B4688C40024E366 /* HStackArrow.swift */,
 				F06CACEF2B468C610024E366 /* Arrows.swift */,
 			);
 			path = Arrow;
@@ -676,9 +670,7 @@
 				29EAB4272AA63368004E5429 /* DragIconView.swift in Sources */,
 				F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */,
 				29EAB4222AA62ECD004E5429 /* LongTapAlbumPhotoView.swift in Sources */,
-				F06CACE92B4688CB0024E366 /* VStackArrow.swift in Sources */,
 				29D51B7E2B25A6AB00A6923E /* MainViewHeader.swift in Sources */,
-				F06CACE72B4688C40024E366 /* HStackArrow.swift in Sources */,
 				3288A8322B483DAC00A95A26 /* PanViewModel.swift in Sources */,
 				29EAB4202AA62EC2004E5429 /* LongTapCameraButtonView.swift in Sources */,
 				29D51B782B25A29300A6923E /* MainViewModel.swift in Sources */,
