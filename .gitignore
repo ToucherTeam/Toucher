@@ -90,3 +90,8 @@ fastlane/test_output
 iOSInjectionProject/
 
 .DS_Store
+Pods/
+Podfile.lock
+*.xcworkspace/
+GoogleService-Info.plist
+*.sh
