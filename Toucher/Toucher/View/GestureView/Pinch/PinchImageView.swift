@@ -10,14 +10,14 @@ import SwiftUI
 struct PinchImageView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var pinchVM = PinchViewModel()
-
+    
     @State private var scale: CGFloat = 1.0
     
     var body: some View {
         VStack(spacing: 0) {
             CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
                 .zIndex(1)
-
+            
             ZStack {
                 Color(.systemGray6).ignoresSafeArea()
                 Image("ex_image")
@@ -48,12 +48,14 @@ struct PinchImageView: View {
                     .lineSpacing(10)
                     .font(.customTitle)
                     .padding(.top, 40)
+                    .padding(.horizontal)
+                    .frame(width: UIScreen.main.bounds.width)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
                 HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchPracticeView1")
-                .opacity(pinchVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: pinchVM.isSuccess)
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                    .opacity(pinchVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: pinchVM.isSuccess)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .modifier(FinishModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
@@ -80,8 +82,7 @@ struct PinchImageView: View {
     }
 }
 
-struct PinchPracticeView1_Previews: PreviewProvider {
-    static var previews: some View {
-        PinchImageView()
-    }
+#Preview {
+    PinchImageView()
+        .environment(\.locale, .init(identifier: "ko"))
 }

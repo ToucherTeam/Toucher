@@ -20,43 +20,49 @@ struct PinchIconZoomInView: View {
             if !pinchVM.isNavigate {
                 VStack {
                     CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
-
-                    Text(pinchVM.isSuccess ? "성공!\n" : pinchVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n벌려보세요")
-                        .foregroundColor(pinchVM.isFail && !pinchVM.isSuccess ? .white : .primary)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(10)
-                        .font(.customTitle)
-                        .padding(.top, 40)
                     
-                    Image("ToucherCharacter")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80)
-                        .scaleEffect(scale)
-                        .frame(width: 320, height: 320)
-                        .contentShape(Rectangle())
-                        .gesture(gesture)
-                        .frame(maxHeight: .infinity)
-                        .overlay {
-                            if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
-                                HStack(spacing: 100) {
-                                    Arrows(arrowColor: .customBG1)
-                                    Arrows(arrowColor: .customBG1)
-                                        .rotationEffect(.degrees(180))
+                    ZStack {
+                        VStack {
+                            Text(pinchVM.isSuccess ? "성공!\n" : pinchVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n벌려보세요")
+                                .foregroundColor(pinchVM.isFail && !pinchVM.isSuccess ? .white : .primary)
+                                .multilineTextAlignment(.center)
+                                .lineSpacing(10)
+                                .font(.customTitle)
+                                .padding(.top, 40)
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                            
+                            HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView1")
+                                .opacity(pinchVM.isSuccess ? 0 : 1)
+                                .animation(.easeInOut, value: pinchVM.isSuccess)
+                        }
+                        Image("ToucherCharacter")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80)
+                            .scaleEffect(scale)
+                            .frame(width: 320, height: 320)
+                            .contentShape(Rectangle())
+                            .gesture(gesture)
+                            .frame(maxHeight: .infinity)
+                            .overlay {
+                                if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
+                                    HStack(spacing: 100) {
+                                        Arrows(arrowColor: .customBG1)
+                                        Arrows(arrowColor: .customBG1)
+                                            .rotationEffect(.degrees(180))
+                                    }
+                                    .rotationEffect(.degrees(-45))
+                                    .allowsHitTesting(false)
                                 }
-                                .rotationEffect(.degrees(-45))
-                                .allowsHitTesting(false)
                             }
-                        }
-                        .overlay {
-                            if pinchVM.isSuccess {
-                                ConfettiView()
+                            .overlay {
+                                if pinchVM.isSuccess {
+                                    ConfettiView()
+                                }
                             }
-                        }
-                    
-                    HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView1")
-                    .opacity(pinchVM.isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: pinchVM.isSuccess)
+                    }
                 }
             }
             if pinchVM.isNavigate {
@@ -80,7 +86,7 @@ struct PinchIconZoomInView: View {
                         HapticManager.notification(type: .success)
                         self.scale = 2
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                pinchVM.isNavigate = true
+                            pinchVM.isNavigate = true
                         }
                     }
                 }
@@ -104,8 +110,7 @@ struct PinchIconZoomInView: View {
     }
 }
 
-struct PinchExampleView1_Previews: PreviewProvider {
-    static var previews: some View {
-        PinchIconZoomInView()
-    }
+#Preview {
+    PinchIconZoomInView()
+        .environment(\.locale, .init(identifier: "en"))
 }

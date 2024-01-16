@@ -21,42 +21,49 @@ struct PinchIconZoomOutView: View {
             VStack {
                 CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
                 
-                Text(pinchVM.isSuccess ? "성공!\n" : pinchVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "이번엔 크기를 작게\n만들어 볼까요?")
-                    .foregroundColor(pinchVM.isFail && !pinchVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                
-                Image("ToucherCharacter")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 160)
-                    .scaleEffect(scale)
-                    .frame(width: 360, height: 320)
-                    .contentShape(Rectangle())
-                    .gesture(gesture)
-                    .frame(maxHeight: .infinity)
-                    .overlay {
-                        if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
-                            HStack(spacing: 100) {
-                                Arrows(arrowColor: .customBG1)
-                                    .rotationEffect(.degrees(180))
-                                Arrows(arrowColor: .customBG1)
+                ZStack {
+                    VStack {
+                        Text(pinchVM.isSuccess ? "성공!\n" : pinchVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "이번엔 크기를 작게\n만들어 볼까요?")
+                            .foregroundColor(pinchVM.isFail && !pinchVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.customTitle)
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView2")
+                            .opacity(pinchVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: pinchVM.isSuccess)
+                    }
+                    
+                    Image("ToucherCharacter")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 160)
+                        .scaleEffect(scale)
+                        .frame(width: 360, height: 320)
+                        .contentShape(Rectangle())
+                        .gesture(gesture)
+                        .frame(maxHeight: .infinity)
+                        .overlay {
+                            if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
+                                HStack(spacing: 100) {
+                                    Arrows(arrowColor: .customBG1)
+                                        .rotationEffect(.degrees(180))
+                                    Arrows(arrowColor: .customBG1)
+                                }
+                                .rotationEffect(.degrees(-45))
+                                .allowsHitTesting(false)
                             }
-                            .rotationEffect(.degrees(-45))
-                            .allowsHitTesting(false)
                         }
-                    }
-                    .overlay {
-                        if pinchVM.isSuccess {
-                            ConfettiView()
+                        .overlay {
+                            if pinchVM.isSuccess {
+                                ConfettiView()
+                            }
                         }
-                    }
-                
-                HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView2")
-                    .opacity(pinchVM.isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: pinchVM.isSuccess)
+                }
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
@@ -107,4 +114,5 @@ struct PinchIconZoomOutView: View {
 
 #Preview {
     PinchIconZoomOutView()
+        .environment(\.locale, .init(identifier: "ko"))
 }
