@@ -73,7 +73,7 @@ struct MainButton: View {
         .offset(y: -83)
         .offset(y: bubbleAnimation ? -3 : 3)
         .onAppear {
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation(.easeInOut(duration: 2).repeatForever()) {
                     bubbleAnimation = true
                 }
