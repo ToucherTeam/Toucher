@@ -42,13 +42,14 @@ struct PanMapView: View {
                         }
                 }
                 
-                Text(panVM.isSuccess ? "성공!\n" : "사방으로 움직여\n지도를 이동해보세요.\n")
+                Text(panVM.isSuccess ? "성공!" : "사방으로 움직여\n지도를 이동해보세요.")
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(10)
                     .font(.customTitle)
-                    .padding(.top, 40)
+                    .padding(.vertical, 40)
                     .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
                     .background {
                         Rectangle()
                             .foregroundColor(.customWhite.opacity(0.7))
@@ -57,8 +58,8 @@ struct PanMapView: View {
                 VStack {
                     Spacer()
                     HelpButton(style: .secondary, currentViewName: "PanPracticeView")
-                    .opacity(panVM.isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: panVM.isSuccess)
+                        .opacity(panVM.isSuccess ? 0 : 1)
+                        .animation(.easeInOut, value: panVM.isSuccess)
                 }
             }
             .overlay {
@@ -74,8 +75,7 @@ struct PanMapView: View {
     }
 }
 
-struct PanPracticeView_Previews: PreviewProvider {
-    static var previews: some View {
-        PanMapView()
-    }
+#Preview {
+    PanMapView()
+        .environment(\.locale, .init(identifier: "ko"))
 }
