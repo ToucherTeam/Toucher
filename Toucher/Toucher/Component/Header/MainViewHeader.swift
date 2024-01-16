@@ -55,7 +55,7 @@ struct MainViewHeader: View {
             }
             .foregroundColor(.customPrimary)
         }
-        .padding(.leading, 40)
+        .padding(.leading, 20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background {
@@ -68,9 +68,17 @@ struct MainViewHeader: View {
 }
 
 #Preview {
-    ZStack {
+    let gesture: GestureType = .doubleTap
+    
+    return ZStack {
         Color.customBG1.ignoresSafeArea()
-        
-        MainViewHeader(gesture: .longPress)
+        VStack {
+            MainViewHeader(gesture: gesture)
+                .environment(\.locale, .init(identifier: "ko"))
+            MainViewHeader(gesture: gesture)
+                .environment(\.locale, .init(identifier: "en"))
+            MainViewHeader(gesture: gesture)
+                .environment(\.locale, .init(identifier: "ja"))
+        }
     }
 }
