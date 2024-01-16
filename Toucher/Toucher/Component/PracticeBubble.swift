@@ -86,14 +86,14 @@ struct PracticeBubble: View {
             }
             .padding(.horizontal)
         }
-        .offset(y: bubbleAnimation ? -3 : 3)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.2) {
                 withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                    bubbleAnimation = true
+                    bubbleAnimation.toggle()
                 }
             }
         }
+        .offset(y: bubbleAnimation ? -3 : 3)
     }
 }
 

@@ -19,6 +19,7 @@
 		292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BF2B26C686002E5AAA /* LongPressButton.swift */; };
 		292B88DE2B5661AE002F17E6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */; };
 		292B88E02B566564002F17E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292B88DF2B566564002F17E6 /* GoogleService-Info.plist */; };
+		292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292B88E12B566E10002F17E6 /* Icons.xcassets */; };
 		295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06202B26EE01004CAF1C /* HapticManager.swift */; };
 		295A06232B2708CB004CAF1C /* RotateMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06222B2708CB004CAF1C /* RotateMap.swift */; };
 		295A06252B271B56004CAF1C /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06242B271B56004CAF1C /* NavigationManager.swift */; };
@@ -121,6 +122,7 @@
 		292181BF2B26C686002E5AAA /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 		292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		292B88DF2B566564002F17E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		292B88E12B566E10002F17E6 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		295A06202B26EE01004CAF1C /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		295A06222B2708CB004CAF1C /* RotateMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateMap.swift; sourceTree = "<group>"; };
 		295A06242B271B56004CAF1C /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			children = (
 				3262BA982B457B2D00CDEE87 /* GestureGuideGIFs */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
+				292B88E12B566E10002F17E6 /* Icons.xcassets */,
 				F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */,
 				F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */,
 			);
@@ -651,6 +654,7 @@
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
 				3262BB0B2B458DF400CDEE87 /* SwipePracticeView1.gif in Resources */,
 				3262BB202B45917C00CDEE87 /* DragPracticeView2.gif in Resources */,
+				292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,

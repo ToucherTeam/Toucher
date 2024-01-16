@@ -30,13 +30,15 @@ struct FinishMainView: View {
                     }
                     .padding(.bottom, 180)
                     .overlay {
-                        if let selectedGesture = viewModel.selectedGesture {
-                            if let index = viewModel.gestures.firstIndex(of: selectedGesture) {
-                                PracticeBubble(gesture: selectedGesture) {
-                                    navigationManager.navigate = true
+                        if !navigationManager.navigate {
+                            if let selectedGesture = viewModel.selectedGesture {
+                                if let index = viewModel.gestures.firstIndex(of: selectedGesture) {
+                                    PracticeBubble(gesture: selectedGesture) {
+                                        navigationManager.navigate = true
+                                    }
+                                    .offset(y: 10 + 95 * CGFloat(index + 1) + 32 * CGFloat(index))
+                                    .frame(maxHeight: .infinity, alignment: .top)
                                 }
-                                .offset(y: 10 + 95 * CGFloat(index + 1) + 32 * CGFloat(index))
-                                .frame(maxHeight: .infinity, alignment: .top)
                             }
                         }
                     }
