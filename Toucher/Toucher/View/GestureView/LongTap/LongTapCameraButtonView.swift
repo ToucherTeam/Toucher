@@ -20,27 +20,32 @@ struct LongTapCameraButtonView: View {
             VStack {
                 CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
                 
-                Text(longTapVM.isSuccess ? "성공!\n\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
-                    .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                
-                cameraButton
-                    .padding(.bottom)
-                    .frame(maxHeight: .infinity)
-                    .overlay {
-                        if longTapVM.isSuccess {
-                            ConfettiView()
-                        }
+                ZStack {
+                    VStack {
+                        Text(longTapVM.isSuccess ? "성공!\n\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!\n" : "카메라를 1초 동안\n눌러서 추가 기능을\n알아볼까요?")
+                            .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.customTitle)
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1")
+                            .opacity(longTapVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: longTapVM.isSuccess)
                     }
-                
-                HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1")
-                    .opacity(longTapVM.isSuccess ? 0 : 1)
-                    .animation(.easeInOut, value: longTapVM.isSuccess)
+                    
+                    cameraButton
+                        .padding(.bottom)
+                        .overlay {
+                            if longTapVM.isSuccess {
+                                ConfettiView()
+                            }
+                        }
+                }
             }
-            .frame(maxWidth: .infinity)
             .modifier(
                 MoveToNextModifier(
                     isNavigate: $longTapVM.isNavigate,
@@ -132,4 +137,5 @@ struct LongTapCameraButtonView: View {
 
 #Preview {
     LongTapCameraButtonView()
+        .environment(\.locale, .init(identifier: "ko"))
 }
