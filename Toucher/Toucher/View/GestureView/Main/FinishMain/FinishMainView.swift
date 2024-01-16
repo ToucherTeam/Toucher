@@ -54,9 +54,8 @@ struct FinishMainView: View {
                 .font(.system(size: 22))
                 .fontWeight(.bold)
                 .foregroundColor(.customPrimary)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity)
                 .padding()
-                .padding(.leading, 40)
                 .background {
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .foregroundStyle(Color.customBG0)
