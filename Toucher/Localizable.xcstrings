@@ -157,7 +157,6 @@
       }
     },
     "길게 누르기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -206,7 +205,6 @@
       }
     },
     "끌어오기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -239,7 +237,6 @@
       }
     },
     "두 번 누르기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -315,6 +312,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2本の指を使って拡大してみましょう"
+          }
+        }
+      }
+    },
+    "두번 누르기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DoubleTap"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2回押す"
           }
         }
       }
@@ -448,7 +461,6 @@
       }
     },
     "살짝 쓸기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -994,8 +1006,23 @@
         }
       }
     },
+    "학습 %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chapter %lld"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学習%lld"
+          }
+        }
+      }
+    },
     "화면 움직이기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1012,7 +1039,6 @@
       }
     },
     "확대 축소하기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1029,7 +1055,6 @@
       }
     },
     "회전하기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

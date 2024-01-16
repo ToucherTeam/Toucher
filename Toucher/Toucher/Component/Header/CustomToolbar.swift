@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomToolbar: View {
     @Environment(\.dismiss) var dismiss
     
-    let title: String
+    let title: LocalizedStringKey
     var isSuccess = false
     
     var body: some View {
