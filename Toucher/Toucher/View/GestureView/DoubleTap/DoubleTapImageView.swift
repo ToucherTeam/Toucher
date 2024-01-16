@@ -33,14 +33,16 @@ struct DoubleTapImageView: View {
                         }
                     }
                 
-                VStack(spacing: 0) {
+                VStack {
                     Text(doubleTapVM.isSuccess ? "성공!\n" : doubleTapVM.isFail ? "조금만 더 빠르게 두 번\n눌러주세요!" : "빠르게 두 번 눌러\n사진을 확대해볼까요?")
                         .foregroundColor(doubleTapVM.isFail && !doubleTapVM.isSuccess ? .accentColor : .primary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.customTitle)
+                        .frame(width: UIScreen.main.bounds.width)
                         .padding(.top, 40)
-                        .frame(maxHeight: .infinity, alignment: .top)
+                    
+                    Spacer()
                     
                     HelpButton(style: doubleTapVM.isFail ? .primary : .secondary, currentViewName: "DoubleTapPracticeView2")
                         .opacity(doubleTapVM.isSuccess ? 0 : 1)
@@ -73,8 +75,7 @@ struct DoubleTapImageView: View {
     }
 }
 
-struct DoubleTapPracticeView2_Previews: PreviewProvider {
-    static var previews: some View {
-        DoubleTapImageView()
-    }
+#Preview {
+    DoubleTapImageView()
+        .environment(\.locale, .init(identifier: "ko"))
 }
