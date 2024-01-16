@@ -38,6 +38,7 @@ struct SwipeCarouselView: View {
                     .multilineTextAlignment(.center)
                     .font(.customTitle)
                     .padding(.top, 42)
+                    .padding(.horizontal)
                 
                 Spacer()
                 
@@ -163,4 +164,5 @@ struct SwipeCarouselView: View {
 
 #Preview {
     SwipeCarouselView()
+        .environment(\.locale, .init(identifier: "ko"))
 }
