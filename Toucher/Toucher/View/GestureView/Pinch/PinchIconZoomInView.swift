@@ -45,7 +45,6 @@ struct PinchIconZoomInView: View {
                             .frame(width: 320, height: 320)
                             .contentShape(Rectangle())
                             .gesture(gesture)
-                            .frame(maxHeight: .infinity)
                             .overlay {
                                 if !pinchVM.isTapped || pinchVM.isFail && !pinchVM.isSuccess {
                                     HStack(spacing: 100) {

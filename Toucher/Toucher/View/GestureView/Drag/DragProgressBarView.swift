@@ -38,7 +38,6 @@ struct DragProgressBarView: View {
                     }
                     
                     slider
-                        .frame(maxHeight: .infinity)
                         .overlay {
                             if dragVM.isSuccess {
                                 ConfettiView()
