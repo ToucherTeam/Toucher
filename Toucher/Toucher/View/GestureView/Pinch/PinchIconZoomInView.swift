@@ -11,6 +11,7 @@ struct PinchIconZoomInView: View {
     @StateObject private var pinchVM = PinchViewModel()
     
     @State private var scale: CGFloat = 1.0
+    @State private var selectedGuideVideo: URLManager = .pinchIconZoomInView
     
     var body: some View {
         ZStack {
@@ -54,7 +55,7 @@ struct PinchIconZoomInView: View {
                             }
                         }
                     
-                    HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView1")
+                    HelpButton(selectedGuideVideo: $selectedGuideVideo, style: pinchVM.isFail ? .primary : .secondary)
                     .opacity(pinchVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: pinchVM.isSuccess)
                 }

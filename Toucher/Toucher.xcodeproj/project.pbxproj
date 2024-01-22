@@ -71,7 +71,8 @@
 		29EF99992AA8A2D400637F7A /* PanMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EF99982AA8A2D400637F7A /* PanMapView.swift */; };
 		29F1D51D2AA83AE70074C1FE /* PinchIconZoomInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchIconZoomInView.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchImageView.swift */; };
-		3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239F21E2B32B97F001CDE0D /* GuideView.swift */; };
+		321F51642B5C2B1F0066CB17 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F51632B5C2B1F0066CB17 /* GuideView.swift */; };
+		321F51662B5E54480066CB17 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F51652B5E54480066CB17 /* URLManager.swift */; };
 		3262BB032B458DA300CDEE87 /* LongTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */; };
 		3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */; };
 		3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */; };
@@ -161,7 +162,8 @@
 		29EF99982AA8A2D400637F7A /* PanMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMapView.swift; sourceTree = "<group>"; };
 		29F1D51C2AA83AE70074C1FE /* PinchIconZoomInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchIconZoomInView.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchImageView.swift; sourceTree = "<group>"; };
-		3239F21E2B32B97F001CDE0D /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		321F51632B5C2B1F0066CB17 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		321F51652B5E54480066CB17 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapExampleView.gif; sourceTree = "<group>"; };
 		3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView1.gif; sourceTree = "<group>"; };
 		3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView2.gif; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				295A06202B26EE01004CAF1C /* HapticManager.swift */,
 				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
 				295A06242B271B56004CAF1C /* NavigationManager.swift */,
+				321F51652B5E54480066CB17 /* URLManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -361,7 +364,6 @@
 		29EAB4082AA1703A004E5429 /* GestureView */ = {
 			isa = PBXGroup;
 			children = (
-				3239F21E2B32B97F001CDE0D /* GuideView.swift */,
 				29E852352AA08D25003F4AF4 /* Main */,
 				29EAB40D2AA188C4004E5429 /* DoubleTap */,
 				29E1E4722AA9B04D00D45713 /* LongTap */,
@@ -528,6 +530,7 @@
 				3266082D2B31E5EB006A58B8 /* LaunchScreenView.swift */,
 				3266082F2B31E78E006A58B8 /* OnboardingView.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
+				321F51632B5C2B1F0066CB17 /* GuideView.swift */,
 				29EAB4082AA1703A004E5429 /* GestureView */,
 			);
 			path = View;
@@ -699,6 +702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */,
+				321F51662B5E54480066CB17 /* URLManager.swift in Sources */,
 				07791D402AAACDAA0024C04F /* PanChildSizeReader.swift in Sources */,
 				295A06232B2708CB004CAF1C /* RotateMap.swift in Sources */,
 				29D51B852B25D1BC00A6923E /* PracticeBubble.swift in Sources */,
@@ -748,11 +752,11 @@
 				29EAB4112AA18B28004E5429 /* DoubleTapSearchBarView.swift in Sources */,
 				295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */,
 				29EAB4132AA19080004E5429 /* DoubleTapImageView.swift in Sources */,
+				321F51642B5C2B1F0066CB17 /* GuideView.swift in Sources */,
 				29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */,
 				07791D422AAAF4840024C04F /* PanModel.swift in Sources */,
 				29AD87312AA87527006E846E /* RotateMapView.swift in Sources */,
 				F06CACF02B468C610024E366 /* Arrows.swift in Sources */,
-				3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */,
 				F06CACF82B4696D90024E366 /* FinishModifier.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwipeMessageView.swift in Sources */,
 				297805412B47F4770019D138 /* DragViewModel.swift in Sources */,

@@ -13,6 +13,7 @@ struct PanNotificationView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var scrollViewSize: CGSize = .zero
     @State private var scrollOffset: CGFloat = 0
+    @State private var selectedGuideVideo: URLManager = .panNotificationView
     
     @Namespace var top
     
@@ -132,7 +133,7 @@ struct PanNotificationView: View {
                 
                 Spacer()
                 
-                HelpButton(style: panVM.isFail ? .primary : .secondary, currentViewName: "PanExampleView")
+                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
                 .opacity(panVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: panVM.isSuccess)
             }

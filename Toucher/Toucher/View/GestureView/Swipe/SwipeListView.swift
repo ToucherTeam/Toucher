@@ -11,6 +11,7 @@ struct SwipeListView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
     @State private var textIndex = 0
+    @State private var selectedGuideVideo: URLManager = .swipeListView
     
     var body: some View {
         ZStack {
@@ -144,7 +145,7 @@ struct SwipeListView: View {
                 
                 Spacer()
                 
-                HelpButton(style: swipeVM.isFail ? .primary : .secondary, currentViewName: "SwipePracticeView1")
+                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
                 .opacity(swipeVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: swipeVM.isSuccess)
             }

@@ -11,6 +11,7 @@ struct DragProgressBarView: View {
     @StateObject private var dragVM = DragViewModel()
 
     @State private var value = 0.0
+    @State private var selectedGuideVideo: URLManager = .dragProgressBarView
     
     var body: some View {
         ZStack {
@@ -35,7 +36,7 @@ struct DragProgressBarView: View {
                         }
                     }
                 
-                HelpButton(style: dragVM.isFail ? .primary : .secondary, currentViewName: "DragPracticeView1")
+                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
                 .opacity(dragVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: dragVM.isSuccess)
             }
