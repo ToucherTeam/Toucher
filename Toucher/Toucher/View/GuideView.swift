@@ -12,7 +12,7 @@ struct GuideView: View {
     @State private var player = AVPlayer()
     @State private var videoDuration = 0.0
     @State private var totalDuration = 0.0
-    @Binding var selectedGuideVideo: GuideVideo
+    @Binding var selectedGuideVideo: URLManager
     
     @Binding var isFullScreenPresented: Bool
     
@@ -29,7 +29,7 @@ struct GuideView: View {
                     ProgressView(value: videoDuration, total: totalDuration)
                         .progressViewStyle(LinearProgressViewStyle())
                         .padding(.leading, 20)
-                        .padding(.trailing, 40)
+                        .padding(.trailing, 60)
                         .overlay(alignment: .trailing) {
                             Button(action: {
                                 isFullScreenPresented.toggle()
@@ -39,6 +39,7 @@ struct GuideView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                             })
+                            .padding(.trailing, 20)
                         }
                 }
                 .onReceive(timer) { _ in
