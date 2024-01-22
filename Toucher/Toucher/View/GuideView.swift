@@ -12,8 +12,8 @@ struct GuideView: View {
     @State private var player = AVPlayer()
     @State private var videoDuration = 0.0
     @State private var totalDuration = 0.0
-    @Binding var selectedGuideVideo: URLManager
     
+    @Binding var selectedGuideVideo: URLManager
     @Binding var isFullScreenPresented: Bool
     
     let playerDidFinishNotification = NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime)
@@ -53,9 +53,11 @@ struct GuideView: View {
                 }
                 VideoPlayer(player: player)
                     .onAppear {
-                        let url = URL(string: selectedGuideVideo.videoURL)!
-                        player = AVPlayer(url: url)
-                        player.play()
+                        if let url = URL(string: selectedGuideVideo.videoURL) {
+                            player = AVPlayer(url: url)
+                            player.play()
+                        } else {
+                        }
                     }
                     .onReceive(playerDidFinishNotification, perform: { _ in
                         isFullScreenPresented = false
