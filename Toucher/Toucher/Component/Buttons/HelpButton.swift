@@ -16,7 +16,7 @@ struct HelpButton: View {
     @State private var animate = false
     @State private var isFullScreenPresented = false
     
-    @Binding var selectedGuideVideo: GuideVideo
+    @Binding var selectedGuideVideo: URLManager
     
     var style: HelpButtonStyle
     
