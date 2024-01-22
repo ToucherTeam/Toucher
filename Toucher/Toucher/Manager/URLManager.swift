@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GuideVideo {
+enum URLManager {
     case doubleTapButtonView
     case doubleTapSearchBarView
     case doubleTapImageView
