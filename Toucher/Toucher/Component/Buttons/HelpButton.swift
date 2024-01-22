@@ -16,8 +16,9 @@ struct HelpButton: View {
     @State private var animate = false
     @State private var isFullScreenPresented = false
     
+    @Binding var selectedGuideVideo: GuideVideo
+    
     var style: HelpButtonStyle
-    var currentViewName: String = "LongTapExampleView"
     
     private var textColor: Color {
         withAnimation {
@@ -66,38 +67,7 @@ struct HelpButton: View {
                 }
         }
         .fullScreenCover(isPresented: $isFullScreenPresented, content: {
-            GuideView(isFullScreenPresented: $isFullScreenPresented, currentViewName: currentViewName)
+            GuideView(selectedGuideVideo: $selectedGuideVideo, isFullScreenPresented: $isFullScreenPresented)
         })
-    }
-}
-
-struct HelpButton_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            HelpButton(style: .primary)
-            HelpButton(style: .secondary)
-        }
-    }
-}
-
-struct CustomProgressViewStyle: ProgressViewStyle {
-    let height: CGFloat = 10
-    var foregroundColor: Color = .customSecondary
-    var backgroundColor: Color = .customWhite
-    
-    func makeBody(configuration: Configuration) -> some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: 306, height: height)
-                    .clipShape(.capsule)
-                    .foregroundColor(backgroundColor)
-                
-                Rectangle()
-                    .frame(width: geometry.size.width - 90, height: height)
-                    .clipShape(.capsule)
-                    .foregroundColor(foregroundColor)
-            }
-        }
     }
 }
