@@ -40,108 +40,111 @@ struct PanNotificationView: View {
             VStack {
                 CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
                 
-                Text(panVM.isFail ? "위로 가볍게 쓸어올리세요.\n" : panVM.isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
-                    .foregroundColor(panVM.isFail && !panVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top, 30)
-                
-                PanChildSizeReader(size: $wholeSize) {
-                    ScrollViewReader { value in
-                        ScrollView {
-                            PanChildSizeReader(size: $scrollViewSize) {
-                                VStack {
-                                    ForEach(notifications) { item in
-                                        HStack {
-                                            Image(item.imageName)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 32, height: 32)
-                                                .padding(.leading)
-                                            
-                                            VStack(alignment: .leading) {
-                                                HStack {
-                                                    Text(item.title)
-                                                        .bold()
-                                                    Spacer()
-                                                    Text(item.time)
-                                                        .foregroundColor(.customGR1)
-                                                        .font(.system(size: 13))
+                ZStack {
+                    VStack {
+                        Text(panVM.isFail ? "위로 가볍게 쓸어올리세요.\n" : panVM.isSuccess ? "성공!\n" : "밑에서 위로\n쓸어 올려보세요.")
+                            .foregroundColor(panVM.isFail && !panVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.largeTitle)
+                            .bold()
+                            .padding(.top, 30)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
+                            .opacity(panVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: panVM.isSuccess)
+                    }
+                    
+                    PanChildSizeReader(size: $wholeSize) {
+                        ScrollViewReader { value in
+                            ScrollView {
+                                PanChildSizeReader(size: $scrollViewSize) {
+                                    VStack {
+                                        ForEach(notifications) { item in
+                                            HStack {
+                                                Image(item.imageName)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 32, height: 32)
+                                                    .padding(.leading)
+                                                
+                                                VStack(alignment: .leading) {
+                                                    HStack {
+                                                        Text(item.title)
+                                                            .bold()
+                                                        Spacer()
+                                                        Text(item.time)
+                                                            .foregroundColor(.customGR1)
+                                                            .font(.system(size: 13))
+                                                            .fontWeight(.regular)
+                                                            .padding(.trailing, 22)
+                                                    }
+                                                    Text(item.subTitle)
+                                                        .font(.system(size: 15))
                                                         .fontWeight(.regular)
-                                                        .padding(.trailing, 22)
                                                 }
-                                                Text(item.subTitle)
-                                                    .font(.system(size: 15))
-                                                    .fontWeight(.regular)
+                                                Spacer()
                                             }
-                                            Spacer()
+                                            .frame(height: 66)
+                                            .frame(maxWidth: .infinity)
+                                            .background {
+                                                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                                                    .foregroundColor(Color(.systemGray5))
+                                            }
+                                            .padding(.horizontal, 14)
                                         }
-                                        .frame(height: 66)
-                                        .frame(maxWidth: .infinity)
-                                        .background {
-                                            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                                                .foregroundColor(Color(.systemGray5))
-                                        }
-                                        .padding(.horizontal, 14)
                                     }
+                                    .id(top)
+                                    .onAppear {
+                                        value.scrollTo(top, anchor: .top)
+                                    }
+                                    .background(
+                                        GeometryReader { proxy in
+                                            Color.clear.preference(
+                                                key: ViewOffsetKey.self,
+                                                value: -1 * proxy.frame(in: .named(spaceName)).origin.y
+                                            )
+                                        }
+                                    )
+                                    .onPreferenceChange(
+                                        ViewOffsetKey.self,
+                                        perform: { value in
+                                            if value >= scrollViewSize.height - wholeSize.height {
+                                                panVM.isSuccess = true
+                                            } else if value < 0 {
+                                                panVM.isFail = true
+                                            } else {
+                                                panVM.isFail = false
+                                            }
+                                        }
+                                    )
                                 }
-                                .id(top)
-                                .onAppear {
-                                    value.scrollTo(top, anchor: .top)
-                                }
-                                .background(
-                                    GeometryReader { proxy in
-                                        Color.clear.preference(
-                                            key: ViewOffsetKey.self,
-                                            value: -1 * proxy.frame(in: .named(spaceName)).origin.y
-                                        )
-                                    }
-                                )
-                                .onPreferenceChange(
-                                    ViewOffsetKey.self,
-                                    perform: { value in
-                                        if value >= scrollViewSize.height - wholeSize.height {
-                                            panVM.isSuccess = true
-                                        } else if value < 0 {
-                                            panVM.isFail = true
-                                        } else {
-                                            panVM.isFail = false
-                                        }
-                                    }
-                                )
                             }
+                            .frame(height: scrollSize)
                         }
-                        .frame(height: scrollSize)
+                        .coordinateSpace(name: spaceName)
                     }
-                    .coordinateSpace(name: spaceName)
-                }
-                .onTapGesture {
-                    withAnimation {
-                        panVM.isFail = true
+                    .onTapGesture {
+                        withAnimation {
+                            panVM.isFail = true
+                        }
                     }
-                }
-                .onChange(
-                    of: scrollViewSize,
-                    perform: { value in
-                        print(value)
+                    .onChange(
+                        of: scrollViewSize,
+                        perform: { value in
+                            print(value)
+                        }
+                    )
+                    .overlay {
+                        if panVM.isFail || !panVM.isSuccess {
+                            Arrows()
+                                .rotationEffect(Angle(degrees: 90))
+                                .allowsHitTesting(false)
+                        }
                     }
-                )
-                .padding(.top, isSE ? 0 : 96)
-                .frame(maxHeight: isSE ? .infinity : 320)
-                
-                Spacer()
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
-                .opacity(panVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: panVM.isSuccess)
-            }
-            .overlay {
-                if panVM.isFail || !panVM.isSuccess {
-                    Arrows()
-                        .rotationEffect(Angle(degrees: 90))
-                        .allowsHitTesting(false)
                 }
             }
             
@@ -164,4 +167,5 @@ struct PanNotificationView: View {
 
 #Preview {
     PanNotificationView()
+        .environment(\.locale, .init(identifier: "ko"))
 }

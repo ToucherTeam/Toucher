@@ -66,8 +66,8 @@ struct HelpButton: View {
                     }
                 }
         }
-        .fullScreenCover(isPresented: $isFullScreenPresented, content: {
+        .fullScreenCover(isPresented: $isFullScreenPresented) {
             GuideView(selectedGuideVideo: selectedGuideVideo, isFullScreenPresented: $isFullScreenPresented)
-        })
+        }
     }
 }

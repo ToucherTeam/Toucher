@@ -17,6 +17,9 @@
 		07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D345ED2AA8716500B7329D /* SwipeModel.swift */; };
 		292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BD2B26C597002E5AAA /* DoubleTapButton.swift */; };
 		292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BF2B26C686002E5AAA /* LongPressButton.swift */; };
+		292B88DE2B5661AE002F17E6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */; };
+		292B88E02B566564002F17E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292B88DF2B566564002F17E6 /* GoogleService-Info.plist */; };
+		292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292B88E12B566E10002F17E6 /* Icons.xcassets */; };
 		295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06202B26EE01004CAF1C /* HapticManager.swift */; };
 		295A06232B2708CB004CAF1C /* RotateMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06222B2708CB004CAF1C /* RotateMap.swift */; };
 		295A06252B271B56004CAF1C /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06242B271B56004CAF1C /* NavigationManager.swift */; };
@@ -30,7 +33,6 @@
 		29B9BB8B2B16B7250042DE19 /* ConfettiShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */; };
 		29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB892B16B7250042DE19 /* ConfettiView.swift */; };
 		29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B9BB8A2B16B7250042DE19 /* Confetti.swift */; };
-		29BCA2E12B50209E009D6DEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29BCA2E02B50209E009D6DEF /* GoogleService-Info.plist */; };
 		29BCA2E42B5021AB009D6DEF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 29BCA2E32B5021AB009D6DEF /* FirebaseAnalytics */; };
 		29BCA2E62B5021AB009D6DEF /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 29BCA2E52B5021AB009D6DEF /* FirebaseAnalyticsOnDeviceConversion */; };
 		29BCA2E82B5021AB009D6DEF /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29BCA2E72B5021AB009D6DEF /* FirebaseAnalyticsSwift */; };
@@ -85,7 +87,6 @@
 		F06CACF82B4696D90024E366 /* FinishModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACF72B4696D90024E366 /* FinishModifier.swift */; };
 		F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */; };
 		F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */; };
-		F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */; };
 		F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */; };
 		F0ED9B4B2B160ED800E8D5C9 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,9 @@
 		07D345ED2AA8716500B7329D /* SwipeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeModel.swift; sourceTree = "<group>"; };
 		292181BD2B26C597002E5AAA /* DoubleTapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapButton.swift; sourceTree = "<group>"; };
 		292181BF2B26C686002E5AAA /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
+		292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		292B88DF2B566564002F17E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		292B88E12B566E10002F17E6 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		295A06202B26EE01004CAF1C /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		295A06222B2708CB004CAF1C /* RotateMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateMap.swift; sourceTree = "<group>"; };
 		295A06242B271B56004CAF1C /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -114,7 +118,6 @@
 		29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiShapes.swift; sourceTree = "<group>"; };
 		29B9BB892B16B7250042DE19 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		29B9BB8A2B16B7250042DE19 /* Confetti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
-		29BCA2E02B50209E009D6DEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		29D51B752B259EE600A6923E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		29D51B772B25A29300A6923E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		29D51B7B2B25A38A00A6923E /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
@@ -157,7 +160,6 @@
 		F06CACF72B4696D90024E366 /* FinishModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishModifier.swift; sourceTree = "<group>"; };
 		F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F0ED9B412B15F45000E8D5C9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
-		F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buttons.xcassets; sourceTree = "<group>"; };
 		F0ED9B4A2B160ED800E8D5C9 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,8 +267,9 @@
 		29E852122AA08346003F4AF4 = {
 			isa = PBXGroup;
 			children = (
+				292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */,
+				292B88DF2B566564002F17E6 /* GoogleService-Info.plist */,
 				29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */,
-				29BCA2E02B50209E009D6DEF /* GoogleService-Info.plist */,
 				29E8521D2AA08346003F4AF4 /* Toucher */,
 				29E8521C2AA08346003F4AF4 /* Products */,
 			);
@@ -307,7 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				29E852312AA08C16003F4AF4 /* FontExtension.swift */,
-				F0ED9B432B15F81E00E8D5C9 /* ColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
+				292B88E12B566E10002F17E6 /* Icons.xcassets */,
 				F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */,
 				F0ED9B462B15FD3500E8D5C9 /* Buttons.xcassets */,
 			);
@@ -489,7 +492,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					29E8521A2AA08346003F4AF4 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -523,11 +526,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29BCA2E12B50209E009D6DEF /* GoogleService-Info.plist in Resources */,
+				292B88DE2B5661AE002F17E6 /* Localizable.xcstrings in Resources */,
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
+				292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
+				292B88E02B566564002F17E6 /* GoogleService-Info.plist in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,7 +585,6 @@
 				29D51B832B25BF9B00A6923E /* FinishMainViewModel.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29EAB4272AA63368004E5429 /* DragIconView.swift in Sources */,
-				F0ED9B442B15F81E00E8D5C9 /* ColorExtension.swift in Sources */,
 				29EAB4222AA62ECD004E5429 /* LongTapAlbumPhotoView.swift in Sources */,
 				29D51B7E2B25A6AB00A6923E /* MainViewHeader.swift in Sources */,
 				3288A8322B483DAC00A95A26 /* PanViewModel.swift in Sources */,
@@ -633,6 +637,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -696,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DragProgressBarView: View {
     @StateObject private var dragVM = DragViewModel()
-
+    
     @State private var value = 0.0
     
     private let selectedGuideVideo: URLManager = .dragProgressBarView
@@ -22,24 +22,30 @@ struct DragProgressBarView: View {
             VStack {
                 CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
                 
-                Text(dragVM.isSuccess ? "성공!\n" : dragVM.isFail ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
-                    .foregroundColor(dragVM.isFail && !dragVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                slider
-                    .padding(.bottom, 120)
-                    .frame(maxHeight: .infinity)
-                    .overlay {
-                        if dragVM.isSuccess {
-                            ConfettiView()
-                        }
+                ZStack {
+                    VStack {
+                        Text(dragVM.isSuccess ? "성공!\n" : dragVM.isFail ? "꾹 누른 상태로 옮겨주세요.\n" : "원을 좌우로 움직여주세요.\n")
+                            .foregroundColor(dragVM.isFail && !dragVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.customTitle)
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
+                            .opacity(dragVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: dragVM.isSuccess)
                     }
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
-                .opacity(dragVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: dragVM.isSuccess)
+                    
+                    slider
+                        .overlay {
+                            if dragVM.isSuccess {
+                                ConfettiView()
+                            }
+                        }
+                }
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
@@ -87,8 +93,7 @@ struct DragProgressBarView: View {
     }
 }
 
-struct DragPracticeView1_Previews: PreviewProvider {
-    static var previews: some View {
-        DragProgressBarView()
-    }
+#Preview {
+    DragProgressBarView()
+        .environment(\.locale, .init(identifier: "ko"))
 }

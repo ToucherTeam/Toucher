@@ -22,135 +22,140 @@ struct SwipeListView: View {
             VStack {
                 CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
-                titleText
-                    .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
-                    .font(.customTitle)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 40)
-                    .padding(.bottom, 108)
-                
-                if swipeVM.isNavigate {
-                    ForEach(0..<2, id: \.self) { _ in
-                        List {
-                            HStack {
-                                Image(systemName: "trash.fill")
-                                    .foregroundColor(Color.customBG2)
-                                    .font(.system(size: 60))
-                            }
-                            .listRowBackground(Color.customBG2)
-                        }
-                        .modifier(ListModifier())
+                ZStack {
+                    VStack {
+                        titleText
+                            .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
+                            .font(.customTitle)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 40)
+                            .padding(.bottom, 108)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
+                            .opacity(swipeVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: swipeVM.isSuccess)
                     }
-                } else {
-                    List {
-                        HStack {
-                            Image(systemName: "trash.fill")
-                                .foregroundColor(Color.customBG2)
-                                .font(.system(size: 60))
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("phNumber")
-                                    
-                                    Text("message.time")
-                                    
-                                    Image(systemName: "chevron.right")
+                    
+                    VStack {
+                        if swipeVM.isNavigate {
+                            ForEach(0..<2, id: \.self) { _ in
+                                List {
+                                    HStack {
+                                        Image(systemName: "trash.fill")
+                                            .foregroundColor(Color.customBG2)
+                                            .font(.system(size: 60))
+                                    }
+                                    .listRowBackground(Color.customBG2)
                                 }
-                                Text("message.text")
+                                .modifier(ListModifier())
                             }
-                            .foregroundColor(Color.customBG2)
-                            
-                        }
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                    if value.translation.width < 0 {
-                                        swipeVM.isFail = false
-                                    } else {
-                                        if !swipeVM.isSuccess {
-                                            withAnimation {
-                                                swipeVM.isFail = true
+                        } else {
+                            List {
+                                HStack {
+                                    Image(systemName: "trash.fill")
+                                        .foregroundColor(Color.customBG2)
+                                        .font(.system(size: 60))
+                                    
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text("phNumber")
+                                            
+                                            Text("message.time")
+                                            
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        Text("message.text")
+                                    }
+                                    .foregroundColor(Color.customBG2)
+                                    
+                                }
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            if value.translation.width < 0 {
+                                                swipeVM.isFail = false
+                                            } else {
+                                                if !swipeVM.isSuccess {
+                                                    withAnimation {
+                                                        swipeVM.isFail = true
+                                                    }
+                                                }
                                             }
                                         }
+                                )
+                                .swipeActions(allowsFullSwipe: false) {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "trash.fill")
+                                    }
+                                    .tint(.red)
+                                    .onAppear {
+                                        swipeVM.isFail = false
+                                        textIndex = 1
                                     }
                                 }
-                        )
-                        .swipeActions(allowsFullSwipe: false) {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "trash.fill")
-                            }
-                            .tint(.red)
-                            .onAppear {
-                                swipeVM.isFail = false
-                                textIndex = 1
-                            }
-                        }
-                        .overlay(alignment: .trailing) {
-                            if textIndex == 0 {
-                                Arrows()
-                                    .offset(x: 40, y: -2)
-                                    .allowsHitTesting(true)
-                            }
-                        }
-                        .listRowBackground(Color.customBG2)
-                    }
-                    .modifier(ListModifier())
-                    
-                    List {
-                        HStack {
-                            Image(systemName: "trash.fill")
-                                .foregroundColor(Color.customBG2)
-                                .font(.system(size: 60))
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("phNumber")
-                                    
-                                    Text("message.time")
-                                    
-                                    Image(systemName: "chevron.right")
+                                .overlay(alignment: .trailing) {
+                                    if textIndex == 0 {
+                                        Arrows()
+                                            .offset(x: 40, y: -2)
+                                            .allowsHitTesting(true)
+                                    }
                                 }
-                                Text("message.text")
+                                .listRowBackground(Color.customBG2)
                             }
-                            .foregroundColor(Color.customBG2)
+                            .modifier(ListModifier())
                             
-                        }
-                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "envelope.badge.fill")
+                            List {
+                                HStack {
+                                    Image(systemName: "trash.fill")
+                                        .foregroundColor(Color.customBG2)
+                                        .font(.system(size: 60))
+                                    
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text("phNumber")
+                                            
+                                            Text("message.time")
+                                            
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        Text("message.text")
+                                    }
+                                    .foregroundColor(Color.customBG2)
+                                    
+                                }
+                                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "envelope.badge.fill")
+                                    }
+                                    .tint(Color.blue)
+                                    .onAppear {
+                                        swipeVM.isFail = false
+                                        textIndex = 2
+                                        swipeVM.isSuccess = true
+                                    }
+                                    
+                                }
+                                .overlay(alignment: .leading) {
+                                    if textIndex == 1 {
+                                        Arrows()
+                                            .rotationEffect(.degrees(180))
+                                            .offset(x: -10, y: -2)
+                                            .allowsHitTesting(true)
+                                    }
+                                }
+                                .listRowBackground(Color.customBG2)
                             }
-                            .tint(Color.blue)
-                            .onAppear {
-                                swipeVM.isFail = false
-                                textIndex = 2
-                                swipeVM.isSuccess = true
-                            }
-                            
+                            .modifier(ListModifier())
                         }
-                        .overlay(alignment: .leading) {
-                            if textIndex == 1 {
-                                Arrows()
-                                    .rotationEffect(.degrees(180))
-                                    .offset(x: -10, y: -2)
-                                    .allowsHitTesting(true)
-                            }
-                        }
-                        .listRowBackground(Color.customBG2)
                     }
-                    .modifier(ListModifier())
                 }
-                
-                Spacer()
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
-                .opacity(swipeVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: swipeVM.isSuccess)
             }
-            
         }
         .onAppear {
             textIndex = 0
@@ -202,5 +207,6 @@ struct ListModifier: ViewModifier {
 #Preview {
     NavigationStack {
         SwipeListView()
+            .environment(\.locale, .init(identifier: "ko"))
     }
 }

@@ -34,7 +34,11 @@ struct LongTapAlbumPhotoView: View {
                         .multilineTextAlignment(.center)
                         .lineSpacing(10)
                         .font(.customTitle)
+                        .minimumScaleFactor(0.5)
+                        .frame(width: UIScreen.main.bounds.width)
                         .padding(.top, 40)
+                        .padding(.horizontal)
+                    
                     LazyVGrid(columns: columns) {
                         ForEach((1...15), id: \.self) { index in
                             if longTapVM.isSuccess {
@@ -139,4 +143,5 @@ struct LongTapAlbumPhotoView: View {
 
 #Preview {
     LongTapAlbumPhotoView()
+        .environment(\.locale, .init(identifier: "ja"))
 }

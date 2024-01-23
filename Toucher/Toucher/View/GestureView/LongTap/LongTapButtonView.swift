@@ -20,25 +20,31 @@ struct LongTapButtonView: View {
             VStack {
                 CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
                 
-                Text(longTapVM.isSuccess ? "성공!\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
-                    .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                
-                LongPressButton(isSuccess: $longTapVM.isSuccess, isFail: $longTapVM.isFail)
-                    .padding(.bottom)
-                    .frame(maxHeight: .infinity)
-                    .overlay {
-                        if longTapVM.isSuccess {
-                            ConfettiView()
-                        }
+                ZStack {
+                    VStack {
+                        Text(longTapVM.isSuccess ? "성공!\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "1초동안 길게\n눌러볼까요?")
+                            .foregroundColor(longTapVM.isFail && !longTapVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.customTitle)
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
+                            .opacity(longTapVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: longTapVM.isSuccess)
                     }
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
-                .opacity(longTapVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: longTapVM.isSuccess)
+                    
+                    LongPressButton(isSuccess: $longTapVM.isSuccess, isFail: $longTapVM.isFail)
+                        .padding(.bottom)
+                        .overlay {
+                            if longTapVM.isSuccess {
+                                ConfettiView()
+                            }
+                        }
+                }
             }
             .modifier(
                 MoveToNextModifier(
@@ -60,4 +66,5 @@ struct LongTapButtonView: View {
 
 #Preview {
     LongTapButtonView()
+        .environment(\.locale, .init(identifier: "ko"))
 }

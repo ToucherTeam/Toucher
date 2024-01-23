@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("finish") private var finish = true
+    @AppStorage("finish") private var finish = false
     @AppStorage("first") private var isFirst = true
     
     @State private var isSplashActive = true
-    @State private var isSuccess = false
     
     var body: some View {
         Group {

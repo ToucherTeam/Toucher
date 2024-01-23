@@ -24,50 +24,56 @@ struct RotateIconView: View {
             }
             VStack {
                 CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
-
-                Text(rotateVM.isSuccess ? "성공!\n" : rotateVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
-                    .foregroundColor(rotateVM.isFail && !rotateVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                Image("ToucherCharacter")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 168)
-                    .matchedGeometryEffect(id: "ch", in: namespace)
-                    .frame(width: 400, height: 400)
-                    .contentShape(Rectangle())
-                    .frame(maxHeight: .infinity)
-                    .rotationEffect(
-                        rotateVM.isSuccess ?
-                        .degrees(accumulateAngle.degrees > 45 ? 0 : -360) :
-                        .degrees(-180) + accumulateAngle + currentAmount
-                    )
-                    .gesture(gesture)
-                    .onTapGesture {
-                        withAnimation {
-                            rotateVM.isFail = true
-                        }
+                ZStack {
+                    VStack {
+                        Text(rotateVM.isSuccess ? "성공!\n" : rotateVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
+                            .foregroundColor(rotateVM.isFail && !rotateVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.customTitle)
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: rotateVM.isFail ? .primary : .secondary)
+                            .opacity(rotateVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: rotateVM.isSuccess)
                     }
-                    .overlay {
-                        if rotateVM.isSuccess {
-                            ConfettiView()
+                    
+                    Image("ToucherCharacter")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 168)
+                        .matchedGeometryEffect(id: "ch", in: namespace)
+                        .frame(width: 400, height: 400)
+                        .contentShape(Rectangle())
+                        .rotationEffect(
+                            rotateVM.isSuccess ?
+                                .degrees(accumulateAngle.degrees > 45 ? 0 : -360) :
+                                    .degrees(-180) + accumulateAngle + currentAmount
+                        )
+                        .gesture(gesture)
+                        .onTapGesture {
+                            withAnimation {
+                                rotateVM.isFail = true
+                            }
                         }
-                    }
-                    .overlay {
-                        if !rotateVM.isTapped || rotateVM.isFail && !rotateVM.isSuccess && !rotateVM.isTapped {
-                            Image("rotation_guide")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 330, height: 330)
-                                .allowsHitTesting(false)
+                        .overlay {
+                            if rotateVM.isSuccess {
+                                ConfettiView()
+                            }
                         }
-                    }
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: rotateVM.isFail ? .primary : .secondary)
-                .opacity(rotateVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: rotateVM.isSuccess)
+                        .overlay {
+                            if !rotateVM.isTapped || rotateVM.isFail && !rotateVM.isSuccess && !rotateVM.isTapped {
+                                Image("rotation_guide")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 330, height: 330)
+                                    .allowsHitTesting(false)
+                            }
+                        }
+                }
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
@@ -107,8 +113,7 @@ struct RotateIconView: View {
     }
 }
 
-struct RotateExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-        RotateIconView()
-    }
+#Preview {
+    RotateIconView()
+        .environment(\.locale, .init(identifier: "ko"))
 }

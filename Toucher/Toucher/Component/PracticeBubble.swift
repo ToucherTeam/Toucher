@@ -13,25 +13,19 @@ struct PracticeBubble: View {
     var gesture: GestureType
     var action: () -> Void
     
-    var practiceNum: String {
+    private var practiceNum: Int {
         switch gesture {
-        case .doubleTap:
-            "학습 1"
-        case .longPress:
-            "학습 2"
-        case .swipe:
-            "학습 3"
-        case .drag:
-            "학습 4"
-        case .pan:
-            "학습 5"
-        case .pinch:
-            "학습 6"
-        case .rotate:
-            "학습 7"
+        case .doubleTap: 1
+        case .longPress: 2
+        case .swipe: 3
+        case .drag: 4
+        case .pan: 5
+        case .pinch: 6
+        case .rotate: 7
         }
     }
-    var title: String {
+    
+    private var title: LocalizedStringKey {
         switch gesture {
         case .doubleTap:
             "두번 누르기"
@@ -60,7 +54,7 @@ struct PracticeBubble: View {
                 .zIndex(1)
             VStack(alignment: .leading) {
                 HStack {
-                    Text(practiceNum)
+                    Text("학습 \(practiceNum)")
                         .font(.system(size: 18))
                         .fontWeight(.semibold)
                     Text(title)
@@ -92,12 +86,14 @@ struct PracticeBubble: View {
             }
             .padding(.horizontal)
         }
-        .offset(y: bubbleAnimation ? -3 : 3)
         .onAppear {
-            withAnimation(.easeInOut(duration: 2).repeatForever()) {
-                bubbleAnimation = true
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.2) {
+                withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                    bubbleAnimation.toggle()
+                }
             }
         }
+        .offset(y: bubbleAnimation ? -3 : 3)
     }
 }
 

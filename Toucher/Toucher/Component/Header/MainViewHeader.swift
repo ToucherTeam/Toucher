@@ -10,25 +10,18 @@ import SwiftUI
 struct MainViewHeader: View {
     var gesture: GestureType
     
-    var practiceNum: String {
+    var practiceNum: Int {
         switch gesture {
-        case .doubleTap:
-            "학습 1"
-        case .longPress:
-            "학습 2"
-        case .swipe:
-            "학습 3"
-        case .drag:
-            "학습 4"
-        case .pan:
-            "학습 5"
-        case .pinch:
-            "학습 6"
-        case .rotate:
-            "학습 7"
+        case .doubleTap: 1
+        case .longPress: 2
+        case .swipe: 3
+        case .drag: 4
+        case .pan: 5
+        case .pinch: 6
+        case .rotate: 7
         }
     }
-    var title: String {
+    var title: LocalizedStringKey {
         switch gesture {
         case .doubleTap:
             "두번 누르기"
@@ -53,7 +46,7 @@ struct MainViewHeader: View {
                 .resizable()
                 .frame(width: 60, height: 60)
             HStack(spacing: 8) {
-                Text(practiceNum)
+                Text("학습 \(practiceNum)")
                     .font(.system(size: 18))
                     .fontWeight(.semibold)
                 Text(title)
@@ -62,7 +55,7 @@ struct MainViewHeader: View {
             }
             .foregroundColor(.customPrimary)
         }
-        .padding(.leading, 40)
+        .padding(.leading, 20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background {
@@ -75,9 +68,17 @@ struct MainViewHeader: View {
 }
 
 #Preview {
-    ZStack {
+    let gesture: GestureType = .doubleTap
+    
+    return ZStack {
         Color.customBG1.ignoresSafeArea()
-        
-        MainViewHeader(gesture: .longPress)
+        VStack {
+            MainViewHeader(gesture: gesture)
+                .environment(\.locale, .init(identifier: "ko"))
+            MainViewHeader(gesture: gesture)
+                .environment(\.locale, .init(identifier: "en"))
+            MainViewHeader(gesture: gesture)
+                .environment(\.locale, .init(identifier: "ja"))
+        }
     }
 }

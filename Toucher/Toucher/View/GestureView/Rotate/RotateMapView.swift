@@ -24,7 +24,7 @@ struct RotateMapView: View {
         VStack(spacing: 0) {
             CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
                 .zIndex(1)
-
+            
             ZStack {
                 RotateMap(heading: $heading)
                     .ignoresSafeArea()
@@ -53,6 +53,7 @@ struct RotateMapView: View {
                     .lineSpacing(10)
                     .font(.customTitle)
                     .padding(.vertical, 40)
+                    .padding(.horizontal)
                     .frame(maxWidth: .infinity)
                     .background {
                         Rectangle()
@@ -68,8 +69,7 @@ struct RotateMapView: View {
     }
 }
 
-struct RotationPracticeView_Previews: PreviewProvider {
-    static var previews: some View {
-        RotateMapView()
-    }
+#Preview {
+    RotateMapView()
+        .environment(\.locale, .init(identifier: "ja"))
 }

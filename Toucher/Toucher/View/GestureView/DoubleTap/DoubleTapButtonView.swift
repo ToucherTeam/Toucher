@@ -20,24 +20,30 @@ struct DoubleTapButtonView: View {
             VStack {
                 CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
                 
-                Text(doubleTapVM.isSuccess ? "성공!\n" : doubleTapVM.isFail ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
-                    .foregroundColor(doubleTapVM.isFail && !doubleTapVM.isSuccess ? .white : .primary)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(10)
-                    .font(.customTitle)
-                    .padding(.top, 40)
-                DoubleTapButton(isSuccess: $doubleTapVM.isSuccess, isFail: $doubleTapVM.isFail)
-                    .padding(.bottom)
-                    .frame(maxHeight: .infinity)
-                    .overlay {
-                        if doubleTapVM.isSuccess {
-                            ConfettiView()
-                        }
+                ZStack {
+                    VStack {
+                        Text(doubleTapVM.isSuccess ? "성공!\n" : doubleTapVM.isFail ? "조금만 더 빠르게\n두 번 눌러주세요!" : "빠르게 두 번\n눌러볼까요?")
+                            .foregroundColor(doubleTapVM.isFail && !doubleTapVM.isSuccess ? .white : .primary)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                            .font(.customTitle)
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary)
+                            .opacity(doubleTapVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: doubleTapVM.isSuccess)
                     }
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary) 
-                .opacity(doubleTapVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: doubleTapVM.isSuccess)
+                    DoubleTapButton(isSuccess: $doubleTapVM.isSuccess, isFail: $doubleTapVM.isFail)
+                        .padding(.bottom)
+                        .overlay {
+                            if doubleTapVM.isSuccess {
+                                ConfettiView()
+                            }
+                        }
+                }
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
@@ -51,8 +57,7 @@ struct DoubleTapButtonView: View {
     }
 }
 
-struct DoubleTapExampleView_Previews: PreviewProvider {
-    static var previews: some View {
-            DoubleTapButtonView()
-    }
+#Preview {
+    DoubleTapButtonView()
+        .environment(\.locale, .init(identifier: "ko"))
 }

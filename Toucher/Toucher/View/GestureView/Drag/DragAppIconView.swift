@@ -29,70 +29,75 @@ struct DragAppIconView: View {
             VStack {
                 CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
                 
-                Rectangle().frame(height: 0)
-                Text(dragVM.isSuccess ? "성공!\n\n" : isDroped ? "위치를 오른쪽 가장\n아래로 움직여 주세요\n" :
-                        isTried || dragVM.isFail ? "카메라 아이콘을\n꾹 누른 상태로\n움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
-                .multilineTextAlignment(.center)
-                .font(.customTitle)
-                .foregroundColor(dragVM.isFail && !dragVM.isSuccess || isDroped && !dragVM.isSuccess ? .white : .primary)
-                .padding(.top, 40)
-                .padding(.bottom, 40)
-                LazyVGrid(columns: columns) {
-                    ReorderableForEach($data,
-                                       allowReordering: $allowReordering,
-                                       isReached: $dragVM.isSuccess,
-                                       isDroped: $isDroped,
-                                       isTried: $isTried) { item, _ in
-                        Image(item)
-                            .resizable()
-                            .scaledToFit()
+                ZStack {
+                    VStack {
+                        Text(dragVM.isSuccess ? "성공!\n\n" : isDroped ? "위치를 오른쪽 가장\n아래로 움직여 주세요\n" :
+                                isTried || dragVM.isFail ? "카메라 아이콘을\n꾹 누른 상태로\n움직여주세요" : "카메라를 3초 누른 뒤\n오른쪽 아래에\n옮겨볼까요?")
+                        .multilineTextAlignment(.center)
+                        .font(.customTitle)
+                        .foregroundColor(dragVM.isFail && !dragVM.isSuccess || isDroped && !dragVM.isSuccess ? .white : .primary)
+                        .padding(.top, 40)
+                        .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
+                            .opacity(dragVM.isSuccess ? 0 : 1)
+                            .animation(.easeInOut, value: dragVM.isSuccess)
                     }
-                }
-                .background {
+                    
                     LazyVGrid(columns: columns) {
-                        ForEach(0..<8) { index in
-                            if index != 7 {
-                                Rectangle()
-                                    .scaledToFit()
-                                    .foregroundColor(.clear)
-                            } else {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                        .frame(width: 80, height: 80)
-                                        .foregroundColor(dragVM.isSuccess ? .clear : .customBG2)
-                                        .scaleEffect(isAnimate ? 1.6 : 1.4)
-                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                        .frame(width: 80, height: 80)
-                                        .foregroundColor(dragVM.isSuccess ? .clear : .customSecondary)
-                                        .scaleEffect(isAnimate ? 1.4 : 1)
-                                }
-                                .animation(.easeInOut, value: dragVM.isSuccess)
-                                .onAppear {
-                                    withAnimation(.easeInOut(duration: 1).repeatForever()) {
-                                        isAnimate = true
+                        ReorderableForEach($data,
+                                           allowReordering: $allowReordering,
+                                           isReached: $dragVM.isSuccess,
+                                           isDroped: $isDroped,
+                                           isTried: $isTried) { item, _ in
+                            Image(item)
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    .background {
+                        LazyVGrid(columns: columns) {
+                            ForEach(0..<8) { index in
+                                if index != 7 {
+                                    Rectangle()
+                                        .scaledToFit()
+                                        .foregroundColor(.clear)
+                                } else {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                            .frame(width: 80, height: 80)
+                                            .foregroundColor(dragVM.isSuccess ? .clear : .customBG2)
+                                            .scaleEffect(isAnimate ? 1.6 : 1.4)
+                                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                            .frame(width: 80, height: 80)
+                                            .foregroundColor(dragVM.isSuccess ? .clear : .customSecondary)
+                                            .scaleEffect(isAnimate ? 1.4 : 1)
                                     }
+                                    .animation(.easeInOut, value: dragVM.isSuccess)
+                                    .onAppear {
+                                        withAnimation(.easeInOut(duration: 1).repeatForever()) {
+                                            isAnimate = true
+                                        }
+                                    }
+                                    .opacity(isTried ? 1 : 0)
                                 }
-                                .opacity(isTried ? 1 : 0)
                             }
                         }
                     }
-                }
-                .padding()
-                .onTapGesture {
-                    withAnimation {
-                        dragVM.isFail = true
+                    .padding()
+                    .onTapGesture {
+                        withAnimation {
+                            dragVM.isFail = true
+                        }
+                    }
+                    .overlay {
+                        if dragVM.isSuccess {
+                            ConfettiView()
+                        }
                     }
                 }
-                .overlay {
-                    if dragVM.isSuccess {
-                        ConfettiView()
-                    }
-                }
-                .frame(maxHeight: .infinity, alignment: .top)
-                
-                HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
-                .opacity(dragVM.isSuccess ? 0 : 1)
-                .animation(.easeInOut, value: dragVM.isSuccess)
             }
         }
         .onAppear {
@@ -205,8 +210,7 @@ public struct ReorderableForEach<Data, Content>: View where Data: Hashable, Cont
     }
 }
 
-struct DragPracticeView2_Previews: PreviewProvider {
-    static var previews: some View {
-        DragAppIconView()
-    }
+#Preview {
+    DragAppIconView()
+        .environment(\.locale, .init(identifier: "ko"))
 }
