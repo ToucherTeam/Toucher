@@ -65,9 +65,9 @@ struct PinchIconZoomInView: View {
                             }
                     }
                 }
-                if pinchVM.isNavigate {
-                    PinchIconZoomOutView()
-                }
+            }
+            if pinchVM.isNavigate {
+                PinchIconZoomOutView()
             }
         }
     }
