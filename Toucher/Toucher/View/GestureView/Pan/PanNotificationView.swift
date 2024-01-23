@@ -13,10 +13,10 @@ struct PanNotificationView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var scrollViewSize: CGSize = .zero
     @State private var scrollOffset: CGFloat = 0
-    @State private var selectedGuideVideo: URLManager = .panNotificationView
     
     @Namespace var top
     
+    private let selectedGuideVideo: URLManager = .panNotificationView
     private let isSE = DeviceManager.shared.iPhoneSE()
     private let spaceName = "scroll"
     private let scrollSize: CGFloat = 290
@@ -133,7 +133,7 @@ struct PanNotificationView: View {
                 
                 Spacer()
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
                 .opacity(panVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: panVM.isSuccess)
             }

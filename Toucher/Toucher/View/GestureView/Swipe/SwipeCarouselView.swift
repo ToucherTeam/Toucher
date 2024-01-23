@@ -12,7 +12,6 @@ struct SwipeCarouselView: View {
     
     @State private var currentIndexArray: [Int] = []
     @State private var currentIndex = 0
-    @State private var selectedGuideVideo: URLManager = .swipeCarouselView
     
     @GestureState private var dragOffset: CGFloat = 0
     @Namespace var animation
@@ -24,6 +23,7 @@ struct SwipeCarouselView: View {
         .init(color: Color.customBG2),
         .init(color: Color.customPrimary)
     ]
+    private let selectedGuideVideo: URLManager = .swipeCarouselView
     
     var body: some View {
         ZStack {
@@ -42,7 +42,7 @@ struct SwipeCarouselView: View {
                 
                 Spacer()
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
                 .opacity(swipeVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: swipeVM.isSuccess)
             }

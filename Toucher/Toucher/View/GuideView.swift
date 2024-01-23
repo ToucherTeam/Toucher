@@ -13,7 +13,7 @@ struct GuideView: View {
     @State private var videoDuration = 0.0
     @State private var totalDuration = 0.0
     
-    @Binding var selectedGuideVideo: URLManager
+    var selectedGuideVideo: URLManager
     @Binding var isFullScreenPresented: Bool
     
     let playerDidFinishNotification = NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime)

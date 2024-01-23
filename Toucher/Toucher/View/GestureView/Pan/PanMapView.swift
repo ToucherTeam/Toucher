@@ -11,7 +11,7 @@ import CoreLocation
 struct PanMapView: View {
     @StateObject private var panVM = PanViewModel()
     
-    @State private var selectedGuideVideo: URLManager = .panMapView
+    private let selectedGuideVideo: URLManager = .panMapView
     
     var body: some View {
         VStack(spacing: 0) {
@@ -58,7 +58,7 @@ struct PanMapView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
                 VStack {
                     Spacer()
-                    HelpButton(selectedGuideVideo: $selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
+                    HelpButton(selectedGuideVideo: selectedGuideVideo, style: panVM.isFail ? .primary : .secondary)
                     .opacity(panVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: panVM.isSuccess)
                 }

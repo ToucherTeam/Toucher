@@ -13,12 +13,12 @@ struct LongTapAlbumPhotoView: View {
     @State private var selectIndex: Int?
     @State private var selectedIndex: Int?
     @State private var scale = 1.0
-    @State private var selectedGuideVideo: URLManager = .longTapAlbumPhotoView
     
     @GestureState private var isPressed = false
     @Namespace private var name
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
+    private let selectedGuideVideo: URLManager = .longTapAlbumPhotoView
     
     var body: some View {
         ZStack {
@@ -124,7 +124,7 @@ struct LongTapAlbumPhotoView: View {
                 .scrollDisabled(true)
                 
                 .overlay(alignment: .bottom) {
-                    HelpButton(selectedGuideVideo: $selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
+                    HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
                     .opacity(longTapVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: longTapVM.isSuccess)
                 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct DoubleTapButtonView: View {
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
-    @State private var selectedGuideVideo: URLManager = .doubleTapButtonView
+    private let selectedGuideVideo: URLManager = .doubleTapButtonView
     
     var body: some View {
         ZStack {
@@ -35,7 +35,7 @@ struct DoubleTapButtonView: View {
                         }
                     }
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary) 
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary) 
                 .opacity(doubleTapVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: doubleTapVM.isSuccess)
             }

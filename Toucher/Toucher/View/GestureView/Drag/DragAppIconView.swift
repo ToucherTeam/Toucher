@@ -17,9 +17,9 @@ struct DragAppIconView: View {
     @State private var isDroped = false
     @State private var isTried = false
     @State private var isAnimate = false
-    @State private var selectedGuideVideo: URLManager = .dragAppIconView
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 4)
+    private let selectedGuideVideo: URLManager = .dragAppIconView
     
     var body: some View {
         ZStack {
@@ -90,7 +90,7 @@ struct DragAppIconView: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
                 .opacity(dragVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: dragVM.isSuccess)
             }

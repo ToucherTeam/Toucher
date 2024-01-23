@@ -10,9 +10,9 @@ import SwiftUI
 struct LongTapCameraButtonView: View {
     @StateObject private var longTapVM = LongTapViewModel()
     
-    @State private var selectedGuideVideo: URLManager = .longTapCameraButtonView
-    
     @GestureState private var isPressed = false
+    
+    private let selectedGuideVideo: URLManager = .longTapCameraButtonView
     
     var body: some View {
         ZStack {
@@ -38,7 +38,7 @@ struct LongTapCameraButtonView: View {
                         }
                     }
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
                     .opacity(longTapVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: longTapVM.isSuccess)
             }

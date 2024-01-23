@@ -16,7 +16,7 @@ struct HelpButton: View {
     @State private var animate = false
     @State private var isFullScreenPresented = false
     
-    @Binding var selectedGuideVideo: URLManager
+    var selectedGuideVideo: URLManager
     
     var style: HelpButtonStyle
     
@@ -67,7 +67,7 @@ struct HelpButton: View {
                 }
         }
         .fullScreenCover(isPresented: $isFullScreenPresented, content: {
-            GuideView(selectedGuideVideo: $selectedGuideVideo, isFullScreenPresented: $isFullScreenPresented)
+            GuideView(selectedGuideVideo: selectedGuideVideo, isFullScreenPresented: $isFullScreenPresented)
         })
     }
 }

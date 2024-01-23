@@ -12,7 +12,8 @@ struct PinchImageView: View {
     @StateObject private var pinchVM = PinchViewModel()
 
     @State private var scale: CGFloat = 1.0
-    @State private var selectedGuideVideo: URLManager = .pinchImageView
+    
+    private let selectedGuideVideo: URLManager = .pinchImageView
     
     var body: some View {
         VStack(spacing: 0) {
@@ -51,7 +52,7 @@ struct PinchImageView: View {
                     .padding(.top, 40)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: pinchVM.isFail ? .primary : .secondary)
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: pinchVM.isFail ? .primary : .secondary)
                 .opacity(pinchVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: pinchVM.isSuccess)
                 .frame(maxHeight: .infinity, alignment: .bottom)

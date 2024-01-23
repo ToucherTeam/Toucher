@@ -10,7 +10,7 @@ import SwiftUI
 struct LongTapButtonView: View {
     @StateObject private var longTapVM = LongTapViewModel()
     
-    @State private var selectedGuideVideo: URLManager = .longTapButtonView
+    private let selectedGuideVideo: URLManager = .longTapButtonView
     
     var body: some View {
         ZStack {
@@ -36,7 +36,7 @@ struct LongTapButtonView: View {
                         }
                     }
                 
-                HelpButton(selectedGuideVideo: $selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
                 .opacity(longTapVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: longTapVM.isSuccess)
             }
