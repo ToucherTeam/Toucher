@@ -18,6 +18,7 @@ struct LongTapAlbumPhotoView: View {
     @Namespace private var name
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
+    private let selectedGuideVideo: URLManager = .longTapAlbumPhotoView
     
     var body: some View {
         ZStack {
@@ -123,7 +124,7 @@ struct LongTapAlbumPhotoView: View {
                 .scrollDisabled(true)
                 
                 .overlay(alignment: .bottom) {
-                    HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView2")
+                    HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
                     .opacity(longTapVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: longTapVM.isSuccess)
                 }

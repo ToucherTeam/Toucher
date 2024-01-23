@@ -10,6 +10,8 @@ import SwiftUI
 struct SwipeMessageView: View {
     @StateObject var swipeVM = SwipeViewModel()
     
+    private let selectedGuideVideo: URLManager = .swipeMessageView
+    
     var body: some View {
         ZStack {
             if swipeVM.isFail && !swipeVM.isSuccess {
@@ -92,7 +94,7 @@ struct SwipeMessageView: View {
                 
                 Spacer()
                 
-                HelpButton(style: swipeVM.isFail ? .primary : .secondary, currentViewName: "SwipePracticeView2")
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
                     .opacity(swipeVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: swipeVM.isSuccess)
             }

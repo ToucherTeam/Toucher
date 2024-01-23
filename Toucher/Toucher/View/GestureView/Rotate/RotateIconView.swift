@@ -13,6 +13,8 @@ struct RotateIconView: View {
     @State private var currentAmount: Angle = .degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
     
+    private let selectedGuideVideo: URLManager = .rotateIconView
+    
     @Namespace var namespace
     
     var body: some View {
@@ -63,7 +65,7 @@ struct RotateIconView: View {
                         }
                     }
                 
-                HelpButton(style: rotateVM.isFail ? .primary : .secondary, currentViewName: "RotateExampleView")
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: rotateVM.isFail ? .primary : .secondary)
                 .opacity(rotateVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: rotateVM.isSuccess)
             }

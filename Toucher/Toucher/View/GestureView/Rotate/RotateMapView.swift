@@ -14,10 +14,11 @@ struct RotateMapView: View {
     
     @State private var currentAmount = Angle.degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
-    
     @State private var heading: CLLocationDirection = 0
     
     @Namespace var namespace
+    
+    private let selectedGuideVideo: URLManager = .rotateMapView
     
     var body: some View {
         VStack(spacing: 0) {
