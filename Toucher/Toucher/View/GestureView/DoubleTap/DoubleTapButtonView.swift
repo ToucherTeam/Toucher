@@ -10,6 +10,8 @@ import SwiftUI
 struct DoubleTapButtonView: View {
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
+    private let selectedGuideVideo: URLManager = .doubleTapButtonView
+    
     var body: some View {
         ZStack {
             if doubleTapVM.isFail && !doubleTapVM.isSuccess {
@@ -30,11 +32,10 @@ struct DoubleTapButtonView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: doubleTapVM.isFail ? .primary : .secondary, currentViewName: "DoubleTapExampleView")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary)
                             .opacity(doubleTapVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: doubleTapVM.isSuccess)
                     }
-                    
                     DoubleTapButton(isSuccess: $doubleTapVM.isSuccess, isFail: $doubleTapVM.isFail)
                         .padding(.bottom)
                         .overlay {

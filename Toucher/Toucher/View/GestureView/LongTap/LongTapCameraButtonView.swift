@@ -12,6 +12,8 @@ struct LongTapCameraButtonView: View {
     
     @GestureState private var isPressed = false
     
+    private let selectedGuideVideo: URLManager = .longTapCameraButtonView
+    
     var body: some View {
         ZStack {
             if longTapVM.isFail && !longTapVM.isSuccess {
@@ -32,11 +34,10 @@ struct LongTapCameraButtonView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: longTapVM.isFail ? .primary : .secondary, currentViewName: "LongTapPracticeView1")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: longTapVM.isFail ? .primary : .secondary)
                             .opacity(longTapVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: longTapVM.isSuccess)
                     }
-                    
                     cameraButton
                         .padding(.bottom)
                         .overlay {

@@ -11,8 +11,10 @@ struct DoubleTapImageView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
-    let UIWidth = UIScreen.main.bounds.width
-    let UIHeight = UIScreen.main.bounds.height
+    
+    private let UIWidth = UIScreen.main.bounds.width
+    private let UIHeight = UIScreen.main.bounds.height
+    private let selectedGuideVideo: URLManager = .doubleTapImageView
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,7 +46,7 @@ struct DoubleTapImageView: View {
                     
                     Spacer()
                     
-                    HelpButton(style: doubleTapVM.isFail ? .primary : .secondary, currentViewName: "DoubleTapPracticeView2")
+                    HelpButton(selectedGuideVideo: selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary)
                         .opacity(doubleTapVM.isSuccess ? 0 : 1)
                         .animation(.easeInOut, value: doubleTapVM.isSuccess)
                 }

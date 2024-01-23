@@ -10,6 +10,8 @@ import SwiftUI
 struct DoubleTapSearchBarView: View {
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
+    private let selectedGuideVideo: URLManager = .doubleTapSearchBarView
+    
     var body: some View {
         
         ZStack {
@@ -31,7 +33,7 @@ struct DoubleTapSearchBarView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: doubleTapVM.isFail ? .primary : .secondary, currentViewName: "DoubleTapPracticeView1")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: doubleTapVM.isFail ? .primary : .secondary)
                             .opacity(doubleTapVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: doubleTapVM.isSuccess)
                     }
@@ -44,6 +46,7 @@ struct DoubleTapSearchBarView: View {
                             }
                         }
                 }
+                
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))

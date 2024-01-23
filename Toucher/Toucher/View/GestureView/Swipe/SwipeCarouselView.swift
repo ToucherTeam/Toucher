@@ -23,6 +23,7 @@ struct SwipeCarouselView: View {
         .init(color: Color.customBG2),
         .init(color: Color.customPrimary)
     ]
+    private let selectedGuideVideo: URLManager = .swipeCarouselView
     
     var body: some View {
         ZStack {
@@ -42,7 +43,7 @@ struct SwipeCarouselView: View {
                 
                 Spacer()
                 
-                HelpButton(style: swipeVM.isFail  ? .primary : .secondary, currentViewName: "SwipeExampleView")
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
                 .opacity(swipeVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: swipeVM.isSuccess)
             }

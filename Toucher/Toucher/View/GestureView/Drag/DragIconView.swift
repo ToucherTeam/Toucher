@@ -16,6 +16,8 @@ struct DragIconView: View {
     
     @Namespace var circle
     
+    private let selectedGuideVideo: URLManager = .dragIconView
+    
     var body: some View {
         ZStack {
             if dragVM.isFail && !dragVM.isSuccess {
@@ -36,7 +38,7 @@ struct DragIconView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: dragVM.isFail ? .primary : .secondary, currentViewName: "DragExampleView")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
                             .opacity(dragVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: dragVM.isSuccess)
                     }

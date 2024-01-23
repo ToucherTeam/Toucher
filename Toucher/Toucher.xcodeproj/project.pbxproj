@@ -73,30 +73,12 @@
 		29EF99992AA8A2D400637F7A /* PanMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EF99982AA8A2D400637F7A /* PanMapView.swift */; };
 		29F1D51D2AA83AE70074C1FE /* PinchIconZoomInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51C2AA83AE70074C1FE /* PinchIconZoomInView.swift */; };
 		29F1D51F2AA84E240074C1FE /* PinchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchImageView.swift */; };
-		3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239F21E2B32B97F001CDE0D /* GuideView.swift */; };
-		3262BB032B458DA300CDEE87 /* LongTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */; };
-		3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */; };
-		3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */; };
-		3262BB0A2B458DF400CDEE87 /* SwipeExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB072B458DF400CDEE87 /* SwipeExampleView.gif */; };
-		3262BB0B2B458DF400CDEE87 /* SwipePracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB082B458DF400CDEE87 /* SwipePracticeView1.gif */; };
-		3262BB0C2B458DF400CDEE87 /* SwipePracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB092B458DF400CDEE87 /* SwipePracticeView2.gif */; };
-		3262BB0F2B458E0A00CDEE87 /* PanExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB0D2B458E0A00CDEE87 /* PanExampleView.gif */; };
-		3262BB102B458E0A00CDEE87 /* PanPracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB0E2B458E0A00CDEE87 /* PanPracticeView.gif */; };
-		3262BB142B458EC000CDEE87 /* PinchExampleView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB112B458EC000CDEE87 /* PinchExampleView1.gif */; };
-		3262BB152B458EC000CDEE87 /* PinchPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB122B458EC000CDEE87 /* PinchPracticeView1.gif */; };
-		3262BB162B458EC000CDEE87 /* PinchExampleView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB132B458EC000CDEE87 /* PinchExampleView2.gif */; };
-		3262BB192B458EDD00CDEE87 /* RotateExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB172B458EDD00CDEE87 /* RotateExampleView.gif */; };
-		3262BB1A2B458EDD00CDEE87 /* RotatePracticeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB182B458EDD00CDEE87 /* RotatePracticeView.gif */; };
-		3262BB1E2B45917C00CDEE87 /* DragExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB1B2B45917C00CDEE87 /* DragExampleView.gif */; };
-		3262BB1F2B45917C00CDEE87 /* DragPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB1C2B45917C00CDEE87 /* DragPracticeView1.gif */; };
-		3262BB202B45917C00CDEE87 /* DragPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3262BB1D2B45917C00CDEE87 /* DragPracticeView2.gif */; };
+		321F51642B5C2B1F0066CB17 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F51632B5C2B1F0066CB17 /* GuideView.swift */; };
+		321F51662B5E54480066CB17 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F51652B5E54480066CB17 /* URLManager.swift */; };
 		3266082E2B31E5EB006A58B8 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082D2B31E5EB006A58B8 /* LaunchScreenView.swift */; };
 		326608302B31E78E006A58B8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082F2B31E78E006A58B8 /* OnboardingView.swift */; };
 		326608322B31EC01006A58B8 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326608312B31EC01006A58B8 /* TapButton.swift */; };
 		3288A8322B483DAC00A95A26 /* PanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288A8312B483DAC00A95A26 /* PanViewModel.swift */; };
-		329AEA572B4667D500F044FA /* DoubleTapExampleView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA542B4667D500F044FA /* DoubleTapExampleView.gif */; };
-		329AEA582B4667D500F044FA /* DoubleTapPracticeView2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA552B4667D500F044FA /* DoubleTapPracticeView2.gif */; };
-		329AEA592B4667D500F044FA /* DoubleTapPracticeView1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */; };
 		32A178412B25E35B007A3CAB /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A178402B25E35B007A3CAB /* CustomToolbar.swift */; };
 		32EC3F5A2B2F898F0017F9E0 /* PanMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC3F592B2F898F0017F9E0 /* PanMap.swift */; };
 		F06CACF02B468C610024E366 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CACEF2B468C610024E366 /* Arrows.swift */; };
@@ -164,30 +146,12 @@
 		29EF99982AA8A2D400637F7A /* PanMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMapView.swift; sourceTree = "<group>"; };
 		29F1D51C2AA83AE70074C1FE /* PinchIconZoomInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchIconZoomInView.swift; sourceTree = "<group>"; };
 		29F1D51E2AA84E240074C1FE /* PinchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchImageView.swift; sourceTree = "<group>"; };
-		3239F21E2B32B97F001CDE0D /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
-		3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapExampleView.gif; sourceTree = "<group>"; };
-		3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView1.gif; sourceTree = "<group>"; };
-		3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LongTapPracticeView2.gif; sourceTree = "<group>"; };
-		3262BB072B458DF400CDEE87 /* SwipeExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SwipeExampleView.gif; sourceTree = "<group>"; };
-		3262BB082B458DF400CDEE87 /* SwipePracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SwipePracticeView1.gif; sourceTree = "<group>"; };
-		3262BB092B458DF400CDEE87 /* SwipePracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SwipePracticeView2.gif; sourceTree = "<group>"; };
-		3262BB0D2B458E0A00CDEE87 /* PanExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PanExampleView.gif; sourceTree = "<group>"; };
-		3262BB0E2B458E0A00CDEE87 /* PanPracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PanPracticeView.gif; sourceTree = "<group>"; };
-		3262BB112B458EC000CDEE87 /* PinchExampleView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinchExampleView1.gif; sourceTree = "<group>"; };
-		3262BB122B458EC000CDEE87 /* PinchPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinchPracticeView1.gif; sourceTree = "<group>"; };
-		3262BB132B458EC000CDEE87 /* PinchExampleView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PinchExampleView2.gif; sourceTree = "<group>"; };
-		3262BB172B458EDD00CDEE87 /* RotateExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = RotateExampleView.gif; sourceTree = "<group>"; };
-		3262BB182B458EDD00CDEE87 /* RotatePracticeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = RotatePracticeView.gif; sourceTree = "<group>"; };
-		3262BB1B2B45917C00CDEE87 /* DragExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DragExampleView.gif; sourceTree = "<group>"; };
-		3262BB1C2B45917C00CDEE87 /* DragPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DragPracticeView1.gif; sourceTree = "<group>"; };
-		3262BB1D2B45917C00CDEE87 /* DragPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DragPracticeView2.gif; sourceTree = "<group>"; };
+		321F51632B5C2B1F0066CB17 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		321F51652B5E54480066CB17 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		3266082D2B31E5EB006A58B8 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		3266082F2B31E78E006A58B8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		326608312B31EC01006A58B8 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
 		3288A8312B483DAC00A95A26 /* PanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanViewModel.swift; sourceTree = "<group>"; };
-		329AEA542B4667D500F044FA /* DoubleTapExampleView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapExampleView.gif; sourceTree = "<group>"; };
-		329AEA552B4667D500F044FA /* DoubleTapPracticeView2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapPracticeView2.gif; sourceTree = "<group>"; };
-		329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DoubleTapPracticeView1.gif; sourceTree = "<group>"; };
 		32A178402B25E35B007A3CAB /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		32EC3F592B2F898F0017F9E0 /* PanMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanMap.swift; sourceTree = "<group>"; };
 		F06CACEF2B468C610024E366 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
@@ -254,6 +218,7 @@
 				295A06202B26EE01004CAF1C /* HapticManager.swift */,
 				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
 				295A06242B271B56004CAF1C /* NavigationManager.swift */,
+				321F51652B5E54480066CB17 /* URLManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -363,7 +328,6 @@
 		29EAB4082AA1703A004E5429 /* GestureView */ = {
 			isa = PBXGroup;
 			children = (
-				3239F21E2B32B97F001CDE0D /* GuideView.swift */,
 				29E852352AA08D25003F4AF4 /* Main */,
 				29EAB40D2AA188C4004E5429 /* DoubleTap */,
 				29E1E4722AA9B04D00D45713 /* LongTap */,
@@ -422,88 +386,6 @@
 			path = Pinch;
 			sourceTree = "<group>";
 		};
-		3262BA982B457B2D00CDEE87 /* GestureGuideGIFs */ = {
-			isa = PBXGroup;
-			children = (
-				329AEA532B4667C800F044FA /* Double */,
-				3262BAF82B458D3400CDEE87 /* LongTap */,
-				3262BAA02B457B6D00CDEE87 /* Swipe */,
-				3262BAD52B45828A00CDEE87 /* Drag */,
-				3262BAAE2B457BB900CDEE87 /* Pan */,
-				3262BABE2B457E2A00CDEE87 /* Pinch */,
-				3262BAB92B457E0600CDEE87 /* Rotate */,
-			);
-			path = GestureGuideGIFs;
-			sourceTree = "<group>";
-		};
-		3262BAA02B457B6D00CDEE87 /* Swipe */ = {
-			isa = PBXGroup;
-			children = (
-				3262BB072B458DF400CDEE87 /* SwipeExampleView.gif */,
-				3262BB082B458DF400CDEE87 /* SwipePracticeView1.gif */,
-				3262BB092B458DF400CDEE87 /* SwipePracticeView2.gif */,
-			);
-			path = Swipe;
-			sourceTree = "<group>";
-		};
-		3262BAAE2B457BB900CDEE87 /* Pan */ = {
-			isa = PBXGroup;
-			children = (
-				3262BB0D2B458E0A00CDEE87 /* PanExampleView.gif */,
-				3262BB0E2B458E0A00CDEE87 /* PanPracticeView.gif */,
-			);
-			path = Pan;
-			sourceTree = "<group>";
-		};
-		3262BAB92B457E0600CDEE87 /* Rotate */ = {
-			isa = PBXGroup;
-			children = (
-				3262BB172B458EDD00CDEE87 /* RotateExampleView.gif */,
-				3262BB182B458EDD00CDEE87 /* RotatePracticeView.gif */,
-			);
-			path = Rotate;
-			sourceTree = "<group>";
-		};
-		3262BABE2B457E2A00CDEE87 /* Pinch */ = {
-			isa = PBXGroup;
-			children = (
-				3262BB112B458EC000CDEE87 /* PinchExampleView1.gif */,
-				3262BB132B458EC000CDEE87 /* PinchExampleView2.gif */,
-				3262BB122B458EC000CDEE87 /* PinchPracticeView1.gif */,
-			);
-			path = Pinch;
-			sourceTree = "<group>";
-		};
-		3262BAD52B45828A00CDEE87 /* Drag */ = {
-			isa = PBXGroup;
-			children = (
-				3262BB1B2B45917C00CDEE87 /* DragExampleView.gif */,
-				3262BB1C2B45917C00CDEE87 /* DragPracticeView1.gif */,
-				3262BB1D2B45917C00CDEE87 /* DragPracticeView2.gif */,
-			);
-			path = Drag;
-			sourceTree = "<group>";
-		};
-		3262BAF82B458D3400CDEE87 /* LongTap */ = {
-			isa = PBXGroup;
-			children = (
-				3262BB052B458DD000CDEE87 /* LongTapPracticeView2.gif */,
-				3262BB012B458DA200CDEE87 /* LongTapExampleView.gif */,
-				3262BB022B458DA300CDEE87 /* LongTapPracticeView1.gif */,
-			);
-			path = LongTap;
-			sourceTree = "<group>";
-		};
-		329AEA532B4667C800F044FA /* Double */ = {
-			isa = PBXGroup;
-			children = (
-				329AEA542B4667D500F044FA /* DoubleTapExampleView.gif */,
-				329AEA562B4667D500F044FA /* DoubleTapPracticeView1.gif */,
-				329AEA552B4667D500F044FA /* DoubleTapPracticeView2.gif */,
-			);
-			path = Double;
-			sourceTree = "<group>";
-		};
 		32A1783F2B25E350007A3CAB /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,7 +398,6 @@
 		F06CACE42B46871C0024E366 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				3262BA982B457B2D00CDEE87 /* GestureGuideGIFs */,
 				29E852222AA08347003F4AF4 /* Assets.xcassets */,
 				292B88E12B566E10002F17E6 /* Icons.xcassets */,
 				F0ED9B3D2B15F23B00E8D5C9 /* Colors.xcassets */,
@@ -531,6 +412,7 @@
 				3266082D2B31E5EB006A58B8 /* LaunchScreenView.swift */,
 				3266082F2B31E78E006A58B8 /* OnboardingView.swift */,
 				29E852202AA08346003F4AF4 /* ContentView.swift */,
+				321F51632B5C2B1F0066CB17 /* GuideView.swift */,
 				29EAB4082AA1703A004E5429 /* GestureView */,
 			);
 			path = View;
@@ -645,32 +527,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				292B88DE2B5661AE002F17E6 /* Localizable.xcstrings in Resources */,
-				3262BB102B458E0A00CDEE87 /* PanPracticeView.gif in Resources */,
-				3262BB142B458EC000CDEE87 /* PinchExampleView1.gif in Resources */,
-				3262BB0F2B458E0A00CDEE87 /* PanExampleView.gif in Resources */,
-				3262BB152B458EC000CDEE87 /* PinchPracticeView1.gif in Resources */,
-				3262BB1E2B45917C00CDEE87 /* DragExampleView.gif in Resources */,
-				329AEA592B4667D500F044FA /* DoubleTapPracticeView1.gif in Resources */,
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
-				3262BB0B2B458DF400CDEE87 /* SwipePracticeView1.gif in Resources */,
-				3262BB202B45917C00CDEE87 /* DragPracticeView2.gif in Resources */,
 				292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
 				292B88E02B566564002F17E6 /* GoogleService-Info.plist in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
-				3262BB0C2B458DF400CDEE87 /* SwipePracticeView2.gif in Resources */,
-				3262BB0A2B458DF400CDEE87 /* SwipeExampleView.gif in Resources */,
-				3262BB192B458EDD00CDEE87 /* RotateExampleView.gif in Resources */,
-				3262BB062B458DD000CDEE87 /* LongTapPracticeView2.gif in Resources */,
-				3262BB042B458DA300CDEE87 /* LongTapPracticeView1.gif in Resources */,
-				3262BB1F2B45917C00CDEE87 /* DragPracticeView1.gif in Resources */,
-				329AEA582B4667D500F044FA /* DoubleTapPracticeView2.gif in Resources */,
-				3262BB032B458DA300CDEE87 /* LongTapExampleView.gif in Resources */,
-				3262BB162B458EC000CDEE87 /* PinchExampleView2.gif in Resources */,
-				3262BB1A2B458EDD00CDEE87 /* RotatePracticeView.gif in Resources */,
-				329AEA572B4667D500F044FA /* DoubleTapExampleView.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0ED9B422B15F45000E8D5C9 /* HelpButton.swift in Sources */,
+				321F51662B5E54480066CB17 /* URLManager.swift in Sources */,
 				07791D402AAACDAA0024C04F /* PanChildSizeReader.swift in Sources */,
 				295A06232B2708CB004CAF1C /* RotateMap.swift in Sources */,
 				29D51B852B25D1BC00A6923E /* PracticeBubble.swift in Sources */,
@@ -752,11 +616,11 @@
 				29EAB4112AA18B28004E5429 /* DoubleTapSearchBarView.swift in Sources */,
 				295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */,
 				29EAB4132AA19080004E5429 /* DoubleTapImageView.swift in Sources */,
+				321F51642B5C2B1F0066CB17 /* GuideView.swift in Sources */,
 				29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */,
 				07791D422AAAF4840024C04F /* PanModel.swift in Sources */,
 				29AD87312AA87527006E846E /* RotateMapView.swift in Sources */,
 				F06CACF02B468C610024E366 /* Arrows.swift in Sources */,
-				3239F21F2B32B97F001CDE0D /* GuideView.swift in Sources */,
 				F06CACF82B4696D90024E366 /* FinishModifier.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwipeMessageView.swift in Sources */,
 				297805412B47F4770019D138 /* DragViewModel.swift in Sources */,

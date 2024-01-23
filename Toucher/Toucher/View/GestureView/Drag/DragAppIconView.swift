@@ -16,10 +16,10 @@ struct DragAppIconView: View {
     @State private var allowReordering = true
     @State private var isDroped = false
     @State private var isTried = false
-    
     @State private var isAnimate = false
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 4)
+    private let selectedGuideVideo: URLManager = .dragAppIconView
     
     var body: some View {
         ZStack {
@@ -41,7 +41,7 @@ struct DragAppIconView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: dragVM.isFail || isDroped ? .primary : .secondary, currentViewName: "DragPracticeView2")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: dragVM.isFail ? .primary : .secondary)
                             .opacity(dragVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: dragVM.isSuccess)
                     }

@@ -12,6 +12,8 @@ struct PinchIconZoomOutView: View {
     
     @State private var scale: CGFloat = 1
     
+    private let selectedGuideVideo: URLManager = .pinchIconZoomOutView
+    
     var body: some View {
         ZStack {
             if pinchVM.isFail && !pinchVM.isSuccess {
@@ -33,7 +35,7 @@ struct PinchIconZoomOutView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchExampleView2")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: pinchVM.isFail ? .primary : .secondary)
                             .opacity(pinchVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: pinchVM.isSuccess)
                     }
@@ -64,15 +66,15 @@ struct PinchIconZoomOutView: View {
                         }
                 }
             }
-        }
-        .modifier(MoveToNextModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
-        .navigationDestination(isPresented: $pinchVM.isNavigate) {
-            PinchImageView()
-                .toolbar(.hidden, for: .navigationBar)
-        }
-        .onAppear {
-            pinchVM.reset()
-            scale = 1
+            .modifier(MoveToNextModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
+            .navigationDestination(isPresented: $pinchVM.isNavigate) {
+                PinchImageView()
+                    .toolbar(.hidden, for: .navigationBar)
+            }
+            .onAppear {
+                pinchVM.reset()
+                scale = 1
+            }
         }
     }
     

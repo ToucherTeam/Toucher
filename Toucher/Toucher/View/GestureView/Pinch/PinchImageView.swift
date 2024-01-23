@@ -13,6 +13,8 @@ struct PinchImageView: View {
     
     @State private var scale: CGFloat = 1.0
     
+    private let selectedGuideVideo: URLManager = .pinchImageView
+    
     var body: some View {
         VStack(spacing: 0) {
             CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
@@ -52,7 +54,7 @@ struct PinchImageView: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .frame(maxHeight: .infinity, alignment: .top)
                 
-                HelpButton(style: pinchVM.isFail ? .primary : .secondary, currentViewName: "PinchPracticeView1")
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: pinchVM.isFail ? .primary : .secondary)
                     .opacity(pinchVM.isSuccess ? 0 : 1)
                     .animation(.easeInOut, value: pinchVM.isSuccess)
                     .frame(maxHeight: .infinity, alignment: .bottom)

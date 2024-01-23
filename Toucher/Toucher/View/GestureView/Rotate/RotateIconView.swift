@@ -13,6 +13,8 @@ struct RotateIconView: View {
     @State private var currentAmount: Angle = .degrees(0)
     @State private var accumulateAngle: Angle = .degrees(0)
     
+    private let selectedGuideVideo: URLManager = .rotateIconView
+    
     @Namespace var namespace
     
     var body: some View {
@@ -22,7 +24,6 @@ struct RotateIconView: View {
             }
             VStack {
                 CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
-                
                 ZStack {
                     VStack {
                         Text(rotateVM.isSuccess ? "성공!\n" : rotateVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
@@ -35,7 +36,7 @@ struct RotateIconView: View {
                         
                         Spacer()
                         
-                        HelpButton(style: rotateVM.isFail ? .primary : .secondary, currentViewName: "RotateExampleView")
+                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: rotateVM.isFail ? .primary : .secondary)
                             .opacity(rotateVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: rotateVM.isSuccess)
                     }
