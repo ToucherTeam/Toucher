@@ -18,8 +18,8 @@
 		292181BE2B26C597002E5AAA /* DoubleTapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BD2B26C597002E5AAA /* DoubleTapButton.swift */; };
 		292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292181BF2B26C686002E5AAA /* LongPressButton.swift */; };
 		292B88DE2B5661AE002F17E6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */; };
-		292B88E02B566564002F17E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292B88DF2B566564002F17E6 /* GoogleService-Info.plist */; };
 		292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292B88E12B566E10002F17E6 /* Icons.xcassets */; };
+		29481BD22B6FD21B00BC0D92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29481BD12B6FD21B00BC0D92 /* GoogleService-Info.plist */; };
 		295A06212B26EE01004CAF1C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06202B26EE01004CAF1C /* HapticManager.swift */; };
 		295A06232B2708CB004CAF1C /* RotateMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06222B2708CB004CAF1C /* RotateMap.swift */; };
 		295A06252B271B56004CAF1C /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295A06242B271B56004CAF1C /* NavigationManager.swift */; };
@@ -46,6 +46,9 @@
 		29BCA3002B5021AB009D6DEF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29BCA2FF2B5021AB009D6DEF /* FirebaseFirestoreSwift */; };
 		29BCA3162B5021AB009D6DEF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 29BCA3152B5021AB009D6DEF /* FirebaseStorage */; };
 		29BCA3182B5021AB009D6DEF /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 29BCA3172B5021AB009D6DEF /* FirebaseStorageCombine-Community */; };
+		29D2BA982B70DA00008B65E8 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D2BA972B70DA00008B65E8 /* FirestoreManager.swift */; };
+		29D2BA9A2B711734008B65E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D2BA992B711734008B65E8 /* AppDelegate.swift */; };
+		29D2BA9C2B7117AE008B65E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D2BA9B2B7117AE008B65E8 /* SceneDelegate.swift */; };
 		29D51B762B259EE600A6923E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B752B259EE600A6923E /* MainView.swift */; };
 		29D51B782B25A29300A6923E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B772B25A29300A6923E /* MainViewModel.swift */; };
 		29D51B7C2B25A38A00A6923E /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D51B7B2B25A38A00A6923E /* MainModel.swift */; };
@@ -103,8 +106,8 @@
 		292181BD2B26C597002E5AAA /* DoubleTapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTapButton.swift; sourceTree = "<group>"; };
 		292181BF2B26C686002E5AAA /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 		292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		292B88DF2B566564002F17E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		292B88E12B566E10002F17E6 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		29481BD12B6FD21B00BC0D92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		295A06202B26EE01004CAF1C /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		295A06222B2708CB004CAF1C /* RotateMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateMap.swift; sourceTree = "<group>"; };
 		295A06242B271B56004CAF1C /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -118,6 +121,9 @@
 		29B9BB882B16B7250042DE19 /* ConfettiShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiShapes.swift; sourceTree = "<group>"; };
 		29B9BB892B16B7250042DE19 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		29B9BB8A2B16B7250042DE19 /* Confetti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
+		29D2BA972B70DA00008B65E8 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		29D2BA992B711734008B65E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		29D2BA9B2B7117AE008B65E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		29D51B752B259EE600A6923E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		29D51B772B25A29300A6923E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		29D51B7B2B25A38A00A6923E /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 		295A061F2B26ED6B004CAF1C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				29D2BA972B70DA00008B65E8 /* FirestoreManager.swift */,
 				295A06202B26EE01004CAF1C /* HapticManager.swift */,
 				076655592AA22A1E00DC6687 /* DeviceManager.swift */,
 				295A06242B271B56004CAF1C /* NavigationManager.swift */,
@@ -268,7 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				292B88DD2B5661AE002F17E6 /* Localizable.xcstrings */,
-				292B88DF2B566564002F17E6 /* GoogleService-Info.plist */,
+				29481BD12B6FD21B00BC0D92 /* GoogleService-Info.plist */,
 				29EAB40B2AA17DAE004E5429 /* .swiftlint.yml */,
 				29E8521D2AA08346003F4AF4 /* Toucher */,
 				29E8521C2AA08346003F4AF4 /* Products */,
@@ -287,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				29E8521E2AA08346003F4AF4 /* ToucherApp.swift */,
+				29D2BA992B711734008B65E8 /* AppDelegate.swift */,
+				29D2BA9B2B7117AE008B65E8 /* SceneDelegate.swift */,
 				F06CACED2B4689FD0024E366 /* View */,
 				07670B932AA749D600DE5113 /* Component */,
 				295A061F2B26ED6B004CAF1C /* Manager */,
@@ -527,12 +536,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				292B88DE2B5661AE002F17E6 /* Localizable.xcstrings in Resources */,
+				29481BD22B6FD21B00BC0D92 /* GoogleService-Info.plist in Resources */,
 				29EAB40C2AA17DAE004E5429 /* .swiftlint.yml in Resources */,
 				292B88E22B566E10002F17E6 /* Icons.xcassets in Resources */,
 				F0ED9B3E2B15F23B00E8D5C9 /* Colors.xcassets in Resources */,
 				29E852262AA08347003F4AF4 /* Preview Assets.xcassets in Resources */,
 				F0ED9B472B15FD3500E8D5C9 /* Buttons.xcassets in Resources */,
-				292B88E02B566564002F17E6 /* GoogleService-Info.plist in Resources */,
 				29E852232AA08347003F4AF4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +592,7 @@
 				29EAB4292AA635CB004E5429 /* DragProgressBarView.swift in Sources */,
 				29D51B7C2B25A38A00A6923E /* MainModel.swift in Sources */,
 				29D51B832B25BF9B00A6923E /* FinishMainViewModel.swift in Sources */,
+				29D2BA982B70DA00008B65E8 /* FirestoreManager.swift in Sources */,
 				29E852212AA08346003F4AF4 /* ContentView.swift in Sources */,
 				29EAB4272AA63368004E5429 /* DragIconView.swift in Sources */,
 				29EAB4222AA62ECD004E5429 /* LongTapAlbumPhotoView.swift in Sources */,
@@ -604,6 +614,7 @@
 				297805432B47F7A30019D138 /* PinchViewModel.swift in Sources */,
 				326608322B31EC01006A58B8 /* TapButton.swift in Sources */,
 				F06CACF62B4696900024E366 /* MoveToNextModifier.swift in Sources */,
+				29D2BA9A2B711734008B65E8 /* AppDelegate.swift in Sources */,
 				3266082E2B31E5EB006A58B8 /* LaunchScreenView.swift in Sources */,
 				29E8521F2AA08346003F4AF4 /* ToucherApp.swift in Sources */,
 				29B9BB8C2B16B7250042DE19 /* ConfettiView.swift in Sources */,
@@ -619,6 +630,7 @@
 				321F51642B5C2B1F0066CB17 /* GuideView.swift in Sources */,
 				29B9BB8D2B16B7250042DE19 /* Confetti.swift in Sources */,
 				07791D422AAAF4840024C04F /* PanModel.swift in Sources */,
+				29D2BA9C2B7117AE008B65E8 /* SceneDelegate.swift in Sources */,
 				29AD87312AA87527006E846E /* RotateMapView.swift in Sources */,
 				F06CACF02B468C610024E366 /* Arrows.swift in Sources */,
 				F06CACF82B4696D90024E366 /* FinishModifier.swift in Sources */,

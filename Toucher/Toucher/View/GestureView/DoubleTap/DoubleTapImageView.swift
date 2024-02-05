@@ -10,8 +10,7 @@ import SwiftUI
 struct DoubleTapImageView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var doubleTapVM = DoubleTapViewModel()
-    
-    
+        
     private let UIWidth = UIScreen.main.bounds.width
     private let UIHeight = UIScreen.main.bounds.height
     private let selectedGuideVideo: URLManager = .doubleTapImageView
