@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @AppStorage("first") private var isFirst = true
-    
+
     @State private var isSuccess = false
     
     var body: some View {
