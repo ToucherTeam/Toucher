@@ -38,6 +38,7 @@ struct DoubleTapButtonView: View {
                             .opacity(doubleTapVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: doubleTapVM.isSuccess)
                     }
+                    
                     DoubleTapButton(isSuccess: $doubleTapVM.isSuccess, isFail: $doubleTapVM.isFail)
                         .padding(.bottom)
                         .overlay {
