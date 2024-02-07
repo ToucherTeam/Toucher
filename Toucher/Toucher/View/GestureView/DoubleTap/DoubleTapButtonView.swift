@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct DoubleTapButtonView: View {
+    @AppStorage("create") var create = true
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
+    private let firestoreManager = FirestoreManager.shared
     private let selectedGuideVideo: URLManager = .doubleTapButtonView
     
     var body: some View {
@@ -52,7 +54,25 @@ struct DoubleTapButtonView: View {
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
+            if create {
+                firestoreManager.createTotal(.doubleTap)
+                firestoreManager.updateTotalTimeStamp(.doubleTap)
+                
+                firestoreManager.createView(.doubleTap, .doubleTapButtonView)
+                firestoreManager.updateViewTimeStamp(.doubleTap, .doubleTapButtonView)
+                
+                create = false
+            } else {
+                firestoreManager.updateViewTimeStamp(.doubleTap, .doubleTapButtonView)
+            }
             doubleTapVM.reset()
+        }
+        .onDisappear {
+            if doubleTapVM.isSuccess {
+                firestoreManager.updateViewClearData(.doubleTap, .doubleTapButtonView)
+            } else {
+                firestoreManager.updateBackButtonData(.doubleTap, .doubleTapButtonView)
+            }
         }
     }
 }
