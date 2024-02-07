@@ -53,6 +53,12 @@ struct DragProgressBarView: View {
             DragAppIconView()
                 .toolbar(.hidden, for: .navigationBar)
         }
+        .modifier(
+            FirebaseViewModifier(
+                isSuccess: dragVM.isSuccess,
+                viewName: .dragProgressBarView
+            )
+        )
         .onAppear {
             dragVM.reset()
             value = 0.0

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PanNotificationView: View {
+    @AppStorage("createPan") var createPan = true
     @StateObject private var panVM = PanViewModel()
     
     @State private var wholeSize: CGSize = .zero
@@ -147,8 +148,14 @@ struct PanNotificationView: View {
                     }
                 }
             }
-            
         }
+        .modifier(
+            FirebaseStartViewModifier(
+                create: $createPan,
+                isSuccess: panVM.isSuccess,
+                viewName: .panNotificationView
+            )
+        )
         .onAppear {
             panVM.reset()
         }

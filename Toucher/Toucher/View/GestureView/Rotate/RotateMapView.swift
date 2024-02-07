@@ -63,6 +63,12 @@ struct RotateMapView: View {
             }
         }
         .modifier(FinishModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
+        .modifier(
+            FirebaseEndViewModifier(
+                isSuccess: rotateVM.isSuccess,
+                viewName: .rotateMapView
+            )
+        )
         .onAppear {
             rotateVM.reset()
         }

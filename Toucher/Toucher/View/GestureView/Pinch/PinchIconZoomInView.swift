@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PinchIconZoomInView: View {
+    @AppStorage("createPinch") var createPinch = true
     @StateObject private var pinchVM = PinchViewModel()
     
     @State private var scale: CGFloat = 1.0
@@ -64,6 +65,13 @@ struct PinchIconZoomInView: View {
                                 }
                             }
                     }
+                    .modifier(
+                        FirebaseStartViewModifier(
+                            create: $createPinch,
+                            isSuccess: pinchVM.isSuccess,
+                            viewName: .pinchIconZoomInView
+                        )
+                    )
                 }
             }
             if pinchVM.isNavigate {

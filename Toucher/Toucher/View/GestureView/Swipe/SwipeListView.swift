@@ -13,6 +13,7 @@ struct SwipeListView: View {
     @State private var textIndex = 0
     
     private let selectedGuideVideo: URLManager = .swipeListView
+    private let firestoreManager = FirestoreManager.shared
     
     var body: some View {
         ZStack {
@@ -157,6 +158,12 @@ struct SwipeListView: View {
                 }
             }
         }
+        .modifier(
+            FirebaseViewModifier(
+                isSuccess: swipeVM.isSuccess,
+                viewName: .swipeListView
+            )
+        )
         .onAppear {
             textIndex = 0
             swipeVM.reset()

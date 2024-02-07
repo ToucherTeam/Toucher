@@ -100,6 +100,12 @@ struct DragAppIconView: View {
                 }
             }
         }
+        .modifier(
+            FirebaseEndViewModifier(
+                isSuccess: dragVM.isSuccess,
+                viewName: .dragAppIconView
+            )
+        )
         .onAppear {
             data = ["Camera", "App Store", "Maps", "Wallet", "Clock", "FaceTime", "TV", "Safari"]
             dragVM.isSuccess = false

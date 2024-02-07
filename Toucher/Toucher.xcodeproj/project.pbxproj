@@ -27,6 +27,9 @@
 		297805432B47F7A30019D138 /* PinchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297805422B47F7A30019D138 /* PinchViewModel.swift */; };
 		297805452B481C490019D138 /* RotateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297805442B481C490019D138 /* RotateViewModel.swift */; };
 		29AABC6E2B73962E0094BBFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29AABC6D2B73962D0094BBFC /* GoogleService-Info.plist */; };
+		29AABC702B73BB640094BBFC /* FirebaseStartViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AABC6F2B73BB640094BBFC /* FirebaseStartViewModifier.swift */; };
+		29AABC722B73C2EF0094BBFC /* FirebaseViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AABC712B73C2EF0094BBFC /* FirebaseViewModifier.swift */; };
+		29AABC742B73C2FD0094BBFC /* FirebaseEndViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AABC732B73C2FD0094BBFC /* FirebaseEndViewModifier.swift */; };
 		29AD872C2AA85C7C006E846E /* PinchIconZoomOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872B2AA85C7C006E846E /* PinchIconZoomOutView.swift */; };
 		29AD872F2AA86C8E006E846E /* RotateIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD872E2AA86C8E006E846E /* RotateIconView.swift */; };
 		29AD87312AA87527006E846E /* RotateMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD87302AA87527006E846E /* RotateMapView.swift */; };
@@ -115,6 +118,9 @@
 		297805422B47F7A30019D138 /* PinchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchViewModel.swift; sourceTree = "<group>"; };
 		297805442B481C490019D138 /* RotateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateViewModel.swift; sourceTree = "<group>"; };
 		29AABC6D2B73962D0094BBFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		29AABC6F2B73BB640094BBFC /* FirebaseStartViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStartViewModifier.swift; sourceTree = "<group>"; };
+		29AABC712B73C2EF0094BBFC /* FirebaseViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModifier.swift; sourceTree = "<group>"; };
+		29AABC732B73C2FD0094BBFC /* FirebaseEndViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndViewModifier.swift; sourceTree = "<group>"; };
 		29AD872B2AA85C7C006E846E /* PinchIconZoomOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchIconZoomOutView.swift; sourceTree = "<group>"; };
 		29AD872E2AA86C8E006E846E /* RotateIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateIconView.swift; sourceTree = "<group>"; };
 		29AD87302AA87527006E846E /* RotateMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateMapView.swift; sourceTree = "<group>"; };
@@ -228,6 +234,16 @@
 				321F51652B5E54480066CB17 /* URLManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		29AABC752B73CB110094BBFC /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				29AABC6F2B73BB640094BBFC /* FirebaseStartViewModifier.swift */,
+				29AABC712B73C2EF0094BBFC /* FirebaseViewModifier.swift */,
+				29AABC732B73C2FD0094BBFC /* FirebaseEndViewModifier.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		29AD872D2AA86C7E006E846E /* Rotate */ = {
@@ -438,6 +454,7 @@
 		F06CACF42B4696490024E366 /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
+				29AABC752B73CB110094BBFC /* Firebase */,
 				F06CACF52B4696900024E366 /* MoveToNextModifier.swift */,
 				F06CACF72B4696D90024E366 /* FinishModifier.swift */,
 			);
@@ -607,6 +624,7 @@
 				295A06252B271B56004CAF1C /* NavigationManager.swift in Sources */,
 				29D51B762B259EE600A6923E /* MainView.swift in Sources */,
 				29EF99992AA8A2D400637F7A /* PanMapView.swift in Sources */,
+				29AABC722B73C2EF0094BBFC /* FirebaseViewModifier.swift in Sources */,
 				29F1D51D2AA83AE70074C1FE /* PinchIconZoomInView.swift in Sources */,
 				07D345F12AA8716500B7329D /* SwipeListView.swift in Sources */,
 				29EF99972AA8A2CA00637F7A /* PanNotificationView.swift in Sources */,
@@ -634,9 +652,11 @@
 				29AD87312AA87527006E846E /* RotateMapView.swift in Sources */,
 				F06CACF02B468C610024E366 /* Arrows.swift in Sources */,
 				F06CACF82B4696D90024E366 /* FinishModifier.swift in Sources */,
+				29AABC702B73BB640094BBFC /* FirebaseStartViewModifier.swift in Sources */,
 				07D345F02AA8716500B7329D /* SwipeMessageView.swift in Sources */,
 				297805412B47F4770019D138 /* DragViewModel.swift in Sources */,
 				07D345F22AA8716500B7329D /* SwipeCarouselView.swift in Sources */,
+				29AABC742B73C2FD0094BBFC /* FirebaseEndViewModifier.swift in Sources */,
 				07D345F32AA8716500B7329D /* SwipeModel.swift in Sources */,
 				292181C02B26C686002E5AAA /* LongPressButton.swift in Sources */,
 			);

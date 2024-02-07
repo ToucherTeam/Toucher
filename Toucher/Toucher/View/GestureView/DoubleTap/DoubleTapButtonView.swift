@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DoubleTapButtonView: View {
-    @AppStorage("create") var create = true
+    @AppStorage("createDoubleTap") var createDoubleTap = true
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
     private let firestoreManager = FirestoreManager.shared
@@ -55,26 +55,15 @@ struct DoubleTapButtonView: View {
                 .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
-            if create {
-                firestoreManager.createTotal(.doubleTap)
-                firestoreManager.updateTotalTimeStamp(.doubleTap)
-                
-                firestoreManager.createView(.doubleTap, .doubleTapButtonView)
-                firestoreManager.updateViewTimeStamp(.doubleTap, .doubleTapButtonView)
-                
-                create = false
-            } else {
-                firestoreManager.updateViewTimeStamp(.doubleTap, .doubleTapButtonView)
-            }
             doubleTapVM.reset()
         }
-        .onDisappear {
-            if doubleTapVM.isSuccess {
-                firestoreManager.updateViewClearData(.doubleTap, .doubleTapButtonView)
-            } else {
-                firestoreManager.updateBackButtonData(.doubleTap, .doubleTapButtonView)
-            }
-        }
+        .modifier(
+            FirebaseStartViewModifier(
+                create: $createDoubleTap,
+                isSuccess: doubleTapVM.isSuccess,
+                viewName: .doubleTapButtonView
+            )
+        )
     }
 }
 

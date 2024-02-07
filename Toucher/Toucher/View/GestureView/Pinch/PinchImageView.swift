@@ -61,6 +61,12 @@ struct PinchImageView: View {
             }
         }
         .modifier(FinishModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
+        .modifier(
+            FirebaseEndViewModifier(
+                isSuccess: pinchVM.isSuccess,
+                viewName: .pinchImageView
+            )
+        )
     }
     
     private var gesture: some Gesture {

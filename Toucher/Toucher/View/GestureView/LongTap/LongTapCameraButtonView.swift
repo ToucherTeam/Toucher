@@ -12,6 +12,7 @@ struct LongTapCameraButtonView: View {
     
     @GestureState private var isPressed = false
     
+    private let firestoreManager = FirestoreManager.shared
     private let selectedGuideVideo: URLManager = .longTapCameraButtonView
     
     var body: some View {
@@ -58,6 +59,12 @@ struct LongTapCameraButtonView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .modifier(
+            FirebaseViewModifier(
+                isSuccess: longTapVM.isSuccess,
+                viewName: .longTapCameraButtonView
+            )
+        )
         .onAppear {
             longTapVM.reset()
         }

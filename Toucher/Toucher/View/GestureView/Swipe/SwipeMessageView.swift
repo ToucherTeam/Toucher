@@ -109,6 +109,12 @@ struct SwipeMessageView: View {
             }
         }
         .modifier(FinishModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+        .modifier(
+            FirebaseEndViewModifier(
+                isSuccess: swipeVM.isSuccess,
+                viewName: .swipeMessageView
+            )
+        )
     }
 }
 

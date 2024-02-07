@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DragIconView: View {
+    @AppStorage("createDrag") var createDrag = true
     @StateObject private var dragVM = DragViewModel()
     
     @State private var isArrived = false
@@ -137,6 +138,13 @@ struct DragIconView: View {
             DragProgressBarView()
                 .toolbar(.hidden, for: .navigationBar)
         }
+        .modifier(
+            FirebaseStartViewModifier(
+                create: $createDrag,
+                isSuccess: dragVM.isSuccess,
+                viewName: .dragIconView
+            )
+        )
         .onAppear {
             dragVM.reset()
             isArrived = false

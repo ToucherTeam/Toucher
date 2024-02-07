@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwipeCarouselView: View {
+    @AppStorage("createSwipe") var createSwipe = true
     @StateObject var swipeVM = SwipeViewModel()
     
     @State private var currentIndexArray: [Int] = []
@@ -24,6 +25,7 @@ struct SwipeCarouselView: View {
         .init(color: Color.customPrimary)
     ]
     private let selectedGuideVideo: URLManager = .swipeCarouselView
+    private let firestoreManager = FirestoreManager.shared
     
     var body: some View {
         ZStack {
@@ -47,6 +49,13 @@ struct SwipeCarouselView: View {
                 .opacity(swipeVM.isSuccess ? 0 : 1)
                 .animation(.easeInOut, value: swipeVM.isSuccess)
             }
+            .modifier(
+                FirebaseStartViewModifier(
+                    create: $createSwipe,
+                    isSuccess: swipeVM.isSuccess,
+                    viewName: .swipeCarouselView
+                )
+            )
             .onAppear {
                 currentIndexArray = []
                 swipeVM.reset()
