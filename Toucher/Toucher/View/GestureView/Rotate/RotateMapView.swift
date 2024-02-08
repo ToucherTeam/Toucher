@@ -60,6 +60,11 @@ struct RotateMapView: View {
                             .foregroundColor(.customWhite.opacity(0.7))
                     }
                     .frame(maxHeight: .infinity, alignment: .top)
+                
+                HelpButton(selectedGuideVideo: selectedGuideVideo, style: rotateVM.isFail ? .primary : .secondary)
+                    .opacity(rotateVM.isSuccess ? 0 : 1)
+                    .animation(.easeInOut, value: rotateVM.isSuccess)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .modifier(FinishModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
