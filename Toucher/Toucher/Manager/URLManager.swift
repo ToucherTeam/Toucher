@@ -55,9 +55,9 @@ enum URLManager {
         case .dragAppIconView:
             return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DragAppIconView.mp4?alt=media&token=f0dfa2f4-1b3d-4946-a0eb-d9894162372e"
         case .panNotificationView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pan%2FPanNotificationView.mp4?alt=media&token=7e1dc833-87ab-4c32-a14b-59437290b371"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PanNotificationView.mp4?alt=media&token=cbcc4273-b108-4a2d-91fb-5097f76872b6"
         case .panMapView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pan%2FPanMapView.mp4?alt=media&token=bb454256-0bdf-4593-b48f-355edd64990f"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PanMapView.mp4?alt=media&token=e9c20862-5728-482c-98b5-3412abc577e6"
         case .pinchIconZoomInView:
             return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PinchIconZoomInView.mp4?alt=media&token=26d1799c-b46b-423b-8543-d6ad7c86a018"
         case .pinchIconZoomOutView:
@@ -65,7 +65,7 @@ enum URLManager {
         case .pinchImageView:
             return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PinchImageView.mp4?alt=media&token=375e6b03-013c-4a34-b907-2e4b9ac642c5"
         case .rotateIconView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/RotateIconView.mp4?alt=media&token=345ffb6f-ac19-4ec1-b4a7-7ad53fe5a0f3"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/RotateIconView.mp4?alt=media&token=9e3c1c39-a211-41ab-ae64-7d18ba5dd014"
         case .rotateMapView:
             return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/RotateMapView.mp4?alt=media&token=70e37777-366f-4577-9375-250816e4a250"
         }
