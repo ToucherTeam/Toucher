@@ -37,16 +37,16 @@ struct FirebaseStartViewModifier: ViewModifier {
             .onAppear {
                 if create {
                     firestoreManager.createTotal(gesture)
-                    firestoreManager.updateTotalTimeStamp(gesture)
-                                        
                     for index in 0..<viewNames(for: gesture).count {
                         firestoreManager.createView(gesture, viewNames(for: gesture)[index])
                     }
                     
+                    firestoreManager.updateTotalTimeStamp(gesture)
                     firestoreManager.updateViewTimeStamp(gesture, viewName)
                     
                     create = false
                 } else {
+                    firestoreManager.updateTotalTimeStamp(gesture)
                     firestoreManager.updateViewTimeStamp(gesture, viewName)
                 }
             }
