@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RotateIconView: View {
+    @AppStorage("createRotate") var createRotate = true
     @StateObject private var rotateVM = RotateViewModel()
     
     @State private var currentAmount: Angle = .degrees(0)
@@ -81,6 +82,13 @@ struct RotateIconView: View {
             RotateMapView()
                 .toolbar(.hidden, for: .navigationBar)
         }
+        .modifier(
+            FirebaseStartViewModifier(
+                create: $createRotate,
+                isSuccess: rotateVM.isSuccess,
+                viewName: .rotateIconView
+            )
+        )
         .onAppear {
             rotateVM.reset()
             currentAmount = .zero

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct DoubleTapButtonView: View {
+    @AppStorage("createDoubleTap") var createDoubleTap = true
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
+    private let firestoreManager = FirestoreManager.shared
     private let selectedGuideVideo: URLManager = .doubleTapButtonView
     
     var body: some View {
@@ -36,6 +38,7 @@ struct DoubleTapButtonView: View {
                             .opacity(doubleTapVM.isSuccess ? 0 : 1)
                             .animation(.easeInOut, value: doubleTapVM.isSuccess)
                     }
+                    
                     DoubleTapButton(isSuccess: $doubleTapVM.isSuccess, isFail: $doubleTapVM.isFail)
                         .padding(.bottom)
                         .overlay {
@@ -54,6 +57,13 @@ struct DoubleTapButtonView: View {
         .onAppear {
             doubleTapVM.reset()
         }
+        .modifier(
+            FirebaseStartViewModifier(
+                create: $createDoubleTap,
+                isSuccess: doubleTapVM.isSuccess,
+                viewName: .doubleTapButtonView
+            )
+        )
     }
 }
 

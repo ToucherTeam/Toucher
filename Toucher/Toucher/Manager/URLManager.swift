@@ -31,43 +31,43 @@ enum URLManager {
     var videoURL: String {
         switch self {
         case .doubleTapButtonView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/DoubleTap%2FDoubleTapButtonView.mp4?alt=media&token=0408642f-206f-493b-b53c-036b7dea6415"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DoubleTapButtonView.mp4?alt=media&token=da5fce51-11e9-4c2a-9e45-1d6c9d1e4bd5"
         case .doubleTapSearchBarView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/DoubleTap%2FDoubleTapSearchBarView.mp4?alt=media&token=b58a66a7-9f87-4568-b4e8-a0200c187ed6"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DoubleTapSearchBarView.mp4?alt=media&token=2d17af3b-543e-48f2-8b27-1f12a8c2b3dd"
         case .doubleTapImageView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/DoubleTap%2FDoubleTapImageView.mp4?alt=media&token=d8f1ffca-8b86-497b-a4cf-bd73dfa88267"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DoubleTapImageView.mp4?alt=media&token=1cd288ea-1391-49f5-bbf8-02f684980a00"
         case .longTapButtonView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/LongTap%2FLongTapButtonView.mp4?alt=media&token=6f7565d0-44f0-4b48-a43a-cd9742748be6"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/LongTapButtonView.mp4?alt=media&token=d7bf3f0e-f880-4906-8725-3662b7e85d52"
         case .longTapCameraButtonView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/LongTap%2FLongTapCameraButtonView.mp4?alt=media&token=4af5a634-175b-4349-9670-66c94d4e8597"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/LongTapCameraButtonView.mp4?alt=media&token=fef8da0f-12b2-4c7b-b3a2-69e6fa436798"
         case .longTapAlbumPhotoView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/LongTap%2FLongTapAlbumPhotoView.mp4?alt=media&token=b8aa6f5a-1b77-4028-90c3-4d3c519cb66b"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/LongTapAlbumPhotoView.mp4?alt=media&token=a06a0a0e-bffc-4923-b773-2d824574fc82"
         case .swipeCarouselView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Swipe%2FSwipeCarouselView.mp4?alt=media&token=b1179d4b-a285-4daf-84dc-8151afa462a3"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/SwipeCarouselView.mp4?alt=media&token=e34688fb-295c-42d8-8cfc-849b27a1db88"
         case .swipeListView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Swipe%2FSwipeListView.mp4?alt=media&token=f529ab87-9a20-4fb5-bf1c-564b5899c052"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/SwipeListView.mp4?alt=media&token=6dae523f-39e4-4def-9426-f136d240e581"
         case .swipeMessageView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Swipe%2FSwipeMessageView.mp4?alt=media&token=662c1007-f271-4050-9101-1bcf9ece437f"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/SwipeMessageView.mp4?alt=media&token=3a97441e-3e9c-49f8-a0b7-c1dd5e3f8935"
         case .dragIconView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Drag%2FDragIconView.mp4?alt=media&token=6ff73bd6-70d2-46f4-99ea-a17afc67fd97"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DragIconView.mp4?alt=media&token=9269c986-76ef-4c55-beb1-a7d5ce431ce1"
         case .dragProgressBarView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Drag%2FDragProgressBarView.mp4?alt=media&token=333c76e4-7f0d-49cb-a348-b6d09f21e260"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DragProgressBarView.mp4?alt=media&token=071923e0-71df-4d2e-b026-98a9a66d4617"
         case .dragAppIconView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Drag%2FDragAppIconView.mp4?alt=media&token=6ce953cd-52c4-4c9c-8dc2-a50e6d64d05a"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/DragAppIconView.mp4?alt=media&token=f0dfa2f4-1b3d-4946-a0eb-d9894162372e"
         case .panNotificationView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pan%2FPanNotificationView.mp4?alt=media&token=7e1dc833-87ab-4c32-a14b-59437290b371"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PanNotificationView.mp4?alt=media&token=cbcc4273-b108-4a2d-91fb-5097f76872b6"
         case .panMapView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pan%2FPanMapView.mp4?alt=media&token=bb454256-0bdf-4593-b48f-355edd64990f"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PanMapView.mp4?alt=media&token=e9c20862-5728-482c-98b5-3412abc577e6"
         case .pinchIconZoomInView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pinch%2FPinchIconZoomInView.mp4?alt=media&token=040500f9-b706-4b17-9936-2cb93ca54bdb"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PinchIconZoomInView.mp4?alt=media&token=26d1799c-b46b-423b-8543-d6ad7c86a018"
         case .pinchIconZoomOutView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pinch%2FPinchIconZoomOutView.mp4?alt=media&token=d6c4035d-b440-4e12-a267-dbad00a8f89b"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PinchIconZoomOutView.mp4?alt=media&token=a9da5502-91f0-4316-b35b-8ee867fcac52"
         case .pinchImageView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Pinch%2FPinchImageView.mp4?alt=media&token=ff04c687-1f03-4694-b87d-235a001c9ae6"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/PinchImageView.mp4?alt=media&token=375e6b03-013c-4a34-b907-2e4b9ac642c5"
         case .rotateIconView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Rotate%2FRotateIconView.mp4?alt=media&token=aa3d5a47-0807-4164-a6ef-b8b46486e69b"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/RotateIconView.mp4?alt=media&token=9e3c1c39-a211-41ab-ae64-7d18ba5dd014"
         case .rotateMapView:
-            return "https://firebasestorage.googleapis.com/v0/b/toucher-a4597.appspot.com/o/Rotate%2FRotateMapView.mp4?alt=media&token=4e7b23bf-8c3f-4af6-97a9-623df36647fa"
+            return "https://firebasestorage.googleapis.com/v0/b/toucher-3cce8.appspot.com/o/RotateMapView.mp4?alt=media&token=70e37777-366f-4577-9375-250816e4a250"
         }
     }
 }

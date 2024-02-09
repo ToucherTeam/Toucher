@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct LongTapButtonView: View {
+    @AppStorage("createLongTap") var createLongTap = true
     @StateObject private var longTapVM = LongTapViewModel()
     
+    private let firestoreManager = FirestoreManager.shared
     private let selectedGuideVideo: URLManager = .longTapButtonView
     
     var body: some View {
@@ -57,6 +59,7 @@ struct LongTapButtonView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .modifier(FirebaseStartViewModifier(create: $createLongTap, isSuccess: longTapVM.isSuccess, viewName: .longTapButtonView))
         .onAppear {
             longTapVM.reset()
         }

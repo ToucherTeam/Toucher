@@ -18,6 +18,7 @@ struct LongTapAlbumPhotoView: View {
     @Namespace private var name
     
     private var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
+    private let firestoreManager = FirestoreManager.shared
     private let selectedGuideVideo: URLManager = .longTapAlbumPhotoView
     
     var body: some View {
@@ -135,6 +136,12 @@ struct LongTapAlbumPhotoView: View {
             }
         }
         .modifier(FinishModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
+        .modifier(
+            FirebaseEndViewModifier(
+                isSuccess: longTapVM.isSuccess,
+                viewName: .longTapAlbumPhotoView
+            )
+        )
         .onAppear {
             longTapVM.reset()
         }

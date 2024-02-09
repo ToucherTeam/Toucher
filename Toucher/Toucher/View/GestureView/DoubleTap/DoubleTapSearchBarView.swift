@@ -10,6 +10,7 @@ import SwiftUI
 struct DoubleTapSearchBarView: View {
     @StateObject private var doubleTapVM = DoubleTapViewModel()
     
+    private let firestoreManager = FirestoreManager.shared
     private let selectedGuideVideo: URLManager = .doubleTapSearchBarView
     
     var body: some View {
@@ -54,6 +55,12 @@ struct DoubleTapSearchBarView: View {
             DoubleTapImageView()
                 .toolbar(.hidden, for: .navigationBar)
         }
+        .modifier(
+            FirebaseViewModifier(
+                isSuccess: doubleTapVM.isSuccess,
+                viewName: .doubleTapSearchBarView
+            )
+        )
         .onAppear {
             doubleTapVM.reset()
         }

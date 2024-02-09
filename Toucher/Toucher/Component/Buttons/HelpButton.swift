@@ -16,9 +16,71 @@ struct HelpButton: View {
     @State private var animate = false
     @State private var isFullScreenPresented = false
     
-    var selectedGuideVideo: URLManager
+    private let firestoreManager = FirestoreManager.shared
     
+    var selectedGuideVideo: URLManager
     var style: HelpButtonStyle
+    
+    var gesture: GestureType {
+        switch selectedGuideVideo {
+        case .doubleTapButtonView, .doubleTapSearchBarView, .doubleTapImageView:
+            return .doubleTap
+        case .longTapButtonView, .longTapCameraButtonView, .longTapAlbumPhotoView:
+            return .longPress
+        case .swipeCarouselView, .swipeListView, .swipeMessageView:
+            return .swipe
+        case .dragIconView, .dragProgressBarView, .dragAppIconView:
+            return .drag
+        case .panNotificationView, .panMapView:
+            return .pan
+        case .pinchIconZoomInView, .pinchIconZoomOutView, .pinchImageView:
+            return .pinch
+        case .rotateIconView, .rotateMapView:
+            return .rotate
+        }
+    }
+    var viewName: ViewName {
+        switch selectedGuideVideo {
+        case .doubleTapButtonView:
+            return .doubleTapButtonView
+        case .doubleTapSearchBarView:
+            return .doubleTapSearchBarView
+        case .doubleTapImageView:
+            return .doubleTapImageView
+        case .longTapButtonView:
+            return .longTapButtonView
+        case .longTapCameraButtonView:
+            return .longTapCameraButtonView
+        case .longTapAlbumPhotoView:
+            return .longTapAlbumPhotoView
+        case .swipeCarouselView:
+            return .swipeCarouselView
+        case .swipeListView:
+            return .swipeListView
+        case .swipeMessageView:
+            return .swipeMessageView
+        case .dragIconView:
+            return .dragIconView
+        case .dragProgressBarView:
+            return .dragProgressBarView
+        case .dragAppIconView:
+            return .dragAppIconView
+        case .panNotificationView:
+            return .panNotificationView
+        case .panMapView:
+            return .panMapView
+        case .pinchIconZoomInView:
+            return .pinchIconZoomInView
+        case .pinchIconZoomOutView:
+            return .pinchIconZoomOutView
+        case .pinchImageView:
+            return .pinchImageView
+        case .rotateIconView:
+            return .rotateIconView
+        case .rotateMapView:
+            return .rotateMapView
+        }
+    }
     
     private var textColor: Color {
         withAnimation {
@@ -45,6 +107,7 @@ struct HelpButton: View {
     var body: some View {
         Button {
             isFullScreenPresented.toggle()
+            firestoreManager.updateHelpButtonData(gesture, viewName)
         } label: {
             Text("도움이 필요하신가요?")
                 .font(.customButton)

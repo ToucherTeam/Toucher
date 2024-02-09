@@ -71,6 +71,12 @@ struct PanMapView: View {
                 }
             }
             .modifier(FinishModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
+            .modifier(
+                FirebaseEndViewModifier(
+                    isSuccess: panVM.isSuccess,
+                    viewName: .panMapView
+                )
+            )
             .onAppear {
                 panVM.reset()
             }

@@ -11,6 +11,7 @@ struct DoubleTapImageView: View {
     @StateObject private var navigationManager = NavigationManager.shared
     @StateObject private var doubleTapVM = DoubleTapViewModel()
         
+    private let firestoreManager = FirestoreManager.shared
     private let UIWidth = UIScreen.main.bounds.width
     private let UIHeight = UIScreen.main.bounds.height
     private let selectedGuideVideo: URLManager = .doubleTapImageView
@@ -51,6 +52,12 @@ struct DoubleTapImageView: View {
                 }
             }
             .modifier(FinishModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
+            .modifier(
+                FirebaseEndViewModifier(
+                    isSuccess: doubleTapVM.isSuccess,
+                    viewName: .doubleTapImageView
+                )
+            )
             .onAppear {
                 doubleTapVM.reset()
             }

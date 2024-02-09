@@ -21,20 +21,13 @@ struct SwipeMessageView: View {
                 CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
                 ZStack {
-                    VStack {
-                        Text(swipeVM.isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" : swipeVM.isSuccess ? "성공!\n\n" : "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n")
-                            .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
-                            .font(.customTitle)
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 40)
-                            .padding(.horizontal)
-                        
-                        Spacer()
-                        
-                        HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
-                            .opacity(swipeVM.isSuccess ? 0 : 1)
-                            .animation(.easeInOut, value: swipeVM.isSuccess)
-                    }
+                    Text(swipeVM.isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" : swipeVM.isSuccess ? "성공!\n\n" : "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n")
+                        .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
+                        .font(.customTitle)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 40)
+                        .padding(.horizontal)
+                        .frame(maxHeight: .infinity, alignment: .top)
                     
                     List {
                         ForEach(swipeVM.messageData, id: \.id) { message in
@@ -100,6 +93,11 @@ struct SwipeMessageView: View {
                     .listStyle(.plain)
                     .scrollDisabled(true)
                     .padding(.top, 200)
+                    
+                    HelpButton(selectedGuideVideo: selectedGuideVideo, style: swipeVM.isFail  ? .primary : .secondary)
+                        .opacity(swipeVM.isSuccess ? 0 : 1)
+                        .animation(.easeInOut, value: swipeVM.isSuccess)
+                        .frame(maxHeight: .infinity, alignment: .bottom)
                 }
             }
         }
@@ -109,6 +107,12 @@ struct SwipeMessageView: View {
             }
         }
         .modifier(FinishModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
+        .modifier(
+            FirebaseEndViewModifier(
+                isSuccess: swipeVM.isSuccess,
+                viewName: .swipeMessageView
+            )
+        )
     }
 }
 

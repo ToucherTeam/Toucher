@@ -71,6 +71,12 @@ struct PinchIconZoomOutView: View {
                 PinchImageView()
                     .toolbar(.hidden, for: .navigationBar)
             }
+            .modifier(
+                FirebaseViewModifier(
+                    isSuccess: pinchVM.isSuccess,
+                    viewName: .pinchIconZoomOutView
+                )
+            )
             .onAppear {
                 pinchVM.reset()
                 scale = 1
