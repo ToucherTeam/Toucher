@@ -34,10 +34,8 @@ struct PanNotificationView: View {
     
     var body: some View {
         ZStack {
-            if panVM.isFail && !panVM.isSuccess {
-                Color.customSecondary
-                    .ignoresSafeArea()
-            }
+            BackGroundColor(isFail: panVM.isFail, isSuccess: panVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
                 
@@ -132,6 +130,7 @@ struct PanNotificationView: View {
                         withAnimation {
                             panVM.isFail = true
                         }
+                        FirestoreManager.shared.updateViewTapNumber(.pan, .panNotificationView)
                     }
                     .onChange(
                         of: scrollViewSize,

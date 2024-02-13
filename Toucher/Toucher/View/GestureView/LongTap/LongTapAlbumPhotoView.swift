@@ -86,6 +86,7 @@ struct LongTapAlbumPhotoView: View {
                                                     withAnimation {
                                                         longTapVM.isTapped = true
                                                         longTapVM.isFail = true
+                                                        FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapAlbumPhotoView)
                                                         scale = 1
                                                     }
                                                 })

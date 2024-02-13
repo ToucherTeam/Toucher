@@ -23,9 +23,8 @@ struct DragAppIconView: View {
     
     var body: some View {
         ZStack {
-            if dragVM.isFail && !dragVM.isSuccess || isDroped && !dragVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: dragVM.isFail, isSuccess: dragVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
                 
@@ -91,6 +90,7 @@ struct DragAppIconView: View {
                         withAnimation {
                             dragVM.isFail = true
                         }
+                        FirestoreManager.shared.updateViewTapNumber(.drag, .dragAppIconView)
                     }
                     .overlay {
                         if dragVM.isSuccess {

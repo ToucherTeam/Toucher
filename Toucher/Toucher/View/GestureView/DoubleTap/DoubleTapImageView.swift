@@ -78,6 +78,7 @@ struct DoubleTapImageView: View {
                         withAnimation {
                             doubleTapVM.isTapped.toggle()
                             doubleTapVM.isFail = true
+                            FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapImageView)
                         }
                     })
     }

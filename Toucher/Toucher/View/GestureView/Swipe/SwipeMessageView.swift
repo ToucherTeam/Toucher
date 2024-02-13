@@ -14,9 +14,8 @@ struct SwipeMessageView: View {
     
     var body: some View {
         ZStack {
-            if swipeVM.isFail && !swipeVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
@@ -107,12 +106,12 @@ struct SwipeMessageView: View {
             }
         }
         .modifier(FinishModifier(isNavigate: $swipeVM.isNavigate, isSuccess: $swipeVM.isSuccess))
-        .modifier(
-            FirebaseEndViewModifier(
-                isSuccess: swipeVM.isSuccess,
-                viewName: .swipeMessageView
-            )
-        )
+//        .modifier(
+//            FirebaseEndViewModifier(
+//                isSuccess: swipeVM.isSuccess,
+//                viewName: .swipeMessageView
+//            )
+//        )
     }
 }
 

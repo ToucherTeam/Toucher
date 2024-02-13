@@ -17,9 +17,8 @@ struct SwipeListView: View {
     
     var body: some View {
         ZStack {
-            if swipeVM.isFail && !swipeVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
                 
@@ -85,6 +84,14 @@ struct SwipeListView: View {
                                                 }
                                             }
                                         }
+                                        .exclusively(
+                                            before: TapGesture()
+                                                .onEnded {
+                                                    withAnimation {
+                                                        swipeVM.isFail = true
+                                                    }
+                                                    FirestoreManager.shared.updateViewTapNumber(.swipe, .swipeListView)
+                                                })
                                 )
                                 .swipeActions(allowsFullSwipe: false) {
                                     Button {

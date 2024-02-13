@@ -65,6 +65,7 @@ struct LongPressButton: View {
                         isTapStart = false
                         animation = [false, false, false]
                         print("isFail : \(isFail)")
+                        FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapButtonView)
                     }
                 }
             )

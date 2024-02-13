@@ -35,6 +35,15 @@ struct RotateMapView: View {
                                     heading = CLLocationDirection(-angle.degrees)
                                 }
                             }
+                            .exclusively(
+                                before: TapGesture()
+                                    .onEnded {
+                                        withAnimation {
+                                            rotateVM.isFail = true
+                                            FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateMapView)
+                                        }
+                                    })
+
                     )
                     .onChange(of: heading) { _ in
                         if abs(heading) > 10 {

@@ -17,9 +17,8 @@ struct PinchIconZoomInView: View {
     
     var body: some View {
         ZStack {
-            if pinchVM.isFail && !pinchVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: pinchVM.isFail, isSuccess: pinchVM.isSuccess)
+            
             if !pinchVM.isNavigate {
                 VStack {
                     CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
@@ -106,6 +105,7 @@ struct PinchIconZoomInView: View {
                         withAnimation {
                             pinchVM.isFail = true
                         }
+                        FirestoreManager.shared.updateViewTapNumber(.pinch, .pinchIconZoomInView)
                     }
             )
             .simultaneously(

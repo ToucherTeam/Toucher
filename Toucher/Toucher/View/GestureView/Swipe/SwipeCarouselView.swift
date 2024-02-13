@@ -29,9 +29,7 @@ struct SwipeCarouselView: View {
     
     var body: some View {
         ZStack {
-            if swipeVM.isFail && !swipeVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
             
             VStack {
                 CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
@@ -117,14 +115,13 @@ struct SwipeCarouselView: View {
             .offset(x: (CGFloat(currentIndex) * -width) + dragOffset)
         }
         .gesture(
-            LongPressGesture()
-                .exclusively(
-                    before: TapGesture()
-                        .onEnded {
-                            withAnimation {
-                                swipeVM.isFail = true
-                            }
-                        })
+            TapGesture()
+                .onEnded {
+                    withAnimation {
+                        swipeVM.isFail = true
+                    }
+                    FirestoreManager.shared.updateViewTapNumber(.swipe, .swipeCarouselView)
+                }
         )
         .gesture(
             dragOffset(width)

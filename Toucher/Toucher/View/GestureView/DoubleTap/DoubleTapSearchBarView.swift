@@ -16,9 +16,8 @@ struct DoubleTapSearchBarView: View {
     var body: some View {
         
         ZStack {
-            if doubleTapVM.isFail && !doubleTapVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: doubleTapVM.isFail, isSuccess: doubleTapVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
                 
