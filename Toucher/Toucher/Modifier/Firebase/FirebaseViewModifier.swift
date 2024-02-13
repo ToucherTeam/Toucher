@@ -33,6 +33,9 @@ struct FirebaseViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .onTapGesture {
+                firestoreManager.updateViewTapNumber(gesture, viewName)
+            }
             .onAppear {
                 firestoreManager.updateViewTimeStamp(gesture, viewName)
             }

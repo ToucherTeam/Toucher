@@ -34,6 +34,9 @@ struct FirebaseStartViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .onTapGesture {
+                firestoreManager.updateViewTapNumber(gesture, viewName)
+            }
             .onAppear {
                 if create {
                     firestoreManager.createTotal(gesture)
