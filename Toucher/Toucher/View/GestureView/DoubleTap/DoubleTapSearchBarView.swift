@@ -104,6 +104,7 @@ struct DoubleTapSearchBarView: View {
                         withAnimation {
                             doubleTapVM.isTapped = true
                             doubleTapVM.isFail = true
+                            FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapSearchBarView)
                         }
                     })
     }
