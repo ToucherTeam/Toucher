@@ -81,6 +81,7 @@
 		29F1D51F2AA84E240074C1FE /* PinchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1D51E2AA84E240074C1FE /* PinchImageView.swift */; };
 		321F51642B5C2B1F0066CB17 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F51632B5C2B1F0066CB17 /* GuideView.swift */; };
 		321F51662B5E54480066CB17 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F51652B5E54480066CB17 /* URLManager.swift */; };
+		324D77402B7B6731000B5BB6 /* BackGroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324D773F2B7B6731000B5BB6 /* BackGroundColor.swift */; };
 		3266082E2B31E5EB006A58B8 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082D2B31E5EB006A58B8 /* LaunchScreenView.swift */; };
 		326608302B31E78E006A58B8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266082F2B31E78E006A58B8 /* OnboardingView.swift */; };
 		326608322B31EC01006A58B8 /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326608312B31EC01006A58B8 /* TapButton.swift */; };
@@ -160,6 +161,7 @@
 		29F1D51E2AA84E240074C1FE /* PinchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchImageView.swift; sourceTree = "<group>"; };
 		321F51632B5C2B1F0066CB17 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		321F51652B5E54480066CB17 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		324D773F2B7B6731000B5BB6 /* BackGroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundColor.swift; sourceTree = "<group>"; };
 		3266082D2B31E5EB006A58B8 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		3266082F2B31E78E006A58B8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		326608312B31EC01006A58B8 /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				F0ED9B452B15FCA400E8D5C9 /* Buttons */,
 				F06CACF12B468F470024E366 /* Arrow */,
 				29D51B842B25D1BC00A6923E /* PracticeBubble.swift */,
+				324D773F2B7B6731000B5BB6 /* BackGroundColor.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				29D51B852B25D1BC00A6923E /* PracticeBubble.swift in Sources */,
 				29F1D51F2AA84E240074C1FE /* PinchImageView.swift in Sources */,
 				29EAB42B2AA635D9004E5429 /* DragAppIconView.swift in Sources */,
+				324D77402B7B6731000B5BB6 /* BackGroundColor.swift in Sources */,
 				F0ED9B4B2B160ED800E8D5C9 /* MainButton.swift in Sources */,
 				0766555A2AA22A1E00DC6687 /* DeviceManager.swift in Sources */,
 				29AD872C2AA85C7C006E846E /* PinchIconZoomOutView.swift in Sources */,
@@ -795,7 +799,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -829,7 +833,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toucher/Preview Content\"";
-				DEVELOPMENT_TEAM = 77745NX67K;
+				DEVELOPMENT_TEAM = WF2V4JB29M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";

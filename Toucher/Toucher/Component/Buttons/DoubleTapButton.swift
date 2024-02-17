@@ -35,6 +35,12 @@ struct DoubleTapButton: View {
             .onChanged { _ in
                 checkSuccess()
             }
+            .exclusively(
+                before: TapGesture()
+                    .onEnded {
+                        FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapButtonView)
+                    }
+            )
     }
     
     private func checkSuccess() {

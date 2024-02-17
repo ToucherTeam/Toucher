@@ -21,9 +21,8 @@ struct DragIconView: View {
     
     var body: some View {
         ZStack {
-            if dragVM.isFail && !dragVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: dragVM.isFail, isSuccess: dragVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
                 

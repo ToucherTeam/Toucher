@@ -140,7 +140,7 @@ extension FirestoreManager {
                 "totalId": gesture.rawValue,
                 "viewId": viewName.rawValue,
                 "viewClearNumber": 0,
-                "backButtonCount": 0,
+                "viewTapNumber": 0,
                 "viewHelpButtonCount": 0
             ]
             
@@ -162,6 +162,29 @@ extension FirestoreManager {
         }
     }
     
+        func updateViewTapNumber(_ gesture: GestureType, _ viewName: ViewName) {
+            if let userId = userId {
+                let viewDocument = userCollection.document(userId).collection(gesture.rawValue).document(gesture.rawValue).collection(viewName.rawValue).document(viewName.rawValue)
+                
+                viewDocument.getDocument { document, error in
+                    if let document = document, document.exists {
+                        if let error = error {
+                            print(error.localizedDescription)
+                            return
+                        }
+                        var viewTapNumber = document.data()?["viewTapNumber"] as? Int ?? 0
+                        
+                            viewTapNumber += 1
+                            let updatedData: [String: Any] = [
+                                "viewTapNumber": viewTapNumber
+                            ]
+                            
+                            viewDocument.updateData(updatedData)
+                    }
+                }
+            }
+        }
+
     func updateViewClearData(_ gesture: GestureType, _ viewName: ViewName) {
         if let userId = userId {
             let viewDocument = userCollection.document(userId).collection(gesture.rawValue).document(gesture.rawValue).collection(viewName.rawValue).document(viewName.rawValue)

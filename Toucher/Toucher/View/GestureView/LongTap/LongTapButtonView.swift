@@ -16,9 +16,8 @@ struct LongTapButtonView: View {
     
     var body: some View {
         ZStack {
-            if longTapVM.isFail && !longTapVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: longTapVM.isFail, isSuccess: longTapVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
                 

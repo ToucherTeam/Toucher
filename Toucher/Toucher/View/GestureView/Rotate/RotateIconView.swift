@@ -20,9 +20,8 @@ struct RotateIconView: View {
     
     var body: some View {
         ZStack {
-            if rotateVM.isFail && !rotateVM.isSuccess {
-                Color.customSecondary.ignoresSafeArea()
-            }
+            BackGroundColor(isFail: rotateVM.isFail, isSuccess: rotateVM.isSuccess)
+            
             VStack {
                 CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
                 ZStack {
@@ -59,6 +58,7 @@ struct RotateIconView: View {
                             withAnimation {
                                 rotateVM.isFail = true
                             }
+                            FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateIconView)
                         }
                         .overlay {
                             if rotateVM.isSuccess {

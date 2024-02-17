@@ -84,6 +84,7 @@ struct PinchImageView: View {
                         self.scale = 3
                     } else {
                         pinchVM.isFail = true
+                        FirestoreManager.shared.updateViewTapNumber(.pinch, .pinchImageView)
                     }
                 }
             }

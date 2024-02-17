@@ -28,6 +28,14 @@ struct PanMapView: View {
                                     panVM.isSuccess = true
                                 }
                             }
+                            .exclusively(
+                                before: TapGesture()
+                                    .onEnded {
+                                        withAnimation {
+                                            panVM.isFail = true
+                                            FirestoreManager.shared.updateViewTapNumber(.pan, .panMapView)
+                                        }
+                                    })
                     )
                 
                 GeometryReader { geometry in
