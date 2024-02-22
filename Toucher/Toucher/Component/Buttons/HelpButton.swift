@@ -108,6 +108,7 @@ struct HelpButton: View {
         Button {
             isFullScreenPresented.toggle()
             firestoreManager.updateHelpButtonData(gesture, viewName)
+            AnalyticsManager.shared.logEvent(name: "\(gesture)_HelpButtonClicked")
         } label: {
             Text("도움이 필요하신가요?")
                 .font(.customButton)

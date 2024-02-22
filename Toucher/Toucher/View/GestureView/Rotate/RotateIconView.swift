@@ -59,6 +59,7 @@ struct RotateIconView: View {
                                 rotateVM.isFail = true
                             }
                             FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateIconView)
+                            AnalyticsManager.shared.logEvent(name: "RotateIconView_Fail")
                         }
                         .overlay {
                             if rotateVM.isSuccess {
@@ -77,6 +78,7 @@ struct RotateIconView: View {
                 }
             }
         }
+        .analyticsScreen(name: "RotateIconView")
         .modifier(MoveToNextModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .navigationDestination(isPresented: $rotateVM.isNavigate) {
             RotateMapView()
@@ -112,10 +114,12 @@ struct RotateIconView: View {
                     withAnimation {
                         rotateVM.isSuccess = true
                     }
+                    AnalyticsManager.shared.logEvent(name: "RotateIconView_Success")
                 } else {
                     print(accumulateAngle.degrees)
                     rotateVM.isSuccess = false
                     rotateVM.isFail = true
+                    AnalyticsManager.shared.logEvent(name: "RotateIconView_Fail")
                 }
             }
     }

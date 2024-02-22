@@ -40,14 +40,16 @@ struct RotateMapView: View {
                                     .onEnded {
                                         withAnimation {
                                             rotateVM.isFail = true
-                                            FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateMapView)
                                         }
+                                        FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateMapView)
+                                        AnalyticsManager.shared.logEvent(name: "RotateMapView_Fail")
                                     })
 
                     )
                     .onChange(of: heading) { _ in
                         if abs(heading) > 10 {
                             rotateVM.isSuccess = true
+                            AnalyticsManager.shared.logEvent(name: "RotateMapView_Fail")
                         }
                     }
                     .overlay {
@@ -76,6 +78,7 @@ struct RotateMapView: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+        .analyticsScreen(name: "RotateMapView")
         .modifier(FinishModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .modifier(
             FirebaseEndViewModifier(

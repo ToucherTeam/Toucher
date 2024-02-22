@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct DoubleTapButtonView: View {
     @AppStorage("createDoubleTap") var createDoubleTap = true
@@ -48,6 +49,7 @@ struct DoubleTapButtonView: View {
                 }
             }
         }
+        .analyticsScreen(name: "DoubleTapButtonView")
         .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
         .navigationDestination(isPresented: $doubleTapVM.isNavigate) {
             DoubleTapSearchBarView()

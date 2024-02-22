@@ -6,24 +6,24 @@
 //
 
 import Foundation
+import FirebaseAnalytics
+import FirebaseAnalyticsSwift
 
 struct AnalyticsManager {
     
+    static let shared = AnalyticsManager()
     private init() { }
-
-    struct Screen {
-        private init() { }
-
-        static let splash = "스플래시"
-        static let onboarding = "온보딩_진입"
-        static let main = "메인화면_진입"
+    
+    func logEvent(name: String, params: [String: Any]? = nil) {
+        Analytics.logEvent(name, parameters: params)
     }
-
-    struct Event {
-        private init() { }
-
-        static let touchOnboardingStart = "A2_온보딩_시작"
-        static let touchKakaoLogin = "A3_로그인_카카오"
-        static let touchAppleLogin = "A3_로그인_애플"
+    
+    func setUserId(userId: String) {
+        Analytics.setUserID(userId)
     }
+    
+    func setUserProperty(value: String?, property: String) {
+        Analytics.setUserProperty(value, forName: property)
+    }
+    
 }

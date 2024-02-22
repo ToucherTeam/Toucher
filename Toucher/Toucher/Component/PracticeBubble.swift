@@ -66,6 +66,7 @@ struct PracticeBubble: View {
                 
                 Button {
                     action()
+                    AnalyticsManager.shared.logEvent(name: "\(gesture)_StartButtonClicked")
                 } label: {
                     Text("시작하기")
                         .font(.system(size: 22))

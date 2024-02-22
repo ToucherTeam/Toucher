@@ -81,6 +81,7 @@ struct SwipeListView: View {
                                                     withAnimation {
                                                         swipeVM.isFail = true
                                                     }
+                                                    AnalyticsManager.shared.logEvent(name: "SwipeListView_Fail")
                                                 }
                                             }
                                         }
@@ -91,6 +92,7 @@ struct SwipeListView: View {
                                                         swipeVM.isFail = true
                                                     }
                                                     FirestoreManager.shared.updateViewTapNumber(.swipe, .swipeListView)
+                                                    AnalyticsManager.shared.logEvent(name: "SwipeListView_Fail")
                                                 })
                                 )
                                 .swipeActions(allowsFullSwipe: false) {
@@ -146,6 +148,7 @@ struct SwipeListView: View {
                                         swipeVM.isFail = false
                                         textIndex = 2
                                         swipeVM.isSuccess = true
+                                        AnalyticsManager.shared.logEvent(name: "SwipeListView_Success")
                                     }
                                     
                                 }
@@ -165,6 +168,7 @@ struct SwipeListView: View {
                 }
             }
         }
+        .analyticsScreen(name: "SwipeListView")
         .modifier(
             FirebaseViewModifier(
                 isSuccess: swipeVM.isSuccess,

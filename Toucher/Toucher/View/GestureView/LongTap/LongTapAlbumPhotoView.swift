@@ -80,15 +80,17 @@ struct LongTapAlbumPhotoView: View {
                                                     scale = 1
                                                     selectedIndex = index
                                                 }
+                                                AnalyticsManager.shared.logEvent(name: "LongTapAlubmPhotoView_Success")
                                             }
                                             .simultaneously(with: TapGesture()
                                                 .onEnded {
                                                     withAnimation {
                                                         longTapVM.isTapped = true
                                                         longTapVM.isFail = true
-                                                        FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapAlbumPhotoView)
                                                         scale = 1
                                                     }
+                                                    FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapAlbumPhotoView)
+                                                    AnalyticsManager.shared.logEvent(name: "LongTapAlbumView_Fail")
                                                 })
                                     )
                             }
@@ -136,6 +138,7 @@ struct LongTapAlbumPhotoView: View {
                 }
             }
         }
+        .analyticsScreen(name: "LongTapAlbumPhotoView")
         .modifier(FinishModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
         .modifier(
             FirebaseEndViewModifier(

@@ -39,6 +39,7 @@ struct DoubleTapButton: View {
                 before: TapGesture()
                     .onEnded {
                         FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapButtonView)
+                        AnalyticsManager.shared.logEvent(name: "DoubleTapButtonView_Fail")
                     }
             )
     }
@@ -51,9 +52,12 @@ struct DoubleTapButton: View {
         if count >= 2 {
             isFail = false
             isSuccess = true
+            AnalyticsManager.shared.logEvent(name: "DoubleTapButtonView_Success")
         } else {
             isSuccess = false
             isFail = true
+            FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapButtonView)
+            AnalyticsManager.shared.logEvent(name: "DoubleTapButtonView_Fail")
         }
         
         print("isSuccess : \(isSuccess)")

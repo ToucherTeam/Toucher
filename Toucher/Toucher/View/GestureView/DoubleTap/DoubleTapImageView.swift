@@ -62,24 +62,25 @@ struct DoubleTapImageView: View {
                 doubleTapVM.reset()
             }
         }
+        .analyticsScreen(name: "DoubleTapImageView")
     }
     
     private var gesture: some Gesture {
         TapGesture(count: 2)
             .onEnded {
                 withAnimation {
-                    doubleTapVM.isSuccess.toggle()
-                    doubleTapVM.isTapped = true
+                    doubleTapVM.isSuccess = true
                 }
+                AnalyticsManager.shared.logEvent(name: "DoubleTapImageView_Success")
             }
             .exclusively(
                 before: TapGesture()
                     .onEnded {
                         withAnimation {
-                            doubleTapVM.isTapped.toggle()
                             doubleTapVM.isFail = true
-                            FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapImageView)
                         }
+                        FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapImageView)
+                        AnalyticsManager.shared.logEvent(name: "DoubleTapImagView_Fail")
                     })
     }
 }

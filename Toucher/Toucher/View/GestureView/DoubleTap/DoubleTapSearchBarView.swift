@@ -49,6 +49,7 @@ struct DoubleTapSearchBarView: View {
                 
             }
         }
+        .analyticsScreen(name: "DoubleTapSearchBarView")
         .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
         .navigationDestination(isPresented: $doubleTapVM.isNavigate) {
             DoubleTapImageView()
@@ -97,6 +98,7 @@ struct DoubleTapSearchBarView: View {
                     doubleTapVM.isSuccess = true
                     doubleTapVM.isTapped = true
                 }
+                AnalyticsManager.shared.logEvent(name: "DoubleTapSearchBarView_Success")
             }
             .exclusively(
                 before: TapGesture()
@@ -104,8 +106,9 @@ struct DoubleTapSearchBarView: View {
                         withAnimation {
                             doubleTapVM.isTapped = true
                             doubleTapVM.isFail = true
-                            FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapSearchBarView)
                         }
+                        FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapSearchBarView)
+                        AnalyticsManager.shared.logEvent(name: "DoubleTapSearchBarView_Fail")
                     })
     }
 }

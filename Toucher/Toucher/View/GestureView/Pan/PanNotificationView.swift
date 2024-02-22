@@ -113,8 +113,10 @@ struct PanNotificationView: View {
                                         perform: { value in
                                             if value >= scrollViewSize.height - wholeSize.height {
                                                 panVM.isSuccess = true
+                                                AnalyticsManager.shared.logEvent(name: "PanNotificationView_Success")
                                             } else if value < 0 {
                                                 panVM.isFail = true
+                                                AnalyticsManager.shared.logEvent(name: "PanNotificationView_Fail")
                                             } else {
                                                 panVM.isFail = false
                                             }
@@ -131,6 +133,7 @@ struct PanNotificationView: View {
                             panVM.isFail = true
                         }
                         FirestoreManager.shared.updateViewTapNumber(.pan, .panNotificationView)
+                        AnalyticsManager.shared.logEvent(name: "PanNotificationView_Fail")
                     }
                     .onChange(
                         of: scrollViewSize,
@@ -148,6 +151,7 @@ struct PanNotificationView: View {
                 }
             }
         }
+        .analyticsScreen(name: "PanNotificationView")
         .modifier(
             FirebaseStartViewModifier(
                 create: $createPan,

@@ -80,6 +80,7 @@ struct PinchIconZoomOutView: View {
                 scale = 1
             }
         }
+        .analyticsScreen(name: "PinchIconZoomOutView")
     }
     
     private var gesture: some Gesture {
@@ -94,6 +95,7 @@ struct PinchIconZoomOutView: View {
                 withAnimation {
                     if scale < 0.8 {
                         pinchVM.isSuccess = true
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomOutView_Success")
                         self.scale = 0.6
                     }
                 }
@@ -105,6 +107,7 @@ struct PinchIconZoomOutView: View {
                             pinchVM.isFail = true
                         }
                         FirestoreManager.shared.updateViewTapNumber(.pinch, .pinchIconZoomOutView)
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomOutView_Fail")
                     }
             )
             .simultaneously(
@@ -113,6 +116,7 @@ struct PinchIconZoomOutView: View {
                         withAnimation {
                             pinchVM.isFail = true
                         }
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomOutView_Fail")
                     }
             )
     }

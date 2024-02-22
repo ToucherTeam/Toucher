@@ -44,6 +44,8 @@ extension SceneDelegate {
     private func signInAnonymously() {
         if let user = Auth.auth().currentUser {
             firestoreManager.getCurrentUser()
+            AnalyticsManager.shared.setUserId(userId: user.uid)
+            AnalyticsManager.shared.setUserProperty(value: true.description, property: user.uid)
             print("Log in \(user.uid)")
         } else {
             Auth.auth().signInAnonymously { authResult, error in

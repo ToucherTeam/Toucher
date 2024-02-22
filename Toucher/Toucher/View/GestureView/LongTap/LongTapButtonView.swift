@@ -58,6 +58,7 @@ struct LongTapButtonView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .analyticsScreen(name: "LongTapButtonView")
         .modifier(FirebaseStartViewModifier(create: $createLongTap, isSuccess: longTapVM.isSuccess, viewName: .longTapButtonView))
         .onAppear {
             longTapVM.reset()

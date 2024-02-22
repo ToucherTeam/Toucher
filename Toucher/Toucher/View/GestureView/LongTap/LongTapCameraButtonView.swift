@@ -58,6 +58,7 @@ struct LongTapCameraButtonView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .analyticsScreen(name: "LongTapCameraButtonView")
         .modifier(
             FirebaseViewModifier(
                 isSuccess: longTapVM.isSuccess,
@@ -90,6 +91,7 @@ struct LongTapCameraButtonView: View {
                             longTapVM.isSuccess = true
                             longTapVM.isTapped = true
                         }
+                        AnalyticsManager.shared.logEvent(name: "LongTapCameraButtonView_Success")
                     }
                     .simultaneously(with: TapGesture()
                         .onEnded {
@@ -98,6 +100,7 @@ struct LongTapCameraButtonView: View {
                                 longTapVM.isFail = true
                             }
                             FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapCameraButtonView)
+                            AnalyticsManager.shared.logEvent(name: "LongTapCamerButtonView_Fail")
                         })
             )
             .background(alignment: .topLeading) {

@@ -47,6 +47,7 @@ struct DragProgressBarView: View {
                 }
             }
         }
+        .analyticsScreen(name: "DragProgressBarView")
         .modifier(MoveToNextModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
         .navigationDestination(isPresented: $dragVM.isNavigate) {
             DragAppIconView()
@@ -70,6 +71,7 @@ struct DragProgressBarView: View {
                 .onTapGesture {
                     if !dragVM.isSuccess {
                         dragVM.isFail = true
+                        AnalyticsManager.shared.logEvent(name: "DragProgressBarView_Fail")
                     }
                 }
             Group {
@@ -90,6 +92,7 @@ struct DragProgressBarView: View {
             .onChange(of: value) { newValue in
                 if newValue >= 0.3 {
                     dragVM.isSuccess = true
+                    AnalyticsManager.shared.logEvent(name: "DragProgressBarView_Success")
                 }
             }
         }

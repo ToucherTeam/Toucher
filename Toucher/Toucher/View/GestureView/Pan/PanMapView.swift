@@ -27,14 +27,16 @@ struct PanMapView: View {
                                 withAnimation {
                                     panVM.isSuccess = true
                                 }
+                                AnalyticsManager.shared.logEvent(name: "PanMapView_Success")
                             }
                             .exclusively(
                                 before: TapGesture()
                                     .onEnded {
                                         withAnimation {
                                             panVM.isFail = true
-                                            FirestoreManager.shared.updateViewTapNumber(.pan, .panMapView)
                                         }
+                                        FirestoreManager.shared.updateViewTapNumber(.pan, .panMapView)
+                                        AnalyticsManager.shared.logEvent(name: "PanMapView_Fail")
                                     })
                     )
                 
@@ -89,6 +91,7 @@ struct PanMapView: View {
                 panVM.reset()
             }
         }
+        .analyticsScreen(name: "PanMapView")
     }
 }
 
