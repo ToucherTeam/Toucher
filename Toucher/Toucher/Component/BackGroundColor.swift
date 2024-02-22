@@ -21,4 +21,3 @@ struct BackGroundColor: View {
         }
     }
 }
-
