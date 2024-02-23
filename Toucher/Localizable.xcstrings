@@ -20,10 +20,67 @@
     " %@" : {
       "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
+          }
+        }
+      }
+    },
+    "(광고) 안녕하세요." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(Advertising) Hello."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(広告)こんにちは。"
+          }
+        }
+      }
+    },
+    "[Web발신] 안녕하세요" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Web outgoing] Hello"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Web発信]こんにちは"
+          }
+        }
+      }
+    },
+    "[중앙재난안전대책본부] 안녕하세요." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Central Disaster Safety Countermeasures Headquarters] Hello."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[中央災害安全対策本部]こんにちは。"
           }
         }
       }
@@ -152,6 +209,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "公有"
+          }
+        }
+      }
+    },
+    "금요일" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friday"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "金曜日"
+          }
+        }
+      }
+    },
+    "긴급재난문자" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emergency distress message"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "緊急災害文字"
           }
         }
       }
@@ -332,6 +423,23 @@
         }
       }
     },
+    "메세지 내용" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Message content"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メッセージ内容"
+          }
+        }
+      }
+    },
     "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n" : {
       "localizations" : {
         "en" : {
@@ -376,6 +484,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "コピー"
+          }
+        }
+      }
+    },
+    "붙여넣기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "貼り付け"
+          }
+        }
+      }
+    },
+    "붙여넣기 및 이동" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste and move"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "貼り付けと移動"
           }
         }
       }
@@ -524,6 +664,23 @@
         }
       }
     },
+    "수요일" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wednesday"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水曜日"
+          }
+        }
+      }
+    },
     "시작" : {
       "localizations" : {
         "en" : {
@@ -572,6 +729,23 @@
         }
       }
     },
+    "안녕하세요. 메세지 내용입니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello. This is the message content."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "こんにちは。メッセージの内容です。"
+          }
+        }
+      }
+    },
     "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?" : {
       "localizations" : {
         "en" : {
@@ -584,6 +758,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "写真をぎゅっと押してあらかじめ見てみましょうか"
+          }
+        }
+      }
+    },
+    "어제" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yesterday"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "昨日"
           }
         }
       }
@@ -985,6 +1176,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャラクターをぎゅっと押してみましょうか"
+          }
+        }
+      }
+    },
+    "터치에 세계에 오신 걸 환영합니다!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to the world of touch!"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タッチに世界へようこそ！"
           }
         }
       }

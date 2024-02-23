@@ -72,7 +72,7 @@ struct PanNotificationView: View {
                                                 
                                                 VStack(alignment: .leading) {
                                                     HStack {
-                                                        Text(item.title)
+                                                        Text(LocalizedStringKey(item.title))
                                                             .bold()
                                                         Spacer()
                                                         Text(item.time)
@@ -81,7 +81,7 @@ struct PanNotificationView: View {
                                                             .fontWeight(.regular)
                                                             .padding(.trailing, 22)
                                                     }
-                                                    Text(item.subTitle)
+                                                    Text(LocalizedStringKey(item.subTitle))
                                                         .font(.system(size: 15))
                                                         .fontWeight(.regular)
                                                 }

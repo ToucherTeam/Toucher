@@ -57,12 +57,12 @@ struct SwipeMessageView: View {
                                         
                                         Spacer()
                                         
-                                        Text(message.time)
+                                        Text(LocalizedStringKey(message.time))
                                             .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                                     }
-                                    Text(message.text)
+                                    Text(LocalizedStringKey(message.text))
                                         .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
                                 }
                             }

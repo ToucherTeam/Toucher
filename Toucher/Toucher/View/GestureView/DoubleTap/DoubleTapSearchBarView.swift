@@ -73,13 +73,33 @@ struct DoubleTapSearchBarView: View {
             Spacer()
             Image(systemName: "mic.fill")
         }
-        .overlay(
-            Image("paste_bar")
-                .resizable()
-                .scaledToFit()
-                .frame(width: doubleTapVM.isSuccess ? 600 : 0, height: 50)
-                .offset(x: -20, y: -45)
-        )
+        .overlay {
+            if doubleTapVM.isSuccess {
+                VStack(spacing: 0) {
+                    HStack(spacing: 12) {
+                        Text("붙여넣기")
+                        Image(systemName: "text.viewfinder")
+                        Text("붙여넣기 및 이동")
+                    }
+                    .font(.callout)
+                    .padding(8)
+                    .padding(.horizontal, 4)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(Color(.systemGray6))
+                            .shadow(color: .gray.opacity(0.5), radius: 3)
+                    }
+                    
+                    BubbleTail()
+                        .frame(width: 20, height: 10)
+                        .foregroundStyle(Color(.systemGray6))
+                        .offset(x: -60, y: -1)
+                        .shadow(color: .gray.opacity(0.3), radius: 1, y: 3)
+                }
+                .offset(x: -20, y: -50)
+                .transition(.scale)
+            }
+        }
         .font(.title)
         .foregroundColor(.secondary)
         .padding()
@@ -110,6 +130,20 @@ struct DoubleTapSearchBarView: View {
                         FirestoreManager.shared.updateViewTapNumber(.doubleTap, .doubleTapSearchBarView)
                         AnalyticsManager.shared.logEvent(name: "DoubleTapSearchBarView_Fail")
                     })
+    }
+}
+
+struct BubbleTail: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.49994*width, y: 0.90437*height))
+        path.addLine(to: CGPoint(x: 0.97684*width, y: 0.08254*height))
+        path.addLine(to: CGPoint(x: 0.02305*width, y: 0.08254*height))
+        path.addLine(to: CGPoint(x: 0.49994*width, y: 0.90437*height))
+        path.closeSubpath()
+        return path
     }
 }
 
