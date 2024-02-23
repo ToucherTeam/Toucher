@@ -51,6 +51,9 @@ struct MainButton: View {
                     startBubble
                 }
             }
+            .onTapGesture {
+                AnalyticsManager.shared.logEvent(name: "\(gesture)_ButtonClicked")
+            }
     }
     
     private var ellipseStroke: some View {
