@@ -113,7 +113,6 @@ struct PanNotificationView: View {
                                         perform: { value in
                                             if value >= scrollViewSize.height - wholeSize.height {
                                                 panVM.isSuccess = true
-                                                AnalyticsManager.shared.logEvent(name: "PanNotificationView_Success")
                                             } else if value < 0 {
                                                 panVM.isFail = true
                                                 AnalyticsManager.shared.logEvent(name: "PanNotificationView_Fail")
@@ -168,6 +167,11 @@ struct PanNotificationView: View {
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
+        .onChange(of: panVM.isSuccess) { isSuccess in
+            if isSuccess {
+                AnalyticsManager.shared.logEvent(name: "PanNotification_Success")
+            }
+        }
         .navigationDestination(isPresented: $panVM.isNavigate) {
             PanMapView()
                 .toolbar(.hidden, for: .navigationBar)

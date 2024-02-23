@@ -63,6 +63,11 @@ struct DragProgressBarView: View {
             dragVM.reset()
             value = 0.0
         }
+        .onChange(of: dragVM.isSuccess) { isSuccess in
+            if isSuccess {
+                AnalyticsManager.shared.logEvent(name: "DragProgressBarView_Success")
+            }
+        }
     }
     
     private var slider: some View {
@@ -92,7 +97,6 @@ struct DragProgressBarView: View {
             .onChange(of: value) { newValue in
                 if newValue >= 0.3 {
                     dragVM.isSuccess = true
-                    AnalyticsManager.shared.logEvent(name: "DragProgressBarView_Success")
                 }
             }
         }
