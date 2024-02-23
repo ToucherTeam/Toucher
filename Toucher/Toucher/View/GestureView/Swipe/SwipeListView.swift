@@ -148,7 +148,7 @@ struct SwipeListView: View {
                                         swipeVM.isFail = false
                                         textIndex = 2
                                         swipeVM.isSuccess = true
-                                        AnalyticsManager.shared.logEvent(name: "SwipeListView_Success")
+                                        AnalyticsManager.shared.logEvent(name: "SwipeListView_ClearCount")
                                     }
                                     
                                 }

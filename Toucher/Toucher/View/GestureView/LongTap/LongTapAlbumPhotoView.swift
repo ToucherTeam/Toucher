@@ -80,7 +80,7 @@ struct LongTapAlbumPhotoView: View {
                                                     scale = 1
                                                     selectedIndex = index
                                                 }
-                                                AnalyticsManager.shared.logEvent(name: "LongTapAlubmPhotoView_Success")
+                                                AnalyticsManager.shared.logEvent(name: "LongTapAlubmPhotoView_ClearCount")
                                             }
                                             .simultaneously(with: TapGesture()
                                                 .onEnded {

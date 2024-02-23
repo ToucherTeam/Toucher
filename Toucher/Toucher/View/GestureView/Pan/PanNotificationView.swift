@@ -169,7 +169,7 @@ struct PanNotificationView: View {
         .modifier(MoveToNextModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
         .onChange(of: panVM.isSuccess) { isSuccess in
             if isSuccess {
-                AnalyticsManager.shared.logEvent(name: "PanNotification_Success")
+                AnalyticsManager.shared.logEvent(name: "PanNotification_ClearCount")
             }
         }
         .navigationDestination(isPresented: $panVM.isNavigate) {

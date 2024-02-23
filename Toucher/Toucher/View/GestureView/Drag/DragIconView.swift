@@ -93,7 +93,7 @@ struct DragIconView: View {
                                                 withAnimation {
                                                     dragVM.isSuccess = true
                                                 }
-                                                AnalyticsManager.shared.logEvent(name: "DragIconView_Success")
+                                                AnalyticsManager.shared.logEvent(name: "DragIconView_ClearCount")
                                             }
                                             
                                             if !isArrived {

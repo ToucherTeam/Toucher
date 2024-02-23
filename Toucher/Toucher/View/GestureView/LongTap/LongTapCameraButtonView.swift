@@ -91,7 +91,7 @@ struct LongTapCameraButtonView: View {
                             longTapVM.isSuccess = true
                             longTapVM.isTapped = true
                         }
-                        AnalyticsManager.shared.logEvent(name: "LongTapCameraButtonView_Success")
+                        AnalyticsManager.shared.logEvent(name: "LongTapCameraButtonView_ClearCount")
                     }
                     .simultaneously(with: TapGesture()
                         .onEnded {

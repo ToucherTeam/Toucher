@@ -70,7 +70,7 @@ struct SwipeMessageView: View {
                                 Button(role: .destructive) {
                                     swipeVM.isFail = false
                                     swipeVM.isSuccess = true
-                                    AnalyticsManager.shared.logEvent(name: "SwipeMessageView_Success")
+                                    AnalyticsManager.shared.logEvent(name: "SwipeMessageView_ClearCount")
                                     if let index = swipeVM.messageData.firstIndex(where: { $0.id == message.id }) {
                                         swipeVM.messageData.remove(at: index)
                                     }

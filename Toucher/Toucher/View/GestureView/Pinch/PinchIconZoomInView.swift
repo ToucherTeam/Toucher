@@ -92,7 +92,7 @@ struct PinchIconZoomInView: View {
                 withAnimation {
                     if scale > 1.5 {
                         pinchVM.isSuccess = true
-                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomInView_Success")
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomInView_ClearCount")
                         HapticManager.notification(type: .success)
                         self.scale = 2
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {

@@ -71,7 +71,7 @@ struct DoubleTapImageView: View {
                 withAnimation {
                     doubleTapVM.isSuccess = true
                 }
-                AnalyticsManager.shared.logEvent(name: "DoubleTapImageView_Success")
+                AnalyticsManager.shared.logEvent(name: "DoubleTapImageView_ClearCount")
             }
             .exclusively(
                 before: TapGesture()

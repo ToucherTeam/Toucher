@@ -65,7 +65,7 @@ struct DragProgressBarView: View {
         }
         .onChange(of: dragVM.isSuccess) { isSuccess in
             if isSuccess {
-                AnalyticsManager.shared.logEvent(name: "DragProgressBarView_Success")
+                AnalyticsManager.shared.logEvent(name: "DragProgressBarView_ClearCount")
             }
         }
     }

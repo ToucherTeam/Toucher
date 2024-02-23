@@ -39,7 +39,7 @@ struct LongPressButton: View {
             .onEnded { finished in
                     isSuccess = finished
                     print("isSuccess : \(isSuccess)")
-                    AnalyticsManager.shared.logEvent(name: "LongTapButtoView_Success")
+                    AnalyticsManager.shared.logEvent(name: "LongTapButtoView_ClearCount")
             }
             .onChanged { value in
                 withAnimation {

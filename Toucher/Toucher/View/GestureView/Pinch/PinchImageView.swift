@@ -82,7 +82,7 @@ struct PinchImageView: View {
                 withAnimation {
                     if scale > 1.2 {
                         pinchVM.isSuccess = true
-                        AnalyticsManager.shared.logEvent(name: "PinchImageView_Success")
+                        AnalyticsManager.shared.logEvent(name: "PinchImageView_ClearCount")
                         self.scale = 3
                     } else {
                         pinchVM.isFail = true

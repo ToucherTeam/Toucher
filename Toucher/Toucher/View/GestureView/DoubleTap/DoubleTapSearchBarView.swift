@@ -98,7 +98,7 @@ struct DoubleTapSearchBarView: View {
                     doubleTapVM.isSuccess = true
                     doubleTapVM.isTapped = true
                 }
-                AnalyticsManager.shared.logEvent(name: "DoubleTapSearchBarView_Success")
+                AnalyticsManager.shared.logEvent(name: "DoubleTapSearchBarView_ClearCount")
             }
             .exclusively(
                 before: TapGesture()

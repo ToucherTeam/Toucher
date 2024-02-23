@@ -180,7 +180,7 @@ struct SwipeCarouselView: View {
             if array[lastIndex] == 0 && array[lastIndex - 1] == 1 {
                 swipeVM.isSuccess = true
                 swipeVM.isFail = false
-                AnalyticsManager.shared.logEvent(name: "SwipeCarouselView_Success")
+                AnalyticsManager.shared.logEvent(name: "SwipeCarouselView_ClearCount")
             } else if array[lastIndex] != array[lastIndex - 1] {
                 swipeVM.isSuccess = false
                 swipeVM.isFail = false

@@ -27,7 +27,7 @@ struct PanMapView: View {
                                 withAnimation {
                                     panVM.isSuccess = true
                                 }
-                                AnalyticsManager.shared.logEvent(name: "PanMapView_Success")
+                                AnalyticsManager.shared.logEvent(name: "PanMapView_ClearCount")
                             }
                             .exclusively(
                                 before: TapGesture()

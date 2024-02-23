@@ -52,7 +52,7 @@ struct DoubleTapButton: View {
         if count >= 2 {
             isFail = false
             isSuccess = true
-            AnalyticsManager.shared.logEvent(name: "DoubleTapButtonView_Success")
+            AnalyticsManager.shared.logEvent(name: "DoubleTapButtonView_ClearCount")
         } else {
             isSuccess = false
             isFail = true

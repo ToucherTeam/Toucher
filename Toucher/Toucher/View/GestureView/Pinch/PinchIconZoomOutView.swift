@@ -95,7 +95,7 @@ struct PinchIconZoomOutView: View {
                 withAnimation {
                     if scale < 0.8 {
                         pinchVM.isSuccess = true
-                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomOutView_Success")
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomOutView_ClearCount")
                         self.scale = 0.6
                     }
                 }

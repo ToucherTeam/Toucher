@@ -115,7 +115,7 @@ struct DragAppIconView: View {
         .modifier(FinishModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
         .onChange(of: dragVM.isSuccess) { _ in
             if dragVM.isSuccess {
-                AnalyticsManager.shared.logEvent(name: "DragAppIconView_Success")
+                AnalyticsManager.shared.logEvent(name: "DragAppIconView_ClearCount")
             }
         }
     }

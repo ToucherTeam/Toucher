@@ -114,7 +114,7 @@ struct RotateIconView: View {
                     withAnimation {
                         rotateVM.isSuccess = true
                     }
-                    AnalyticsManager.shared.logEvent(name: "RotateIconView_Success")
+                    AnalyticsManager.shared.logEvent(name: "RotateIconView_ClearCount")
                 } else {
                     print(accumulateAngle.degrees)
                     rotateVM.isSuccess = false
