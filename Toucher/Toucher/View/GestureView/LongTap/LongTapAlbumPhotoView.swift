@@ -27,7 +27,7 @@ struct LongTapAlbumPhotoView: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack(spacing: 0) {
-                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
+                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ScrollView {
                     Text(longTapVM.isSuccess ? "성공!\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")

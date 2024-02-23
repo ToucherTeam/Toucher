@@ -19,7 +19,7 @@ struct PinchIconZoomOutView: View {
             BackGroundColor(isFail: pinchVM.isFail, isSuccess: pinchVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
+                CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {

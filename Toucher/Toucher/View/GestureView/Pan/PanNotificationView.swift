@@ -37,7 +37,7 @@ struct PanNotificationView: View {
             BackGroundColor(isFail: panVM.isFail, isSuccess: panVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
+                CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {

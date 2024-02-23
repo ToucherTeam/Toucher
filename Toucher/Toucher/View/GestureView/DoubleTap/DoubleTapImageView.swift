@@ -18,7 +18,7 @@ struct DoubleTapImageView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
+            CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {

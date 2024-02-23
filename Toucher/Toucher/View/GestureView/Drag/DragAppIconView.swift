@@ -26,7 +26,7 @@ struct DragAppIconView: View {
             BackGroundColor(isFail: dragVM.isFail, isSuccess: dragVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {

@@ -15,7 +15,7 @@ struct PanMapView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
+            CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {

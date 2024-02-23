@@ -32,7 +32,7 @@ struct SwipeCarouselView: View {
             BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 titleText
                     .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)

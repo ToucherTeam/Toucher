@@ -22,7 +22,7 @@ struct RotateMapView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
+            CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {

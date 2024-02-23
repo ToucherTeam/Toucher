@@ -20,7 +20,7 @@ struct DoubleTapButtonView: View {
             BackGroundColor(isFail: doubleTapVM.isFail, isSuccess: doubleTapVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
+                CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {

@@ -20,7 +20,7 @@ struct SwipeListView: View {
             BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {

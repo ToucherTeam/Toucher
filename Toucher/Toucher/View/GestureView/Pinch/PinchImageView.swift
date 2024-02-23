@@ -17,7 +17,7 @@ struct PinchImageView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
+            CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {

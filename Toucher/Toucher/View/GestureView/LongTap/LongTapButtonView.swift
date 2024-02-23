@@ -19,7 +19,7 @@ struct LongTapButtonView: View {
             BackGroundColor(isFail: longTapVM.isFail, isSuccess: longTapVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
+                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {

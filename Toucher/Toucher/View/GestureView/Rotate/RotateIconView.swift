@@ -23,7 +23,7 @@ struct RotateIconView: View {
             BackGroundColor(isFail: rotateVM.isFail, isSuccess: rotateVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
+                CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 ZStack {
                     VStack {
                         Text(rotateVM.isSuccess ? "성공!\n" : rotateVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
