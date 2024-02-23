@@ -70,7 +70,7 @@ struct CustomToolbar: View {
             .overlay(alignment: .leading) {
                 Button {
                     dismiss()
-                    AnalyticsManager.shared.logEvent(name: "\(viewName)BackButtonCount")
+                    AnalyticsManager.shared.logEvent(name: "\(viewName)_BackButtonCount")
                 } label: {
                     HStack(spacing: 3) {
                         Image(systemName: "chevron.backward")
