@@ -40,7 +40,7 @@ struct FirebaseEndViewModifier: ViewModifier {
                 if isSuccess {
                     firestoreManager.updateViewClearData(gesture, viewName)
                     firestoreManager.updateTotalClearData(gesture)
-                    AnalyticsManager.shared.logEvent(name: "\(gesture)ClearNumber")
+                    AnalyticsManager.shared.logEvent(name: "\(gesture)_ClearNumber")
                 } else {
                     firestoreManager.updateBackButtonData(gesture, viewName)
                 }

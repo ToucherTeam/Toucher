@@ -49,7 +49,11 @@ struct RotateMapView: View {
                     .onChange(of: heading) { _ in
                         if abs(heading) > 10 {
                             rotateVM.isSuccess = true
-                            AnalyticsManager.shared.logEvent(name: "RotateMapView_Fail")
+                        }
+                    }
+                    .onChange(of: rotateVM.isSuccess) { isSuccess in
+                        if isSuccess {
+                            AnalyticsManager.shared.logEvent(name: "RotateMapView_ClearCount")
                         }
                     }
                     .overlay {
