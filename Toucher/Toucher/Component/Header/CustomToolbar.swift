@@ -11,7 +11,51 @@ struct CustomToolbar: View {
     @Environment(\.dismiss) var dismiss
     
     let title: LocalizedStringKey
+    
     var isSuccess = false
+    var selectedGuideVideo: URLManager
+    var viewName: ViewName {
+        switch selectedGuideVideo {
+        case .doubleTapButtonView:
+            return .doubleTapButtonView
+        case .doubleTapSearchBarView:
+            return .doubleTapSearchBarView
+        case .doubleTapImageView:
+            return .doubleTapImageView
+        case .longTapButtonView:
+            return .longTapButtonView
+        case .longTapCameraButtonView:
+            return .longTapCameraButtonView
+        case .longTapAlbumPhotoView:
+            return .longTapAlbumPhotoView
+        case .swipeCarouselView:
+            return .swipeCarouselView
+        case .swipeListView:
+            return .swipeListView
+        case .swipeMessageView:
+            return .swipeMessageView
+        case .dragIconView:
+            return .dragIconView
+        case .dragProgressBarView:
+            return .dragProgressBarView
+        case .dragAppIconView:
+            return .dragAppIconView
+        case .panNotificationView:
+            return .panNotificationView
+        case .panMapView:
+            return .panMapView
+        case .pinchIconZoomInView:
+            return .pinchIconZoomInView
+        case .pinchIconZoomOutView:
+            return .pinchIconZoomOutView
+        case .pinchImageView:
+            return .pinchImageView
+        case .rotateIconView:
+            return .rotateIconView
+        case .rotateMapView:
+            return .rotateMapView
+        }
+    }
     
     var body: some View {
         
@@ -26,6 +70,7 @@ struct CustomToolbar: View {
             .overlay(alignment: .leading) {
                 Button {
                     dismiss()
+                    AnalyticsManager.shared.logEvent(name: "\(viewName)_BackButtonCount")
                 } label: {
                     HStack(spacing: 3) {
                         Image(systemName: "chevron.backward")
@@ -52,5 +97,5 @@ struct CustomToolbar: View {
 }
 
 #Preview {
-    CustomToolbar(title: "두번 누르기")
+    CustomToolbar(title: "두번 누르기", selectedGuideVideo: .doubleTapButtonView)
 }

@@ -17,7 +17,7 @@ struct PinchImageView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
+            CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {
@@ -60,6 +60,7 @@ struct PinchImageView: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+        .analyticsScreen(name: "PinchImageView")
         .modifier(FinishModifier(isNavigate: $pinchVM.isNavigate, isSuccess: $pinchVM.isSuccess))
         .modifier(
             FirebaseEndViewModifier(
@@ -81,10 +82,12 @@ struct PinchImageView: View {
                 withAnimation {
                     if scale > 1.2 {
                         pinchVM.isSuccess = true
+                        AnalyticsManager.shared.logEvent(name: "PinchImageView_ClearCount")
                         self.scale = 3
                     } else {
                         pinchVM.isFail = true
                         FirestoreManager.shared.updateViewTapNumber(.pinch, .pinchImageView)
+                        AnalyticsManager.shared.logEvent(name: "PinchImageView_Fail")
                     }
                 }
             }

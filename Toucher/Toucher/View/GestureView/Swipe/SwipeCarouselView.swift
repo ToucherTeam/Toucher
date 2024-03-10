@@ -32,7 +32,7 @@ struct SwipeCarouselView: View {
             BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 titleText
                     .foregroundColor(swipeVM.isFail && !swipeVM.isSuccess ? Color.customWhite : Color.black)
@@ -82,6 +82,7 @@ struct SwipeCarouselView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .analyticsScreen(name: "SwipeCarouselView")
     }
     
     private var titleText: some View {
@@ -121,6 +122,7 @@ struct SwipeCarouselView: View {
                         swipeVM.isFail = true
                     }
                     FirestoreManager.shared.updateViewTapNumber(.swipe, .swipeCarouselView)
+                    AnalyticsManager.shared.logEvent(name: "SwipeCarouselView_Fail")
                 }
         )
         .gesture(
@@ -159,13 +161,35 @@ struct SwipeCarouselView: View {
                 let roundIndex = progress.rounded()
                 currentIndex = errorHandleArray(roundIndex)
                 currentIndexArray.append(currentIndex)
-                swipeVM.checkSuccessCondition(currentIndexArray)
+                checkSuccessCondition(currentIndexArray)
             }
     }
     
     ///  현재 swipeContent 개수 만큼 Swipe가 가능하게 만들어 주는 함수 (에러 방지)
     private func errorHandleArray(_ roundIndex: CGFloat) -> Int {
         return max(min(currentIndex + Int(roundIndex), swipeContent.count - 1), 0)
+    }
+    /// SwipeExampleView 성공 조건 감지
+    private func checkSuccessCondition(_ array: [Int]) {
+        let lastIndex = array.count - 1
+        if array[lastIndex] == 0 {
+            swipeVM.isFail = true
+            AnalyticsManager.shared.logEvent(name: "SwipeCarouselView_Fail")
+        }
+        if array.count >= 2 {
+            if array[lastIndex] == 0 && array[lastIndex - 1] == 1 {
+                swipeVM.isSuccess = true
+                swipeVM.isFail = false
+                AnalyticsManager.shared.logEvent(name: "SwipeCarouselView_ClearCount")
+            } else if array[lastIndex] != array[lastIndex - 1] {
+                swipeVM.isSuccess = false
+                swipeVM.isFail = false
+            } else {
+                swipeVM.isSuccess = false
+                swipeVM.isFail = true
+                AnalyticsManager.shared.logEvent(name: "SwipeCarouselView_Fail")
+            }
+        }
     }
 }
 

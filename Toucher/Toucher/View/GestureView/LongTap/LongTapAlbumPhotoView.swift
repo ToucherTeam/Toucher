@@ -27,7 +27,7 @@ struct LongTapAlbumPhotoView: View {
                 Color.customSecondary.ignoresSafeArea()
             }
             VStack(spacing: 0) {
-                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
+                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ScrollView {
                     Text(longTapVM.isSuccess ? "성공!\n" : longTapVM.isFail ? "조금 더 길게 꾹 \n눌러주세요!" : "앨범의 사진을 꾹 눌러서\n미리 보아 볼까요?")
@@ -80,15 +80,17 @@ struct LongTapAlbumPhotoView: View {
                                                     scale = 1
                                                     selectedIndex = index
                                                 }
+                                                AnalyticsManager.shared.logEvent(name: "LongTapAlubmPhotoView_ClearCount")
                                             }
                                             .simultaneously(with: TapGesture()
                                                 .onEnded {
                                                     withAnimation {
                                                         longTapVM.isTapped = true
                                                         longTapVM.isFail = true
-                                                        FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapAlbumPhotoView)
                                                         scale = 1
                                                     }
+                                                    FirestoreManager.shared.updateViewTapNumber(.longPress, .longTapAlbumPhotoView)
+                                                    AnalyticsManager.shared.logEvent(name: "LongTapAlbumView_Fail")
                                                 })
                                     )
                             }
@@ -136,6 +138,7 @@ struct LongTapAlbumPhotoView: View {
                 }
             }
         }
+        .analyticsScreen(name: "LongTapAlbumPhotoView")
         .modifier(FinishModifier(isNavigate: $longTapVM.isNavigate, isSuccess: $longTapVM.isSuccess))
         .modifier(
             FirebaseEndViewModifier(

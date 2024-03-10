@@ -24,7 +24,7 @@ struct DragIconView: View {
             BackGroundColor(isFail: dragVM.isFail, isSuccess: dragVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {
@@ -93,6 +93,7 @@ struct DragIconView: View {
                                                 withAnimation {
                                                     dragVM.isSuccess = true
                                                 }
+                                                AnalyticsManager.shared.logEvent(name: "DragIconView_ClearCount")
                                             }
                                             
                                             if !isArrived {
@@ -102,6 +103,7 @@ struct DragIconView: View {
                                                     dragVM.isTapped = false
                                                     dragVM.isFail = true
                                                 }
+                                                AnalyticsManager.shared.logEvent(name: "DragIconView_Fail")
                                             }
                                         }
                                         .simultaneously(with: LongPressGesture(minimumDuration: 0)
@@ -132,6 +134,7 @@ struct DragIconView: View {
                 }
             }
         }
+        .analyticsScreen(name: "DragIconView")
         .modifier(MoveToNextModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
         .navigationDestination(isPresented: $dragVM.isNavigate) {
             DragProgressBarView()

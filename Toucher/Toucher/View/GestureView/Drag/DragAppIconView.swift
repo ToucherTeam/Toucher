@@ -26,7 +26,7 @@ struct DragAppIconView: View {
             BackGroundColor(isFail: dragVM.isFail, isSuccess: dragVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {
@@ -91,6 +91,7 @@ struct DragAppIconView: View {
                             dragVM.isFail = true
                         }
                         FirestoreManager.shared.updateViewTapNumber(.drag, .dragAppIconView)
+                        AnalyticsManager.shared.logEvent(name: "DragAppIconView_Fail")
                     }
                     .overlay {
                         if dragVM.isSuccess {
@@ -100,6 +101,7 @@ struct DragAppIconView: View {
                 }
             }
         }
+        .analyticsScreen(name: "DragAppIconView")
         .modifier(
             FirebaseEndViewModifier(
                 isSuccess: dragVM.isSuccess,
@@ -111,6 +113,11 @@ struct DragAppIconView: View {
             dragVM.isSuccess = false
         }
         .modifier(FinishModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
+        .onChange(of: dragVM.isSuccess) { _ in
+            if dragVM.isSuccess {
+                AnalyticsManager.shared.logEvent(name: "DragAppIconView_ClearCount")
+            }
+        }
     }
 }
 

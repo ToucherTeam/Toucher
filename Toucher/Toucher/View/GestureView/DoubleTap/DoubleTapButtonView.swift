@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct DoubleTapButtonView: View {
     @AppStorage("createDoubleTap") var createDoubleTap = true
@@ -19,7 +20,7 @@ struct DoubleTapButtonView: View {
             BackGroundColor(isFail: doubleTapVM.isFail, isSuccess: doubleTapVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess)
+                CustomToolbar(title: "두 번 누르기", isSuccess: doubleTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {
@@ -48,6 +49,7 @@ struct DoubleTapButtonView: View {
                 }
             }
         }
+        .analyticsScreen(name: "DoubleTapButtonView")
         .modifier(MoveToNextModifier(isNavigate: $doubleTapVM.isNavigate, isSuccess: $doubleTapVM.isSuccess))
         .navigationDestination(isPresented: $doubleTapVM.isNavigate) {
             DoubleTapSearchBarView()

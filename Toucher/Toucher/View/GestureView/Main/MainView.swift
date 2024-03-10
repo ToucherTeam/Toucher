@@ -49,6 +49,7 @@ struct MainView: View {
             MainViewHeader(gesture: navigationManager.headerGesture)
                 .frame(maxHeight: .infinity, alignment: .top)
         }
+        .analyticsScreen(name: "MainView")
         .navigationDestination(isPresented: $navigationManager.navigate) {
             navigationManager.navigateGestureView(gesture: navigationManager.headerGesture)
                 .toolbar(.hidden, for: .navigationBar)

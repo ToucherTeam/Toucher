@@ -23,7 +23,7 @@ struct RotateIconView: View {
             BackGroundColor(isFail: rotateVM.isFail, isSuccess: rotateVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
+                CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 ZStack {
                     VStack {
                         Text(rotateVM.isSuccess ? "성공!\n" : rotateVM.isFail ? "두 손가락을 동시에\n움직여보세요!" : "두 손가락을 원 위에 대고\n회전시켜볼까요?")
@@ -59,6 +59,7 @@ struct RotateIconView: View {
                                 rotateVM.isFail = true
                             }
                             FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateIconView)
+                            AnalyticsManager.shared.logEvent(name: "RotateIconView_Fail")
                         }
                         .overlay {
                             if rotateVM.isSuccess {
@@ -77,6 +78,7 @@ struct RotateIconView: View {
                 }
             }
         }
+        .analyticsScreen(name: "RotateIconView")
         .modifier(MoveToNextModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .navigationDestination(isPresented: $rotateVM.isNavigate) {
             RotateMapView()
@@ -112,10 +114,12 @@ struct RotateIconView: View {
                     withAnimation {
                         rotateVM.isSuccess = true
                     }
+                    AnalyticsManager.shared.logEvent(name: "RotateIconView_ClearCount")
                 } else {
                     print(accumulateAngle.degrees)
                     rotateVM.isSuccess = false
                     rotateVM.isFail = true
+                    AnalyticsManager.shared.logEvent(name: "RotateIconView_Fail")
                 }
             }
     }

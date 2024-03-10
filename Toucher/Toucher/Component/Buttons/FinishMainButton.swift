@@ -24,6 +24,7 @@ struct FinishMainButton: View {
             .offset(y: gesture == selectedGesture ? 5 : 0)
             .onTapGesture {
                 action()
+                AnalyticsManager.shared.logEvent(name: "\(gesture)_ButtonClicked")
             }
             .frame(maxWidth: .infinity)
     }

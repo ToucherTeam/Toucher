@@ -37,7 +37,7 @@ struct PanNotificationView: View {
             BackGroundColor(isFail: panVM.isFail, isSuccess: panVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
+                CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {
@@ -115,6 +115,7 @@ struct PanNotificationView: View {
                                                 panVM.isSuccess = true
                                             } else if value < 0 {
                                                 panVM.isFail = true
+                                                AnalyticsManager.shared.logEvent(name: "PanNotificationView_Fail")
                                             } else {
                                                 panVM.isFail = false
                                             }
@@ -131,6 +132,7 @@ struct PanNotificationView: View {
                             panVM.isFail = true
                         }
                         FirestoreManager.shared.updateViewTapNumber(.pan, .panNotificationView)
+                        AnalyticsManager.shared.logEvent(name: "PanNotificationView_Fail")
                     }
                     .onChange(
                         of: scrollViewSize,
@@ -148,6 +150,7 @@ struct PanNotificationView: View {
                 }
             }
         }
+        .analyticsScreen(name: "PanNotificationView")
         .modifier(
             FirebaseStartViewModifier(
                 create: $createPan,
@@ -164,6 +167,11 @@ struct PanNotificationView: View {
             }
         }
         .modifier(MoveToNextModifier(isNavigate: $panVM.isNavigate, isSuccess: $panVM.isSuccess))
+        .onChange(of: panVM.isSuccess) { isSuccess in
+            if isSuccess {
+                AnalyticsManager.shared.logEvent(name: "PanNotification_ClearCount")
+            }
+        }
         .navigationDestination(isPresented: $panVM.isNavigate) {
             PanMapView()
                 .toolbar(.hidden, for: .navigationBar)

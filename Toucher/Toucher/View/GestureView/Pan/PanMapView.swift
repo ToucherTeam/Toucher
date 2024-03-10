@@ -15,7 +15,7 @@ struct PanMapView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess)
+            CustomToolbar(title: "화면 움직이기", isSuccess: panVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {
@@ -27,14 +27,16 @@ struct PanMapView: View {
                                 withAnimation {
                                     panVM.isSuccess = true
                                 }
+                                AnalyticsManager.shared.logEvent(name: "PanMapView_ClearCount")
                             }
                             .exclusively(
                                 before: TapGesture()
                                     .onEnded {
                                         withAnimation {
                                             panVM.isFail = true
-                                            FirestoreManager.shared.updateViewTapNumber(.pan, .panMapView)
                                         }
+                                        FirestoreManager.shared.updateViewTapNumber(.pan, .panMapView)
+                                        AnalyticsManager.shared.logEvent(name: "PanMapView_Fail")
                                     })
                     )
                 
@@ -89,6 +91,7 @@ struct PanMapView: View {
                 panVM.reset()
             }
         }
+        .analyticsScreen(name: "PanMapView")
     }
 }
 

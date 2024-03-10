@@ -19,7 +19,7 @@ struct DragProgressBarView: View {
             BackGroundColor(isFail: dragVM.isFail, isSuccess: dragVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess)
+                CustomToolbar(title: "끌어오기", isSuccess: dragVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {
@@ -47,6 +47,7 @@ struct DragProgressBarView: View {
                 }
             }
         }
+        .analyticsScreen(name: "DragProgressBarView")
         .modifier(MoveToNextModifier(isNavigate: $dragVM.isNavigate, isSuccess: $dragVM.isSuccess))
         .navigationDestination(isPresented: $dragVM.isNavigate) {
             DragAppIconView()
@@ -62,6 +63,11 @@ struct DragProgressBarView: View {
             dragVM.reset()
             value = 0.0
         }
+        .onChange(of: dragVM.isSuccess) { isSuccess in
+            if isSuccess {
+                AnalyticsManager.shared.logEvent(name: "DragProgressBarView_ClearCount")
+            }
+        }
     }
     
     private var slider: some View {
@@ -70,6 +76,7 @@ struct DragProgressBarView: View {
                 .onTapGesture {
                     if !dragVM.isSuccess {
                         dragVM.isFail = true
+                        AnalyticsManager.shared.logEvent(name: "DragProgressBarView_Fail")
                     }
                 }
             Group {

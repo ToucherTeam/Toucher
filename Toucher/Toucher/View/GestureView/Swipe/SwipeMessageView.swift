@@ -17,7 +17,7 @@ struct SwipeMessageView: View {
             BackGroundColor(isFail: swipeVM.isFail, isSuccess: swipeVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess)
+                CustomToolbar(title: "살짝 쓸기", isSuccess: swipeVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     Text(swipeVM.isFail ? "왼쪽으로\n살짝 쓸어보세요.\n" : swipeVM.isSuccess ? "성공!\n\n" : "메시지를 왼쪽으로 밀어서\n삭제해 보세요\n")
@@ -50,6 +50,7 @@ struct SwipeMessageView: View {
                                                                     swipeVM.isFail = true
                                                                 }
                                                             }
+                                                            AnalyticsManager.shared.logEvent(name: "SwipeMessageView_Fail")
                                                         }
                                                     }
                                             )
@@ -69,6 +70,7 @@ struct SwipeMessageView: View {
                                 Button(role: .destructive) {
                                     swipeVM.isFail = false
                                     swipeVM.isSuccess = true
+                                    AnalyticsManager.shared.logEvent(name: "SwipeMessageView_ClearCount")
                                     if let index = swipeVM.messageData.firstIndex(where: { $0.id == message.id }) {
                                         swipeVM.messageData.remove(at: index)
                                     }
@@ -100,6 +102,7 @@ struct SwipeMessageView: View {
                 }
             }
         }
+        .analyticsScreen(name: "SwipeMessageView")
         .overlay {
             if swipeVM.isSuccess {
                 ConfettiView()

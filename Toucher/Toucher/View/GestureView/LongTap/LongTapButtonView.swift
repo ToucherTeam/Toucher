@@ -19,7 +19,7 @@ struct LongTapButtonView: View {
             BackGroundColor(isFail: longTapVM.isFail, isSuccess: longTapVM.isSuccess)
             
             VStack {
-                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess)
+                CustomToolbar(title: "길게 누르기", isSuccess: longTapVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 
                 ZStack {
                     VStack {
@@ -58,6 +58,7 @@ struct LongTapButtonView: View {
                     .toolbar(.hidden, for: .navigationBar)
             }
         }
+        .analyticsScreen(name: "LongTapButtonView")
         .modifier(FirebaseStartViewModifier(create: $createLongTap, isSuccess: longTapVM.isSuccess, viewName: .longTapButtonView))
         .onAppear {
             longTapVM.reset()

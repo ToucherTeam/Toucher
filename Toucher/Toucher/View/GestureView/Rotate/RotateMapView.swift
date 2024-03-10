@@ -22,7 +22,7 @@ struct RotateMapView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess)
+            CustomToolbar(title: "회전하기", isSuccess: rotateVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                 .zIndex(1)
             
             ZStack {
@@ -40,14 +40,20 @@ struct RotateMapView: View {
                                     .onEnded {
                                         withAnimation {
                                             rotateVM.isFail = true
-                                            FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateMapView)
                                         }
+                                        FirestoreManager.shared.updateViewTapNumber(.rotate, .rotateMapView)
+                                        AnalyticsManager.shared.logEvent(name: "RotateMapView_Fail")
                                     })
 
                     )
                     .onChange(of: heading) { _ in
                         if abs(heading) > 10 {
                             rotateVM.isSuccess = true
+                        }
+                    }
+                    .onChange(of: rotateVM.isSuccess) { isSuccess in
+                        if isSuccess {
+                            AnalyticsManager.shared.logEvent(name: "RotateMapView_ClearCount")
                         }
                     }
                     .overlay {
@@ -76,6 +82,7 @@ struct RotateMapView: View {
                     .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+        .analyticsScreen(name: "RotateMapView")
         .modifier(FinishModifier(isNavigate: $rotateVM.isNavigate, isSuccess: $rotateVM.isSuccess))
         .modifier(
             FirebaseEndViewModifier(

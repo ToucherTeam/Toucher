@@ -49,6 +49,7 @@ struct FinishMainView: View {
                 }
             }
         }
+        .analyticsScreen(name: "FinishMainView")
         .overlay(alignment: .top) {
             Text("자유롭게 눌러 학습하세요!")
                 .font(.system(size: 22))

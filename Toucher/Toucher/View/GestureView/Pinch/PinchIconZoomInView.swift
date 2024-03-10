@@ -21,7 +21,7 @@ struct PinchIconZoomInView: View {
             
             if !pinchVM.isNavigate {
                 VStack {
-                    CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess)
+                    CustomToolbar(title: "확대 축소하기", isSuccess: pinchVM.isSuccess, selectedGuideVideo: selectedGuideVideo)
                     
                     ZStack {
                         VStack {
@@ -77,6 +77,7 @@ struct PinchIconZoomInView: View {
                 PinchIconZoomOutView()
             }
         }
+        .analyticsScreen(name: "PinchIconZoomInView")
     }
     
     private var gesture: some Gesture {
@@ -91,6 +92,7 @@ struct PinchIconZoomInView: View {
                 withAnimation {
                     if scale > 1.5 {
                         pinchVM.isSuccess = true
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomInView_ClearCount")
                         HapticManager.notification(type: .success)
                         self.scale = 2
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
@@ -106,6 +108,7 @@ struct PinchIconZoomInView: View {
                             pinchVM.isFail = true
                         }
                         FirestoreManager.shared.updateViewTapNumber(.pinch, .pinchIconZoomInView)
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomInView_Fail")
                     }
             )
             .simultaneously(
@@ -114,6 +117,7 @@ struct PinchIconZoomInView: View {
                         withAnimation {
                             pinchVM.isFail = true
                         }
+                        AnalyticsManager.shared.logEvent(name: "PinchIconZoomInView_Fail")
                     }
             )
     }
