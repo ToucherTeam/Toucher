@@ -9,27 +9,6 @@
 
 [<img width = "200" src="https://github-production-user-asset-6210df.s3.amazonaws.com/120548537/251533420-0eb9b31b-8203-48b7-8dcd-3725a8c9da49.png">](https://apps.apple.com/kr/app/toucher/id6474778455)
   
-</div>
-
-<br>
-
-## 📑 Description
-  
-앱에 대한 설명
-  
-**Feature 1**  
-- feature
-
-**Feature 2**
-- feature
-
-<br>
-
-<br>
-  
-## 🔍 Preview
-<img width = "1000" src="https://github.com/hyunjuntyler/readme-templates/assets/120548537/764b9b1a-6d17-4b65-afae-0d31a320e4b3">
-<br>
 
 <br>
 
