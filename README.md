@@ -13,22 +13,9 @@
 
 <br>
 
+
 ## 📑 Description
-  
-앱에 대한 설명
-  
-**Feature 1**  
-- feature
-
-**Feature 2**
-- feature
-
-<br>
-
-<br>
-  
-## 🔍 Preview
-<img width = "1000" src="https://github.com/hyunjuntyler/readme-templates/assets/120548537/764b9b1a-6d17-4b65-afae-0d31a320e4b3">
+  ![Group 13](https://github.com/user-attachments/assets/fc457892-0843-49eb-9fca-014d817db3c5)
 <br>
 
 <br>
